@@ -34,6 +34,7 @@ License <misc/license_link>
 
 User Guide <userguide/userguide>
 Examples <examples/examples>
+Versions <https://avhopp.github.io/baybe_dev/versions>
 ```
 
 # Indices and Tables
