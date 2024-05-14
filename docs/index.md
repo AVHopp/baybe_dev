@@ -34,6 +34,7 @@ Known Issues <known_issues>
 Changelog <misc/changelog_link>
 Github <https://github.com/emdgroup/baybe/>
 License <misc/license_link>
+Versions <https://avhopp.github.io/baybe_dev/versions>
 ```
 
 # Indices and Tables
