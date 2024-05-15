@@ -1,0 +1,35 @@
+baybe.kernels.priors
+====================
+
+.. automodule:: baybe.kernels.priors
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+
+   baybe.kernels.priors.base
+
+   baybe.kernels.priors.basic
+

@@ -1,0 +1,46 @@
+baybe.utils.basic
+=================
+
+.. automodule:: baybe.utils.basic
+  
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:                                       
+   
+      filter_attributes
+      find_subclass
+      get_subclasses
+      group_duplicate_values
+      hilberts_factory
+      refers_to
+      set_random_seed
+      to_tuple
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:                                       
+      :template: custom-class-template.rst              
+   
+      Dummy
+      classproperty
+   
+   
+
+   
+   
+   
+
+
+

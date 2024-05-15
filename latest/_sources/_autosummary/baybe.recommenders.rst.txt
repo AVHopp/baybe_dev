@@ -1,0 +1,41 @@
+baybe.recommenders
+==================
+
+.. automodule:: baybe.recommenders
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+
+   baybe.recommenders.base
+
+   baybe.recommenders.deprecation
+
+   baybe.recommenders.meta
+
+   baybe.recommenders.naive
+
+   baybe.recommenders.pure
+
