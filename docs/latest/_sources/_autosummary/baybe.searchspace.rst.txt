@@ -1,0 +1,39 @@
+baybe.searchspace
+=================
+
+.. automodule:: baybe.searchspace
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+
+   baybe.searchspace.continuous
+
+   baybe.searchspace.core
+
+   baybe.searchspace.discrete
+
+   baybe.searchspace.validation
+

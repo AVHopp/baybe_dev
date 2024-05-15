@@ -1,0 +1,6 @@
+baybe.utils.basic.set\_random\_seed
+===================================
+
+.. currentmodule:: baybe.utils.basic
+
+.. autofunction:: set_random_seed

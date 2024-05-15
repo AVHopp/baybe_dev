@@ -1,0 +1,40 @@
+baybe.objectives
+================
+
+.. automodule:: baybe.objectives
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+
+   baybe.objectives.base
+
+
+   baybe.objectives.desirability
+
+   baybe.objectives.enum
+
+   baybe.objectives.single
+

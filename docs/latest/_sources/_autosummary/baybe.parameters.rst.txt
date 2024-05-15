@@ -1,0 +1,47 @@
+baybe.parameters
+================
+
+.. automodule:: baybe.parameters
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+
+   baybe.parameters.base
+
+   baybe.parameters.categorical
+
+   baybe.parameters.custom
+
+   baybe.parameters.enum
+
+   baybe.parameters.numerical
+
+   baybe.parameters.substance
+
+   baybe.parameters.utils
+
+   baybe.parameters.validation
+
