@@ -1,0 +1,23 @@
+baybe.surrogates.random\_forest
+===============================
+
+.. automodule:: baybe.surrogates.random_forest
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

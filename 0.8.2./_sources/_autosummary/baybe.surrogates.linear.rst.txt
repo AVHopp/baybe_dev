@@ -1,0 +1,23 @@
+baybe.surrogates.linear
+=======================
+
+.. automodule:: baybe.surrogates.linear
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

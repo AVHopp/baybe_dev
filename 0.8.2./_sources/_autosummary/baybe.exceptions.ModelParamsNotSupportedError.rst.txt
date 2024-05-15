@@ -1,0 +1,6 @@
+baybe.exceptions.ModelParamsNotSupportedError
+=============================================
+
+.. currentmodule:: baybe.exceptions
+
+.. autoexception:: ModelParamsNotSupportedError

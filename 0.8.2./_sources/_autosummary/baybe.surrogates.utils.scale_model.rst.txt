@@ -1,0 +1,6 @@
+baybe.surrogates.utils.scale\_model
+===================================
+
+.. currentmodule:: baybe.surrogates.utils
+
+.. autofunction:: scale_model

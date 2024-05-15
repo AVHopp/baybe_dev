@@ -1,0 +1,39 @@
+baybe.acquisition
+=================
+
+.. automodule:: baybe.acquisition
+  
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:                                       
+   
+      debotorchize
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:                                       
+      :template: custom-class-template.rst              
+   
+      AdapterModel
+      PartialAcquisitionFunction
+   
+   
+
+   
+   
+   
+
+
+

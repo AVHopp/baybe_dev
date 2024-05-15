@@ -1,0 +1,86 @@
+AdapterModel
+============
+
+.. currentmodule:: baybe.acquisition
+
+.. autoclass:: AdapterModel
+   :members:                              
+   :show-inheritance:                 
+   :inherited-members:
+
+   
+   
+   .. rubric:: Public methods
+
+   .. autosummary::
+   
+      ~AdapterModel.__init__
+      ~AdapterModel.add_module
+      ~AdapterModel.apply
+      ~AdapterModel.bfloat16
+      ~AdapterModel.buffers
+      ~AdapterModel.children
+      ~AdapterModel.compile
+      ~AdapterModel.condition_on_observations
+      ~AdapterModel.construct_inputs
+      ~AdapterModel.cpu
+      ~AdapterModel.cuda
+      ~AdapterModel.double
+      ~AdapterModel.eval
+      ~AdapterModel.extra_repr
+      ~AdapterModel.float
+      ~AdapterModel.forward
+      ~AdapterModel.get_buffer
+      ~AdapterModel.get_extra_state
+      ~AdapterModel.get_parameter
+      ~AdapterModel.get_submodule
+      ~AdapterModel.half
+      ~AdapterModel.ipu
+      ~AdapterModel.load_state_dict
+      ~AdapterModel.modules
+      ~AdapterModel.named_buffers
+      ~AdapterModel.named_children
+      ~AdapterModel.named_modules
+      ~AdapterModel.named_parameters
+      ~AdapterModel.parameters
+      ~AdapterModel.posterior
+      ~AdapterModel.register_backward_hook
+      ~AdapterModel.register_buffer
+      ~AdapterModel.register_forward_hook
+      ~AdapterModel.register_forward_pre_hook
+      ~AdapterModel.register_full_backward_hook
+      ~AdapterModel.register_full_backward_pre_hook
+      ~AdapterModel.register_load_state_dict_post_hook
+      ~AdapterModel.register_module
+      ~AdapterModel.register_parameter
+      ~AdapterModel.register_state_dict_pre_hook
+      ~AdapterModel.requires_grad_
+      ~AdapterModel.set_extra_state
+      ~AdapterModel.share_memory
+      ~AdapterModel.state_dict
+      ~AdapterModel.subset_output
+      ~AdapterModel.to
+      ~AdapterModel.to_empty
+      ~AdapterModel.train
+      ~AdapterModel.transform_inputs
+      ~AdapterModel.type
+      ~AdapterModel.xpu
+      ~AdapterModel.zero_grad
+   
+   
+
+   
+   
+   .. rubric:: Public attributes and properties
+
+   .. autosummary::
+   
+      ~AdapterModel.T_destination
+      ~AdapterModel.batch_shape
+      ~AdapterModel.call_super_init
+      ~AdapterModel.dtypes_of_buffers
+      ~AdapterModel.dump_patches
+      ~AdapterModel.num_outputs
+      ~AdapterModel.training
+   
+   

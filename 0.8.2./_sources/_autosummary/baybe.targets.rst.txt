@@ -1,0 +1,40 @@
+baybe.targets
+=============
+
+.. automodule:: baybe.targets
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+
+   baybe.targets.base
+
+
+   baybe.targets.enum
+
+   baybe.targets.numerical
+
+   baybe.targets.transforms
+

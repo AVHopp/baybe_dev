@@ -1,0 +1,6 @@
+baybe.simulation.simulate\_scenarios
+====================================
+
+.. currentmodule:: baybe.simulation
+
+.. autofunction:: simulate_scenarios

@@ -1,0 +1,6 @@
+baybe.surrogates.base.get\_available\_surrogates
+================================================
+
+.. currentmodule:: baybe.surrogates.base
+
+.. autofunction:: get_available_surrogates

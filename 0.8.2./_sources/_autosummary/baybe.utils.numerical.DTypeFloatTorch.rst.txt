@@ -1,0 +1,7 @@
+baybe.utils.numerical.DTypeFloatTorch
+=====================================
+
+.. currentmodule:: baybe.utils.numerical
+
+
+.. autodata:: DTypeFloatTorch

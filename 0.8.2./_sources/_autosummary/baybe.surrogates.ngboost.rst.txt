@@ -1,0 +1,23 @@
+baybe.surrogates.ngboost
+========================
+
+.. automodule:: baybe.surrogates.ngboost
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

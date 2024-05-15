@@ -1,0 +1,6 @@
+baybe.acquisition.debotorchize
+==============================
+
+.. currentmodule:: baybe.acquisition
+
+.. autofunction:: debotorchize

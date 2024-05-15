@@ -1,0 +1,38 @@
+baybe.surrogates.base
+=====================
+
+.. automodule:: baybe.surrogates.base
+  
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:                                       
+   
+      get_available_surrogates
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:                                       
+      :template: custom-class-template.rst              
+   
+      Surrogate
+   
+   
+
+   
+   
+   
+
+
+
