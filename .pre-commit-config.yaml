@@ -1,6 +1,8 @@
 # FORMATTER NOTE: The versions of ufmt, black and usort should be consistent everywhere
 # (pre-commit, environment.yml, requirements.txt, pyproject.toml, ...)
 
+exclude: "docs/latest"
+
 repos:
 - repo: https://github.com/pycqa/flake8
   rev: 7.0.0
