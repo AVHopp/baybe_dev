@@ -13,14 +13,6 @@ baybe.surrogates.gaussian\_process
 
    
    
-   .. rubric:: Classes
-
-   .. autosummary::
-      :toctree:                                       
-      :template: custom-class-template.rst              
-   
-      GaussianProcessSurrogate
-   
    
 
    
@@ -28,4 +20,18 @@ baybe.surrogates.gaussian\_process
    
 
 
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+
+   baybe.surrogates.gaussian_process.core
+
+   baybe.surrogates.gaussian_process.kernel_factory
+
+   baybe.surrogates.gaussian_process.presets
 

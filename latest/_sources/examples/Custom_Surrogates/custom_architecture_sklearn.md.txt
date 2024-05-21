@@ -159,6 +159,24 @@ campaign = Campaign(
 )
 ```
 
+    ________________________________________________________________________________
+    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
+    _smiles_to_mordred_features('COC')
+    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
+    ________________________________________________________________________________
+    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
+    _smiles_to_mordred_features('CCC')
+    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
+    ________________________________________________________________________________
+    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
+    _smiles_to_mordred_features('O')
+    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
+    ________________________________________________________________________________
+    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
+    _smiles_to_mordred_features('CS(=O)C')
+    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
+
+
 
 ```python
 # Let's do a first round of recommendation
@@ -203,7 +221,7 @@ print(recommendation)
           Granularity  Pressure[bar]  Temperature[degree_C]    Solvent
     index                                                             
     123        medium            1.0                  100.0  Solvent D
-    243          fine            1.0                  100.0  Solvent D
+    203        medium           10.0                  100.0  Solvent D
 
 
 

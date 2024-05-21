@@ -18,6 +18,7 @@ MaternKernel
       ~MaternKernel.from_dict
       ~MaternKernel.from_json
       ~MaternKernel.to_dict
+      ~MaternKernel.to_factory
       ~MaternKernel.to_gpytorch
       ~MaternKernel.to_json
    
@@ -31,5 +32,6 @@ MaternKernel
    
       ~MaternKernel.nu
       ~MaternKernel.lengthscale_prior
+      ~MaternKernel.lengthscale_initial_value
    
    

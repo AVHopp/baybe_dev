@@ -16,6 +16,7 @@ baybe.utils.basic
    
       filter_attributes
       find_subclass
+      get_baseclasses
       get_subclasses
       group_duplicate_values
       hilberts_factory

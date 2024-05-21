@@ -1,4 +1,4 @@
-﻿baybe.exceptions
+baybe.exceptions
 ================
 
 .. automodule:: baybe.exceptions
@@ -31,7 +31,6 @@
       NothingToSimulateError
       NumericalUnderflowError
       OptionalImportError
-      TestException
       UnidentifiedSubclassError
    
    

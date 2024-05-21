@@ -33,5 +33,5 @@ baybe.kernels
 
    baybe.kernels.basic
 
-   baybe.kernels.priors
+   baybe.kernels.composite
 

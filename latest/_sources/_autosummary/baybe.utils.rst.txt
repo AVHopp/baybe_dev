@@ -37,6 +37,8 @@ baybe.utils
 
    baybe.utils.chemistry
 
+   baybe.utils.conversion
+
    baybe.utils.dataframe
 
    baybe.utils.interval
@@ -48,4 +50,6 @@ baybe.utils
    baybe.utils.sampling_algorithms
 
    baybe.utils.torch
+
+   baybe.utils.validation
 

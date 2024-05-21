@@ -226,8 +226,8 @@ initial_recommender=RandomRecommender(allow_repeated_recommendations=False,
 allow_recommending_already_measured=True),
 recommender=SequentialGreedyRecommender(allow_repeated_recommendations=False,
 allow_recommending_already_measured=True,
-surrogate_model=GaussianProcessSurrogate(kernel=None, _model=None),
-acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
+surrogate_model=GaussianProcessSurrogate(kernel_factory=DefaultKernelFactory(),
+_model=None), acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
 acquisition_function_cls=None, hybrid_sampler='None', sampling_percentage=1.0),
 switch_after=1)
      
@@ -265,24 +265,24 @@ for kIter in range(N_ITERATIONS):
     #### ITERATION 1 ####
     
     Recommended measurements:
-         Cat_1     Cat_2  Num_disc_1  Num_disc_2
-    239    33      good         4.0        -1.0
-    4      22  very bad         2.0        -9.0
-    173    33       bad         2.0        -6.0
+         Cat_1      Cat_2  Num_disc_1  Num_disc_2
+    1      22   very bad         1.0        -6.0
+    196    33         OK         1.0        -9.0
+    125    22  very good         4.0        -6.0
     
     Recommended measurements with fake measured results:
-         Cat_1     Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-    239    33      good         4.0        -1.0  37.547533  11.753185  53.423177
-    4      22  very bad         2.0        -9.0  36.343226  10.002179  52.469173
-    173    33       bad         2.0        -6.0  12.734986  48.217234  54.340103
+         Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
+    1      22   very bad         1.0        -6.0  60.987320   6.069146  55.452319
+    196    33         OK         1.0        -9.0  37.498002  16.220034  52.255953
+    125    22  very good         4.0        -6.0  74.959376  26.230381  53.245860
     
     
     Internal measurement dataframe computational representation Y:
     
        Desirability
-    0      0.726234
-    1      0.783805
-    2      0.540696
+    0      0.640921
+    1      0.784489
+    2      0.783462
     
     
     #### ITERATION 2 ####
@@ -290,60 +290,72 @@ for kIter in range(N_ITERATIONS):
 
     
     Recommended measurements:
-           Cat_1     Cat_2  Num_disc_1  Num_disc_2
-    index                                        
-    1        22  very bad         1.0        -6.0
-    12       22  very bad         4.0        -9.0
-    32       22       bad         2.0        -9.0
+           Cat_1      Cat_2  Num_disc_1  Num_disc_2
+    index                                         
+    113      22  very good         1.0        -6.0
+    168      33        bad         1.0        -9.0
+    228      33       good         2.0        -9.0
     
     Recommended measurements with fake measured results:
-           Cat_1     Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-    index                                                                         
-    1        22  very bad         1.0        -6.0   9.276513   6.433920  56.591053
-    12       22  very bad         4.0        -9.0  33.750814   2.514018  56.164886
-    32       22       bad         2.0        -9.0  43.344806  79.940828  52.085885
+           Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
+    index                                                                  
+    113      22  very good         1.0        -6.0  11.274193  78.831647   
+    168      33        bad         1.0        -9.0  15.100309  89.668159   
+    228      33       good         2.0        -9.0  17.951581  14.634039   
+    
+            Target_3  
+    index             
+    113    51.843822  
+    168    53.911358  
+    228    54.174358  
     
     
     Internal measurement dataframe computational representation Y:
     
        Desirability
-    0      0.726234
-    1      0.783805
-    2      0.540696
-    3      0.457348
-    4      0.543041
-    5      0.676804
+    0      0.640921
+    1      0.784489
+    2      0.783462
+    3      0.625445
+    4      0.492708
+    5      0.630080
     
     
     #### ITERATION 3 ####
     
     Recommended measurements:
-           Cat_1     Cat_2  Num_disc_1  Num_disc_2
-    index                                        
-    0        22  very bad         1.0        -9.0
-    179      33       bad         3.0        -1.0
-    243      33      good         6.0        -1.0
+           Cat_1      Cat_2  Num_disc_1  Num_disc_2
+    index                                         
+    121      22  very good         3.0        -6.0
+    129      22  very good         6.0        -6.0
+    200      33         OK         2.0        -9.0
     
     Recommended measurements with fake measured results:
-           Cat_1     Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-    index                                                                         
-    0        22  very bad         1.0        -9.0  95.407333  69.746832  56.319532
-    179      33       bad         3.0        -1.0  75.567299  20.148588  51.244873
-    243      33      good         6.0        -1.0  94.351177  20.183184  55.652840
+           Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
+    index                                                                  
+    121      22  very good         3.0        -6.0  24.642145   8.709291   
+    129      22  very good         6.0        -6.0  91.238107  52.239645   
+    200      33         OK         2.0        -9.0  64.873989  56.643140   
+    
+            Target_3  
+    index             
+    121    51.833276  
+    129    51.360578  
+    200    52.482939  
     
     
     Internal measurement dataframe computational representation Y:
     
        Desirability
-    0      0.726234
-    1      0.783805
-    2      0.540696
-    3      0.457348
-    4      0.543041
-    5      0.676804
-    6      0.521261
-    7      0.892526
-    8      0.664999
+    0      0.640921
+    1      0.784489
+    2      0.783462
+    3      0.625445
+    4      0.492708
+    5      0.630080
+    6      0.792861
+    7      0.856189
+    8      0.746861
 
 
 ## Addendum: Description of `transformation` functions

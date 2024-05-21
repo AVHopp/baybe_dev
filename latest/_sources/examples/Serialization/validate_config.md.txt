@@ -182,13 +182,13 @@ print("The first config seems valid.")
     The first config seems valid.
 
 
-    /Users/M290244/Programming/baybe_dev/.tox/docs-py310/.venv/lib/python3.10/site-
+    /home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
 packages/baybe/objectives/deprecation.py:57: DeprecationWarning: An objective has been
 specified without a corresponding type. Since 1 target(s) have been provided,
 'SingleTargetObjective' is used as a fallback. However, this behavior is deprecated and
 will be disabled in a future version.
       warnings.warn(
-    /Users/M290244/Programming/baybe_dev/.tox/docs-py310/.venv/lib/python3.10/site-
+    /home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
 packages/baybe/objective.py:18: DeprecationWarning: The use of `baybe.objective` is
 deprecated and will be disabled in a future version. Use the classes defined in
 `baybe.objectives` instead.
@@ -209,13 +209,13 @@ except ClassValidationError:
     Something is wrong with the second config, which is what we expected!
 
 
-    /Users/M290244/Programming/baybe_dev/.tox/docs-py310/.venv/lib/python3.10/site-
+    /home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
 packages/baybe/objectives/deprecation.py:57: DeprecationWarning: An objective has been
 specified without a corresponding type. Since 1 target(s) have been provided,
 'SingleTargetObjective' is used as a fallback. However, this behavior is deprecated and
 will be disabled in a future version.
       warnings.warn(
-    /Users/M290244/Programming/baybe_dev/.tox/docs-py310/.venv/lib/python3.10/site-
+    /home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
 packages/baybe/objective.py:18: DeprecationWarning: The use of `baybe.objective` is
 deprecated and will be disabled in a future version. Use the classes defined in
 `baybe.objectives` instead.

@@ -46,6 +46,8 @@
 
    baybe.parameters
 
+   baybe.priors
+
    baybe.recommenders
 
    baybe.scaler

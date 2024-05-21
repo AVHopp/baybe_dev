@@ -160,8 +160,8 @@ initial_recommender=FPSRecommender(allow_repeated_recommendations=False,
 allow_recommending_already_measured=True),
 recommender=SequentialGreedyRecommender(allow_repeated_recommendations=False,
 allow_recommending_already_measured=True,
-surrogate_model=GaussianProcessSurrogate(kernel=None, _model=None),
-acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
+surrogate_model=GaussianProcessSurrogate(kernel_factory=DefaultKernelFactory(),
+_model=None), acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
 acquisition_function_cls=None, hybrid_sampler='None', sampling_percentage=1.0),
 switch_after=1)
      
@@ -272,8 +272,8 @@ initial_recommender=FPSRecommender(allow_repeated_recommendations=False,
 allow_recommending_already_measured=True),
 recommender=SequentialGreedyRecommender(allow_repeated_recommendations=False,
 allow_recommending_already_measured=True,
-surrogate_model=GaussianProcessSurrogate(kernel=None, _model=None),
-acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
+surrogate_model=GaussianProcessSurrogate(kernel_factory=DefaultKernelFactory(),
+_model=None), acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
 acquisition_function_cls=None, hybrid_sampler='None', sampling_percentage=1.0),
 switch_after=1)
      
