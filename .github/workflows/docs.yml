@@ -33,6 +33,13 @@ jobs:
           ref: ${{ inputs.tag || github.ref }}
       - uses: actions/setup-python@v5
         with: {python-version: "3.9"}
+      - name: Print GitHub event action
+        run: |
+          if ${{ github.event_name == 'workflow_dispatch'}}; then
+            echo "Triggered by workflow_dispatch"
+          else
+            echo "Triggered by release"
+          fi
       - name: Install tox
         run: pip install tox-uv
       - name: Build Docs ${{ inputs.force == true && '(Force)' || '' }}
