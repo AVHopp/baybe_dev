@@ -42,7 +42,7 @@ jobs:
             echo "Triggered by release"
             "FOLDER=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
           fi
-          echo $FOLDER
+          echo "$FOLDER"
       - name: Install tox
         run: pip install tox-uv
       #- name: Build Docs ${{ inputs.force == true && '(Force)' || '' }}
