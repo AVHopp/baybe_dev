@@ -1,0 +1,15 @@
+# Backtesting
+
+These examples demonstrate BayBE's
+{doc}`Backtesting </userguide/simulation>` capabilities.
+```{toctree}
+:maxdepth: 1
+
+Impute Mode<impute_mode>
+Multi Target<multi_target>
+Hybrid<hybrid>
+Custom Analytical<custom_analytical>
+Full Initial Data<full_initial_data>
+Botorch Analytical<botorch_analytical>
+Full Lookup<full_lookup>
+```
