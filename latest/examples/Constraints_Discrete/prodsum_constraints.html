@@ -926,13 +926,13 @@
 We thus refer to <a class="reference internal" href="../Basics/campaign.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">campaign</span></code></span></a> for a basic example.</p>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.constraints</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">DiscreteProductConstraint</span><span class="p">,</span>
     <span class="n">DiscreteSumConstraint</span><span class="p">,</span>
@@ -952,13 +952,13 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 </section>
 <section id="experiment-setup">
 <h2>Experiment setup<a class="headerlink" href="#experiment-setup" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RESOLUTION</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RESOLUTION</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span>
     <span class="s2">&quot;C1&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
     <span class="s2">&quot;C2&quot;</span><span class="p">:</span> <span class="s2">&quot;CC&quot;</span><span class="p">,</span>
@@ -987,7 +987,7 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">solvent</span><span class="p">,</span>
     <span class="n">speed</span><span class="p">,</span>
     <span class="n">num_parameter_1</span><span class="p">,</span>
@@ -1004,7 +1004,7 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 <h2>Creating the constraints<a class="headerlink" href="#creating-the-constraints" title="Link to this heading">¶</a></h2>
 <p>Constraints are used when creating the searchspace object.
 Thus, they need to be defined prior to the searchspace creation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sum_constraint_1</span> <span class="o">=</span> <span class="n">DiscreteSumConstraint</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sum_constraint_1</span> <span class="o">=</span> <span class="n">DiscreteSumConstraint</span><span class="p">(</span>
     <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NumParam1&quot;</span><span class="p">,</span> <span class="s2">&quot;NumParam2&quot;</span><span class="p">],</span>
     <span class="n">condition</span><span class="o">=</span><span class="n">ThresholdCondition</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">150.0</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">),</span>
 <span class="p">)</span>
@@ -1018,123 +1018,31 @@ Thus, they need to be defined prior to the searchspace creation.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">sum_constraint_1</span><span class="p">,</span> <span class="n">sum_constraint_2</span><span class="p">,</span> <span class="n">prod_constraint</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">sum_constraint_1</span><span class="p">,</span> <span class="n">sum_constraint_2</span><span class="p">,</span> <span class="n">prod_constraint</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
 <section id="creating-the-searchspace-and-the-objective">
 <h2>Creating the searchspace and the objective<a class="headerlink" href="#creating-the-searchspace-and-the-objective" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_1&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_1&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
 <section id="creating-and-printing-the-campaign">
 <h2>Creating and printing the campaign<a class="headerlink" href="#creating-and-printing-the-campaign" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">campaign</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[1mCampaign[0m
-         
- [1mMeta Data[0m
- Batches Done: 0
-</pre></div>
-</div>
-<p>Fits Done: 0</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> [1mSearch Space[0m
-          
-  [1mSearch Space Type: [0mDISCRETE
-  
-  [1mDiscrete Search Space[0m
-               
-   [1mDiscrete Parameters[0m
-            Name                        Type  Num_Values                 Encoding
-   0     Solvent          SubstanceParameter           3  SubstanceEncoding.RDKIT
-   1       Speed        CategoricalParameter           3  CategoricalEncoding.INT
-   2   NumParam1  NumericalDiscreteParameter           3                     None
-   ..        ...                         ...         ...                      ...
-   5   NumParam4  NumericalDiscreteParameter           3                     None
-   6   NumParam5  NumericalDiscreteParameter           3                     None
-   7   NumParam6  NumericalDiscreteParameter           3                     None
-   
-   [8 rows x 4 columns]
-               
-   [1mExperimental Representation[0m
-               
-   Solvent Speed  ...  NumParam5  NumParam6
-   0     water  slow  ...        0.0      100.0
-   1     water  slow  ...       50.0       50.0
-   2     water  slow  ...      100.0        0.0
-   ..      ...   ...  ...        ...        ...
-   861      C2  fast  ...        0.0      100.0
-   862      C2  fast  ...       50.0       50.0
-   863      C2  fast  ...      100.0        0.0
-   
-   [864 rows x 8 columns]
-   
-   [1mMetadata:[0m
-</pre></div>
-</div>
-<p>was_recommended: 0/864</p>
-<p>was_measured: 0/864</p>
-<p>dont_recommend: 0/864</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   [1mConstraints[0m
-                           Type     Affected_Parameters
-   0      DiscreteSumConstraint  [NumParam1, NumParam2]
-   1      DiscreteSumConstraint  [NumParam5, NumParam6]
-   2  DiscreteProductConstraint  [NumParam3, NumParam4]
-               
-   [1mComputational Representation[0m
-               
-    Solvent_RDKIT_MaxAbsEStateIndex  Solvent_RDKIT_MaxPartialCharge  ...  NumParam5
-</pre></div>
-</div>
-<p>NumParam6
-0                                0.0                       -0.411510  …
-0.0      100.0
-1                                0.0                       -0.411510  …
-50.0       50.0
-2                                0.0                       -0.411510  …
-100.0        0.0
-..                               …                             …  …
-…        …
-861                              2.0                       -0.068262  …
-0.0      100.0
-862                              2.0                       -0.068262  …
-50.0       50.0
-863                              2.0                       -0.068262  …
-100.0        0.0</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   [864 rows x 9 columns]
- 
- [1mObjective[0m
-          
-  [1mType: [0mSingleTargetObjective
-          
-  [1mTargets [0m
-                Type      Name Mode  Lower_Bound  Upper_Bound Transformation
-  0  NumericalTarget  Target_1  MAX         -inf          inf           None
- 
- TwoPhaseMetaRecommender(allow_repeated_recommendations=None,
-</pre></div>
-</div>
-<p>allow_recommending_already_measured=None,
-initial_recommender=RandomRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True),
-recommender=SequentialGreedyRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True,
-surrogate_model=GaussianProcessSurrogate(kernel_factory=DefaultKernelFactory(),
-_model=None), acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
-acquisition_function_cls=None, hybrid_sampler=’None’, sampling_percentage=1.0),
-switch_after=1)</p>
 </section>
 <section id="manual-verification-of-the-constraints">
 <h2>Manual verification of the constraints<a class="headerlink" href="#manual-verification-of-the-constraints" title="Link to this heading">¶</a></h2>
 <p>The following loop performs some recommendations and manually verifies the given
 constraints.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
 <span class="k">for</span> <span class="n">kIter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ITERATIONS</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">#### ITERATION </span><span class="si">{</span><span class="n">kIter</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ####&quot;</span><span class="p">)</span>
 
@@ -1170,20 +1078,6 @@ constraints.</p>
     <span class="n">rec</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
     <span class="n">add_fake_results</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span> <span class="n">campaign</span><span class="p">)</span>
     <span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#### ITERATION 1 ####
-## ASSERTS ##
-Number of entries with 1,2-sum above 150:       0
-Number of entries with 3,4-product under 30:    0
-Number of entries with 5,6-sum unequal to 100:  0
-
-
-#### ITERATION 2 ####
-## ASSERTS ##
-Number of entries with 1,2-sum above 150:       0
-Number of entries with 3,4-product under 30:    0
-Number of entries with 5,6-sum unequal to 100:  0
 </pre></div>
 </div>
 </section>

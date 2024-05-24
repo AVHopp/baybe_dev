@@ -928,7 +928,7 @@ strings. We use the following configuration dictionaries, representing a valid c
 You can create such a config by providing a  dictionary with <code class="docutils literal notranslate"><span class="pre">&quot;type&quot;:&quot;name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">class&quot;</span></code>.</p>
 <section id="necessary-imports">
 <h2>Necessary imports<a class="headerlink" href="#necessary-imports" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 </pre></div>
 </div>
 </section>
@@ -937,7 +937,7 @@ You can create such a config by providing a  dictionary with <code class="docuti
 <p>Note that the following explicit call <code class="docutils literal notranslate"><span class="pre">str()</span></code> is not strictly necessary.
 It is included since our method of converting this example to a markdown file does not
 interpret this part of the code as <code class="docutils literal notranslate"><span class="pre">python</span></code> code if we do not include this call.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CONFIG</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONFIG</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{</span>
 <span class="sd">    &quot;searchspace&quot;: {</span>
@@ -1014,45 +1014,12 @@ interpret this part of the code as <code class="docutils literal notranslate"><s
 <h2>Creating a campaign from the configuration file<a class="headerlink" href="#creating-a-campaign-from-the-configuration-file" title="Link to this heading">¶</a></h2>
 <p>Although we know in this case that the config represents a valid configuration for a
 campaign. If the config is invalid an exception will be thrown.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">CONFIG</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">CONFIG</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;CCCCC&#39;)
-_______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;COCOC&#39;)
-_______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;CCOCCOCCN&#39;)
-_______________________________________smiles_to_mordred_features - 0.1s, 0.0min
-
-
-/home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-</pre></div>
-</div>
-<p>packages/baybe/objectives/deprecation.py:57: DeprecationWarning: An objective has been
-specified without a corresponding type. Since 1 target(s) have been provided,
-‘SingleTargetObjective’ is used as a fallback. However, this behavior is deprecated and
-will be disabled in a future version.
-warnings.warn(
-/home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-packages/baybe/objective.py:18: DeprecationWarning: The use of <code class="docutils literal notranslate"><span class="pre">baybe.objective</span></code> is
-deprecated and will be disabled in a future version. Use the classes defined in
-<code class="docutils literal notranslate"><span class="pre">baybe.objectives</span></code> instead.
-warnings.warn(</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># We now perform a recommendation as usual and print it.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># We now perform a recommendation as usual and print it.</span>
 <span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   Granularity  Pressure[bar]    Solvent
-1       coarse            1.0  Solvent B
-20        fine           10.0  Solvent A
-31  ultra-fine            5.0  Solvent D
 </pre></div>
 </div>
 </section>

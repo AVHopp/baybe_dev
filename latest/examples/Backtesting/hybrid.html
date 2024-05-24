@@ -930,15 +930,15 @@ We refer to <a class="reference internal" href="../Basics/campaign.html"><span c
 to <a class="reference internal" href="custom_analytical.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">custom_analytical</span></code></span></a> for details on the lookup mechanism.</p>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="n">NumericalContinuousParameter</span><span class="p">,</span> <span class="n">NumericalDiscreteParameter</span>
 <span class="kn">from</span> <span class="nn">baybe.recommenders</span> <span class="kn">import</span> <span class="p">(</span>
@@ -959,10 +959,10 @@ to <a class="reference internal" href="custom_analytical.html"><span class="std 
 These are the number of Monte Carlo runs and the number of experiments to be conducted
 per run.
 <code class="docutils literal notranslate"><span class="pre">POINTS_PER_DIM</span></code> denotes how many points each discrete dimension should contain.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N_MC_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N_MC_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
 <span class="n">N_DOE_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
 <span class="n">POINTS_PER_DIM</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">6</span>
 </pre></div>
@@ -971,7 +971,7 @@ per run.
 <section id="defining-the-test-function">
 <h2>Defining the test function.<a class="headerlink" href="#defining-the-test-function" title="Link to this heading">¶</a></h2>
 <p>See <a class="reference internal" href="custom_analytical.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">here</span></code></span></a> for details on the custom analytical test function.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_of_squares</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_of_squares</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the sum of squares.&quot;&quot;&quot;</span>
     <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
@@ -984,7 +984,7 @@ use.
 This is necessary to know for the creation of the parameters.
 Similarly, it is necessary to state the bounds of the parameters.
 These should be provided as a list of two-dimensional tuples.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">BOUNDS</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -994,12 +994,12 @@ These should be provided as a list of two-dimensional tuples.</p>
 <p>Our goal is to construct a hybrid searchspace containing discrete and continuous
 parameters.
 We thus need to specify which indices should be discrete and which should be continuous.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CONT_INDICES</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONT_INDICES</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">DISC_INDICES</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>This code verifies whether the provided indices agree with <code class="docutils literal notranslate"><span class="pre">DIMENSION</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">CONT_INDICES</span> <span class="o">+</span> <span class="n">DISC_INDICES</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">DIMENSION</span><span class="p">)):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">CONT_INDICES</span> <span class="o">+</span> <span class="n">DISC_INDICES</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">DIMENSION</span><span class="p">)):</span>
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
         <span class="s2">&quot;Either the intersection between CONT_IND and DISC_IND is not empty or your &quot;</span>
         <span class="s2">&quot;indices do not match.&quot;</span>
@@ -1007,7 +1007,7 @@ We thus need to specify which indices should be discrete and which should be con
 </pre></div>
 </div>
 <p>Construct the continuous parameters as NumericContinuous parameters.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cont_parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cont_parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NumericalContinuousParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;x_</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">BOUNDS</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span>
@@ -1017,7 +1017,7 @@ We thus need to specify which indices should be discrete and which should be con
 </pre></div>
 </div>
 <p>Construct the discrete parameters as <code class="docutils literal notranslate"><span class="pre">NumericalDiscreteParameters</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">disc_parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">disc_parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NumericalDiscreteParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;x_</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">values</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">BOUNDS</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">POINTS_PER_DIM</span><span class="p">)),</span>
@@ -1028,10 +1028,10 @@ We thus need to specify which indices should be discrete and which should be con
 </pre></div>
 </div>
 <p>Concatenate the continuous and discrete parameters.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="n">cont_parameters</span> <span class="o">+</span> <span class="n">disc_parameters</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="n">cont_parameters</span> <span class="o">+</span> <span class="n">disc_parameters</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct searchspace and objective.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct searchspace and objective.</span>
 <span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
 <span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MIN&quot;</span><span class="p">))</span>
 </pre></div>
@@ -1053,7 +1053,7 @@ Using the two keywords <code class="docutils literal notranslate"><span class="p
 <p>Note that the recommender performs one optimization of the continuous subspace per
 sampled point.
 We thus recommend to keep this parameter rather low.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seq_greedy_recommender</span> <span class="o">=</span> <span class="n">TwoPhaseMetaRecommender</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq_greedy_recommender</span> <span class="o">=</span> <span class="n">TwoPhaseMetaRecommender</span><span class="p">(</span>
     <span class="n">recommender</span><span class="o">=</span><span class="n">SequentialGreedyRecommender</span><span class="p">(</span>
         <span class="n">hybrid_sampler</span><span class="o">=</span><span class="s2">&quot;Farthest&quot;</span><span class="p">,</span> <span class="n">sampling_percentage</span><span class="o">=</span><span class="mf">0.3</span>
     <span class="p">),</span>
@@ -1065,7 +1065,7 @@ We thus recommend to keep this parameter rather low.</p>
 </pre></div>
 </div>
 <p>We now create one campaign per recommender.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seq_greedy_campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq_greedy_campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
     <span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span>
     <span class="n">recommender</span><span class="o">=</span><span class="n">seq_greedy_recommender</span><span class="p">,</span>
     <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span>
@@ -1085,7 +1085,7 @@ We thus recommend to keep this parameter rather low.</p>
 <p>We can now use the <code class="docutils literal notranslate"><span class="pre">simulate_scenarios</span></code> function to simulate a full experiment.
 Note that this function enables to run multiple scenarios by a single function call.
 For this, it is necessary to define a dictionary mapping scenario names to campaigns.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scenarios</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenarios</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;Sequential greedy&quot;</span><span class="p">:</span> <span class="n">seq_greedy_campaign</span><span class="p">,</span>
     <span class="s2">&quot;Naive hybrid&quot;</span><span class="p">:</span> <span class="n">naive_hybrid_campaign</span><span class="p">,</span>
     <span class="s2">&quot;Random&quot;</span><span class="p">:</span> <span class="n">random_campaign</span><span class="p">,</span>
@@ -1100,7 +1100,7 @@ For this, it is necessary to define a dictionary mapping scenario names to campa
 </pre></div>
 </div>
 <p>The following lines plot the results and save the plot in run_analytical.png</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Num_Experiments&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Target_CumBest&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Scenario&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Num_Experiments&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Target_CumBest&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Scenario&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./run_hybrid.png&quot;</span><span class="p">)</span>
 </pre></div>

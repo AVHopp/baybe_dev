@@ -928,10 +928,10 @@ a configuration.</p>
 We thus refer to <a class="reference internal" href="../Basics/campaign.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">campaign</span></code></span></a> for a basic example.</p>
 <section id="necessary-imports">
 <h2>Necessary imports<a class="headerlink" href="#necessary-imports" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe.campaign</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe.campaign</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">CategoricalParameter</span><span class="p">,</span>
@@ -952,7 +952,7 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 </section>
 <section id="experiment-setup">
 <h2>Experiment Setup<a class="headerlink" href="#experiment-setup" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">CategoricalParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Granularity&quot;</span><span class="p">,</span>
         <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;coarse&quot;</span><span class="p">,</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span> <span class="s2">&quot;fine&quot;</span><span class="p">],</span>
@@ -985,21 +985,17 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 <h2>Create a surrogate model with custom model parameters<a class="headerlink" href="#create-a-surrogate-model-with-custom-model-parameters" title="Link to this heading">¶</a></h2>
 <p>Please note that model_params is an optional argument:
 The defaults will be used if none specified</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">surrogate_model</span> <span class="o">=</span> <span class="n">NGBoostSurrogate</span><span class="p">(</span><span class="n">model_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">surrogate_model</span> <span class="o">=</span> <span class="n">NGBoostSurrogate</span><span class="p">(</span><span class="n">model_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
 </pre></div>
 </div>
 </section>
 <section id="validation-of-model-parameters">
 <h2>Validation of model parameters<a class="headerlink" href="#validation-of-model-parameters" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">invalid_surrogate_model</span> <span class="o">=</span> <span class="n">NGBoostSurrogate</span><span class="p">(</span><span class="n">model_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;NOT_A_PARAM&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
 <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The validator will give an error here:&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The validator will give an error here:
-Invalid model params for NGBoostSurrogate: NOT_A_PARAM.
 </pre></div>
 </div>
 </section>
@@ -1011,7 +1007,7 @@ Invalid model params for NGBoostSurrogate: NOT_A_PARAM.
 </section>
 <section id="creating-the-campaign">
 <h2>Creating the campaign<a class="headerlink" href="#creating-the-campaign" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
     <span class="n">searchspace</span><span class="o">=</span><span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
     <span class="n">objective</span><span class="o">=</span><span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Yield&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">)),</span>
     <span class="n">recommender</span><span class="o">=</span><span class="n">TwoPhaseMetaRecommender</span><span class="p">(</span>
@@ -1025,29 +1021,19 @@ Invalid model params for NGBoostSurrogate: NOT_A_PARAM.
 <section id="iterate-with-recommendations-and-measurements">
 <h2>Iterate with recommendations and measurements<a class="headerlink" href="#iterate-with-recommendations-and-measurements" title="Link to this heading">¶</a></h2>
 <p>We can print the surrogate model object</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The model object in json format:&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The model object in json format:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">surrogate_model</span><span class="o">.</span><span class="n">to_json</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The model object in json format:
-{&quot;type&quot;: &quot;NGBoostSurrogate&quot;, &quot;model_params&quot;: {&quot;n_estimators&quot;: 50, &quot;verbose&quot;: true}}
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s do a first round of recommendation</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s do a first round of recommendation</span>
 <span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recommendation from campaign:&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recommendation from campaign:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommendation from campaign:
-    Granularity  Pressure[bar]  Temperature[degree_C]    Solvent
-2        coarse            1.0                  100.0  Solvent C
-239      medium           10.0                  200.0  Solvent D
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add some fake results</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add some fake results</span>
 <span class="n">add_fake_results</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="p">)</span>
 <span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 </pre></div>
@@ -1056,29 +1042,16 @@ Invalid model params for NGBoostSurrogate: NOT_A_PARAM.
 <section id="model-outputs">
 <h2>Model Outputs<a class="headerlink" href="#model-outputs" title="Link to this heading">¶</a></h2>
 <p>Note that this model is only triggered when there is data.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here you will see some model outputs as we set verbose to True&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here you will see some model outputs as we set verbose to True&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Here you will see some model outputs as we set verbose to True
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do another round of recommendations</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do another round of recommendations</span>
 <span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[iter 0] loss=1.0724 val_loss=0.0000 scale=1.0000 norm=0.7071
-</pre></div>
-</div>
 <p>Print second round of recommendations</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recommendation from campaign:&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recommendation from campaign:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommendation from campaign:
-      Granularity  Pressure[bar]  Temperature[degree_C]    Solvent
-index                                                             
-223        medium           10.0             155.555556  Solvent D
-227        medium           10.0             166.666667  Solvent D
 </pre></div>
 </div>
 </section>
@@ -1090,7 +1063,7 @@ Refer to <a class="reference internal" href="../Serialization/create_from_config
 It is included since our method of converting this example to a markdown file does not
 interpret
 this part of the code as <code class="docutils literal notranslate"><span class="pre">python</span></code> code if we do not include this call.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CONFIG</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONFIG</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{</span>
 <span class="sd">    &quot;type&quot;: &quot;NGBoostSurrogate&quot;,</span>
@@ -1103,12 +1076,12 @@ this part of the code as <code class="docutils literal notranslate"><span class=
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### Model creation from json</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### Model creation from json</span>
 <span class="n">recreate_model</span> <span class="o">=</span> <span class="n">NGBoostSurrogate</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">CONFIG</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This configuration creates the same model</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">recreate_model</span> <span class="o">==</span> <span class="n">surrogate_model</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">recreate_model</span> <span class="o">==</span> <span class="n">surrogate_model</span>
 </pre></div>
 </div>
 </section>

@@ -931,10 +931,10 @@ function.
 We thus refer to <a class="reference internal" href="discrete_space.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">discrete_space</span></code></span></a> for details on this aspect.</p>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">botorch.test_functions</span> <span class="kn">import</span> <span class="n">Rastrigin</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">botorch.test_functions</span> <span class="kn">import</span> <span class="n">Rastrigin</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="n">NumericalContinuousParameter</span>
 <span class="kn">from</span> <span class="nn">baybe.searchspace</span> <span class="kn">import</span> <span class="n">SearchSpace</span>
@@ -946,11 +946,11 @@ We thus refer to <a class="reference internal" href="discrete_space.html"><span 
 <section id="defining-the-test-function">
 <h2>Defining the test function<a class="headerlink" href="#defining-the-test-function" title="Link to this heading">¶</a></h2>
 <p>See <a class="reference internal" href="discrete_space.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">discrete_space</span></code></span></a> for details.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">TestFunctionClass</span> <span class="o">=</span> <span class="n">Rastrigin</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">TestFunctionClass</span><span class="p">,</span> <span class="s2">&quot;dim&quot;</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">TestFunctionClass</span><span class="p">,</span> <span class="s2">&quot;dim&quot;</span><span class="p">):</span>
     <span class="n">TestFunction</span> <span class="o">=</span> <span class="n">TestFunctionClass</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">DIMENSION</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">TestFunctionClass</span><span class="p">()</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="n">DIMENSION</span><span class="p">:</span>
     <span class="n">TestFunction</span> <span class="o">=</span> <span class="n">TestFunctionClass</span><span class="p">()</span>
@@ -967,7 +967,7 @@ We thus refer to <a class="reference internal" href="discrete_space.html"><span 
     <span class="n">CONT_INDICES</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">((</span><span class="n">DIMENSION</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">DIMENSION</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BOUNDS</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="o">.</span><span class="n">bounds</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BOUNDS</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="o">.</span><span class="n">bounds</span>
 <span class="n">WRAPPED_FUNCTION</span> <span class="o">=</span> <span class="n">botorch_function_wrapper</span><span class="p">(</span><span class="n">test_function</span><span class="o">=</span><span class="n">TestFunction</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -976,7 +976,7 @@ We thus refer to <a class="reference internal" href="discrete_space.html"><span 
 <h2>Creating the searchspace and the objective<a class="headerlink" href="#creating-the-searchspace-and-the-objective" title="Link to this heading">¶</a></h2>
 <p>Since the searchspace is continuous test, we construct <code class="docutils literal notranslate"><span class="pre">NumericalContinuousParameter</span></code>s
 We use that data of the test function to deduce bounds and number of parameters.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NumericalContinuousParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;x_</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">BOUNDS</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">],</span> <span class="n">BOUNDS</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">]),</span>
@@ -985,47 +985,40 @@ We use that data of the test function to deduce bounds and number of parameters.
 <span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
 <span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MIN&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
 <section id="constructing-the-campaign-and-performing-a-recommendation">
 <h2>Constructing the campaign and performing a recommendation<a class="headerlink" href="#constructing-the-campaign-and-performing-a-recommendation" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
     <span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span>
     <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <p>Get a recommendation for a fixed batch size.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Evaluate the test function.
 Note that we need iterate through the rows of the recommendation.
 Furthermore, we need to interpret the row as a list.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">target_values</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target_values</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">recommendation</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
     <span class="n">target_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">WRAPPED_FUNCTION</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="o">.</span><span class="n">to_list</span><span class="p">()))</span>
 </pre></div>
 </div>
 <p>We add an additional column with the calculated target values.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">recommendation</span><span class="p">[</span><span class="s2">&quot;Target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">target_values</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">recommendation</span><span class="p">[</span><span class="s2">&quot;Target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">target_values</span>
 </pre></div>
 </div>
 <p>Here, we inform the campaign about our measurement.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Recommended experiments with measured values: &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with measured values: 
-        x_1       x_2       x_3       x_4      Target
-0 -4.277627 -1.574716 -3.547420 -2.481761  109.660309
-1  1.436399  0.091577  0.964261 -3.911937   40.870216
-2  3.684535 -2.751866 -3.781469  4.430775  106.065392
 </pre></div>
 </div>
 </section>

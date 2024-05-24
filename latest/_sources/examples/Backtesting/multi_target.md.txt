@@ -14,17 +14,17 @@ For further details, we thus refer to
 ## Necessary imports for this example
 
 
-```python
+```
 import os
 ```
 
 
-```python
+```
 import numpy as np
 ```
 
 
-```python
+```
 from baybe import Campaign
 from baybe.objectives import DesirabilityObjective
 from baybe.parameters import NumericalDiscreteParameter
@@ -40,12 +40,12 @@ These are the number of Monte Carlo runs and the number of experiments to be con
 per run.
 
 
-```python
+```
 SMOKE_TEST = "SMOKE_TEST" in os.environ
 ```
 
 
-```python
+```
 N_MC_ITERATIONS = 2 if SMOKE_TEST else 5
 N_DOE_ITERATIONS = 2 if SMOKE_TEST else 4
 BATCH_SIZE = 1 if SMOKE_TEST else 2
@@ -59,7 +59,7 @@ POINTS_PER_DIM = 3 if SMOKE_TEST else 10
 See [`custom_analytical`](./custom_analytical.md) for details.
 
 
-```python
+```
 def sum_of_squares(*x: float) -> tuple[float, float]:
     """Calculate the sum of squares."""
     res = 0
@@ -73,7 +73,7 @@ def sum_of_squares(*x: float) -> tuple[float, float]:
 In this example, we construct a purely discrete space with 10 points per dimension.
 
 
-```python
+```
 parameters = [
     NumericalDiscreteParameter(
         name=f"x_{k+1}",
@@ -85,7 +85,7 @@ parameters = [
 ```
 
 
-```python
+```
 searchspace = SearchSpace.from_product(parameters=parameters)
 ```
 
@@ -98,7 +98,7 @@ The first target is maximized and the second target is minimized during the opti
 process.
 
 
-```python
+```
 Target_1 = NumericalTarget(
     name="Target_1", mode="MAX", bounds=(0, 100), transformation="LINEAR"
 )
@@ -112,12 +112,12 @@ Target_2 = NumericalTarget(
 We collect the two targets in a list and use this list to construct the objective.
 
 
-```python
+```
 targets = [Target_1, Target_2]
 ```
 
 
-```python
+```
 objective = DesirabilityObjective(
     targets=targets,
     weights=[20, 30],
@@ -128,19 +128,19 @@ objective = DesirabilityObjective(
 ## Constructing a campaign and performing the simulation loop
 
 
-```python
+```
 campaign = Campaign(searchspace=searchspace, objective=objective)
 ```
 
 We can now use the `simulate_scenarios` function to simulate a full experiment.
 
 
-```python
+```
 scenarios = {"BayBE": campaign}
 ```
 
 
-```python
+```
 results = simulate_scenarios(
     scenarios,
     sum_of_squares,
@@ -150,35 +150,7 @@ results = simulate_scenarios(
 )
 ```
 
-    
 
-    
-
-    
-
-    
-
-
-
-```python
+```
 print(results)
 ```
-
-      Scenario  Random_Seed  Iteration  Num_Experiments Target_1_Measurements  \
-    0    BayBE         1337          0                1                 [8.0]   
-    1    BayBE         1337          1                2                [16.0]   
-    2    BayBE         1338          0                1                [12.0]   
-    3    BayBE         1338          1                2                [16.0]   
-    
-      Target_2_Measurements  Target_1_IterBest  Target_1_CumBest  \
-    0               [127.0]                8.0               8.0   
-    1               [511.0]               16.0              16.0   
-    2               [287.0]               12.0              12.0   
-    3               [511.0]               16.0              16.0   
-    
-       Target_2_IterBest  Target_2_CumBest  
-    0              127.0             127.0  
-    1              511.0             127.0  
-    2              287.0             287.0  
-    3              511.0             287.0  
-

@@ -934,13 +934,13 @@ For further details, we thus refer to</p>
 </ul>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">DesirabilityObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="n">NumericalDiscreteParameter</span>
 <span class="kn">from</span> <span class="nn">baybe.searchspace</span> <span class="kn">import</span> <span class="n">SearchSpace</span>
@@ -954,10 +954,10 @@ For further details, we thus refer to</p>
 <p>For the full simulation, we need to define some additional parameters.
 These are the number of Monte Carlo runs and the number of experiments to be conducted
 per run.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N_MC_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N_MC_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
 <span class="n">N_DOE_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">4</span>
 <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">2</span>
 <span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">4</span>
@@ -969,7 +969,7 @@ per run.</p>
 <section id="defining-the-test-function">
 <h2>Defining the test function<a class="headerlink" href="#defining-the-test-function" title="Link to this heading">¶</a></h2>
 <p>See <a class="reference internal" href="custom_analytical.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">custom_analytical</span></code></span></a> for details.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_of_squares</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_of_squares</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the sum of squares.&quot;&quot;&quot;</span>
     <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
@@ -981,7 +981,7 @@ per run.</p>
 <section id="creating-the-searchspace">
 <h2>Creating the searchspace<a class="headerlink" href="#creating-the-searchspace" title="Link to this heading">¶</a></h2>
 <p>In this example, we construct a purely discrete space with 10 points per dimension.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NumericalDiscreteParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;x_</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">values</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">BOUNDS</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">POINTS_PER_DIM</span><span class="p">)),</span>
@@ -991,7 +991,7 @@ per run.</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1002,7 +1002,7 @@ Thus we first need to define the different targets.
 We use two targets here.
 The first target is maximized and the second target is minimized during the optimization
 process.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Target_1</span> <span class="o">=</span> <span class="n">NumericalTarget</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Target_1</span> <span class="o">=</span> <span class="n">NumericalTarget</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_1&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">transformation</span><span class="o">=</span><span class="s2">&quot;LINEAR&quot;</span>
 <span class="p">)</span>
 <span class="n">Target_2</span> <span class="o">=</span> <span class="n">NumericalTarget</span><span class="p">(</span>
@@ -1014,10 +1014,10 @@ process.</p>
 <section id="creating-the-objective-object">
 <h2>Creating the objective object<a class="headerlink" href="#creating-the-objective-object" title="Link to this heading">¶</a></h2>
 <p>We collect the two targets in a list and use this list to construct the objective.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">Target_1</span><span class="p">,</span> <span class="n">Target_2</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">Target_1</span><span class="p">,</span> <span class="n">Target_2</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">DesirabilityObjective</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">DesirabilityObjective</span><span class="p">(</span>
     <span class="n">targets</span><span class="o">=</span><span class="n">targets</span><span class="p">,</span>
     <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
     <span class="n">scalarizer</span><span class="o">=</span><span class="s2">&quot;MEAN&quot;</span><span class="p">,</span>
@@ -1027,14 +1027,14 @@ process.</p>
 </section>
 <section id="constructing-a-campaign-and-performing-the-simulation-loop">
 <h2>Constructing a campaign and performing the simulation loop<a class="headerlink" href="#constructing-a-campaign-and-performing-the-simulation-loop" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We can now use the <code class="docutils literal notranslate"><span class="pre">simulate_scenarios</span></code> function to simulate a full experiment.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scenarios</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;BayBE&quot;</span><span class="p">:</span> <span class="n">campaign</span><span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenarios</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;BayBE&quot;</span><span class="p">:</span> <span class="n">campaign</span><span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">simulate_scenarios</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">simulate_scenarios</span><span class="p">(</span>
     <span class="n">scenarios</span><span class="p">,</span>
     <span class="n">sum_of_squares</span><span class="p">,</span>
     <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span>
@@ -1043,26 +1043,7 @@ process.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  Scenario  Random_Seed  Iteration  Num_Experiments Target_1_Measurements  \
-0    BayBE         1337          0                1                 [8.0]   
-1    BayBE         1337          1                2                [16.0]   
-2    BayBE         1338          0                1                [12.0]   
-3    BayBE         1338          1                2                [16.0]   
-
-  Target_2_Measurements  Target_1_IterBest  Target_1_CumBest  \
-0               [127.0]                8.0               8.0   
-1               [511.0]               16.0              16.0   
-2               [287.0]               12.0              12.0   
-3               [511.0]               16.0              16.0   
-
-   Target_2_IterBest  Target_2_CumBest  
-0              127.0             127.0  
-1              511.0             127.0  
-2              287.0             287.0  
-3              511.0             287.0  
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

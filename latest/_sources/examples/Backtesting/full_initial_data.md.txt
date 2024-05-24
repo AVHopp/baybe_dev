@@ -14,19 +14,19 @@ We refer to [`full_lookup`](./full_lookup.md) for details on the lookup mechanis
 ## Necessary imports for this example
 
 
-```python
+```
 import os
 ```
 
 
-```python
+```
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 ```
 
 
-```python
+```
 from baybe import Campaign
 from baybe.objectives import SingleTargetObjective
 from baybe.parameters import NumericalDiscreteParameter, SubstanceParameter
@@ -44,12 +44,12 @@ per run.
 The number of runs is determined by the number of initial data points provided.
 
 
-```python
+```
 SMOKE_TEST = "SMOKE_TEST" in os.environ
 ```
 
 
-```python
+```
 N_DOE_ITERATIONS = 2 if SMOKE_TEST else 5
 BATCH_SIZE = 1 if SMOKE_TEST else 3
 ```
@@ -59,7 +59,7 @@ BATCH_SIZE = 1 if SMOKE_TEST else 3
 See [`full_lookup`](./full_lookup.md) for details.
 
 
-```python
+```
 try:
     lookup = pd.read_excel("./lookup.xlsx")
 except FileNotFoundError:
@@ -76,7 +76,7 @@ Note that the initial_data needs to be a list of `pd.DataFrame` objects.
 One experiment will be performed per provided initial data set.
 
 
-```python
+```
 initial_data = [lookup.sample(n=5), lookup.sample(n=5), lookup.sample(n=5)]
 ```
 
@@ -84,7 +84,7 @@ As usual, we set up some experiment.
 Note that we now need to ensure that the names fit the names in the provided .xlsx file!
 
 
-```python
+```
 dict_solvent = {
     "DMAc": r"CC(N(C)C)=O",
     "Butyornitrile": r"CCCC#N",
@@ -120,7 +120,7 @@ dict_ligand = {
 Here, we create the parameter objects, the searchspace and the objective.
 
 
-```python
+```
 base = SubstanceParameter(name="Base", data=dict_base, encoding="MORDRED")
 solvent = SubstanceParameter(name="Solvent", data=dict_solvent, encoding="MORDRED")
 ligand = SubstanceParameter(name="Ligand", data=dict_ligand, encoding="MORDRED")
@@ -133,12 +133,12 @@ concentration = NumericalDiscreteParameter(
 ```
 
 
-```python
+```
 parameters = [solvent, base, ligand, temperature, concentration]
 ```
 
 
-```python
+```
 searchspace = SearchSpace.from_product(parameters=parameters)
 objective = SingleTargetObjective(target=NumericalTarget(name="yield", mode="MAX"))
 ```
@@ -149,7 +149,7 @@ In this example, we create two campaigns.
 One uses the default recommender and the other one makes random recommendations.
 
 
-```python
+```
 campaign = Campaign(searchspace=searchspace, objective=objective)
 campaign_rand = Campaign(
     searchspace=searchspace,
@@ -166,12 +166,12 @@ Note that this function enables to run multiple scenarios by a single function c
 For this, it is necessary to define a dictionary mapping scenario names to campaigns.
 
 
-```python
+```
 scenarios = {"Test_Scenario": campaign, "Random": campaign_rand}
 ```
 
 
-```python
+```
 results = simulate_scenarios(
     scenarios,
     lookup,
@@ -181,25 +181,10 @@ results = simulate_scenarios(
 )
 ```
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
 The following lines plot the results and save the plot in run_full_initial_data.png
 
 
-```python
+```
 max_yield = lookup["yield"].max()
 sns.lineplot(
     data=results, x="Num_Experiments", y="yield_CumBest", hue="Scenario", marker="x"
@@ -209,8 +194,3 @@ plt.legend(loc="lower right")
 plt.gcf().set_size_inches(20, 8)
 plt.savefig("./run_full_initial_data.png")
 ```
-
-
-    
-    
-

@@ -926,7 +926,7 @@
 We thus refer to <a class="reference internal" href="../Basics/campaign.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">campaign</span></code></span></a> for a basic example.</p>
 <section id="necessary-imports">
 <h2>Necessary imports<a class="headerlink" href="#necessary-imports" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="n">NumericalContinuousParameter</span>
 <span class="kn">from</span> <span class="nn">baybe.searchspace</span> <span class="kn">import</span> <span class="n">SearchSpace</span>
@@ -941,7 +941,7 @@ It needs to return either a single float or a tuple of floats.
 It is assumed that the analytical test function does only perform a single calculation.
 That is, it is assumed to work in a non-batched-way!</p>
 <p>In this example, we implement a simple sum of squares function with a single output.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_of_squares</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_of_squares</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the sum of squares.&quot;&quot;&quot;</span>
     <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
@@ -949,7 +949,7 @@ That is, it is assumed to work in a non-batched-way!</p>
     <span class="k">return</span> <span class="n">res</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TEST_FUNCTION</span> <span class="o">=</span> <span class="n">sum_of_squares</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TEST_FUNCTION</span> <span class="o">=</span> <span class="n">sum_of_squares</span>
 </pre></div>
 </div>
 <p>For our actual experiment, we need to specify the number of dimension that we want to
@@ -957,14 +957,14 @@ use.
 This is necessary to know for the creation of the parameters.
 Similarly, it is necessary to state the bounds of the parameters.
 These should be provided as a list of two-dimensional tuples.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">BOUNDS</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
 </pre></div>
 </div>
 </section>
 <section id="creating-the-searchspace-and-the-objective">
 <h2>Creating the searchspace and the objective<a class="headerlink" href="#creating-the-searchspace-and-the-objective" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NumericalContinuousParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;x_</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">bounds</span><span class="o">=</span><span class="n">BOUNDS</span><span class="p">[</span><span class="n">k</span><span class="p">],</span>
@@ -973,22 +973,22 @@ These should be provided as a list of two-dimensional tuples.</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MIN&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MIN&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
 <section id="constructing-the-campaign-and-performing-a-recommendation">
 <h2>Constructing the campaign and performing a recommendation<a class="headerlink" href="#constructing-the-campaign-and-performing-a-recommendation" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
     <span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span>
     <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a recommendation for a fixed batch size.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a recommendation for a fixed batch size.</span>
 <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
 </pre></div>
@@ -996,26 +996,19 @@ These should be provided as a list of two-dimensional tuples.</p>
 <p>Evaluate the test function.
 Note that we need iterate through the rows of the recommendation.
 Furthermore, we need to interpret the row as a list.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">target_values</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target_values</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">recommendation</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
     <span class="n">target_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TEST_FUNCTION</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="o">.</span><span class="n">to_list</span><span class="p">()))</span>
 </pre></div>
 </div>
 <p>We add an additional column with the calculated target values.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">recommendation</span><span class="p">[</span><span class="s2">&quot;Target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">target_values</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">recommendation</span><span class="p">[</span><span class="s2">&quot;Target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">target_values</span>
 </pre></div>
 </div>
 <p>Here, we inform the campaign about our measurement.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Recommended experiments with measured values: &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with measured values: 
-        x_1       x_2       x_3       x_4    Target
-0 -1.078562 -1.028633 -0.593765  0.341686  2.690688
-1 -1.463809 -0.440381  0.612261  1.562781  5.153822
-2  1.681703  1.923282 -0.481083 -1.404385  8.730878
 </pre></div>
 </div>
 </section>

@@ -13,12 +13,12 @@ We thus refer to [`discrete_space`](./discrete_space.md) for details on this asp
 ## Necessary imports for this example
 
 
-```python
+```
 from botorch.test_functions import Rastrigin
 ```
 
 
-```python
+```
 from baybe import Campaign
 from baybe.objectives import SingleTargetObjective
 from baybe.parameters import NumericalContinuousParameter
@@ -32,13 +32,13 @@ from baybe.utils.botorch_wrapper import botorch_function_wrapper
 See [`discrete_space`](./../Searchspaces/discrete_space.md) for details.
 
 
-```python
+```
 DIMENSION = 4
 TestFunctionClass = Rastrigin
 ```
 
 
-```python
+```
 if not hasattr(TestFunctionClass, "dim"):
     TestFunction = TestFunctionClass(dim=DIMENSION)
 elif TestFunctionClass().dim == DIMENSION:
@@ -57,7 +57,7 @@ else:
 ```
 
 
-```python
+```
 BOUNDS = TestFunction.bounds
 WRAPPED_FUNCTION = botorch_function_wrapper(test_function=TestFunction)
 ```
@@ -68,7 +68,7 @@ Since the searchspace is continuous test, we construct `NumericalContinuousParam
 We use that data of the test function to deduce bounds and number of parameters.
 
 
-```python
+```
 parameters = [
     NumericalContinuousParameter(
         name=f"x_{k+1}",
@@ -79,7 +79,7 @@ parameters = [
 ```
 
 
-```python
+```
 searchspace = SearchSpace.from_product(parameters=parameters)
 objective = SingleTargetObjective(target=NumericalTarget(name="Target", mode="MIN"))
 ```
@@ -87,7 +87,7 @@ objective = SingleTargetObjective(target=NumericalTarget(name="Target", mode="MI
 ## Constructing the campaign and performing a recommendation
 
 
-```python
+```
 campaign = Campaign(
     searchspace=searchspace,
     objective=objective,
@@ -97,7 +97,7 @@ campaign = Campaign(
 Get a recommendation for a fixed batch size.
 
 
-```python
+```
 BATCH_SIZE = 3
 recommendation = campaign.recommend(batch_size=BATCH_SIZE)
 ```
@@ -107,7 +107,7 @@ Note that we need iterate through the rows of the recommendation.
 Furthermore, we need to interpret the row as a list.
 
 
-```python
+```
 target_values = []
 for index, row in recommendation.iterrows():
     target_values.append(WRAPPED_FUNCTION(*row.to_list()))
@@ -116,24 +116,15 @@ for index, row in recommendation.iterrows():
 We add an additional column with the calculated target values.
 
 
-```python
+```
 recommendation["Target"] = target_values
 ```
 
 Here, we inform the campaign about our measurement.
 
 
-```python
+```
 campaign.add_measurements(recommendation)
 print("\n\nRecommended experiments with measured values: ")
 print(recommendation)
 ```
-
-    
-    
-    Recommended experiments with measured values: 
-            x_1       x_2       x_3       x_4      Target
-    0 -4.277627 -1.574716 -3.547420 -2.481761  109.660309
-    1  1.436399  0.091577  0.964261 -3.911937   40.870216
-    2  3.684535 -2.751866 -3.781469  4.430775  106.065392
-

@@ -926,7 +926,7 @@ It is intended to be used as a first point of interaction with campaign after ha
 read the corresponding <a class="reference internal" href="../../userguide/campaigns.html"><span class="doc std std-doc">user guide</span></a>.</p>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="n">NumericalDiscreteParameter</span><span class="p">,</span> <span class="n">SubstanceParameter</span>
 <span class="kn">from</span> <span class="nn">baybe.searchspace</span> <span class="kn">import</span> <span class="n">SearchSpace</span>
@@ -939,7 +939,7 @@ read the corresponding <a class="reference internal" href="../../userguide/campa
 <h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">¶</a></h2>
 <p>This example presents the optimization of a direct Arylation reaction in a discrete
 space. For this, we require data for solvents, ligands and bases.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;DMAc&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;CC(N(C)C)=O&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Butyornitrile&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;CCCC#N&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Butyl Ester&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;CCCCOC(C)=O&quot;</span><span class="p">,</span>
@@ -947,7 +947,7 @@ space. For this, we require data for solvents, ligands and bases.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dict_base</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_base</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;Potassium acetate&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;O=C([O-])C.[K+]&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Potassium pivalate&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;O=C([O-])C(C)(C)C.[K+]&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Cesium acetate&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;O=C([O-])C.[Cs+]&quot;</span><span class="p">,</span>
@@ -955,7 +955,7 @@ space. For this, we require data for solvents, ligands and bases.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dict_ligand</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_ligand</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;BrettPhos&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;CC(C)C1=CC(C(C)C)=C(C(C(C)C)=C1)C2=C(P(C3CCCCC3)C4CCCCC4)C(OC)=&quot;</span>
     <span class="s2">&quot;CC=C2OC&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Di-tert-butylphenylphosphine&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;CC(C)(C)P(C1=CC=CC=C1)C(C)(C)C&quot;</span><span class="p">,</span>
@@ -967,12 +967,12 @@ space. For this, we require data for solvents, ligands and bases.</p>
 Here, we use <code class="docutils literal notranslate"><span class="pre">&quot;MORDRED&quot;</span></code> encoding, but others are available.
 We proceed to define numerical discrete parameters <code class="docutils literal notranslate"><span class="pre">temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">concentration</span></code>
 and create the search space.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solvent</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="s2">&quot;Solvent&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_solvent</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solvent</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="s2">&quot;Solvent&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_solvent</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
 <span class="n">base</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="s2">&quot;Base&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_base</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
 <span class="n">ligand</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="s2">&quot;Ligand&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_ligand</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temperature</span> <span class="o">=</span> <span class="n">NumericalDiscreteParameter</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">temperature</span> <span class="o">=</span> <span class="n">NumericalDiscreteParameter</span><span class="p">(</span>
     <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">120</span><span class="p">],</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>
 <span class="n">concentration</span> <span class="o">=</span> <span class="n">NumericalDiscreteParameter</span><span class="p">(</span>
@@ -980,74 +980,19 @@ and create the search space.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">solvent</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">ligand</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">concentration</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">solvent</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">ligand</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">concentration</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;CC(N(C)C)=O&#39;)
-_______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;CCCC#N&#39;)
-_______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;CCCCOC(C)=O&#39;)
-_______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;CC1=CC=C(C)C=C1&#39;)
-_______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-
-
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;O=C([O-])C.[K+]&#39;)
-_______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;O=C([O-])C(C)(C)C.[K+]&#39;)
-_______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;O=C([O-])C.[Cs+]&#39;)
-_______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;O=C([O-])C(C)(C)C.[Cs+]&#39;)
-_______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-
-
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;CC(C)C1=CC(C(C)C)=C(C(C(C)C)=C1)C2=C(P(C3CCCCC3)C4CCCCC
-</pre></div>
-</div>
-<p>4)C(OC)=CC=C2OC’)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>_______________________________________smiles_to_mordred_features - 0.2s, 0.0min
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features(&#39;CC(C)(C)P(C1=CC=CC=C1)C(C)(C)C&#39;)
-_______________________________________smiles_to_mordred_features - 0.1s, 0.0min
-________________________________________________________________________________
-[Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-</pre></div>
-</div>
-<p>_smiles_to_mordred_features(‘CN(C)C1=CC=CC(N(C)C)=C1C2=CC=CC=C2P(C(C)(C)C)C3=CC=CC=C3’)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>_______________________________________smiles_to_mordred_features - 0.2s, 0.0min
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In this example, we maximize the yield of a reaction and define a corresponding
 objective.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;yield&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;yield&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>We now finally create the campaign using the objects configure previously.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
     <span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span>
     <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1057,43 +1002,23 @@ objective.</p>
 <section id="getting-a-recommendation-and-adding-measurements">
 <h2>Getting a recommendation and adding measurements<a class="headerlink" href="#getting-a-recommendation-and-adding-measurements" title="Link to this heading">¶</a></h2>
 <p>We use the <code class="docutils literal notranslate"><span class="pre">recommend()</span></code> function of the campaign for getting measurements.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Recommended measurements with batch_size = 2: &quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Recommended measurements with batch_size = 2: &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended measurements with batch_size = 2: 
-         Solvent               Base                        Ligand  \
-231  Butyl Ester  Potassium acetate  Di-tert-butylphenylphosphine   
-298  Butyl Ester    Cesium pivalate                     BrettPhos   
-
-     Temperature  Concentration  
-231        120.0          0.057  
-298         90.0          0.100  
 </pre></div>
 </div>
 <p>Adding target values is done by creating a new column in the <code class="docutils literal notranslate"><span class="pre">recommendation</span></code>
 dataframe named after the target.
 In this example, we use the <code class="docutils literal notranslate"><span class="pre">add_fake_results()</span></code> utility to create fake results.
 We then update the campaign by adding the measurements.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_results</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_results</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Recommended experiments with fake measured values: &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-         Solvent               Base                        Ligand  \
-231  Butyl Ester  Potassium acetate  Di-tert-butylphenylphosphine   
-298  Butyl Ester    Cesium pivalate                     BrettPhos   
-
-     Temperature  Concentration      yield  
-231        120.0          0.057   1.527933  
-298         90.0          0.100  13.818631  
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

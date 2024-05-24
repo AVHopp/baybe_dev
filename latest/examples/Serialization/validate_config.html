@@ -926,10 +926,10 @@ We use the two configuration dictionaries.
 The first one represents a valid configuration, the second does not.</p>
 <section id="necessary-imports">
 <h2>Necessary imports<a class="headerlink" href="#necessary-imports" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cattrs</span> <span class="kn">import</span> <span class="n">ClassValidationError</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cattrs</span> <span class="kn">import</span> <span class="n">ClassValidationError</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 </pre></div>
 </div>
 </section>
@@ -938,7 +938,7 @@ The first one represents a valid configuration, the second does not.</p>
 <p>Note that the following explicit call <code class="docutils literal notranslate"><span class="pre">str()</span></code> is not strictly necessary.
 It is included since our method of converting this example to a markdown file does not
 interpret this part of the code as <code class="docutils literal notranslate"><span class="pre">python</span></code> code if we do not include this call.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CONFIG</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONFIG</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{</span>
 <span class="sd">    &quot;searchspace&quot;: {</span>
@@ -1010,7 +1010,7 @@ interpret this part of the code as <code class="docutils literal notranslate"><s
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INVALID_CONFIG</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INVALID_CONFIG</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{</span>
 <span class="sd">    &quot;searchspace&quot;: {</span>
@@ -1085,50 +1085,18 @@ interpret this part of the code as <code class="docutils literal notranslate"><s
 <section id="verification-of-the-two-dictionaries">
 <h2>Verification of the two dictionaries<a class="headerlink" href="#verification-of-the-two-dictionaries" title="Link to this heading">¶</a></h2>
 <p>The first validation should work.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Campaign</span><span class="o">.</span><span class="n">validate_config</span><span class="p">(</span><span class="n">CONFIG</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Campaign</span><span class="o">.</span><span class="n">validate_config</span><span class="p">(</span><span class="n">CONFIG</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The first config seems valid.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The first config seems valid.
-
-
-/home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-</pre></div>
-</div>
-<p>packages/baybe/objectives/deprecation.py:57: DeprecationWarning: An objective has been
-specified without a corresponding type. Since 1 target(s) have been provided,
-‘SingleTargetObjective’ is used as a fallback. However, this behavior is deprecated and
-will be disabled in a future version.
-warnings.warn(
-/home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-packages/baybe/objective.py:18: DeprecationWarning: The use of <code class="docutils literal notranslate"><span class="pre">baybe.objective</span></code> is
-deprecated and will be disabled in a future version. Use the classes defined in
-<code class="docutils literal notranslate"><span class="pre">baybe.objectives</span></code> instead.
-warnings.warn(</p>
 <p>This should fail.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">Campaign</span><span class="o">.</span><span class="n">validate_config</span><span class="p">(</span><span class="n">INVALID_CONFIG</span><span class="p">)</span>
     <span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">INVALID_CONFIG</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">ClassValidationError</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Something is wrong with the second config, which is what we expected!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Something is wrong with the second config, which is what we expected!
-
-
-/home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-</pre></div>
-</div>
-<p>packages/baybe/objectives/deprecation.py:57: DeprecationWarning: An objective has been
-specified without a corresponding type. Since 1 target(s) have been provided,
-‘SingleTargetObjective’ is used as a fallback. However, this behavior is deprecated and
-will be disabled in a future version.
-warnings.warn(
-/home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-packages/baybe/objective.py:18: DeprecationWarning: The use of <code class="docutils literal notranslate"><span class="pre">baybe.objective</span></code> is
-deprecated and will be disabled in a future version. Use the classes defined in
-<code class="docutils literal notranslate"><span class="pre">baybe.objectives</span></code> instead.
-warnings.warn(</p>
 </section>
 </section>
 

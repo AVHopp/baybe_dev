@@ -11,7 +11,7 @@ class"`.
 ## Necessary imports
 
 
-```python
+```
 from baybe import Campaign
 ```
 
@@ -22,7 +22,7 @@ It is included since our method of converting this example to a markdown file do
 interpret this part of the code as `python` code if we do not include this call.
 
 
-```python
+```
 CONFIG = str(
     """
 {
@@ -101,46 +101,13 @@ Although we know in this case that the config represents a valid configuration f
 campaign. If the config is invalid an exception will be thrown.
 
 
-```python
+```
 campaign = Campaign.from_config(CONFIG)
 ```
 
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CCCCC')
-    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('COCOC')
-    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CCOCCOCCN')
-    _______________________________________smiles_to_mordred_features - 0.1s, 0.0min
 
-
-    /home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-packages/baybe/objectives/deprecation.py:57: DeprecationWarning: An objective has been
-specified without a corresponding type. Since 1 target(s) have been provided,
-'SingleTargetObjective' is used as a fallback. However, this behavior is deprecated and
-will be disabled in a future version.
-      warnings.warn(
-    /home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-packages/baybe/objective.py:18: DeprecationWarning: The use of `baybe.objective` is
-deprecated and will be disabled in a future version. Use the classes defined in
-`baybe.objectives` instead.
-      warnings.warn(
-
-
-
-```python
+```
 # We now perform a recommendation as usual and print it.
 recommendation = campaign.recommend(batch_size=3)
 print(recommendation)
 ```
-
-       Granularity  Pressure[bar]    Solvent
-    1       coarse            1.0  Solvent B
-    20        fine           10.0  Solvent A
-    31  ultra-fine            5.0  Solvent D
-

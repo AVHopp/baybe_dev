@@ -18,7 +18,7 @@ We refer to [`campaign`](./campaign.md) for a more general and basic example.
 ## Necessary imports for this example
 
 
-```python
+```
 from baybe import Campaign
 from baybe.objectives import SingleTargetObjective
 from baybe.parameters import NumericalDiscreteParameter, SubstanceParameter
@@ -42,7 +42,7 @@ The following initial recommenders are available.
 Note that it is necessary to make the corresponding import before using them.
 
 
-```python
+```
 initial_recommenders = [
     "Random",  #: RandomRecommender(),
     "Farthest Point Sampling",  # FPSRecommender(),
@@ -51,7 +51,7 @@ initial_recommenders = [
 ```
 
 
-```python
+```
 # Per default the initial recommender chosen is a random recommender.
 INITIAL_RECOMMENDER = RandomRecommender()
 ```
@@ -63,24 +63,16 @@ uncertainty.
 The surrogate model is then used by the acquisition function to make recommendations.
 
 
-```python
+```
 # The following are the available basic surrogates
 print(get_subclasses(Surrogate))
 ```
-
-    [<class 'baybe.surrogates.custom.CustomONNXSurrogate'>, <class
-'baybe.surrogates.gaussian_process.core.GaussianProcessSurrogate'>, <class
-'baybe.surrogates.linear.BayesianLinearSurrogate'>, <class
-'baybe.surrogates.naive.MeanPredictionSurrogate'>, <class
-'baybe.surrogates.ngboost.NGBoostSurrogate'>, <class
-'baybe.surrogates.random_forest.RandomForestSurrogate'>]
-
 
 Per default a Gaussian Process is used
 You can change the used kernel by using the optional `kernel` keyword.
 
 
-```python
+```
 SURROGATE_MODEL = GaussianProcessSurrogate()
 ```
 
@@ -91,7 +83,7 @@ model.
 The following acquisition functions are generally available.
 
 
-```python
+```
 available_acq_functions = [
     "qPI",  # q-Probability Of Improvement
     "qEI",  # q-Expected Improvement
@@ -112,7 +104,7 @@ Note that the qvailability of the acquisition functions might depend on the
 The default he acquisition function is q-Expected Improvement.
 
 
-```python
+```
 ACQ_FUNCTION = "qEI"
 ```
 
@@ -125,7 +117,7 @@ The second one allows the recommendation of points that have already been measur
 Per default, they are set to `True`.
 
 
-```python
+```
 ALLOW_REPEATED_RECOMMENDATIONS = True
 ALLOW_RECOMMENDING_ALREADY_MEASURED = True
 ```
@@ -138,7 +130,7 @@ Note that they all have default values.
 Therefore one does not need to specify all of them to create a recommender object.
 
 
-```python
+```
 recommender = TwoPhaseMetaRecommender(
     initial_recommender=INITIAL_RECOMMENDER,
     recommender=SequentialGreedyRecommender(
@@ -151,21 +143,9 @@ recommender = TwoPhaseMetaRecommender(
 ```
 
 
-```python
+```
 print(recommender)
 ```
-
-    TwoPhaseMetaRecommender(allow_repeated_recommendations=None,
-allow_recommending_already_measured=None,
-initial_recommender=RandomRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True),
-recommender=SequentialGreedyRecommender(allow_repeated_recommendations=True,
-allow_recommending_already_measured=True,
-surrogate_model=GaussianProcessSurrogate(kernel_factory=DefaultKernelFactory(),
-_model=None), acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
-acquisition_function_cls=None, hybrid_sampler='None', sampling_percentage=1.0),
-switch_after=1)
-
 
 Note that there are the additional keywords `hybrid_sampler` and `sampling_percentag`.
 Their meaning and how to use and define it are explained in the hybrid backtesting
@@ -177,7 +157,7 @@ We thus refer to [`hybrid`](./../Backtesting/hybrid.md) for details on these.
 We use the same data used in the [`campaign`](./campaign.md) example.
 
 
-```python
+```
 dict_solvent = {
     "DMAc": r"CC(N(C)C)=O",
     "Butyornitrile": r"CCCC#N",
@@ -199,7 +179,7 @@ dict_ligand = {
 ```
 
 
-```python
+```
 solvent = SubstanceParameter("Solvent", data=dict_solvent, encoding="MORDRED")
 base = SubstanceParameter("Base", data=dict_base, encoding="MORDRED")
 ligand = SubstanceParameter("Ligand", data=dict_ligand, encoding="MORDRED")
@@ -214,19 +194,19 @@ concentration = NumericalDiscreteParameter(
 We collect all parameters in a list.
 
 
-```python
+```
 parameters = [solvent, base, ligand, temperature, concentration]
 ```
 
 We create the searchspace and the objective.
 
 
-```python
+```
 searchspace = SearchSpace.from_product(parameters=parameters)
 ```
 
 
-```python
+```
 objective = SingleTargetObjective(target=NumericalTarget(name="yield", mode="MAX"))
 ```
 
@@ -236,7 +216,7 @@ The recommender object can now be used together with the searchspace and the obj
 as follows.
 
 
-```python
+```
 campaign = Campaign(
     searchspace=searchspace,
     recommender=recommender,
@@ -247,48 +227,20 @@ campaign = Campaign(
 This campaign can then be used to get recommendations and add measurements:
 
 
-```python
+```
 recommendation = campaign.recommend(batch_size=3)
 print("\n\nRecommended experiments: ")
 print(recommendation)
 ```
 
-    
-    
-    Recommended experiments: 
-          Solvent                Base                        Ligand  Temperature  \
-    340  p-Xylene   Potassium acetate  Di-tert-butylphenylphosphine        120.0   
-    365  p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine        105.0   
-    77       DMAc      Cesium acetate                 (t-Bu)PhCPhos        105.0   
-    
-         Concentration  
-    340          0.100  
-    365          0.153  
-    77           0.153  
 
-
-
-```python
+```
 add_fake_results(recommendation, campaign)
 print("\n\nRecommended experiments with fake measured values: ")
 print(recommendation)
 ```
 
-    
-    
-    Recommended experiments with fake measured values: 
-          Solvent                Base                        Ligand  Temperature  \
-    340  p-Xylene   Potassium acetate  Di-tert-butylphenylphosphine        120.0   
-    365  p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine        105.0   
-    77       DMAc      Cesium acetate                 (t-Bu)PhCPhos        105.0   
-    
-         Concentration      yield  
-    340          0.100  18.341846  
-    365          0.153   1.624557  
-    77           0.153  11.414962  
 
-
-
-```python
+```
 campaign.add_measurements(recommendation)
 ```

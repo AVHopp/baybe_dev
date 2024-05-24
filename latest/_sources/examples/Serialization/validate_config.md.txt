@@ -7,12 +7,12 @@ The first one represents a valid configuration, the second does not.
 ## Necessary imports
 
 
-```python
+```
 from cattrs import ClassValidationError
 ```
 
 
-```python
+```
 from baybe import Campaign
 ```
 
@@ -23,7 +23,7 @@ It is included since our method of converting this example to a markdown file do
 interpret this part of the code as `python` code if we do not include this call.
 
 
-```python
+```
 CONFIG = str(
     """
 {
@@ -97,7 +97,7 @@ CONFIG = str(
 ```
 
 
-```python
+```
 INVALID_CONFIG = str(
     """
 {
@@ -174,50 +174,18 @@ INVALID_CONFIG = str(
 The first validation should work.
 
 
-```python
+```
 Campaign.validate_config(CONFIG)
 print("The first config seems valid.")
 ```
 
-    The first config seems valid.
-
-
-    /home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-packages/baybe/objectives/deprecation.py:57: DeprecationWarning: An objective has been
-specified without a corresponding type. Since 1 target(s) have been provided,
-'SingleTargetObjective' is used as a fallback. However, this behavior is deprecated and
-will be disabled in a future version.
-      warnings.warn(
-    /home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-packages/baybe/objective.py:18: DeprecationWarning: The use of `baybe.objective` is
-deprecated and will be disabled in a future version. Use the classes defined in
-`baybe.objectives` instead.
-      warnings.warn(
-
-
 This should fail.
 
 
-```python
+```
 try:
     Campaign.validate_config(INVALID_CONFIG)
     campaign = Campaign.from_config(INVALID_CONFIG)
 except ClassValidationError:
     print("Something is wrong with the second config, which is what we expected!")
 ```
-
-    Something is wrong with the second config, which is what we expected!
-
-
-    /home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-packages/baybe/objectives/deprecation.py:57: DeprecationWarning: An objective has been
-specified without a corresponding type. Since 1 target(s) have been provided,
-'SingleTargetObjective' is used as a fallback. However, this behavior is deprecated and
-will be disabled in a future version.
-      warnings.warn(
-    /home/runner/work/baybe_dev/baybe_dev/.tox/docs-py39/.venv/lib/python3.9/site-
-packages/baybe/objective.py:18: DeprecationWarning: The use of `baybe.objective` is
-deprecated and will be disabled in a future version. Use the classes defined in
-`baybe.objectives` instead.
-      warnings.warn(
-

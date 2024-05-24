@@ -9,7 +9,7 @@ We thus refer to [`campaign`](./../Basics/campaign.md) for a basic example.
 ## Necessary imports for this example
 
 
-```python
+```
 from baybe import Campaign
 from baybe.objectives import DesirabilityObjective
 from baybe.parameters import CategoricalParameter, NumericalDiscreteParameter
@@ -21,7 +21,7 @@ from baybe.utils.dataframe import add_fake_results
 ## Experiment setup and creating the searchspace
 
 
-```python
+```
 Categorical_1 = CategoricalParameter("Cat_1", values=["22", "33"], encoding="OHE")
 Categorical_2 = CategoricalParameter(
     "Cat_2",
@@ -37,12 +37,12 @@ Num_disc_2 = NumericalDiscreteParameter(
 ```
 
 
-```python
+```
 parameters = [Categorical_1, Categorical_2, Num_disc_1, Num_disc_2]
 ```
 
 
-```python
+```
 searchspace = SearchSpace.from_product(parameters=parameters)
 ```
 
@@ -56,7 +56,7 @@ The first target is maximized and while the second one is minimized.
 Note that in this multi target mode, the user must specify bounds for each target.
 
 
-```python
+```
 Target_1 = NumericalTarget(
     name="Target_1", mode="MAX", bounds=(0, 100), transformation="LINEAR"
 )
@@ -72,7 +72,7 @@ In this example, define a third target working with the mode `MATCH`.
 We furthermore use `target_transform="BELL"`.
 
 
-```python
+```
 Target_3 = NumericalTarget(
     name="Target_3", mode="MATCH", bounds=(45, 55), transformation="BELL"
 )
@@ -90,7 +90,7 @@ Now to work with these three targets the objective object must be properly creat
 The mode is set to `DESIRABILITY` and the targets are described in a list.
 
 
-```python
+```
 targets = [Target_1, Target_2, Target_3]
 ```
 
@@ -105,7 +105,7 @@ internally.
 It is thus not necessary to handle normalization or scaling.
 
 
-```python
+```
 objective = DesirabilityObjective(
     targets=targets,
     weights=[20, 20, 60],
@@ -114,124 +114,17 @@ objective = DesirabilityObjective(
 ```
 
 
-```python
+```
 print(objective)
 ```
-
-    [1mObjective[0m
-             
-     [1mType: [0mDesirabilityObjective
-             
-     [1mTargets [0m
-                   Type      Name   Mode  Lower_Bound  Upper_Bound Transformation  \
-     0  NumericalTarget  Target_1    MAX          0.0        100.0         LINEAR   
-     1  NumericalTarget  Target_2    MIN          0.0        100.0         LINEAR   
-     2  NumericalTarget  Target_3  MATCH         45.0         55.0           BELL   
-     
-        Weight  
-     0    20.0  
-     1    20.0  
-     2    60.0  
-             
-     [1mScalarizer: [0mMEAN
-
 
 ## Creating and printing the campaign
 
 
-```python
+```
 campaign = Campaign(searchspace=searchspace, objective=objective)
 print(campaign)
 ```
-
-    [1mCampaign[0m
-             
-     [1mMeta Data[0m
-     Batches Done: 0
-             
- Fits Done: 0
-     
-     [1mSearch Space[0m
-              
-      [1mSearch Space Type: [0mDISCRETE
-      
-      [1mDiscrete Search Space[0m
-                   
-       [1mDiscrete Parameters[0m
-                Name                        Type  Num_Values                 Encoding
-       0       Cat_1        CategoricalParameter           2  CategoricalEncoding.OHE
-       1       Cat_2        CategoricalParameter           5  CategoricalEncoding.INT
-       2  Num_disc_1  NumericalDiscreteParameter           7                     None
-       3  Num_disc_2  NumericalDiscreteParameter           4                     None
-                   
-       [1mExperimental Representation[0m
-                   
-       Cat_1      Cat_2  Num_disc_1  Num_disc_2
-       0      22   very bad         1.0        -9.0
-       1      22   very bad         1.0        -6.0
-       2      22   very bad         1.0        -3.0
-       ..    ...        ...         ...         ...
-       277    33  very good        10.0        -6.0
-       278    33  very good        10.0        -3.0
-       279    33  very good        10.0        -1.0
-       
-       [280 rows x 4 columns]
-       
-       [1mMetadata:[0m
-                   
-   was_recommended: 0/280
-                   
-   was_measured: 0/280
-                   
-   dont_recommend: 0/280
-                   
-       [1mConstraints[0m
-       Empty DataFrame
-       Columns: []
-       Index: []
-                   
-       [1mComputational Representation[0m
-                   
-        Cat_1_22  Cat_1_33  ...  Num_disc_1  Num_disc_2
-       0           1         0  ...         1.0        -9.0
-       1           1         0  ...         1.0        -6.0
-       2           1         0  ...         1.0        -3.0
-       ..        ...       ...  ...         ...         ...
-       277         0         1  ...        10.0        -6.0
-       278         0         1  ...        10.0        -3.0
-       279         0         1  ...        10.0        -1.0
-       
-       [280 rows x 5 columns]
-     
-     [1mObjective[0m
-              
-      [1mType: [0mDesirabilityObjective
-              
-      [1mTargets [0m
-                    Type      Name   Mode  Lower_Bound  Upper_Bound Transformation  \
-      0  NumericalTarget  Target_1    MAX          0.0        100.0         LINEAR   
-      1  NumericalTarget  Target_2    MIN          0.0        100.0         LINEAR   
-      2  NumericalTarget  Target_3  MATCH         45.0         55.0           BELL   
-      
-         Weight  
-      0    20.0  
-      1    20.0  
-      2    60.0  
-              
-      [1mScalarizer: [0mMEAN
-     
-     TwoPhaseMetaRecommender(allow_repeated_recommendations=None,
-allow_recommending_already_measured=None,
-initial_recommender=RandomRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True),
-recommender=SequentialGreedyRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True,
-surrogate_model=GaussianProcessSurrogate(kernel_factory=DefaultKernelFactory(),
-_model=None), acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
-acquisition_function_cls=None, hybrid_sampler='None', sampling_percentage=1.0),
-switch_after=1)
-     
-
 
 ## Performing some iterations
 
@@ -239,12 +132,12 @@ The following loop performs some recommendations and adds fake results.
 It also prints what happens to internal data.
 
 
-```python
+```
 N_ITERATIONS = 3
 ```
 
 
-```python
+```
 for kIter in range(N_ITERATIONS):
     print(f"\n\n#### ITERATION {kIter+1} ####")
 
@@ -259,104 +152,6 @@ for kIter in range(N_ITERATIONS):
     print("\n\nInternal measurement dataframe computational representation Y:\n")
     print(campaign._measurements_targets_comp)
 ```
-
-    
-    
-    #### ITERATION 1 ####
-    
-    Recommended measurements:
-         Cat_1      Cat_2  Num_disc_1  Num_disc_2
-    6      22   very bad         2.0        -3.0
-    126    22  very good         4.0        -3.0
-    223    33         OK        10.0        -1.0
-    
-    Recommended measurements with fake measured results:
-         Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-    6      22   very bad         2.0        -3.0  27.150542   9.799181  56.789624
-    126    22  very good         4.0        -3.0  85.424899  86.027449  54.467623
-    223    33         OK        10.0        -1.0  52.061724  96.840935  56.057570
-    
-    
-    Internal measurement dataframe computational representation Y:
-    
-       Desirability
-    0      0.473341
-    1      0.601312
-    2      0.398466
-    
-    
-    #### ITERATION 2 ####
-
-
-    
-    Recommended measurements:
-           Cat_1      Cat_2  Num_disc_1  Num_disc_2
-    index                                         
-    118      22  very good         2.0        -3.0
-    127      22  very good         4.0        -1.0
-    130      22  very good         6.0        -3.0
-    
-    Recommended measurements with fake measured results:
-           Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
-    index                                                                  
-    118      22  very good         2.0        -3.0  66.157514  64.794910   
-    127      22  very good         4.0        -1.0  80.253452   8.185032   
-    130      22  very good         6.0        -3.0  72.589980  31.659413   
-    
-            Target_3  
-    index             
-    118    53.447130  
-    127    56.719506  
-    130    54.615843  
-    
-    
-    Internal measurement dataframe computational representation Y:
-    
-       Desirability
-    0      0.473341
-    1      0.601312
-    2      0.398466
-    3      0.675810
-    4      0.587339
-    5      0.673684
-    
-    
-    #### ITERATION 3 ####
-    
-    Recommended measurements:
-           Cat_1      Cat_2  Num_disc_1  Num_disc_2
-    index                                         
-    112      22  very good         1.0        -9.0
-    136      22  very good        10.0        -9.0
-    252      33  very good         1.0        -9.0
-    
-    Recommended measurements with fake measured results:
-           Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
-    index                                                                  
-    112      22  very good         1.0        -9.0  78.043248  92.327953   
-    136      22  very good        10.0        -9.0   2.866336  53.289421   
-    252      33  very good         1.0        -9.0  99.543032  43.856867   
-    
-            Target_3  
-    index             
-    112    55.927149  
-    136    54.816142  
-    252    55.739401  
-    
-    
-    Internal measurement dataframe computational representation Y:
-    
-       Desirability
-    0      0.473341
-    1      0.601312
-    2      0.398466
-    3      0.675810
-    4      0.587339
-    5      0.673684
-    6      0.468602
-    7      0.476448
-    8      0.621851
-
 
 ## Addendum: Description of `transformation` functions
 

@@ -930,11 +930,11 @@ For details on using synthetic test functions, we refer to other examples in thi
 directory.</p>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">botorch.test_functions</span> <span class="kn">import</span> <span class="n">Rastrigin</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="n">NumericalContinuousParameter</span><span class="p">,</span> <span class="n">NumericalDiscreteParameter</span>
 <span class="kn">from</span> <span class="nn">baybe.recommenders</span> <span class="kn">import</span> <span class="n">NaiveHybridSpaceRecommender</span><span class="p">,</span> <span class="n">TwoPhaseMetaRecommender</span>
@@ -947,7 +947,7 @@ directory.</p>
 <section id="defining-the-test-function-and-the-hybrid-dimensions">
 <h2>Defining the test function and the hybrid dimensions<a class="headerlink" href="#defining-the-test-function-and-the-hybrid-dimensions" title="Link to this heading">¶</a></h2>
 <p>See <a class="reference internal" href="discrete_space.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">discrete_space</span></code></span></a> for details on the test function.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">6</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">6</span>
 </pre></div>
 </div>
 <p>This examples uses two lists containing the discrete resp. discrete dimensions.
@@ -957,16 +957,16 @@ manually here and verify that the experiment you set up is configured correctly.
 In particular, if the function that you want to use is only available for a fixed
 dimension, then these will be overwritten by distributing the first half of the
 dimension to <code class="docutils literal notranslate"><span class="pre">DISC_INDICES</span></code> and the remaining ones to <code class="docutils literal notranslate"><span class="pre">CONT_INDICES</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DISC_INDICES</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DISC_INDICES</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="n">CONT_INDICES</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TestFunctionClass</span> <span class="o">=</span> <span class="n">Rastrigin</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TestFunctionClass</span> <span class="o">=</span> <span class="n">Rastrigin</span>
 </pre></div>
 </div>
 <p>This part checks if the test function already has a fixed dimension.
 In that case, we print a warning and replace DIMENSION.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">TestFunctionClass</span><span class="p">,</span> <span class="s2">&quot;dim&quot;</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">TestFunctionClass</span><span class="p">,</span> <span class="s2">&quot;dim&quot;</span><span class="p">):</span>
     <span class="n">TestFunction</span> <span class="o">=</span> <span class="n">TestFunctionClass</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">DIMENSION</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">TestFunctionClass</span><span class="p">()</span><span class="o">.</span><span class="n">dim</span> <span class="o">==</span> <span class="n">DIMENSION</span><span class="p">:</span>
     <span class="n">TestFunction</span> <span class="o">=</span> <span class="n">TestFunctionClass</span><span class="p">()</span>
@@ -990,14 +990,14 @@ test
 function has another dimension.
 Note that this might in particular happen for test functions that ignore the <code class="docutils literal notranslate"><span class="pre">dim</span></code>
 keyword!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">CONT_INDICES</span> <span class="o">+</span> <span class="n">DISC_INDICES</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">DIMENSION</span><span class="p">)):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">CONT_INDICES</span> <span class="o">+</span> <span class="n">DISC_INDICES</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">DIMENSION</span><span class="p">)):</span>
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
         <span class="s2">&quot;Either the intersection between CONT_IND and DISC_IND is not empty or your &quot;</span>
         <span class="s2">&quot;indices do not match.&quot;</span>
     <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BOUNDS</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="o">.</span><span class="n">bounds</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BOUNDS</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="o">.</span><span class="n">bounds</span>
 <span class="n">WRAPPED_FUNCTION</span> <span class="o">=</span> <span class="n">botorch_function_wrapper</span><span class="p">(</span><span class="n">test_function</span><span class="o">=</span><span class="n">TestFunction</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1005,11 +1005,11 @@ keyword!</p>
 <section id="constructing-the-hybrid-searchspace">
 <h2>Constructing the hybrid searchspace<a class="headerlink" href="#constructing-the-hybrid-searchspace" title="Link to this heading">¶</a></h2>
 <p>The following parameter decides how many points each discrete dimension should have.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">POINTS_PER_DIM</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POINTS_PER_DIM</span> <span class="o">=</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <p>Construct the continuous parameters as <code class="docutils literal notranslate"><span class="pre">NumericContinuous</span></code> parameters.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cont_parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cont_parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NumericalContinuousParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;x_</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">BOUNDS</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">],</span> <span class="n">BOUNDS</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">]),</span>
@@ -1019,7 +1019,7 @@ keyword!</p>
 </pre></div>
 </div>
 <p>Construct the discrete parameters as <code class="docutils literal notranslate"><span class="pre">NumericalDiscreteParameters</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">disc_parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">disc_parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NumericalDiscreteParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;x_</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">values</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">BOUNDS</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">],</span> <span class="n">BOUNDS</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">],</span> <span class="n">POINTS_PER_DIM</span><span class="p">)),</span>
@@ -1029,7 +1029,7 @@ keyword!</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">disc_parameters</span> <span class="o">+</span> <span class="n">cont_parameters</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">disc_parameters</span> <span class="o">+</span> <span class="n">cont_parameters</span><span class="p">)</span>
 <span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MIN&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1041,20 +1041,20 @@ keyword!</p>
 The keywords <code class="docutils literal notranslate"><span class="pre">disc_recommender</span></code> and <code class="docutils literal notranslate"><span class="pre">cont_recommender</span></code> can be used to select different
 recommenders for the corresponding subspaces.
 We use the default choices, which is the <code class="docutils literal notranslate"><span class="pre">SequentialGreedyRecommender</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hybrid_recommender</span> <span class="o">=</span> <span class="n">TwoPhaseMetaRecommender</span><span class="p">(</span><span class="n">recommender</span><span class="o">=</span><span class="n">NaiveHybridSpaceRecommender</span><span class="p">())</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hybrid_recommender</span> <span class="o">=</span> <span class="n">TwoPhaseMetaRecommender</span><span class="p">(</span><span class="n">recommender</span><span class="o">=</span><span class="n">NaiveHybridSpaceRecommender</span><span class="p">())</span>
 </pre></div>
 </div>
 </section>
 <section id="constructing-the-campaign-and-performing-a-recommendation">
 <h2>Constructing the campaign and performing a recommendation<a class="headerlink" href="#constructing-the-campaign-and-performing-a-recommendation" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
     <span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span>
     <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span>
     <span class="n">recommender</span><span class="o">=</span><span class="n">hybrid_recommender</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a recommendation for a fixed batch size.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a recommendation for a fixed batch size.</span>
 <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
 </pre></div>
@@ -1062,26 +1062,19 @@ We use the default choices, which is the <code class="docutils literal notransla
 <p>Evaluate the test function.
 Note that we need iterate through the rows of the recommendation.
 Furthermore, we need to interpret the row as a list.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">target_values</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target_values</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">recommendation</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
     <span class="n">target_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">WRAPPED_FUNCTION</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="o">.</span><span class="n">to_list</span><span class="p">()))</span>
 </pre></div>
 </div>
 <p>We add an additional column with the calculated target values.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">recommendation</span><span class="p">[</span><span class="s2">&quot;Target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">target_values</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">recommendation</span><span class="p">[</span><span class="s2">&quot;Target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">target_values</span>
 </pre></div>
 </div>
 <p>Here, we inform the campaign about our measurement.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Recommended experiments with measured values: &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with measured values: 
-     x_1   x_2   x_3       x_4       x_5       x_6      Target
-8  -5.12  5.12  5.12  1.800233  2.972951  2.089475  111.798401
-15  0.00  5.12 -5.12 -0.071643 -2.555446 -1.528160  106.959488
-14  0.00  0.00  5.12 -2.181379  1.897954  2.577559   70.571899
 </pre></div>
 </div>
 </section>

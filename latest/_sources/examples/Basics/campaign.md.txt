@@ -7,7 +7,7 @@ read the corresponding [user guide](./../../userguide/campaigns).
 ## Necessary imports for this example
 
 
-```python
+```
 from baybe import Campaign
 from baybe.objectives import SingleTargetObjective
 from baybe.parameters import NumericalDiscreteParameter, SubstanceParameter
@@ -22,7 +22,7 @@ This example presents the optimization of a direct Arylation reaction in a discr
 space. For this, we require data for solvents, ligands and bases.
 
 
-```python
+```
 dict_solvent = {
     "DMAc": r"CC(N(C)C)=O",
     "Butyornitrile": r"CCCC#N",
@@ -32,7 +32,7 @@ dict_solvent = {
 ```
 
 
-```python
+```
 dict_base = {
     "Potassium acetate": r"O=C([O-])C.[K+]",
     "Potassium pivalate": r"O=C([O-])C(C)(C)C.[K+]",
@@ -42,7 +42,7 @@ dict_base = {
 ```
 
 
-```python
+```
 dict_ligand = {
     "BrettPhos": r"CC(C)C1=CC(C(C)C)=C(C(C(C)C)=C1)C2=C(P(C3CCCCC3)C4CCCCC4)C(OC)="
     "CC=C2OC",
@@ -57,14 +57,14 @@ We proceed to define numerical discrete parameters `temperature` and `concentrat
 and create the search space.
 
 
-```python
+```
 solvent = SubstanceParameter("Solvent", data=dict_solvent, encoding="MORDRED")
 base = SubstanceParameter("Base", data=dict_base, encoding="MORDRED")
 ligand = SubstanceParameter("Ligand", data=dict_ligand, encoding="MORDRED")
 ```
 
 
-```python
+```
 temperature = NumericalDiscreteParameter(
     "Temperature", values=[90, 105, 120], tolerance=2
 )
@@ -74,82 +74,27 @@ concentration = NumericalDiscreteParameter(
 ```
 
 
-```python
+```
 parameters = [solvent, base, ligand, temperature, concentration]
 ```
 
 
-```python
+```
 searchspace = SearchSpace.from_product(parameters=parameters)
 ```
-
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CC(N(C)C)=O')
-    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CCCC#N')
-    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CCCCOC(C)=O')
-    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CC1=CC=C(C)C=C1')
-    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-
-
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('O=C([O-])C.[K+]')
-    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('O=C([O-])C(C)(C)C.[K+]')
-    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('O=C([O-])C.[Cs+]')
-    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('O=C([O-])C(C)(C)C.[Cs+]')
-    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
-
-
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CC(C)C1=CC(C(C)C)=C(C(C(C)C)=C1)C2=C(P(C3CCCCC3)C4CCCCC
-4)C(OC)=CC=C2OC')
-
-
-    _______________________________________smiles_to_mordred_features - 0.2s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CC(C)(C)P(C1=CC=CC=C1)C(C)(C)C')
-    _______________________________________smiles_to_mordred_features - 0.1s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-_smiles_to_mordred_features('CN(C)C1=CC=CC(N(C)C)=C1C2=CC=CC=C2P(C(C)(C)C)C3=CC=CC=C3')
-
-
-    _______________________________________smiles_to_mordred_features - 0.2s, 0.0min
-
 
 In this example, we maximize the yield of a reaction and define a corresponding
 objective.
 
 
-```python
+```
 objective = SingleTargetObjective(target=NumericalTarget(name="yield", mode="MAX"))
 ```
 
 We now finally create the campaign using the objects configure previously.
 
 
-```python
+```
 campaign = Campaign(
     searchspace=searchspace,
     objective=objective,
@@ -161,27 +106,15 @@ campaign = Campaign(
 We use the `recommend()` function of the campaign for getting measurements.
 
 
-```python
+```
 recommendation = campaign.recommend(batch_size=2)
 ```
 
 
-```python
+```
 print("\n\nRecommended measurements with batch_size = 2: ")
 print(recommendation)
 ```
-
-    
-    
-    Recommended measurements with batch_size = 2: 
-             Solvent               Base                        Ligand  \
-    231  Butyl Ester  Potassium acetate  Di-tert-butylphenylphosphine   
-    298  Butyl Ester    Cesium pivalate                     BrettPhos   
-    
-         Temperature  Concentration  
-    231        120.0          0.057  
-    298         90.0          0.100  
-
 
 Adding target values is done by creating a new column in the `recommendation`
 dataframe named after the target.
@@ -189,25 +122,13 @@ In this example, we use the `add_fake_results()` utility to create fake results.
 We then update the campaign by adding the measurements.
 
 
-```python
+```
 add_fake_results(recommendation, campaign)
 print("\n\nRecommended experiments with fake measured values: ")
 print(recommendation)
 ```
 
-    
-    
-    Recommended experiments with fake measured values: 
-             Solvent               Base                        Ligand  \
-    231  Butyl Ester  Potassium acetate  Di-tert-butylphenylphosphine   
-    298  Butyl Ester    Cesium pivalate                     BrettPhos   
-    
-         Temperature  Concentration      yield  
-    231        120.0          0.057   1.527933  
-    298         90.0          0.100  13.818631  
 
-
-
-```python
+```
 campaign.add_measurements(recommendation)
 ```

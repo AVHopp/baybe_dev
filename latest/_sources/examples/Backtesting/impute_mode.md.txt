@@ -13,19 +13,19 @@ to [`full_lookup`](./full_lookup.md) for details on the lookup mechanism.
 ## Necessary imports for this example
 
 
-```python
+```
 import os
 ```
 
 
-```python
+```
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 ```
 
 
-```python
+```
 from baybe import Campaign
 from baybe.objectives import SingleTargetObjective
 from baybe.parameters import NumericalDiscreteParameter, SubstanceParameter
@@ -42,12 +42,12 @@ These are the number of Monte Carlo runs and the number of experiments to be con
 per run.
 
 
-```python
+```
 SMOKE_TEST = "SMOKE_TEST" in os.environ
 ```
 
 
-```python
+```
 N_MC_ITERATIONS = 2 if SMOKE_TEST else 5
 N_DOE_ITERATIONS = 2 if SMOKE_TEST else 5
 BATCH_SIZE = 1 if SMOKE_TEST else 3
@@ -58,7 +58,7 @@ BATCH_SIZE = 1 if SMOKE_TEST else 3
 See [`full_lookup`](./full_lookup.md) for details.
 
 
-```python
+```
 try:
     lookup = pd.read_excel("./lookup_withmissing.xlsx")
 except FileNotFoundError:
@@ -72,7 +72,7 @@ As usual, we set up some experiment.
 Note that we now need to ensure that the names fit the names in the provided .xlsx file!
 
 
-```python
+```
 dict_solvent = {
     "DMAc": r"CC(N(C)C)=O",
     "Butyornitrile": r"CCCC#N",
@@ -108,7 +108,7 @@ dict_ligand = {
 Here, we create the parameter objects, the searchspace and the objective.
 
 
-```python
+```
 solvent = SubstanceParameter(name="Solvent", data=dict_solvent, encoding="MORDRED")
 base = SubstanceParameter(name="Base", data=dict_base, encoding="MORDRED")
 ligand = SubstanceParameter(name="Ligand", data=dict_ligand, encoding="MORDRED")
@@ -121,65 +121,15 @@ concentration = NumericalDiscreteParameter(
 ```
 
 
-```python
+```
 parameters = [solvent, base, ligand, temperature, concentration]
 ```
 
 
-```python
+```
 searchspace = SearchSpace.from_product(parameters=parameters)
 objective = SingleTargetObjective(target=NumericalTarget(name="yield", mode="MAX"))
 ```
-
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('P(C1CCCCC1)(C2CCCCC2)C3CCCCC3')
-    _______________________________________smiles_to_mordred_features - 0.2s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('P(C1=CC=CC=C1)(C2=CC=CC=C2)C3=CC=CC=C3')
-
-
-    _______________________________________smiles_to_mordred_features - 0.1s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CC(C1=C(C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4)C(C(C)C)=CC(C(C)
-C)=C1)C')
-    _______________________________________smiles_to_mordred_features - 0.2s, 0.0min
-
-
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('P(C1=CC=CO1)(C2=CC=CO2)C3=CC=CO3')
-    _______________________________________smiles_to_mordred_features - 0.1s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CP(C1=CC=CC=C1)C2=CC=CC=C2')
-    _______________________________________smiles_to_mordred_features - 0.1s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CC(OC1=C(P(C2CCCCC2)C3CCCCC3)C(OC(C)C)=CC=C1)C')
-
-
-    _______________________________________smiles_to_mordred_features - 0.1s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('FC(F)(F)C1=CC(P(C2=C(C3=C(C(C)C)C=C(C(C)C)C=C3C(C)C)C(O
-C)=CC=C2OC)C4=CC(C(F)(F)F)=CC(C(F)(F)F)=C4)=CC(C(F)(F)F)=C1')
-
-
-    _______________________________________smiles_to_mordred_features - 0.3s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('C[C@]1(O2)O[C@](C[C@]2(C)P3C4=CC=CC=C4)(C)O[C@]3(C)C1')
-    _______________________________________smiles_to_mordred_features - 0.2s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
-    _smiles_to_mordred_features('CP(C)C1=CC=CC=C1')
-
-
-    _______________________________________smiles_to_mordred_features - 0.1s, 0.0min
-
 
 ## Constructing campaigns for the simulation loop
 
@@ -187,7 +137,7 @@ In this example, we create two campaigns.
 One uses the default recommender and the other one makes random recommendations.
 
 
-```python
+```
 campaign = Campaign(searchspace=searchspace, objective=objective)
 campaign_rand = Campaign(
     searchspace=searchspace,
@@ -201,7 +151,7 @@ Note that this function enables to run multiple scenarios by a single function c
 For this, it is necessary to define a dictionary mapping scenario names to campaigns.
 
 
-```python
+```
 scenarios = {"Test_Scenario": campaign, "Random": campaign_rand}
 ```
 
@@ -218,7 +168,7 @@ The following options are available:
       so that unmeasured experiments will not be recommended
 
 
-```python
+```
 results = simulate_scenarios(
     scenarios,
     lookup,
@@ -229,21 +179,10 @@ results = simulate_scenarios(
 )
 ```
 
-    
-
-    
-
-    
-
-    
-
-    
-
-
 The following lines plot the results and save the plot in run_impute_mode.png
 
 
-```python
+```
 max_yield = lookup["yield"].max()
 sns.lineplot(
     data=results, x="Num_Experiments", y="yield_CumBest", hue="Scenario", marker="x"
@@ -253,8 +192,3 @@ plt.legend(loc="lower right")
 plt.gcf().set_size_inches(20, 8)
 plt.savefig("./run_impute_mode.png")
 ```
-
-
-    
-    
-

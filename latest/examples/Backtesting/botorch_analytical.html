@@ -933,17 +933,17 @@ BoTorch test function.</p></li>
 </ol>
 <section id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">botorch.test_functions</span> <span class="kn">import</span> <span class="n">Rastrigin</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="n">NumericalDiscreteParameter</span>
 <span class="kn">from</span> <span class="nn">baybe.recommenders</span> <span class="kn">import</span> <span class="n">RandomRecommender</span>
@@ -959,10 +959,10 @@ BoTorch test function.</p></li>
 <h2>Parameters for a full simulation loop<a class="headerlink" href="#parameters-for-a-full-simulation-loop" title="Link to this heading">¶</a></h2>
 <p>For the full simulation, we need to define the number of Monte Carlo runs
 and the number of experiments to be conducted per run.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N_MC_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">30</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N_MC_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">30</span>
 <span class="n">N_DOE_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">15</span>
 <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">3</span>
 <span class="n">POINTS_PER_DIM</span> <span class="o">=</span> <span class="mi">10</span>
@@ -972,11 +972,11 @@ and the number of experiments to be conducted per run.</p>
 <section id="defining-the-test-function">
 <h2>Defining the test function<a class="headerlink" href="#defining-the-test-function" title="Link to this heading">¶</a></h2>
 <p>See <a class="reference internal" href="../Searchspaces/discrete_space.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">discrete_space</span></code></span></a> for details.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">TestFunctionClass</span> <span class="o">=</span> <span class="n">Rastrigin</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">TestFunctionClass</span><span class="p">,</span> <span class="s2">&quot;dim&quot;</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">TestFunctionClass</span><span class="p">,</span> <span class="s2">&quot;dim&quot;</span><span class="p">):</span>
     <span class="n">TestFunction</span> <span class="o">=</span> <span class="n">TestFunctionClass</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">DIMENSION</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span>
@@ -988,14 +988,14 @@ and the number of experiments to be conducted per run.</p>
     <span class="n">DIMENSION</span> <span class="o">=</span> <span class="n">TestFunctionClass</span><span class="p">()</span><span class="o">.</span><span class="n">dim</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BOUNDS</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="o">.</span><span class="n">bounds</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BOUNDS</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="o">.</span><span class="n">bounds</span>
 <span class="n">WRAPPED_FUNCTION</span> <span class="o">=</span> <span class="n">botorch_function_wrapper</span><span class="p">(</span><span class="n">test_function</span><span class="o">=</span><span class="n">TestFunction</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="creating-the-searchspace-and-the-objective">
 <h2>Creating the searchspace and the objective<a class="headerlink" href="#creating-the-searchspace-and-the-objective" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NumericalDiscreteParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;x_</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">values</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span>
@@ -1011,14 +1011,14 @@ and the number of experiments to be conducted per run.</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
 <span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MIN&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
 <section id="constructing-campaigns">
 <h2>Constructing campaigns<a class="headerlink" href="#constructing-campaigns" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seq_greedy_EI_campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq_greedy_EI_campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
     <span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span>
     <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1033,7 +1033,7 @@ and the number of experiments to be conducted per run.</p>
 <section id="performing-the-simulation-loop">
 <h2>Performing the simulation loop<a class="headerlink" href="#performing-the-simulation-loop" title="Link to this heading">¶</a></h2>
 <p>We use <a class="reference internal" href="../../_autosummary/baybe.simulation.scenarios.simulate_scenarios.html#baybe.simulation.scenarios.simulate_scenarios" title="baybe.simulation.scenarios.simulate_scenarios"><span class="xref myst py py-func">simulate_scenarios</span></a> to simulate a full experiment.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scenarios</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenarios</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;Sequential greedy EI&quot;</span><span class="p">:</span> <span class="n">seq_greedy_EI_campaign</span><span class="p">,</span>
     <span class="s2">&quot;Random&quot;</span><span class="p">:</span> <span class="n">random_campaign</span><span class="p">,</span>
 <span class="p">}</span>
@@ -1047,7 +1047,7 @@ and the number of experiments to be conducted per run.</p>
 </pre></div>
 </div>
 <p>We use the plotting utility to create plots.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
     <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>

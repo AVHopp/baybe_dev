@@ -8,7 +8,7 @@ We thus refer to [`campaign`](./../Basics/campaign.md) for a basic example.
 ## Necessary imports
 
 
-```python
+```
 from baybe import Campaign
 from baybe.objectives import SingleTargetObjective
 from baybe.parameters import NumericalContinuousParameter
@@ -26,7 +26,7 @@ That is, it is assumed to work in a non-batched-way!
 In this example, we implement a simple sum of squares function with a single output.
 
 
-```python
+```
 def sum_of_squares(*x: float) -> float:
     """Calculate the sum of squares."""
     res = 0
@@ -36,7 +36,7 @@ def sum_of_squares(*x: float) -> float:
 ```
 
 
-```python
+```
 TEST_FUNCTION = sum_of_squares
 ```
 
@@ -47,7 +47,7 @@ Similarly, it is necessary to state the bounds of the parameters.
 These should be provided as a list of two-dimensional tuples.
 
 
-```python
+```
 DIMENSION = 4
 BOUNDS = [(-2, 2), (-2, 2), (-2, 2), (-2, 2)]
 ```
@@ -55,7 +55,7 @@ BOUNDS = [(-2, 2), (-2, 2), (-2, 2), (-2, 2)]
 ## Creating the searchspace and the objective
 
 
-```python
+```
 parameters = [
     NumericalContinuousParameter(
         name=f"x_{k+1}",
@@ -66,19 +66,19 @@ parameters = [
 ```
 
 
-```python
+```
 searchspace = SearchSpace.from_product(parameters=parameters)
 ```
 
 
-```python
+```
 objective = SingleTargetObjective(target=NumericalTarget(name="Target", mode="MIN"))
 ```
 
 ## Constructing the campaign and performing a recommendation
 
 
-```python
+```
 campaign = Campaign(
     searchspace=searchspace,
     objective=objective,
@@ -86,7 +86,7 @@ campaign = Campaign(
 ```
 
 
-```python
+```
 # Get a recommendation for a fixed batch size.
 BATCH_SIZE = 3
 recommendation = campaign.recommend(batch_size=BATCH_SIZE)
@@ -97,7 +97,7 @@ Note that we need iterate through the rows of the recommendation.
 Furthermore, we need to interpret the row as a list.
 
 
-```python
+```
 target_values = []
 for index, row in recommendation.iterrows():
     target_values.append(TEST_FUNCTION(*row.to_list()))
@@ -106,24 +106,15 @@ for index, row in recommendation.iterrows():
 We add an additional column with the calculated target values.
 
 
-```python
+```
 recommendation["Target"] = target_values
 ```
 
 Here, we inform the campaign about our measurement.
 
 
-```python
+```
 campaign.add_measurements(recommendation)
 print("\n\nRecommended experiments with measured values: ")
 print(recommendation)
 ```
-
-    
-    
-    Recommended experiments with measured values: 
-            x_1       x_2       x_3       x_4    Target
-    0 -1.078562 -1.028633 -0.593765  0.341686  2.690688
-    1 -1.463809 -0.440381  0.612261  1.562781  5.153822
-    2  1.681703  1.923282 -0.481083 -1.404385  8.730878
-

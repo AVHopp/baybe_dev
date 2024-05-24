@@ -1,6 +1,0 @@
-baybe.exceptions.TestException
-==============================
-
-.. currentmodule:: baybe.exceptions
-
-.. autoexception:: TestException

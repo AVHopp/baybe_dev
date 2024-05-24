@@ -11,20 +11,20 @@ We thus refer to [`campaign`](./../Basics/campaign.md) for a basic example.
 ## Necessary imports for this example
 
 
-```python
+```
 import os
 import sys
 from pathlib import Path
 ```
 
 
-```python
+```
 import pandas as pd
 import seaborn as sns
 ```
 
 
-```python
+```
 from baybe import Campaign
 from baybe.objectives import SingleTargetObjective
 from baybe.parameters import (
@@ -46,12 +46,12 @@ These are the number of Monte Carlo runs and the number of experiments to be con
 per run.
 
 
-```python
+```
 SMOKE_TEST = "SMOKE_TEST" in os.environ
 ```
 
 
-```python
+```
 N_DOE_ITERATIONS = 2 if SMOKE_TEST else 20
 N_MC_ITERATIONS = 2 if SMOKE_TEST else 200
 BATCH_SIZE = 1 if SMOKE_TEST else 2
@@ -69,7 +69,7 @@ This code assumes that you call `python` either from the repository root folder 
 folder.
 
 
-```python
+```
 try:
     lookup = pd.read_excel("./lookup.xlsx")
 except FileNotFoundError:
@@ -83,7 +83,7 @@ As usual, we set up some experiment.
 Note that we now need to ensure that the names fit the names in the provided .xlsx file!
 
 
-```python
+```
 dict_solvent = {
     "DMAc": r"CC(N(C)C)=O",
     "Butyornitrile": r"CCCC#N",
@@ -117,7 +117,7 @@ dict_ligand = {
 ## Creating the Objective
 
 
-```python
+```
 objective = SingleTargetObjective(target=NumericalTarget(name="yield", mode="MAX"))
 ```
 
@@ -128,7 +128,7 @@ First let us create three campaigns that each use a different chemical encoding 
 treat substances.
 
 
-```python
+```
 substance_encodings = ["MORDRED", "RDKIT", "MORGAN_FP"]
 scenarios = {
     encoding: Campaign(
@@ -157,7 +157,7 @@ Now we create another campaign that treats the substances as simple one-hot enco
 categories.
 
 
-```python
+```
 parameters = [
     CategoricalParameter(name="Solvent", values=dict_solvent.keys(), encoding="OHE"),
     CategoricalParameter(name="Base", values=dict_base.keys(), encoding="OHE"),
@@ -176,7 +176,7 @@ campaign_ohe = Campaign(
 Finally, as baseline, we specify a campaign which provides recommendations randomly.
 
 
-```python
+```
 campaign_rand = Campaign(
     searchspace=SearchSpace.from_product(parameters=parameters),
     recommender=RandomRecommender(),
@@ -187,7 +187,7 @@ campaign_rand = Campaign(
 Update the scenarios:
 
 
-```python
+```
 scenarios.update({"OneHot": campaign_ohe, "Random Baseline": campaign_rand})
 ```
 
@@ -197,7 +197,7 @@ For this, it is necessary to define the `scenarios` dictionary, mapping names to
 campaigns.
 
 
-```python
+```
 results = simulate_scenarios(
     scenarios,
     lookup,
@@ -207,29 +207,12 @@ results = simulate_scenarios(
 )
 ```
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
 Let's visualize the results. As you can see, the type of encoding has a tremendous
 impact on the outcome, with chemical encodings performing much better than
 traditional ones at almost no extra cost.
 
 
-```python
+```
 results.rename(columns={"Scenario": "Substance Encoding"}, inplace=True)
 path = Path(sys.path[0])
 ax = sns.lineplot(
@@ -246,11 +229,6 @@ create_example_plots(
     base_name="full_lookup",
 )
 ```
-
-
-    
-    
-
 ```{image} full_lookup_light.svg
 :align: center
 :class: only-light

@@ -932,15 +932,15 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 We refer to <a class="reference internal" href="full_lookup.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">full_lookup</span></code></span></a> for details on the lookup mechanism.</p>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="n">NumericalDiscreteParameter</span><span class="p">,</span> <span class="n">SubstanceParameter</span>
 <span class="kn">from</span> <span class="nn">baybe.recommenders</span> <span class="kn">import</span> <span class="n">RandomRecommender</span><span class="p">,</span> <span class="n">TwoPhaseMetaRecommender</span>
@@ -956,10 +956,10 @@ We refer to <a class="reference internal" href="full_lookup.html"><span class="s
 Since this example uses initial data, we only need to define the number of iterations
 per run.
 The number of runs is determined by the number of initial data points provided.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N_DOE_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N_DOE_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
 <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">3</span>
 </pre></div>
 </div>
@@ -967,7 +967,7 @@ The number of runs is determined by the number of initial data points provided.<
 <section id="lookup-functionality-and-data-creation">
 <h2>Lookup functionality and data creation<a class="headerlink" href="#lookup-functionality-and-data-creation" title="Link to this heading">¶</a></h2>
 <p>See <a class="reference internal" href="full_lookup.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">full_lookup</span></code></span></a> for details.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">lookup</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;./lookup.xlsx&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
@@ -982,12 +982,12 @@ The number of runs is determined by the number of initial data points provided.<
 <p>To include initial data, we sample some rows from the lookup table.
 Note that the initial_data needs to be a list of <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> objects.
 One experiment will be performed per provided initial data set.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">initial_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">lookup</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="n">lookup</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="n">lookup</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">initial_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">lookup</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="n">lookup</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="n">lookup</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)]</span>
 </pre></div>
 </div>
 <p>As usual, we set up some experiment.
 Note that we now need to ensure that the names fit the names in the provided .xlsx file!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;DMAc&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;CC(N(C)C)=O&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Butyornitrile&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;CCCC#N&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Butyl Ester&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;CCCCOC(C)=O&quot;</span><span class="p">,</span>
@@ -1021,7 +1021,7 @@ Note that we now need to ensure that the names fit the names in the provided .xl
 <section id="creating-the-searchspace-and-the-objective">
 <h2>Creating the searchspace and the objective<a class="headerlink" href="#creating-the-searchspace-and-the-objective" title="Link to this heading">¶</a></h2>
 <p>Here, we create the parameter objects, the searchspace and the objective.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Base&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_base</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Base&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_base</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
 <span class="n">solvent</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Solvent&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_solvent</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
 <span class="n">ligand</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Ligand&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_ligand</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
 <span class="n">temperature</span> <span class="o">=</span> <span class="n">NumericalDiscreteParameter</span><span class="p">(</span>
@@ -1032,10 +1032,10 @@ Note that we now need to ensure that the names fit the names in the provided .xl
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">solvent</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">ligand</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">concentration</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">solvent</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">ligand</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">concentration</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
 <span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;yield&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1044,7 +1044,7 @@ Note that we now need to ensure that the names fit the names in the provided .xl
 <h2>Constructing campaigns for the simulation loop<a class="headerlink" href="#constructing-campaigns-for-the-simulation-loop" title="Link to this heading">¶</a></h2>
 <p>In this example, we create two campaigns.
 One uses the default recommender and the other one makes random recommendations.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
 <span class="n">campaign_rand</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
     <span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span>
     <span class="n">recommender</span><span class="o">=</span><span class="n">TwoPhaseMetaRecommender</span><span class="p">(</span><span class="n">recommender</span><span class="o">=</span><span class="n">RandomRecommender</span><span class="p">()),</span>
@@ -1059,10 +1059,10 @@ One uses the default recommender and the other one makes random recommendations.
 This function is where we provide the <code class="docutils literal notranslate"><span class="pre">initial_data</span></code> dataframe.
 Note that this function enables to run multiple scenarios by a single function call.
 For this, it is necessary to define a dictionary mapping scenario names to campaigns.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scenarios</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Test_Scenario&quot;</span><span class="p">:</span> <span class="n">campaign</span><span class="p">,</span> <span class="s2">&quot;Random&quot;</span><span class="p">:</span> <span class="n">campaign_rand</span><span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenarios</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Test_Scenario&quot;</span><span class="p">:</span> <span class="n">campaign</span><span class="p">,</span> <span class="s2">&quot;Random&quot;</span><span class="p">:</span> <span class="n">campaign_rand</span><span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">simulate_scenarios</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">simulate_scenarios</span><span class="p">(</span>
     <span class="n">scenarios</span><span class="p">,</span>
     <span class="n">lookup</span><span class="p">,</span>
     <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span>
@@ -1072,7 +1072,7 @@ For this, it is necessary to define a dictionary mapping scenario names to campa
 </pre></div>
 </div>
 <p>The following lines plot the results and save the plot in run_full_initial_data.png</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">max_yield</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">[</span><span class="s2">&quot;yield&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">max_yield</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">[</span><span class="s2">&quot;yield&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Num_Experiments&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;yield_CumBest&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Scenario&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span>
 <span class="p">)</span>

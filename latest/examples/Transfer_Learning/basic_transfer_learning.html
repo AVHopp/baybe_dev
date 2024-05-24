@@ -931,18 +931,18 @@ Hartmann test function:</p>
 </ul>
 <section id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">botorch.test_functions.synthetic</span> <span class="kn">import</span> <span class="n">Hartmann</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="n">NumericalDiscreteParameter</span><span class="p">,</span> <span class="n">TaskParameter</span>
 <span class="kn">from</span> <span class="nn">baybe.searchspace</span> <span class="kn">import</span> <span class="n">SearchSpace</span>
@@ -956,7 +956,7 @@ Hartmann test function:</p>
 <section id="settings">
 <h2>Settings<a class="headerlink" href="#settings" title="Link to this heading">¶</a></h2>
 <p>The following settings are used to set up the problem:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>  <span class="c1"># reduce the problem complexity in CI pipelines</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>  <span class="c1"># reduce the problem complexity in CI pipelines</span>
 <span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># input dimensionality of the test function</span>
 <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># batch size of recommendations per DOE iteration</span>
 <span class="n">N_MC_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">50</span>  <span class="c1"># number of Monte Carlo runs</span>
@@ -970,20 +970,20 @@ Hartmann test function:</p>
 <p>The test functions each have a single output that is to be minimized.
 The corresponding <a class="reference internal" href="../../_autosummary/baybe.objective.Objective.html#baybe.objective.Objective" title="baybe.objective.Objective"><span class="xref myst py py-func">Objective</span></a>
 is created as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MIN&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MIN&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
 <section id="creating-the-searchspace">
 <h2>Creating the Searchspace<a class="headerlink" href="#creating-the-searchspace" title="Link to this heading">¶</a></h2>
 <p>The bounds of the search space are dictated by the test function:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BOUNDS</span> <span class="o">=</span> <span class="n">Hartmann</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">DIMENSION</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BOUNDS</span> <span class="o">=</span> <span class="n">Hartmann</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">DIMENSION</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span>
 </pre></div>
 </div>
 <p>First, we define one
 <a class="reference internal" href="../../_autosummary/baybe.parameters.numerical.NumericalDiscreteParameter.html#baybe.parameters.numerical.NumericalDiscreteParameter" title="baybe.parameters.numerical.NumericalDiscreteParameter"><span class="xref myst py py-class">NumericalDiscreteParameter</span></a>
 per input dimension of the test function:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">discrete_params</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">discrete_params</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NumericalDiscreteParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;x</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">POINTS_PER_DIM</span><span class="p">),</span>
@@ -1006,7 +1006,7 @@ which allows the model to establish a relationship between the training data and
 the data collected during the optimization process.
 Because we want to obtain recommendations only for the test function, we explicitly
 pass the <code class="docutils literal notranslate"><span class="pre">active_values</span></code> keyword.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task_param</span> <span class="o">=</span> <span class="n">TaskParameter</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">task_param</span> <span class="o">=</span> <span class="n">TaskParameter</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Function&quot;</span><span class="p">,</span>
     <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Test_Function&quot;</span><span class="p">,</span> <span class="s2">&quot;Training_Function&quot;</span><span class="p">],</span>
     <span class="n">active_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Test_Function&quot;</span><span class="p">],</span>
@@ -1014,7 +1014,7 @@ pass the <code class="docutils literal notranslate"><span class="pre">active_val
 </pre></div>
 </div>
 <p>With the parameters at hand, we can now create our search space.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">discrete_params</span><span class="p">,</span> <span class="n">task_param</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">discrete_params</span><span class="p">,</span> <span class="n">task_param</span><span class="p">]</span>
 <span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1025,7 +1025,7 @@ pass the <code class="docutils literal notranslate"><span class="pre">active_val
 the Hartmann function using training data from its negated version, including some
 noise. The used model is of course not aware of this relationship but needs to infer
 it from the data gathered during the optimization process.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_functions</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_functions</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;Test_Function&quot;</span><span class="p">:</span> <span class="n">botorch_function_wrapper</span><span class="p">(</span><span class="n">Hartmann</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">DIMENSION</span><span class="p">)),</span>
     <span class="s2">&quot;Training_Function&quot;</span><span class="p">:</span> <span class="n">botorch_function_wrapper</span><span class="p">(</span>
         <span class="n">Hartmann</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">DIMENSION</span><span class="p">,</span> <span class="n">negate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">noise_std</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
@@ -1041,10 +1041,10 @@ functions at the given parameter grid.
 Parts of one lookup serve as the training data for the model.
 The other lookup is used as the loop-closing element, providing the target values of
 the test functions on demand.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">values</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">discrete_params</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">values</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">discrete_params</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lookups</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lookups</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">function_name</span><span class="p">,</span> <span class="n">function</span> <span class="ow">in</span> <span class="n">test_functions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">lookup</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="sa">f</span><span class="s2">&quot;x</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">grid_d</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">grid_d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">grid</span><span class="p">)})</span>
     <span class="n">lookup</span><span class="p">[</span><span class="s2">&quot;Target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lookup</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1061,7 +1061,7 @@ the test functions on demand.</p>
 to show the impact of transfer learning on the optimization performance.
 To average out and reduce statistical effects that might happen due to the random
 sampling of the provided data, we perform several Monte Carlo runs.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">):</span>
     <span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
     <span class="n">initial_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">lookup_training_task</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_MC_ITERATIONS</span><span class="p">)]</span>
@@ -1076,7 +1076,7 @@ sampling of the provided data, we perform several Monte Carlo runs.</p>
 </pre></div>
 </div>
 <p>For comparison, we also optimize the function without using any initial data:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result_baseline</span> <span class="o">=</span> <span class="n">simulate_scenarios</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">result_baseline</span> <span class="o">=</span> <span class="n">simulate_scenarios</span><span class="p">(</span>
     <span class="p">{</span><span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)},</span>
     <span class="n">lookup_test_task</span><span class="p">,</span>
     <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span>
@@ -1089,7 +1089,7 @@ sampling of the provided data, we perform several Monte Carlo runs.</p>
 <p>All that remains is to visualize the results.
 As the example shows, the optimization speed can be significantly increased by
 using even small amounts of training data from related optimization tasks.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Scenario&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f data used&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Scenario&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f data used&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>

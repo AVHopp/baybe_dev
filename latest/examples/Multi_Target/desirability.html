@@ -927,7 +927,7 @@ It uses a desirability value to handle several targets.</p>
 We thus refer to <a class="reference internal" href="../Basics/campaign.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">campaign</span></code></span></a> for a basic example.</p>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">DesirabilityObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="n">CategoricalParameter</span><span class="p">,</span> <span class="n">NumericalDiscreteParameter</span>
 <span class="kn">from</span> <span class="nn">baybe.searchspace</span> <span class="kn">import</span> <span class="n">SearchSpace</span>
@@ -938,7 +938,7 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 </section>
 <section id="experiment-setup-and-creating-the-searchspace">
 <h2>Experiment setup and creating the searchspace<a class="headerlink" href="#experiment-setup-and-creating-the-searchspace" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Categorical_1</span> <span class="o">=</span> <span class="n">CategoricalParameter</span><span class="p">(</span><span class="s2">&quot;Cat_1&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;22&quot;</span><span class="p">,</span> <span class="s2">&quot;33&quot;</span><span class="p">],</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;OHE&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Categorical_1</span> <span class="o">=</span> <span class="n">CategoricalParameter</span><span class="p">(</span><span class="s2">&quot;Cat_1&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;22&quot;</span><span class="p">,</span> <span class="s2">&quot;33&quot;</span><span class="p">],</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;OHE&quot;</span><span class="p">)</span>
 <span class="n">Categorical_2</span> <span class="o">=</span> <span class="n">CategoricalParameter</span><span class="p">(</span>
     <span class="s2">&quot;Cat_2&quot;</span><span class="p">,</span>
     <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;very bad&quot;</span><span class="p">,</span> <span class="s2">&quot;bad&quot;</span><span class="p">,</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;very good&quot;</span><span class="p">],</span>
@@ -952,10 +952,10 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">Categorical_1</span><span class="p">,</span> <span class="n">Categorical_2</span><span class="p">,</span> <span class="n">Num_disc_1</span><span class="p">,</span> <span class="n">Num_disc_2</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">Categorical_1</span><span class="p">,</span> <span class="n">Categorical_2</span><span class="p">,</span> <span class="n">Num_disc_1</span><span class="p">,</span> <span class="n">Num_disc_2</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -966,7 +966,7 @@ Thus we first need to define the different targets.</p>
 <p>This examples has different targets with different modes.
 The first target is maximized and while the second one is minimized.
 Note that in this multi target mode, the user must specify bounds for each target.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Target_1</span> <span class="o">=</span> <span class="n">NumericalTarget</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Target_1</span> <span class="o">=</span> <span class="n">NumericalTarget</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_1&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">transformation</span><span class="o">=</span><span class="s2">&quot;LINEAR&quot;</span>
 <span class="p">)</span>
 <span class="n">Target_2</span> <span class="o">=</span> <span class="n">NumericalTarget</span><span class="p">(</span>
@@ -978,7 +978,7 @@ Note that in this multi target mode, the user must specify bounds for each targe
 A detailed discussion of this functionality can be found at the end of this example.</p>
 <p>In this example, define a third target working with the mode <code class="docutils literal notranslate"><span class="pre">MATCH</span></code>.
 We furthermore use <code class="docutils literal notranslate"><span class="pre">target_transform=&quot;BELL&quot;</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Target_3</span> <span class="o">=</span> <span class="n">NumericalTarget</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Target_3</span> <span class="o">=</span> <span class="n">NumericalTarget</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_3&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MATCH&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">55</span><span class="p">),</span> <span class="n">transformation</span><span class="o">=</span><span class="s2">&quot;BELL&quot;</span>
 <span class="p">)</span>
 </pre></div>
@@ -993,7 +993,7 @@ the range around this target that is considered viable.</p>
 <h2>Creating the objective<a class="headerlink" href="#creating-the-objective" title="Link to this heading">¶</a></h2>
 <p>Now to work with these three targets the objective object must be properly created.
 The mode is set to <code class="docutils literal notranslate"><span class="pre">DESIRABILITY</span></code> and the targets are described in a list.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">Target_1</span><span class="p">,</span> <span class="n">Target_2</span><span class="p">,</span> <span class="n">Target_3</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">Target_1</span><span class="p">,</span> <span class="n">Target_2</span><span class="p">,</span> <span class="n">Target_3</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>As the recommender requires a single function, the different targets need to be
@@ -1005,136 +1005,32 @@ Weights for each target can also be specified as a list of floats in the argumen
 Per default, weights are equally distributed between all targets and are normalized
 internally.
 It is thus not necessary to handle normalization or scaling.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">DesirabilityObjective</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">DesirabilityObjective</span><span class="p">(</span>
     <span class="n">targets</span><span class="o">=</span><span class="n">targets</span><span class="p">,</span>
     <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
     <span class="n">scalarizer</span><span class="o">=</span><span class="s2">&quot;MEAN&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">objective</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[1mObjective[0m
-         
- [1mType: [0mDesirabilityObjective
-         
- [1mTargets [0m
-               Type      Name   Mode  Lower_Bound  Upper_Bound Transformation  \
- 0  NumericalTarget  Target_1    MAX          0.0        100.0         LINEAR   
- 1  NumericalTarget  Target_2    MIN          0.0        100.0         LINEAR   
- 2  NumericalTarget  Target_3  MATCH         45.0         55.0           BELL   
- 
-    Weight  
- 0    20.0  
- 1    20.0  
- 2    60.0  
-         
- [1mScalarizer: [0mMEAN
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">objective</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="creating-and-printing-the-campaign">
 <h2>Creating and printing the campaign<a class="headerlink" href="#creating-and-printing-the-campaign" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">campaign</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[1mCampaign[0m
-         
- [1mMeta Data[0m
- Batches Done: 0
-</pre></div>
-</div>
-<p>Fits Done: 0</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> [1mSearch Space[0m
-          
-  [1mSearch Space Type: [0mDISCRETE
-  
-  [1mDiscrete Search Space[0m
-               
-   [1mDiscrete Parameters[0m
-            Name                        Type  Num_Values                 Encoding
-   0       Cat_1        CategoricalParameter           2  CategoricalEncoding.OHE
-   1       Cat_2        CategoricalParameter           5  CategoricalEncoding.INT
-   2  Num_disc_1  NumericalDiscreteParameter           7                     None
-   3  Num_disc_2  NumericalDiscreteParameter           4                     None
-               
-   [1mExperimental Representation[0m
-               
-   Cat_1      Cat_2  Num_disc_1  Num_disc_2
-   0      22   very bad         1.0        -9.0
-   1      22   very bad         1.0        -6.0
-   2      22   very bad         1.0        -3.0
-   ..    ...        ...         ...         ...
-   277    33  very good        10.0        -6.0
-   278    33  very good        10.0        -3.0
-   279    33  very good        10.0        -1.0
-   
-   [280 rows x 4 columns]
-   
-   [1mMetadata:[0m
-</pre></div>
-</div>
-<p>was_recommended: 0/280</p>
-<p>was_measured: 0/280</p>
-<p>dont_recommend: 0/280</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   [1mConstraints[0m
-   Empty DataFrame
-   Columns: []
-   Index: []
-               
-   [1mComputational Representation[0m
-               
-    Cat_1_22  Cat_1_33  ...  Num_disc_1  Num_disc_2
-   0           1         0  ...         1.0        -9.0
-   1           1         0  ...         1.0        -6.0
-   2           1         0  ...         1.0        -3.0
-   ..        ...       ...  ...         ...         ...
-   277         0         1  ...        10.0        -6.0
-   278         0         1  ...        10.0        -3.0
-   279         0         1  ...        10.0        -1.0
-   
-   [280 rows x 5 columns]
- 
- [1mObjective[0m
-          
-  [1mType: [0mDesirabilityObjective
-          
-  [1mTargets [0m
-                Type      Name   Mode  Lower_Bound  Upper_Bound Transformation  \
-  0  NumericalTarget  Target_1    MAX          0.0        100.0         LINEAR   
-  1  NumericalTarget  Target_2    MIN          0.0        100.0         LINEAR   
-  2  NumericalTarget  Target_3  MATCH         45.0         55.0           BELL   
-  
-     Weight  
-  0    20.0  
-  1    20.0  
-  2    60.0  
-          
-  [1mScalarizer: [0mMEAN
- 
- TwoPhaseMetaRecommender(allow_repeated_recommendations=None,
-</pre></div>
-</div>
-<p>allow_recommending_already_measured=None,
-initial_recommender=RandomRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True),
-recommender=SequentialGreedyRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True,
-surrogate_model=GaussianProcessSurrogate(kernel_factory=DefaultKernelFactory(),
-_model=None), acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
-acquisition_function_cls=None, hybrid_sampler=’None’, sampling_percentage=1.0),
-switch_after=1)</p>
 </section>
 <section id="performing-some-iterations">
 <h2>Performing some iterations<a class="headerlink" href="#performing-some-iterations" title="Link to this heading">¶</a></h2>
 <p>The following loop performs some recommendations and adds fake results.
 It also prints what happens to internal data.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N_ITERATIONS</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N_ITERATIONS</span> <span class="o">=</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">kIter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ITERATIONS</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">kIter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ITERATIONS</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">#### ITERATION </span><span class="si">{</span><span class="n">kIter</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ####&quot;</span><span class="p">)</span>
 
     <span class="n">rec</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -1147,102 +1043,6 @@ It also prints what happens to internal data.</p>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Internal measurement dataframe computational representation Y:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">campaign</span><span class="o">.</span><span class="n">_measurements_targets_comp</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#### ITERATION 1 ####
-
-Recommended measurements:
-     Cat_1      Cat_2  Num_disc_1  Num_disc_2
-6      22   very bad         2.0        -3.0
-126    22  very good         4.0        -3.0
-223    33         OK        10.0        -1.0
-
-Recommended measurements with fake measured results:
-     Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-6      22   very bad         2.0        -3.0  27.150542   9.799181  56.789624
-126    22  very good         4.0        -3.0  85.424899  86.027449  54.467623
-223    33         OK        10.0        -1.0  52.061724  96.840935  56.057570
-
-
-Internal measurement dataframe computational representation Y:
-
-   Desirability
-0      0.473341
-1      0.601312
-2      0.398466
-
-
-#### ITERATION 2 ####
-
-
-
-Recommended measurements:
-       Cat_1      Cat_2  Num_disc_1  Num_disc_2
-index                                         
-118      22  very good         2.0        -3.0
-127      22  very good         4.0        -1.0
-130      22  very good         6.0        -3.0
-
-Recommended measurements with fake measured results:
-       Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
-index                                                                  
-118      22  very good         2.0        -3.0  66.157514  64.794910   
-127      22  very good         4.0        -1.0  80.253452   8.185032   
-130      22  very good         6.0        -3.0  72.589980  31.659413   
-
-        Target_3  
-index             
-118    53.447130  
-127    56.719506  
-130    54.615843  
-
-
-Internal measurement dataframe computational representation Y:
-
-   Desirability
-0      0.473341
-1      0.601312
-2      0.398466
-3      0.675810
-4      0.587339
-5      0.673684
-
-
-#### ITERATION 3 ####
-
-Recommended measurements:
-       Cat_1      Cat_2  Num_disc_1  Num_disc_2
-index                                         
-112      22  very good         1.0        -9.0
-136      22  very good        10.0        -9.0
-252      33  very good         1.0        -9.0
-
-Recommended measurements with fake measured results:
-       Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
-index                                                                  
-112      22  very good         1.0        -9.0  78.043248  92.327953   
-136      22  very good        10.0        -9.0   2.866336  53.289421   
-252      33  very good         1.0        -9.0  99.543032  43.856867   
-
-        Target_3  
-index             
-112    55.927149  
-136    54.816142  
-252    55.739401  
-
-
-Internal measurement dataframe computational representation Y:
-
-   Desirability
-0      0.473341
-1      0.601312
-2      0.398466
-3      0.675810
-4      0.587339
-5      0.673684
-6      0.468602
-7      0.476448
-8      0.621851
 </pre></div>
 </div>
 </section>

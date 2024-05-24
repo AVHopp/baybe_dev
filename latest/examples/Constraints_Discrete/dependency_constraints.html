@@ -930,13 +930,13 @@ All dependencies have to be declared in a single constraint.</p>
 We thus refer to <a class="reference internal" href="../Basics/campaign.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">campaign</span></code></span></a> for a basic example.</p>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.constraints</span> <span class="kn">import</span> <span class="n">DiscreteDependenciesConstraint</span><span class="p">,</span> <span class="n">SubSelectionCondition</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="p">(</span>
@@ -952,11 +952,11 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 </section>
 <section id="experiment-setup">
 <h2>Experiment setup<a class="headerlink" href="#experiment-setup" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
 <span class="n">FRAC_RESOLUTION</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">7</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span>
     <span class="s2">&quot;C1&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
 <span class="p">}</span>
@@ -970,7 +970,7 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 <span class="n">frame2</span> <span class="o">=</span> <span class="n">CategoricalParameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;FrameB&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">solvent</span><span class="p">,</span> <span class="n">switch1</span><span class="p">,</span> <span class="n">switch2</span><span class="p">,</span> <span class="n">fraction1</span><span class="p">,</span> <span class="n">frame1</span><span class="p">,</span> <span class="n">frame2</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">solvent</span><span class="p">,</span> <span class="n">switch1</span><span class="p">,</span> <span class="n">switch2</span><span class="p">,</span> <span class="n">fraction1</span><span class="p">,</span> <span class="n">frame1</span><span class="p">,</span> <span class="n">frame2</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -979,7 +979,7 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 <p>The constraints are handled when creating the searchspace object.
 It is thus necessary to define it before the searchspace creation.
 Note that multiple dependencies have to be included in a single constraint object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">constraint</span> <span class="o">=</span> <span class="n">DiscreteDependenciesConstraint</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">constraint</span> <span class="o">=</span> <span class="n">DiscreteDependenciesConstraint</span><span class="p">(</span>
     <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Switch1&quot;</span><span class="p">,</span> <span class="s2">&quot;Switch2&quot;</span><span class="p">],</span>
     <span class="n">conditions</span><span class="o">=</span><span class="p">[</span>
         <span class="n">SubSelectionCondition</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;on&quot;</span><span class="p">]),</span>
@@ -992,103 +992,25 @@ Note that multiple dependencies have to be included in a single constraint objec
 </section>
 <section id="creating-the-searchspace-and-the-objective">
 <h2>Creating the searchspace and the objective<a class="headerlink" href="#creating-the-searchspace-and-the-objective" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_1&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_1&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
 <section id="creating-and-printing-the-campaign">
 <h2>Creating and printing the campaign<a class="headerlink" href="#creating-and-printing-the-campaign" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">campaign</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[1mCampaign[0m
-         
- [1mMeta Data[0m
- Batches Done: 0
-</pre></div>
-</div>
-<p>Fits Done: 0</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> [1mSearch Space[0m
-          
-  [1mSearch Space Type: [0mDISCRETE
-  
-  [1mDiscrete Search Space[0m
-               
-   [1mDiscrete Parameters[0m
-         Name                        Type  Num_Values                   Encoding
-   0     Solv          SubstanceParameter           2  SubstanceEncoding.MORDRED
-   1  Switch1        CategoricalParameter           2    CategoricalEncoding.OHE
-   2  Switch2        CategoricalParameter           2    CategoricalEncoding.OHE
-   3    Frac1  NumericalDiscreteParameter           3                       None
-   4   FrameA        CategoricalParameter           2    CategoricalEncoding.OHE
-   5   FrameB        CategoricalParameter           2    CategoricalEncoding.OHE
-               
-   [1mExperimental Representation[0m
-               
-    Solv Switch1  ... FrameA  FrameB
-   0   water      on  ...      A       A
-   1   water      on  ...      A       A
-   2   water      on  ...      A       A
-   ..    ...     ...  ...    ...     ...
-   32     C1      on  ...      A       B
-   33     C1      on  ...      B       A
-   34     C1      on  ...      B       B
-   
-   [35 rows x 6 columns]
-   
-   [1mMetadata:[0m
-</pre></div>
-</div>
-<p>was_recommended: 0/35</p>
-<p>was_measured: 0/35</p>
-<p>dont_recommend: 0/35</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   [1mConstraints[0m
-                                Type Affected_Parameters
-   0  DiscreteDependenciesConstraint  [Switch1, Switch2]
-               
-   [1mComputational Representation[0m
-               
-   Solv_MORDRED_nAtom  Switch1_on  ...  FrameB_A  FrameB_B
-   0                  3.0           1  ...         1         0
-   1                  3.0           1  ...         1         0
-   2                  3.0           1  ...         1         0
-   ..                 ...         ...  ...       ...       ...
-   32                 5.0           1  ...         0         1
-   33                 5.0           1  ...         1         0
-   34                 5.0           1  ...         0         1
-   
-   [35 rows x 10 columns]
- 
- [1mObjective[0m
-          
-  [1mType: [0mSingleTargetObjective
-          
-  [1mTargets [0m
-                Type      Name Mode  Lower_Bound  Upper_Bound Transformation
-  0  NumericalTarget  Target_1  MAX         -inf          inf           None
- 
- TwoPhaseMetaRecommender(allow_repeated_recommendations=None,
-</pre></div>
-</div>
-<p>allow_recommending_already_measured=None,
-initial_recommender=RandomRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True),
-recommender=SequentialGreedyRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True,
-surrogate_model=GaussianProcessSurrogate(kernel_factory=DefaultKernelFactory(),
-_model=None), acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
-acquisition_function_cls=None, hybrid_sampler=’None’, sampling_percentage=1.0),
-switch_after=1)</p>
 </section>
 <section id="manual-verification-of-the-constraints">
 <h2>Manual verification of the constraints<a class="headerlink" href="#manual-verification-of-the-constraints" title="Link to this heading">¶</a></h2>
 <p>The following loop performs some recommendations and manually verifies the given
 constraints.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">5</span>
 <span class="k">for</span> <span class="n">kIter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ITERATIONS</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#### ITERATION </span><span class="si">{</span><span class="n">kIter</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ####&quot;</span><span class="p">)</span>
 
@@ -1128,21 +1050,6 @@ constraints.</p>
     <span class="n">rec</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
     <span class="n">add_fake_results</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span> <span class="n">campaign</span><span class="p">)</span>
     <span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#### ITERATION 1 ####
-## ASSERTS ##
-Number entries with both switches on (expected 56):  24
-Number entries with Switch1 off (expected 4):        4
-Number entries with Switch2 off (expected 14):       6
-Number entries with both switches off (expected 1):  1
-
-#### ITERATION 2 ####
-## ASSERTS ##
-Number entries with both switches on (expected 56):  24
-Number entries with Switch1 off (expected 4):        4
-Number entries with Switch2 off (expected 14):       6
-Number entries with both switches off (expected 1):  1
 </pre></div>
 </div>
 </section>

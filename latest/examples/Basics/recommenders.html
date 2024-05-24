@@ -937,7 +937,7 @@ The different parameters the user can change are:</p>
 We refer to <a class="reference internal" href="campaign.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">campaign</span></code></span></a> for a more general and basic example.</p>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="n">NumericalDiscreteParameter</span><span class="p">,</span> <span class="n">SubstanceParameter</span>
 <span class="kn">from</span> <span class="nn">baybe.recommenders</span> <span class="kn">import</span> <span class="p">(</span>
@@ -959,14 +959,14 @@ We refer to <a class="reference internal" href="campaign.html"><span class="std 
 <p>For the first recommendation, the user can specify which recommender to use.
 The following initial recommenders are available.
 Note that it is necessary to make the corresponding import before using them.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">initial_recommenders</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">initial_recommenders</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;Random&quot;</span><span class="p">,</span>  <span class="c1">#: RandomRecommender(),</span>
     <span class="s2">&quot;Farthest Point Sampling&quot;</span><span class="p">,</span>  <span class="c1"># FPSRecommender(),</span>
     <span class="s2">&quot;KMEANS Clustering&quot;</span><span class="p">,</span>  <span class="c1"># KMeansClusteringRecommender(),</span>
 <span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Per default the initial recommender chosen is a random recommender.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Per default the initial recommender chosen is a random recommender.</span>
 <span class="n">INITIAL_RECOMMENDER</span> <span class="o">=</span> <span class="n">RandomRecommender</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -976,21 +976,13 @@ Note that it is necessary to make the corresponding import before using them.</p
 <p>This model uses available data to model the objective function as well as the
 uncertainty.
 The surrogate model is then used by the acquisition function to make recommendations.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following are the available basic surrogates</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following are the available basic surrogates</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">get_subclasses</span><span class="p">(</span><span class="n">Surrogate</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;class &#39;baybe.surrogates.custom.CustomONNXSurrogate&#39;&gt;, &lt;class
-</pre></div>
-</div>
-<p>‘baybe.surrogates.gaussian_process.core.GaussianProcessSurrogate’&gt;, &lt;class
-‘baybe.surrogates.linear.BayesianLinearSurrogate’&gt;, &lt;class
-‘baybe.surrogates.naive.MeanPredictionSurrogate’&gt;, &lt;class
-‘baybe.surrogates.ngboost.NGBoostSurrogate’&gt;, &lt;class
-‘baybe.surrogates.random_forest.RandomForestSurrogate’&gt;]</p>
 <p>Per default a Gaussian Process is used
 You can change the used kernel by using the optional <code class="docutils literal notranslate"><span class="pre">kernel</span></code> keyword.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SURROGATE_MODEL</span> <span class="o">=</span> <span class="n">GaussianProcessSurrogate</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SURROGATE_MODEL</span> <span class="o">=</span> <span class="n">GaussianProcessSurrogate</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -999,7 +991,7 @@ You can change the used kernel by using the optional <code class="docutils liter
 <p>This function looks for points where measurements of the target value could improve the
 model.
 The following acquisition functions are generally available.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">available_acq_functions</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">available_acq_functions</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;qPI&quot;</span><span class="p">,</span>  <span class="c1"># q-Probability Of Improvement</span>
     <span class="s2">&quot;qEI&quot;</span><span class="p">,</span>  <span class="c1"># q-Expected Improvement</span>
     <span class="s2">&quot;qUCB&quot;</span><span class="p">,</span>  <span class="c1"># q-upper confidence bound with beta of 1.0</span>
@@ -1018,7 +1010,7 @@ The following acquisition functions are generally available.</p>
 That is, ‘q’-variants of the acquisition functions must be chosen.</p></li>
 </ul>
 <p>The default he acquisition function is q-Expected Improvement.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ACQ_FUNCTION</span> <span class="o">=</span> <span class="s2">&quot;qEI&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ACQ_FUNCTION</span> <span class="o">=</span> <span class="s2">&quot;qEI&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -1029,7 +1021,7 @@ The first one allows the recommendation of points that were already recommended
 previously.
 The second one allows the recommendation of points that have already been measured.
 Per default, they are set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ALLOW_REPEATED_RECOMMENDATIONS</span> <span class="o">=</span> <span class="kc">True</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALLOW_REPEATED_RECOMMENDATIONS</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">ALLOW_RECOMMENDING_ALREADY_MEASURED</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
 </div>
@@ -1040,7 +1032,7 @@ Per default, they are set to <code class="docutils literal notranslate"><span cl
 follows.
 Note that they all have default values.
 Therefore one does not need to specify all of them to create a recommender object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">recommender</span> <span class="o">=</span> <span class="n">TwoPhaseMetaRecommender</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">recommender</span> <span class="o">=</span> <span class="n">TwoPhaseMetaRecommender</span><span class="p">(</span>
     <span class="n">initial_recommender</span><span class="o">=</span><span class="n">INITIAL_RECOMMENDER</span><span class="p">,</span>
     <span class="n">recommender</span><span class="o">=</span><span class="n">SequentialGreedyRecommender</span><span class="p">(</span>
         <span class="n">surrogate_model</span><span class="o">=</span><span class="n">SURROGATE_MODEL</span><span class="p">,</span>
@@ -1051,21 +1043,9 @@ Therefore one does not need to specify all of them to create a recommender objec
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">recommender</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">recommender</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>TwoPhaseMetaRecommender(allow_repeated_recommendations=None,
-</pre></div>
-</div>
-<p>allow_recommending_already_measured=None,
-initial_recommender=RandomRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True),
-recommender=SequentialGreedyRecommender(allow_repeated_recommendations=True,
-allow_recommending_already_measured=True,
-surrogate_model=GaussianProcessSurrogate(kernel_factory=DefaultKernelFactory(),
-_model=None), acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
-acquisition_function_cls=None, hybrid_sampler=’None’, sampling_percentage=1.0),
-switch_after=1)</p>
 <p>Note that there are the additional keywords <code class="docutils literal notranslate"><span class="pre">hybrid_sampler</span></code> and <code class="docutils literal notranslate"><span class="pre">sampling_percentag</span></code>.
 Their meaning and how to use and define it are explained in the hybrid backtesting
 example.
@@ -1074,7 +1054,7 @@ We thus refer to <a class="reference internal" href="../Backtesting/hybrid.html"
 <section id="example-searchspace-and-objective-parameters">
 <h2>Example Searchspace and objective parameters<a class="headerlink" href="#example-searchspace-and-objective-parameters" title="Link to this heading">¶</a></h2>
 <p>We use the same data used in the <a class="reference internal" href="campaign.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">campaign</span></code></span></a> example.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;DMAc&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;CC(N(C)C)=O&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Butyornitrile&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;CCCC#N&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Butyl Ester&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;CCCCOC(C)=O&quot;</span><span class="p">,</span>
@@ -1094,7 +1074,7 @@ We thus refer to <a class="reference internal" href="../Backtesting/hybrid.html"
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solvent</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="s2">&quot;Solvent&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_solvent</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solvent</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="s2">&quot;Solvent&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_solvent</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
 <span class="n">base</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="s2">&quot;Base&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_base</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
 <span class="n">ligand</span> <span class="o">=</span> <span class="n">SubstanceParameter</span><span class="p">(</span><span class="s2">&quot;Ligand&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dict_ligand</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;MORDRED&quot;</span><span class="p">)</span>
 <span class="n">temperature</span> <span class="o">=</span> <span class="n">NumericalDiscreteParameter</span><span class="p">(</span>
@@ -1106,14 +1086,14 @@ We thus refer to <a class="reference internal" href="../Backtesting/hybrid.html"
 </pre></div>
 </div>
 <p>We collect all parameters in a list.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">solvent</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">ligand</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">concentration</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">solvent</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">ligand</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">concentration</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We create the searchspace and the objective.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;yield&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;yield&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
@@ -1121,7 +1101,7 @@ We thus refer to <a class="reference internal" href="../Backtesting/hybrid.html"
 <h2>Creating the campaign<a class="headerlink" href="#creating-the-campaign" title="Link to this heading">¶</a></h2>
 <p>The recommender object can now be used together with the searchspace and the objective
 as follows.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
     <span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span>
     <span class="n">recommender</span><span class="o">=</span><span class="n">recommender</span><span class="p">,</span>
     <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span>
@@ -1129,41 +1109,17 @@ as follows.</p>
 </pre></div>
 </div>
 <p>This campaign can then be used to get recommendations and add measurements:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Recommended experiments: &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments: 
-      Solvent                Base                        Ligand  Temperature  \
-340  p-Xylene   Potassium acetate  Di-tert-butylphenylphosphine        120.0   
-365  p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine        105.0   
-77       DMAc      Cesium acetate                 (t-Bu)PhCPhos        105.0   
-
-     Concentration  
-340          0.100  
-365          0.153  
-77           0.153  
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_results</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_results</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Recommended experiments with fake measured values: &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-      Solvent                Base                        Ligand  Temperature  \
-340  p-Xylene   Potassium acetate  Di-tert-butylphenylphosphine        120.0   
-365  p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine        105.0   
-77       DMAc      Cesium acetate                 (t-Bu)PhCPhos        105.0   
-
-     Concentration      yield  
-340          0.100  18.341846  
-365          0.153   1.624557  
-77           0.153  11.414962  
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

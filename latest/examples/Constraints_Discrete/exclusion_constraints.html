@@ -929,10 +929,10 @@ parameter.</p>
 We thus refer to <a class="reference internal" href="../Basics/campaign.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">campaign</span></code></span></a> for a basic example.</p>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.constraints</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">DiscreteExcludeConstraint</span><span class="p">,</span>
     <span class="n">SubSelectionCondition</span><span class="p">,</span>
@@ -953,7 +953,7 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 <section id="experiment-setup">
 <h2>Experiment setup<a class="headerlink" href="#experiment-setup" title="Link to this heading">¶</a></h2>
 <p>We begin by setting up some parameters for our experiments.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_solvent</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span>
     <span class="s2">&quot;C1&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
     <span class="s2">&quot;C2&quot;</span><span class="p">:</span> <span class="s2">&quot;CC&quot;</span><span class="p">,</span>
@@ -977,7 +977,7 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">solvent</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">pressure</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">solvent</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">pressure</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -985,7 +985,7 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 <h2>Creating the constraint<a class="headerlink" href="#creating-the-constraint" title="Link to this heading">¶</a></h2>
 <p>This constraint simulates a situation where solvents <code class="docutils literal notranslate"><span class="pre">C2</span></code> and <code class="docutils literal notranslate"><span class="pre">C4</span></code> are not
 compatible with temperatures larger than 151 and should thus be excluded.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">constraint_1</span> <span class="o">=</span> <span class="n">DiscreteExcludeConstraint</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">constraint_1</span> <span class="o">=</span> <span class="n">DiscreteExcludeConstraint</span><span class="p">(</span>
     <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Temp&quot;</span><span class="p">,</span> <span class="s2">&quot;Solv&quot;</span><span class="p">],</span>
     <span class="n">combiner</span><span class="o">=</span><span class="s2">&quot;AND&quot;</span><span class="p">,</span>
     <span class="n">conditions</span><span class="o">=</span><span class="p">[</span>
@@ -997,7 +997,7 @@ compatible with temperatures larger than 151 and should thus be excluded.</p>
 </div>
 <p>This constraint simulates a situation where solvents <code class="docutils literal notranslate"><span class="pre">C5</span></code> and <code class="docutils literal notranslate"><span class="pre">C6</span></code> are not
 compatible with pressures larger than 5 and should thus be excluded.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">constraint_2</span> <span class="o">=</span> <span class="n">DiscreteExcludeConstraint</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">constraint_2</span> <span class="o">=</span> <span class="n">DiscreteExcludeConstraint</span><span class="p">(</span>
     <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;Solv&quot;</span><span class="p">],</span>
     <span class="n">combiner</span><span class="o">=</span><span class="s2">&quot;AND&quot;</span><span class="p">,</span>
     <span class="n">conditions</span><span class="o">=</span><span class="p">[</span>
@@ -1009,7 +1009,7 @@ compatible with pressures larger than 5 and should thus be excluded.</p>
 </div>
 <p>This constraint simulates a situation where pressures below 3 should never be
 combined with temperatures above 120.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">constraint_3</span> <span class="o">=</span> <span class="n">DiscreteExcludeConstraint</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">constraint_3</span> <span class="o">=</span> <span class="n">DiscreteExcludeConstraint</span><span class="p">(</span>
     <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;Temp&quot;</span><span class="p">],</span>
     <span class="n">combiner</span><span class="o">=</span><span class="s2">&quot;AND&quot;</span><span class="p">,</span>
     <span class="n">conditions</span><span class="o">=</span><span class="p">[</span>
@@ -1023,111 +1023,24 @@ combined with temperatures above 120.</p>
 <section id="creating-the-searchspace-and-the-objective">
 <h2>Creating the searchspace and the objective<a class="headerlink" href="#creating-the-searchspace-and-the-objective" title="Link to this heading">¶</a></h2>
 <p>We now create the searchspace using the previously defined constraints.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span>
     <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">constraint_1</span><span class="p">,</span> <span class="n">constraint_2</span><span class="p">,</span> <span class="n">constraint_3</span><span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_1&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_1&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### Creating and printing the campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### Creating and printing the campaign</span>
 <span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">campaign</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[1mCampaign[0m
-         
- [1mMeta Data[0m
- Batches Done: 0
-</pre></div>
-</div>
-<p>Fits Done: 0</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> [1mSearch Space[0m
-          
-  [1mSearch Space Type: [0mDISCRETE
-  
-  [1mDiscrete Search Space[0m
-               
-   [1mDiscrete Parameters[0m
-          Name                        Type  Num_Values                 Encoding
-   0      Solv          SubstanceParameter           8  SubstanceEncoding.RDKIT
-   1     Speed        CategoricalParameter           5  CategoricalEncoding.INT
-   2      Temp  NumericalDiscreteParameter          15                     None
-   3  Pressure  NumericalDiscreteParameter           4                     None
-               
-   [1mExperimental Representation[0m
-               
-      Solv      Speed        Temp  Pressure
-   0     water  very slow  100.000000       1.0
-   1     water  very slow  100.000000       2.0
-   2     water  very slow  100.000000       5.0
-   ...     ...        ...         ...       ...
-   1147     C6  very fast  185.714286       5.0
-   1148     C6  very fast  192.857143       5.0
-   1149     C6  very fast  200.000000       5.0
-   
-   [1150 rows x 4 columns]
-   
-   [1mMetadata:[0m
-</pre></div>
-</div>
-<p>was_recommended: 0/1150</p>
-<p>was_measured: 0/1150</p>
-<p>dont_recommend: 0/1150</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   [1mConstraints[0m
-                           Type Affected_Parameters
-   0  DiscreteExcludeConstraint        [Temp, Solv]
-   1  DiscreteExcludeConstraint    [Pressure, Solv]
-   2  DiscreteExcludeConstraint    [Pressure, Temp]
-               
-   [1mComputational Representation[0m
-               
-     Solv_RDKIT_MaxAbsEStateIndex  Solv_RDKIT_MaxPartialCharge  ...        Temp
-</pre></div>
-</div>
-<p>Pressure
-0                         0.000000                    -0.411510  …  100.000000
-1.0
-1                         0.000000                    -0.411510  …  100.000000
-2.0
-2                         0.000000                    -0.411510  …  100.000000
-5.0
-…                            …                          …  …         …
-…
-1147                      2.231806                    -0.053579  …  185.714286
-5.0
-1148                      2.231806                    -0.053579  …  192.857143
-5.0
-1149                      2.231806                    -0.053579  …  200.000000
-5.0</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   [1150 rows x 10 columns]
- 
- [1mObjective[0m
-          
-  [1mType: [0mSingleTargetObjective
-          
-  [1mTargets [0m
-                Type      Name Mode  Lower_Bound  Upper_Bound Transformation
-  0  NumericalTarget  Target_1  MAX         -inf          inf           None
- 
- TwoPhaseMetaRecommender(allow_repeated_recommendations=None,
-</pre></div>
-</div>
-<p>allow_recommending_already_measured=None,
-initial_recommender=RandomRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True),
-recommender=SequentialGreedyRecommender(allow_repeated_recommendations=False,
-allow_recommending_already_measured=True,
-surrogate_model=GaussianProcessSurrogate(kernel_factory=DefaultKernelFactory(),
-_model=None), acquisition_function=qExpectedImprovement(), _botorch_acqf=None,
-acquisition_function_cls=None, hybrid_sampler=’None’, sampling_percentage=1.0),
-switch_after=1)</p>
 </section>
 <section id="manual-verification-of-the-constraints">
 <h2>Manual verification of the constraints<a class="headerlink" href="#manual-verification-of-the-constraints" title="Link to this heading">¶</a></h2>
 <p>The following loop performs some iterations and manually verifies the given constraints.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N_ITERATIONS</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N_ITERATIONS</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="k">for</span> <span class="n">kIter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ITERATIONS</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">#### ITERATION </span><span class="si">{</span><span class="n">kIter</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ####&quot;</span><span class="p">)</span>
 
@@ -1161,29 +1074,6 @@ switch_after=1)</p>
     <span class="n">rec</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
     <span class="n">add_fake_results</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span> <span class="n">campaign</span><span class="p">)</span>
     <span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#### ITERATION 1 ####
-## ASSERTS ##
-Number of entries with either Solvents C2 or C4 and a temperature above 151:  0
-Number of entries with either Solvents C5 or C6 and a pressure above 5:       0
-Number of entries with pressure below 3 and temperature above 120:            0
-
-
-#### ITERATION 2 ####
-## ASSERTS ##
-Number of entries with either Solvents C2 or C4 and a temperature above 151:  0
-Number of entries with either Solvents C5 or C6 and a pressure above 5:       0
-Number of entries with pressure below 3 and temperature above 120:            0
-
-
-
-
-#### ITERATION 3 ####
-## ASSERTS ##
-Number of entries with either Solvents C2 or C4 and a temperature above 151:  0
-Number of entries with either Solvents C5 or C6 and a pressure above 5:       0
-Number of entries with pressure below 3 and temperature above 120:            0
 </pre></div>
 </div>
 </section>

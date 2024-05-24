@@ -928,15 +928,15 @@ Please note that the model is not designed to be useful but to demonstrate the w
 We thus refer to <a class="reference internal" href="../Basics/campaign.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">campaign</span></code></span></a> for a basic example.</p>
 <section id="necessary-imports">
 <h2>Necessary imports<a class="headerlink" href="#necessary-imports" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">nn</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe.campaign</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe.campaign</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.objectives</span> <span class="kn">import</span> <span class="n">SingleTargetObjective</span>
 <span class="kn">from</span> <span class="nn">baybe.parameters</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">CategoricalParameter</span><span class="p">,</span>
@@ -960,14 +960,14 @@ We thus refer to <a class="reference internal" href="../Basics/campaign.html"><s
 <p>Note that the following is an example <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code> Neural Network.
 Details of the setup is not the focus of BayBE but can be found in <code class="docutils literal notranslate"><span class="pre">Pytorch</span></code> guides.</p>
 <p>Model Configuration</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT_DIM</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT_DIM</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">OUTPUT_DIM</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">DROPOUT</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">NUM_NEURONS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Model training hyperparameters</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HYPERPARAMS</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HYPERPARAMS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;epochs&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
     <span class="s2">&quot;lr&quot;</span><span class="p">:</span> <span class="mf">1e-3</span><span class="p">,</span>
     <span class="s2">&quot;criterion&quot;</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">,</span>
@@ -976,16 +976,16 @@ Details of the setup is not the focus of BayBE but can be found in <code class="
 </pre></div>
 </div>
 <p>MC Parameters</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MC</span> <span class="o">=</span> <span class="mi">100</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MC</span> <span class="o">=</span> <span class="mi">100</span>
 </pre></div>
 </div>
 <p>Helper functions</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_create_linear_block</span><span class="p">(</span><span class="n">in_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">out_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_create_linear_block</span><span class="p">(</span><span class="n">in_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">out_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a linear block with dropout and relu activation.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="p">,</span> <span class="n">out_features</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">DROPOUT</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_create_hidden_layers</span><span class="p">(</span><span class="n">num_neurons</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_create_hidden_layers</span><span class="p">(</span><span class="n">num_neurons</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create all hidden layers comprised of linear blocks.&quot;&quot;&quot;</span>
     <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">in_features</span><span class="p">,</span> <span class="n">out_features</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">num_neurons</span><span class="p">,</span> <span class="n">num_neurons</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
@@ -995,7 +995,7 @@ Details of the setup is not the focus of BayBE but can be found in <code class="
 </pre></div>
 </div>
 <p>Model Architecture</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NeuralNetDropout</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NeuralNetDropout</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Pytorch implementation of Neural Network with Dropout.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1022,7 +1022,7 @@ Details of the setup is not the focus of BayBE but can be found in <code class="
 <h2>Surrogate Definition with BayBE Registration<a class="headerlink" href="#surrogate-definition-with-baybe-registration" title="Link to this heading">¶</a></h2>
 <p>The class must include <code class="docutils literal notranslate"><span class="pre">_fit</span></code> and <code class="docutils literal notranslate"><span class="pre">_posterior</span></code> functions with the correct signatures</p>
 <p>Registration</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@register_custom_architecture</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@register_custom_architecture</span><span class="p">(</span>
     <span class="n">joint_posterior_attr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">constant_target_catching</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">batchify_posterior</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="k">class</span> <span class="nc">NeuralNetDropoutSurrogate</span><span class="p">:</span>
@@ -1072,7 +1072,7 @@ Details of the setup is not the focus of BayBE but can be found in <code class="
 </section>
 <section id="experiment-setup">
 <h2>Experiment Setup<a class="headerlink" href="#experiment-setup" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">CategoricalParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Granularity&quot;</span><span class="p">,</span>
         <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;coarse&quot;</span><span class="p">,</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span> <span class="s2">&quot;fine&quot;</span><span class="p">],</span>
@@ -1104,7 +1104,7 @@ Details of the setup is not the focus of BayBE but can be found in <code class="
 <section id="run-doe-iterations-with-custom-surrogate">
 <h2>Run DOE iterations with custom surrogate<a class="headerlink" href="#run-doe-iterations-with-custom-surrogate" title="Link to this heading">¶</a></h2>
 <p>Create campaign</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
     <span class="n">searchspace</span><span class="o">=</span><span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
     <span class="n">objective</span><span class="o">=</span><span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Yield&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">)),</span>
     <span class="n">recommender</span><span class="o">=</span><span class="n">TwoPhaseMetaRecommender</span><span class="p">(</span>
@@ -1116,58 +1116,41 @@ Details of the setup is not the focus of BayBE but can be found in <code class="
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s do a first round of recommendation</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s do a first round of recommendation</span>
 <span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recommendation from campaign:&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recommendation from campaign:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommendation from campaign:
-    Granularity  Pressure[bar]  Temperature[degree_C]    Solvent
-2        coarse            1.0                  100.0  Solvent C
-239      medium           10.0                  200.0  Solvent D
-</pre></div>
-</div>
 <p>Add some fake results</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_results</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_results</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="p">)</span>
 <span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do another round of recommendations</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do another round of recommendations</span>
 <span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Print second round of recommendations</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recommendation from campaign:&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recommendation from campaign:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommendation from campaign:
-      Granularity  Pressure[bar]  Temperature[degree_C]    Solvent
-index                                                             
-0          coarse            1.0                  100.0  Solvent A
-1          coarse            1.0                  100.0  Solvent B
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="serialization">
 <h2>Serialization<a class="headerlink" href="#serialization" title="Link to this heading">¶</a></h2>
 <p>Serialization of custom models is not supported</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">campaign</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Serialization Error Message: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Serialization Error Message: Serializing objects of type
-</pre></div>
-</div>
-<p>‘CustomArchitectureSurrogate’ is not supported.</p>
 </section>
 </section>
 

@@ -933,11 +933,11 @@ We thus refer to <a class="reference internal" href="../Searchspaces/discrete_sp
 details on this aspect.</p>
 <section id="necessary-imports-for-this-example">
 <h2>Necessary imports for this example<a class="headerlink" href="#necessary-imports-for-this-example" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">botorch.test_functions</span> <span class="kn">import</span> <span class="n">Rastrigin</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">baybe</span> <span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span> <span class="nn">baybe.constraints</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">ContinuousLinearEqualityConstraint</span><span class="p">,</span>
     <span class="n">DiscreteSumConstraint</span><span class="p">,</span>
@@ -954,24 +954,24 @@ details on this aspect.</p>
 <section id="defining-the-test-function">
 <h2>Defining the test function<a class="headerlink" href="#defining-the-test-function" title="Link to this heading">¶</a></h2>
 <p>See <a class="reference internal" href="../Searchspaces/discrete_space.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">discrete_space</span></code></span></a> for details.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSION</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">TestFunctionClass</span> <span class="o">=</span> <span class="n">Rastrigin</span>
 </pre></div>
 </div>
 <p>Specify a numerical stride for discrete parameters.
 If you make it too small, it will make calculations expensive.
 If you make it too large, constraints might not be satisfied anywhere.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">STRIDE</span> <span class="o">=</span> <span class="mf">1.0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STRIDE</span> <span class="o">=</span> <span class="mf">1.0</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">TestFunctionClass</span><span class="p">,</span> <span class="s2">&quot;dim&quot;</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">TestFunctionClass</span><span class="p">,</span> <span class="s2">&quot;dim&quot;</span><span class="p">):</span>
     <span class="n">TestFunction</span> <span class="o">=</span> <span class="n">TestFunctionClass</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">DIMENSION</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">TestFunction</span> <span class="o">=</span> <span class="n">TestFunctionClass</span><span class="p">()</span>
     <span class="n">DIMENSION</span> <span class="o">=</span> <span class="n">TestFunctionClass</span><span class="p">()</span><span class="o">.</span><span class="n">dim</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BOUNDS</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="o">.</span><span class="n">bounds</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BOUNDS</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="o">.</span><span class="n">bounds</span>
 <span class="n">WRAPPED_FUNCTION</span> <span class="o">=</span> <span class="n">botorch_function_wrapper</span><span class="p">(</span><span class="n">test_function</span><span class="o">=</span><span class="n">TestFunction</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -980,7 +980,7 @@ If you make it too large, constraints might not be satisfied anywhere.</p>
 <h2>Creating the searchspace and the objective<a class="headerlink" href="#creating-the-searchspace-and-the-objective" title="Link to this heading">¶</a></h2>
 <p>Since the searchspace is continuous, we construct <code class="docutils literal notranslate"><span class="pre">NumericalContinuousParameter</span></code>.
 We use the data of the test function to deduce bounds and number of parameters.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NumericalDiscreteParameter</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;x_</span><span class="si">{</span><span class="n">k</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span>
@@ -1002,7 +1002,7 @@ We use the data of the test function to deduce bounds and number of parameters.<
 <p>We model the following constraints:
 <code class="docutils literal notranslate"><span class="pre">1.0*x_1</span> <span class="pre">+</span> <span class="pre">1.0*x_2</span> <span class="pre">=</span> <span class="pre">1.0</span></code>
 <code class="docutils literal notranslate"><span class="pre">1.0*x_3</span> <span class="pre">-</span> <span class="pre">1.0*x_4</span> <span class="pre">=</span> <span class="pre">2.0</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">DiscreteSumConstraint</span><span class="p">(</span>
         <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x_1&quot;</span><span class="p">,</span> <span class="s2">&quot;x_2&quot;</span><span class="p">],</span>
         <span class="n">condition</span><span class="o">=</span><span class="n">ThresholdCondition</span><span class="p">(</span>
@@ -1015,24 +1015,24 @@ We use the data of the test function to deduce bounds and number of parameters.<
 <span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">searchspace</span> <span class="o">=</span> <span class="n">SearchSpace</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
 <span class="n">objective</span> <span class="o">=</span> <span class="n">SingleTargetObjective</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">NumericalTarget</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;MIN&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
 <section id="construct-the-campaign-and-run-some-iterations">
 <h2>Construct the campaign and run some iterations<a class="headerlink" href="#construct-the-campaign-and-run-some-iterations" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span>
     <span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span>
     <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">N_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ITERATIONS</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ITERATIONS</span><span class="p">):</span>
     <span class="n">recommendation</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
 
     <span class="c1"># target value are looked up via the botorch wrapper</span>
@@ -1045,13 +1045,13 @@ We use the data of the test function to deduce bounds and number of parameters.<
     <span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### Verify the constraints</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### Verify the constraints</span>
 <span class="n">measurements</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">measurements</span>
 <span class="n">TOLERANCE</span> <span class="o">=</span> <span class="mf">0.01</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">1.0*x_1</span> <span class="pre">+</span> <span class="pre">1.0*x_2</span> <span class="pre">=</span> <span class="pre">1.0</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
     <span class="s2">&quot;1.0*x_1 + 1.0*x_2 = 1.0 satisfied in all recommendations? &quot;</span><span class="p">,</span>
     <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span>
         <span class="mf">1.0</span> <span class="o">*</span> <span class="n">measurements</span><span class="p">[</span><span class="s2">&quot;x_1&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">measurements</span><span class="p">[</span><span class="s2">&quot;x_2&quot;</span><span class="p">],</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">TOLERANCE</span>
@@ -1059,19 +1059,13 @@ We use the data of the test function to deduce bounds and number of parameters.<
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.0*x_1 + 1.0*x_2 = 1.0 satisfied in all recommendations?  True
-</pre></div>
-</div>
 <p><code class="docutils literal notranslate"><span class="pre">1.0*x_3</span> <span class="pre">-</span> <span class="pre">1.0*x_4</span> <span class="pre">=</span> <span class="pre">2.0</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
     <span class="s2">&quot;1.0*x_3 - 1.0*x_4 = 2.0 satisfied in all recommendations? &quot;</span><span class="p">,</span>
     <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span>
         <span class="mf">1.0</span> <span class="o">*</span> <span class="n">measurements</span><span class="p">[</span><span class="s2">&quot;x_3&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">measurements</span><span class="p">[</span><span class="s2">&quot;x_4&quot;</span><span class="p">],</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">TOLERANCE</span>
     <span class="p">),</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.0*x_3 - 1.0*x_4 = 2.0 satisfied in all recommendations?  True
 </pre></div>
 </div>
 </section>
