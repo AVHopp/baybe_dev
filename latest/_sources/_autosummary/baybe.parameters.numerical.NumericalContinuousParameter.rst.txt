@@ -30,6 +30,8 @@ NumericalContinuousParameter
 
    .. autosummary::
    
+      ~NumericalContinuousParameter.is_continuous
+      ~NumericalContinuousParameter.is_discrete
       ~NumericalContinuousParameter.is_numeric
       ~NumericalContinuousParameter.bounds
       ~NumericalContinuousParameter.name

@@ -32,6 +32,8 @@ SubstanceParameter
    .. autosummary::
    
       ~SubstanceParameter.comp_df
+      ~SubstanceParameter.is_continuous
+      ~SubstanceParameter.is_discrete
       ~SubstanceParameter.is_numeric
       ~SubstanceParameter.values
       ~SubstanceParameter.data

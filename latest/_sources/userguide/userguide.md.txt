@@ -3,7 +3,8 @@
 ```{toctree}
 Campaigns <campaigns>
 Constraints <constraints>
-Objective <objective>
+Environment Vars <envvars>
+Objectives <objectives>
 Parameters <parameters>
 Recommenders <recommenders>
 Search Spaces <searchspace>

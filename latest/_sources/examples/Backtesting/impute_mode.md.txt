@@ -134,7 +134,7 @@ objective = SingleTargetObjective(target=NumericalTarget(name="yield", mode="MAX
     ________________________________________________________________________________
     [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
     _smiles_to_mordred_features('P(C1CCCCC1)(C2CCCCC2)C3CCCCC3')
-    _______________________________________smiles_to_mordred_features - 0.1s, 0.0min
+    _______________________________________smiles_to_mordred_features - 0.2s, 0.0min
     ________________________________________________________________________________
     [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
     _smiles_to_mordred_features('P(C1=CC=CC=C1)(C2=CC=CC=C2)C3=CC=CC=C3')
@@ -145,9 +145,9 @@ objective = SingleTargetObjective(target=NumericalTarget(name="yield", mode="MAX
     [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
     _smiles_to_mordred_features('CC(C1=C(C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4)C(C(C)C)=CC(C(C)
 C)=C1)C')
+    _______________________________________smiles_to_mordred_features - 0.2s, 0.0min
 
 
-    _______________________________________smiles_to_mordred_features - 0.3s, 0.0min
     ________________________________________________________________________________
     [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
     _smiles_to_mordred_features('P(C1=CC=CO1)(C2=CC=CO2)C3=CC=CO3')

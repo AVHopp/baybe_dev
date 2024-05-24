@@ -32,6 +32,8 @@ NumericalDiscreteParameter
    .. autosummary::
    
       ~NumericalDiscreteParameter.comp_df
+      ~NumericalDiscreteParameter.is_continuous
+      ~NumericalDiscreteParameter.is_discrete
       ~NumericalDiscreteParameter.is_numeric
       ~NumericalDiscreteParameter.values
       ~NumericalDiscreteParameter.tolerance

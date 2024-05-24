@@ -19,7 +19,14 @@ baybe.kernels.basic
       :toctree:                                       
       :template: custom-class-template.rst              
    
+      LinearKernel
       MaternKernel
+      PeriodicKernel
+      PiecewisePolynomialKernel
+      PolynomialKernel
+      RBFKernel
+      RFFKernel
+      RQKernel
    
    
 

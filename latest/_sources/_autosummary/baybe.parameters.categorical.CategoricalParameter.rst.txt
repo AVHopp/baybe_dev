@@ -32,6 +32,8 @@ CategoricalParameter
    .. autosummary::
    
       ~CategoricalParameter.comp_df
+      ~CategoricalParameter.is_continuous
+      ~CategoricalParameter.is_discrete
       ~CategoricalParameter.is_numeric
       ~CategoricalParameter.values
       ~CategoricalParameter.encoding

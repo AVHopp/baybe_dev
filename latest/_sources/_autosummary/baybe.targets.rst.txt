@@ -31,7 +31,6 @@ baybe.targets
 
    baybe.targets.base
 
-
    baybe.targets.enum
 
    baybe.targets.numerical

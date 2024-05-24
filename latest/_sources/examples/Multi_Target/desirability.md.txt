@@ -266,23 +266,23 @@ for kIter in range(N_ITERATIONS):
     
     Recommended measurements:
          Cat_1      Cat_2  Num_disc_1  Num_disc_2
-    278    33  very good        10.0        -3.0
-    45     22        bad         6.0        -6.0
-    109    22       good        10.0        -6.0
+    6      22   very bad         2.0        -3.0
+    126    22  very good         4.0        -3.0
+    223    33         OK        10.0        -1.0
     
     Recommended measurements with fake measured results:
          Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-    278    33  very good        10.0        -3.0  75.859584  24.809832  55.888985
-    45     22        bad         6.0        -6.0  91.338099  90.829138  51.433334
-    109    22       good        10.0        -6.0  91.172517  66.251468  55.243113
+    6      22   very bad         2.0        -3.0  27.150542   9.799181  56.789624
+    126    22  very good         4.0        -3.0  85.424899  86.027449  54.467623
+    223    33         OK        10.0        -1.0  52.061724  96.840935  56.057570
     
     
     Internal measurement dataframe computational representation Y:
     
        Desirability
-    0      0.601963
-    1      0.776864
-    2      0.596080
+    0      0.473341
+    1      0.601312
+    2      0.398466
     
     
     #### ITERATION 2 ####
@@ -290,60 +290,72 @@ for kIter in range(N_ITERATIONS):
 
     
     Recommended measurements:
-           Cat_1     Cat_2  Num_disc_1  Num_disc_2
-    index                                        
-    17       22  very bad         6.0        -6.0
-    41       22       bad         4.0        -6.0
-    49       22       bad         8.0        -6.0
+           Cat_1      Cat_2  Num_disc_1  Num_disc_2
+    index                                         
+    118      22  very good         2.0        -3.0
+    127      22  very good         4.0        -1.0
+    130      22  very good         6.0        -3.0
     
     Recommended measurements with fake measured results:
-           Cat_1     Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-    index                                                                         
-    17       22  very bad         6.0        -6.0  39.228586  81.036380  51.564396
-    41       22       bad         4.0        -6.0  39.467336  85.823014  55.430510
-    49       22       bad         8.0        -6.0  79.531973  63.732578  53.715096
+           Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
+    index                                                                  
+    118      22  very good         2.0        -3.0  66.157514  64.794910   
+    127      22  very good         4.0        -1.0  80.253452   8.185032   
+    130      22  very good         6.0        -3.0  72.589980  31.659413   
+    
+            Target_3  
+    index             
+    118    53.447130  
+    127    56.719506  
+    130    54.615843  
     
     
     Internal measurement dataframe computational representation Y:
     
        Desirability
-    0      0.601963
-    1      0.776864
-    2      0.596080
-    3      0.687724
-    4      0.439949
-    5      0.686869
+    0      0.473341
+    1      0.601312
+    2      0.398466
+    3      0.675810
+    4      0.587339
+    5      0.673684
     
     
     #### ITERATION 3 ####
     
     Recommended measurements:
-           Cat_1     Cat_2  Num_disc_1  Num_disc_2
-    index                                        
-    21       22  very bad         8.0        -6.0
-    53       22       bad        10.0        -6.0
-    73       22        OK         6.0        -6.0
+           Cat_1      Cat_2  Num_disc_1  Num_disc_2
+    index                                         
+    112      22  very good         1.0        -9.0
+    136      22  very good        10.0        -9.0
+    252      33  very good         1.0        -9.0
     
     Recommended measurements with fake measured results:
-           Cat_1     Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-    index                                                                         
-    21       22  very bad         8.0        -6.0  77.844217  44.519644  51.317285
-    53       22       bad        10.0        -6.0  45.123404  20.693968  52.889473
-    73       22        OK         6.0        -6.0  26.633739  37.070434  52.199857
+           Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
+    index                                                                  
+    112      22  very good         1.0        -9.0  78.043248  92.327953   
+    136      22  very good        10.0        -9.0   2.866336  53.289421   
+    252      33  very good         1.0        -9.0  99.543032  43.856867   
+    
+            Target_3  
+    index             
+    112    55.927149  
+    136    54.816142  
+    252    55.739401  
     
     
     Internal measurement dataframe computational representation Y:
     
        Desirability
-    0      0.601963
-    1      0.776864
-    2      0.596080
-    3      0.687724
-    4      0.439949
-    5      0.686869
-    6      0.846183
-    7      0.756588
-    8      0.723776
+    0      0.473341
+    1      0.601312
+    2      0.398466
+    3      0.675810
+    4      0.587339
+    5      0.673684
+    6      0.468602
+    7      0.476448
+    8      0.621851
 
 
 ## Addendum: Description of `transformation` functions

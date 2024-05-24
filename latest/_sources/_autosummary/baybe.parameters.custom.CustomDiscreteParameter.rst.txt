@@ -32,6 +32,8 @@ CustomDiscreteParameter
    .. autosummary::
    
       ~CustomDiscreteParameter.comp_df
+      ~CustomDiscreteParameter.is_continuous
+      ~CustomDiscreteParameter.is_discrete
       ~CustomDiscreteParameter.is_numeric
       ~CustomDiscreteParameter.values
       ~CustomDiscreteParameter.data

@@ -27,6 +27,7 @@ baybe.searchspace.discrete
       :toctree:                                       
       :template: custom-class-template.rst              
    
+      MemorySize
       SubspaceDiscrete
    
    

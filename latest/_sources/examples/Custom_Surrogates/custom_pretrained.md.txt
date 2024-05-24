@@ -505,7 +505,7 @@ class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control s
 --visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-
 id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow
 fitted">&nbsp;&nbsp;BayesianRidge<a class="sk-estimator-doc-link fitted"
-rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sk
+rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sk
 learn.linear_model.BayesianRidge.html">?<span>Documentation for
 BayesianRidge</span></a><span class="sk-estimator-doc-link
 fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content

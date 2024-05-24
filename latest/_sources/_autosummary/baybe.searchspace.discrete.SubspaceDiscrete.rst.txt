@@ -16,6 +16,7 @@ SubspaceDiscrete
    
       ~SubspaceDiscrete.__init__
       ~SubspaceDiscrete.empty
+      ~SubspaceDiscrete.estimate_product_space_size
       ~SubspaceDiscrete.from_dataframe
       ~SubspaceDiscrete.from_dict
       ~SubspaceDiscrete.from_json

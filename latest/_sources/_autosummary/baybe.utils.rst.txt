@@ -43,9 +43,13 @@ baybe.utils
 
    baybe.utils.interval
 
+   baybe.utils.memory
+
    baybe.utils.numerical
 
    baybe.utils.plotting
+
+   baybe.utils.random
 
    baybe.utils.sampling_algorithms
 

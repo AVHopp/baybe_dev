@@ -30,6 +30,8 @@ ContinuousParameter
 
    .. autosummary::
    
+      ~ContinuousParameter.is_continuous
+      ~ContinuousParameter.is_discrete
       ~ContinuousParameter.is_numeric
       ~ContinuousParameter.name
    

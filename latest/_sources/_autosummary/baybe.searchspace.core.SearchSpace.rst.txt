@@ -15,6 +15,7 @@ SearchSpace
    .. autosummary::
    
       ~SearchSpace.__init__
+      ~SearchSpace.estimate_product_space_size
       ~SearchSpace.from_dataframe
       ~SearchSpace.from_dict
       ~SearchSpace.from_json

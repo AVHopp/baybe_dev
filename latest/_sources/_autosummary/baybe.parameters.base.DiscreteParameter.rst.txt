@@ -32,6 +32,8 @@ DiscreteParameter
    .. autosummary::
    
       ~DiscreteParameter.comp_df
+      ~DiscreteParameter.is_continuous
+      ~DiscreteParameter.is_discrete
       ~DiscreteParameter.values
       ~DiscreteParameter.encoding
       ~DiscreteParameter.is_numeric
