@@ -37,10 +37,10 @@ jobs:
         run: |
           if ${{ github.event_name == 'workflow_dispatch'}}; then
             echo "Triggered by workflow_dispatch"
-            echo "FOLDER=latest" >> $GITHUB_ENV
+            FOLDER='latest'
           else
             echo "Triggered by release"
-            "FOLDER=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+            FOLDER=${{github.event.release.tag_name}}$
           fi
           echo "$FOLDER"
       - name: Install tox
