@@ -34,6 +34,7 @@ License <misc/license_link>
 
 User Guide <userguide/userguide>
 Examples <examples/examples>
+Versions <versions/versions>
 ```
 
 # Indices and Tables
