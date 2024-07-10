@@ -77,4 +77,5 @@ jobs:
             folder_names=$(find . -maxdepth 1 -type d -regex '\./[0-9].*')
             python insert_banner.py "$folder_names"
             git add .
+            git commit -m "Add announcement banner to old version"
             git push origin gh-pages
