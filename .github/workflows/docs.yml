@@ -73,4 +73,8 @@ jobs:
             ln -sf $FOLDER stable
             git add stable
             git commit --allow-empty -m "redirect stable to new version $FOLDER"
+            echo "Inserting announcement banner to old documentation"
+            folder_names=$(find . -maxdepth 1 -type d -regex '\./[0-9].*')
+            python insert_banner.py "$folder_names"
+            git add .
             git push origin gh-pages
