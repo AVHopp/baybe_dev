@@ -4,17 +4,6 @@ on:
   release:
     types:
       - published
-  workflow_dispatch:
-    inputs:
-      force:
-        description: 'Force'
-        default: false
-        required: false
-        type: boolean
-      tag:
-        description: 'Specify tag (empty builds branch HEAD)'
-        required: false
-        default: ''
 
 concurrency:
   group: ${{ github.workflow }}
@@ -30,39 +19,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.tag || github.ref }}
+          ref: ${{ github.ref }}
       - uses: actions/setup-python@v5
         with: {python-version: "3.10"}
       - name: Install tox
         run: pip install tox-uv
-      - name: Build Docs ${{ inputs.force == true && '(Force)' || '' }}
-        run: tox -e docs-py310 ${{ inputs.force == true && '-- -f -r' || '-- -r' }}
+      - name: Build Docs
+        run: tox -e docs-py310 -- -r
       - name: Prepare gh-pages branch with HTML output from Sphinx
         run: |
             git fetch origin gh-pages:gh-pages
             git checkout gh-pages
-            if ${{ github.event_name == 'workflow_dispatch'}}; then
-              echo "Triggered by workflow_dispatch"
-              FOLDER='latest'
-            else
-              echo "Triggered by release"
-              FOLDER=${{github.event.release.tag_name}}
-            fi
-            echo "$FOLDER"
-            if [ -d $FOLDER ]; then
-              rm -rf ./$FOLDER
-            fi
+            FOLDER=${{github.event.release.tag_name}}
             mkdir ./$FOLDER
             cp -rv docs/build/* ./$FOLDER
       - name: Update gh-pages branch
         run: |
-            if ${{ github.event_name == 'workflow_dispatch'}}; then
-              echo "Triggered by workflow_dispatch"
-              FOLDER='latest'
-            else
-              echo "Triggered by release"
-              FOLDER=${{github.event.release.tag_name}}
-            fi
             git config --local user.email "sphinx-upload[bot]@users.noreply.github.com"
             git config --local user.name "sphinx-upload[bot]"
             git_hash=$(git rev-parse --short "$GITHUB_SHA")
@@ -73,9 +45,8 @@ jobs:
             ln -sf $FOLDER stable
             git add stable
             git commit --allow-empty -m "redirect stable to new version $FOLDER"
-            echo "Inserting announcement banner to old documentation"
-            folder_names=$(find . -maxdepth 1 -type d -regex '\./[0-9].*')
-            python insert_banner.py "$folder_names"
+            echo "Inserting announcement banner to documentation"
+            python insert_banner.py "$FOLDER"
             git add .
             git commit -m "Add announcement banner to old version"
             git push origin gh-pages
