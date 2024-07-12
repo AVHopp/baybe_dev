@@ -35,6 +35,7 @@ jobs:
             cp -rv docs/build/* ./$FOLDER
       - name: Update gh-pages branch
         run: |
+            FOLDER=${{github.event.release.tag_name}}
             git config --local user.email "sphinx-upload[bot]@users.noreply.github.com"
             git config --local user.name "sphinx-upload[bot]"
             git_hash=$(git rev-parse --short "$GITHUB_SHA")
