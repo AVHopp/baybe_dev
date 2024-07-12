@@ -43,6 +43,8 @@ Besides functionality to perform a typical recommend-measure loop, BayBE's highl
 
 ## ⚡ Quick Start
 
+This is just a small test to have a change.
+
 Let us consider a simple experiment where we control three parameters and want to
 maximize a single target called `Yield`.
 
