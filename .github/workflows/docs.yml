@@ -46,7 +46,7 @@ jobs:
             git add stable
             git commit --allow-empty -m "redirect stable to new version $FOLDER"
             echo "Inserting announcement banner to documentation"
-            python insert_banner.py "$FOLDER"
+            python insert_banner.py $FOLDER
             git add .
             git commit -m "Add announcement banner to old version"
             git push origin gh-pages
