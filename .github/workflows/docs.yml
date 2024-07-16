@@ -33,6 +33,9 @@ jobs:
             FOLDER=${{github.event.release.tag_name}}
             mkdir ./$FOLDER
             cp -rv docs/build/* ./$FOLDER
+            if [ -d "stable" ]; then
+              rm -r stable
+            cp -rv docs/build/* ./stable
       - name: Update gh-pages branch
         run: |
             FOLDER=${{github.event.release.tag_name}}
@@ -40,11 +43,10 @@ jobs:
             git config --local user.name "sphinx-upload[bot]"
             git_hash=$(git rev-parse --short "$GITHUB_SHA")
             git add -f $FOLDER
-            git commit --allow-empty -m "Sphinx documentation for ${git_hash}"
-            echo "Redirecting stable to newly released version"
-            ln -nsf $FOLDER stable
-            git add stable
-            git commit --allow-empty -m "redirect stable to new version $FOLDER"
+            git commit --allow-empty -m "Sphinx documentation for ${git_hash} (version)"
+            echo "Adding stable as a separate folder"
+            git add -f stable
+            git commit -m "Sphinx documentation for ${git_hash} (stable)"
             echo "Inserting announcement banner to documentation"
             python add_version.py $FOLDER
             git add .
