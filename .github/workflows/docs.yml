@@ -47,8 +47,9 @@ jobs:
             echo "Adding stable as a separate folder"
             git add -f stable
             git commit -m "Sphinx documentation for ${git_hash} (stable)"
-            echo "Inserting announcement banner to documentation"
+            echo "Inserting announcement banner to documentation and add link for selector"
             python add_version.py $FOLDER
+            python insert_banner.py $FOLDER
             git add .
-            git commit -m "Add link to version to selector page"
+            git commit -m "Add link to version to selector page and add banner"
             git push origin gh-pages
