@@ -33,9 +33,13 @@ jobs:
             FOLDER=${{github.event.release.tag_name}}
             mkdir ./$FOLDER
             cp -rv docs/build/* ./$FOLDER
+            echo "Successfully copied into ${FOLDER}"
             if [ -d "stable" ]; then
-              rm -r stable
+              echo "Deleting old stable folder"
+              rm -rf stable
+            echo "Copying files into stable folder"
             cp -rv docs/build/* ./stable
+            echo "Successfully copied into stable folder"
       - name: Update gh-pages branch
         run: |
             FOLDER=${{github.event.release.tag_name}}
