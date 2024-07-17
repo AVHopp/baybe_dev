@@ -58,7 +58,7 @@ jobs:
             git config --local user.name "sphinx-upload[bot]"
             git_hash=$(git rev-parse --short "$GITHUB_SHA")
             git add -f latest
-            python insert_banner.py $FOLDER
+            python insert_banner.py latest
             git commit --allow-empty -m "Sphinx documentation for ${git_hash}"
             if ${{ github.event_name == 'release' }}; then
               FOLDER=${{github.event.release.tag_name}}
