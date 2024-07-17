@@ -38,6 +38,7 @@ jobs:
               echo "Deleting old stable folder"
               rm -rf stable
             echo "Copying files into stable folder"
+            mkdir ./stable
             cp -rv docs/build/* ./stable
             echo "Successfully copied into stable folder"
       - name: Update gh-pages branch
