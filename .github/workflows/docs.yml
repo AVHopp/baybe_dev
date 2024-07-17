@@ -34,7 +34,7 @@ jobs:
         run: |
             git fetch origin gh-pages:gh-pages
             git checkout gh-pages
-            if [-d "latest" ]; then
+            if [ -d "latest" ]; then
               rm -rf latest
             fi
             mkdir ./latest
