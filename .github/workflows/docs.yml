@@ -32,11 +32,14 @@ jobs:
             git checkout gh-pages
             FOLDER=${{github.event.release.tag_name}}
             mkdir ./$FOLDER
-            cp -rv docs/build/* ./$FOLDER
+            cp -r docs/build/* ./$FOLDER
             echo "Successfully copied into ${FOLDER}"
             if [ -d "stable" ]; then
-              echo "Deleting old stable folder"
+              echo "Deleting old stable folder."
               rm -rf stable
+            else
+              echo "No old stable folder was found."
+            fi
             echo "Copying files into stable folder"
             mkdir ./stable
             cp -rv docs/build/* ./stable
