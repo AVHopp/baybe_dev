@@ -69,6 +69,7 @@ jobs:
               echo "Inserting announcement banner to documentation and add link for selector"
               python add_version.py $FOLDER
               python insert_banner.py $FOLDER
+              python insert_banner.py stable
               git add .
               git commit -m "Add link to version to selector page and add banner"
             fi
