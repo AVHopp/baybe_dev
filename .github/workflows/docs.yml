@@ -52,6 +52,10 @@ jobs:
               cp -rv docs/build/* ./stable
               echo "Successfully copied into stable folder"
               echo "Copying README of stable s.t. it is displayed on github"
+              if [ -d ".github" ]; then
+                rm -rf .github
+              fi
+              mkdir .github
               cp stable/README .github/README.md
             fi
       - name: Update gh-pages branch
