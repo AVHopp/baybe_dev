@@ -29,8 +29,11 @@ def add_version_to_selector_page(version: str) -> None:
         f.writelines(modified_lines)
 
 
-def adjust_version_in_sidebar(version: str) -> None:
-    """Adjust the shown version in the sidebar.
+def adjust_version_to_html(version: str) -> None:
+    """Adjust the shown version in the HTML files.
+
+    This method includes the current version in the sidebar of all HTML files and
+    additionally adds a banner warning when the documentation is not ``stable``.
 
     Args:
         version: The version that should be injected into the sidebar.
@@ -43,6 +46,17 @@ def adjust_version_in_sidebar(version: str) -> None:
     new_line = (
         f'{prefix}<a class="reference external" href="{link}">V: {version}</a></li>'
     )
+    # The content of the announcement that might be added.
+    announcement = "You are not viewing the documentation of the stable version."
+    # Actual HTML code that will be inserted
+    announcement_html = (
+        """<div class="announcement">\n"""
+        """    <aside class="announcement-content">\n"""
+        f"""        {announcement}\n"""
+        """    </aside>\n"""
+        """</div>\n"""
+    )
+    add_announcement = version != "stable"
     path = Path(version)
     if path.exists():
         # Recursively check all HTML files
@@ -51,6 +65,11 @@ def adjust_version_in_sidebar(version: str) -> None:
             with file.open(mode="r") as f:
                 lines = f.readlines()
                 for line in lines:
+                    # Check if we need to add the announcement
+                    if add_announcement:
+                        # Add announcement at correct position
+                        if line.strip() == '<div class="page">':
+                            modified_lines.insert(-2, announcement_html)
                     if line.strip() == line_to_replace:
                         modified_lines.append(new_line)
                     else:
@@ -65,8 +84,8 @@ if __name__ == "__main__":
     if chosen_method == "selector_page":
         print(f"Adding {version=} to version selector page")
         add_version_to_selector_page(version)
-    elif chosen_method == "sidebar":
-        adjust_version_in_sidebar(version)
-        print(f"Adding {version=} to sidebar")
+    elif chosen_method == "html":
+        adjust_version_to_html(version)
+        print(f"Adding {version=} to HTML")
     else:
         print(f"Invalid arguments {sys.argv} were chosen!")
