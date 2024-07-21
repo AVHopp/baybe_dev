@@ -31,6 +31,8 @@ jobs:
         run: tox -e docs-py310 -- -r
       - name: Prepare gh-pages branch with HTML output from Sphinx
         run: |
+            git config --local user.email "sphinx-upload[bot]@users.noreply.github.com"
+            git config --local user.name "sphinx-upload[bot]"
             git fetch origin gh-pages:gh-pages
             git checkout gh-pages
             if [ -d "latest" ]; then
@@ -52,19 +54,12 @@ jobs:
               cp -rv docs/build/* ./stable
               echo "Successfully copied into stable folder"
               echo "Copying README of stable s.t. it is displayed on github"
-              if [ -d ".github" ]; then
-                rm -rf .github
-              fi
-              mkdir .github
-              git fetch origin main:main
-              git show main:README.md > .github/README.md
+              cp -r README.md .github/README.md
               git add .github/README.md
-              git commit -m "Add README of stable version"
+              git commit -m "Add README of stable version for display on github"
             fi
       - name: Update gh-pages branch
         run: |
-            git config --local user.email "sphinx-upload[bot]@users.noreply.github.com"
-            git config --local user.name "sphinx-upload[bot]"
             git_hash=$(git rev-parse --short "$GITHUB_SHA")
             git fetch origin main:main
             git show main:docs/scripts/add_version.py > add_version.py
