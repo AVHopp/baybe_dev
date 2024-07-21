@@ -29,9 +29,14 @@ jobs:
         run: pip install tox-uv
       - name: Build Docs
         run: tox -e docs-py310 -- -r
-      - name: Prepare gh-pages branch with HTML output from Sphinx
+      - name: Configure sphinx bot for pushing and fetch branches
         run: |
+            git config --local user.email "sphinx-upload[bot]@users.noreply.github.com"
+            git config --local user.name "sphinx-upload[bot]"
             git fetch origin gh-pages:gh-pages
+            git fetch origin main:main
+      - name: Copy latest folder to gh-pages branch
+        run: |
             git checkout gh-pages
             if [ -d "latest" ]; then
               rm -rf latest
@@ -39,40 +44,43 @@ jobs:
             mkdir ./latest
             cp -r docs/build/* ./latest
             echo "Successfully copied into latest"
-            if ${{ github.event_name == 'release' }}; then
-              FOLDER=${{github.event.release.tag_name}}
-              mkdir ./$FOLDER
-              cp -r docs/build/* ./$FOLDER
-              echo "Copying files into stable folder"
-              if [ -d "stable" ]; then
-                echo "Deleting old stable folder."
-                rm -rf stable
-              fi
-              mkdir ./stable
-              cp -rv docs/build/* ./stable
-              echo "Successfully copied into stable folder"
-            fi
-      - name: Update gh-pages branch
+      - if: ${{ github.event_name == 'release' }}
+        name: Copy stable folder to gh-pages branch when releasing
         run: |
-            git config --local user.email "sphinx-upload[bot]@users.noreply.github.com"
-            git config --local user.name "sphinx-upload[bot]"
+            FOLDER=${{github.event.release.tag_name}}
+            mkdir ./$FOLDER
+            cp -r docs/build/* ./$FOLDER
+            echo "Copying files into stable folder"
+            if [ -d "stable" ]; then
+              echo "Deleting old stable folder."
+              rm -rf stable
+            fi
+            mkdir ./stable
+            cp -rv docs/build/* ./stable
+            echo "Successfully copied into stable folder"
+      - name: Update gh-pages branch for latest
+        run: |
             git_hash=$(git rev-parse --short "$GITHUB_SHA")
-            git fetch origin main:main
             git show main:docs/scripts/add_version.py > add_version.py
             python add_version.py html latest
             git add -f latest
-            git commit --allow-empty -m "Sphinx documentation for ${git_hash}"
-            if ${{ github.event_name == 'release' }}; then
-              FOLDER=${{github.event.release.tag_name}}
-              git add -f $FOLDER
-              echo "Adding stable as a separate folder"
-              git add -f stable
-              echo "Inserting announcement banner to documentation and add link for selector"
-              python add_version.py selector_page $FOLDER
-              python add_version.py html $FOLDER
-              python add_version.py html stable
-              rm add_version.py
-              git add .
-              git commit -m "Add link to version to selector page and add banner"
-            fi
-            git push origin gh-pages
+            git commit -m "Sphinx documentation for ${git_hash} (latest)"
+      - if: ${{ github.event_name == 'release' }}
+        name: Add new stable and numbered version to gh-pages branch
+        run: |
+            FOLDER=${{github.event.release.tag_name}}
+            echo "Adding numbered folder"
+            git add -f $FOLDER
+            git commit -m "Sphinx documentation for ${git_hash} (${FOLDER})"
+            echo "Adding stable as a separate folder"
+            git add -f stable
+            git commit -m "Sphinx documentation for ${git_hash} (stable)"
+            echo "Inserting announcement banner to documentation and add link for selector"
+            python add_version.py selector_page $FOLDER
+            python add_version.py html $FOLDER
+            python add_version.py html stable
+            rm add_version.py
+            git add .
+            git commit -m "Add link to version to selector page and add banner"
+      - name: Push changes to gh-pages branch
+        run: git push origin gh-pages
