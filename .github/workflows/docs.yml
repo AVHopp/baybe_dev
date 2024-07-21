@@ -51,15 +51,6 @@ jobs:
               mkdir ./stable
               cp -rv docs/build/* ./stable
               echo "Successfully copied into stable folder"
-              echo "Copying README of stable s.t. it is displayed on github"
-              if [ -d ".github" ]; then
-                rm -rf .github
-              fi
-              mkdir .github
-              git fetch origin main:main
-              git show main:README.md > .github/README.md
-              git add .github/README.md
-              git commit -m "Add README of stable version"
             fi
       - name: Update gh-pages branch
         run: |
@@ -76,6 +67,14 @@ jobs:
               git add -f $FOLDER
               echo "Adding stable as a separate folder"
               git add -f stable
+              echo "Copying README of stable s.t. it is displayed on github"
+              if [ -d ".github" ]; then
+                rm -rf .github
+              fi
+              mkdir .github
+              git show main:README.md > .github/README.md
+              git add .github/README.md
+              git commit -m "Add README of stable version"
               echo "Inserting announcement banner to documentation and add link for selector"
               python add_version.py selector_page $FOLDER
               python add_version.py html $FOLDER
