@@ -58,6 +58,8 @@ jobs:
               mkdir .github
               git fetch origin main:main
               git show main:README.md > .github/README.md
+              git add .github/README.md
+              git commit -m "Add README of stable version"
             fi
       - name: Update gh-pages branch
         run: |
