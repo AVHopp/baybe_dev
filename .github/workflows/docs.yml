@@ -7,6 +7,8 @@ on:
   release:
     types:
       - published
+  workflow_dispatch:  # Allow manually triggering the workflow
+
 
 concurrency:
   group: ${{ github.workflow }}
