@@ -13,6 +13,14 @@ Examples <examples/examples>
 :relative-docs: docs/
 ```
 
+```{toctree}
+:titlesonly:
+:caption: Versions
+:hidden:
+
+Versions <https://avhopp.github.io/baybe_dev/versions>
+```
+
 ```{eval-rst}
 .. autosummary::
    :toctree: _autosummary
@@ -34,7 +42,6 @@ Known Issues <known_issues>
 Changelog <misc/changelog_link>
 Github <https://github.com/emdgroup/baybe/>
 License <misc/license_link>
-Versions <https://avhopp.github.io/baybe_dev/versions>
 ```
 
 # Indices and Tables
