@@ -46,8 +46,11 @@ def adjust_version_to_html(version: str) -> None:
     new_line = (
         f'{prefix}<a class="reference external" href="{link}">V: {version}</a></li>'
     )
+    link_to_stable = '<a href="https://avhopp.github.io/baybe_dev/stable">stable</a>'
     # The content of the announcement that might be added.
-    announcement = "You are not viewing the documentation of the stable version."
+    announcement = (
+        f"You are not viewing the documentation of the {link_to_stable} version."
+    )
     # Actual HTML code that will be inserted
     announcement_html = (
         """<div class="announcement">\n"""
