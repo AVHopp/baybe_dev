@@ -1,4 +1,11 @@
 ```{toctree}
+:titlesonly:
+:hidden:
+
+Versions <https://avhopp.github.io/baybe_dev/versions>
+```
+
+```{toctree}
 :maxdepth: 2
 :titlesonly:
 :caption: Documentation
@@ -11,14 +18,6 @@ Examples <examples/examples>
 
 ```{include} ../README.md
 :relative-docs: docs/
-```
-
-```{toctree}
-:titlesonly:
-:caption: Versions
-:hidden:
-
-Versions <https://avhopp.github.io/baybe_dev/versions>
 ```
 
 ```{eval-rst}
