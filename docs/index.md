@@ -1,4 +1,11 @@
 ```{toctree}
+:titlesonly:
+:hidden:
+
+Versions <https://avhopp.github.io/baybe_dev/versions>
+```
+
+```{toctree}
 :maxdepth: 2
 :titlesonly:
 :caption: General
@@ -34,14 +41,6 @@ License <misc/license_link>
 
 User Guide <userguide/userguide>
 Examples <examples/examples>
-```
-
-```{toctree}
-:titlesonly:
-:caption: Versions
-:hidden:
-
-Versions <https://avhopp.github.io/baybe_dev/versions>
 ```
 
 # Indices and Tables
