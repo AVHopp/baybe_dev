@@ -155,13 +155,10 @@ if __name__ == "__main__":
     chosen_method = sys.argv[1]
     version = sys.argv[2]
     if chosen_method == "selector_page":
-        print(f"Adding {version=} to version selector page")
         add_version_to_selector_page(version)
     elif chosen_method == "html":
         adjust_version_to_html(version)
-        print(f"Adding {version=} to HTML")
     elif chosen_method == "hotfix":
-        print("Checking for hotfix")
         check_for_hotfix(tags=sys.argv[3], version=version)
     else:
         print(f"Invalid arguments {sys.argv} were chosen!")
