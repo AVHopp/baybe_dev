@@ -55,7 +55,7 @@ jobs:
       - name: Verify setting of hotfix
         run: |
           echo "The value of hotfix is ${{ steps.hotfix.outputs.hotfix }}"       
-      - if: ${{ steps.hotfix.outputs.HOTFIX_VERSION == 'False'}}
+      - if: ${{ steps.hotfix.outputs.hotfix == 'False'}}
         name: Copy latest folder to gh-pages branch and update branch
         run: |
             if [ -d "latest" ]; then
