@@ -46,7 +46,7 @@ jobs:
           git fetch --tags
           tags=$(git tag -l)
           if ${{ github.event_name == 'release' }}; then
-            HOTFIX_VERSION=$(python utils.py hotfix "${{github.event.release.tag_name}}") "$tags"
+            HOTFIX_VERSION=$(python utils.py hotfix "${{github.event.release.tag_name}}" "$tags")
           else
             HOTFIX_VERSION="false"
           fi
