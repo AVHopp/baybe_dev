@@ -80,8 +80,6 @@ jobs:
         name: Copy stable folder to gh-pages branch when releasing
         run: |
             FOLDER=${{github.event.release.tag_name}}
-            mkdir ./$FOLDER
-            cp -r docs/build/* ./$FOLDER
             if [ -d "stable" ]; then
               rm -rf stable
             fi
