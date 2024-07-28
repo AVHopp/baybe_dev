@@ -48,7 +48,7 @@ jobs:
           else
             HOTFIX_VERSION="False"
           fi
-          echo "HOTFIX_VERSION=${HOTFIX_VERSION}" >> $GITHUB_OUTPUT
+          echo "HOTFIX_VERSION=$HOTFIX_VERSION" >> $GITHUB_OUTPUT
       - name: Verify setting of hotfix
         run: |
           echo "The value of HOTFIX_VERSION is ${{ steps.hotfix.outputs.HOTFIX_VERSION }}"       
