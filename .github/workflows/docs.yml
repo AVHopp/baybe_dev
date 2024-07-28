@@ -33,24 +33,27 @@ jobs:
           pip install packaging
           git fetch --tags
           tags=$(git tag -l)
-          echo "Tags: $tags"
-          HOTFIX_VERSION=$(python docs/scripts/get_version.py "$tags" "${{github.event.release.tag_name}}")
+          if ${{ github.event_name == 'release' }}; then
+            HOTFIX_VERSION=$(python docs/scripts/get_version.py "$tags" "${{github.event.release.tag_name}}")
+          else
+            HOTFIX_VERSION="false"
+          fi
           echo "HOTFIX_VERSION=${HOTFIX_VERSION}" >> $GITHUB_OUTPUT
       - name: Verify setting of hotfix
         run: |
           echo "The value of HOTFIX_VERSION is ${{ steps.hotfix.outputs.HOTFIX_VERSION }}"
-      - name: Install tox
-        run: pip install tox-uv
-      - name: Build Docs
-        run: tox -e docs-py310 -- -r
       - name: Configure sphinx bot for pushing and fetch branches
         run: |
             git config --local user.email "sphinx-upload[bot]@users.noreply.github.com"
             git config --local user.name "sphinx-upload[bot]"
             git fetch origin main:main
-            git show main:docs/scripts/add_version.py > add_version.py
             git fetch origin gh-pages:gh-pages
             git checkout gh-pages
+            git show main:docs/scripts/add_version.py > add_version.py
+      - name: Install tox
+        run: pip install tox-uv
+      - name: Build Docs
+        run: tox -e docs-py310 -- -r
       - if: ${{ steps.hotfix.outputs.HOTFIX_VERSION == 'false'}}
         name: Copy latest folder to gh-pages branch and update branch
         run: |

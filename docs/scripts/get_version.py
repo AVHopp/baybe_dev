@@ -10,7 +10,7 @@ def main():
     tags = sys.argv[1].split("\n")
     current_version = sys.argv[2]
     tags.sort(key=Version)
-    print("true" if tags[-1] == current_version else "false")
+    print("false" if tags[-1] == current_version else "true")
 
 
 if __name__ == "__main__":
