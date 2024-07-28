@@ -48,6 +48,7 @@ jobs:
             git config --local user.name "sphinx-upload[bot]"
             git fetch origin gh-pages:gh-pages
             git checkout gh-pages
+            git fetch origin main:main
             git show main:docs/scripts/add_version.py > add_version.py
       - name: Install tox
         run: pip install tox-uv
