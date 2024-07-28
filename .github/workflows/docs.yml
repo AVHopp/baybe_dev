@@ -40,6 +40,8 @@ jobs:
       - name: Check for Hotfix
         id: hotfix
         run: |
+          echo "Hello"
+          echo "$HOTFIX_VERSION"
           pip install packaging
           git fetch --tags
           tags=$(git tag -l)
