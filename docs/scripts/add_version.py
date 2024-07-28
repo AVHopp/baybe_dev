@@ -39,12 +39,11 @@ def adjust_version_to_html(version: str) -> None:
         version: The version that should be injected into the sidebar.
     """
     prefix = '<li class="toctree-l1">'
+    html_class = "reference external"
     link = "https://avhopp.github.io/baybe_dev/versions"
-    line_to_replace = (
-        f'{prefix}<a class="reference external" href="{link}">Versions</a></li>'
-    )
+    line_to_replace = f'{prefix}<a class={html_class} href="{link}">Versions</a></li>'
     new_line = (
-        f'{prefix}<a class="reference external" href="{link}">V: {version}</a></li>'
+        f'{prefix}<a class={html_class} href="{link}">Version: {version}</a></li>'
     )
     link_to_stable = '<a href="https://avhopp.github.io/baybe_dev/stable">stable</a>'
     # The content of the announcement that might be added.
