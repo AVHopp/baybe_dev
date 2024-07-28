@@ -148,7 +148,7 @@ def check_for_hotfix(tags: list[str], version: str):
     """Check whether the current build corresponds to a hotfix."""
     split_tags = tags.split("\n")
     split_tags.sort(key=Version)
-    print("false" if tags[-1] == version else "true")
+    print(Version(version) > Version(tags[-1]))
 
 
 if __name__ == "__main__":
