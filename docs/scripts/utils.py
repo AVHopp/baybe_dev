@@ -148,20 +148,17 @@ def check_for_hotfix(tags: list[str], version: str):
     """Check whether the current build corresponds to a hotfix."""
     split_tags = tags.split("\n")
     split_tags.sort(key=Version)
-    print(Version(version) > Version(tags[-1]))
+    print(Version(version) > Version(tags[-1]), end="")
 
 
 if __name__ == "__main__":
     chosen_method = sys.argv[1]
     version = sys.argv[2]
     if chosen_method == "selector_page":
-        print(f"Adding {version=} to version selector page")
         add_version_to_selector_page(version)
     elif chosen_method == "html":
         adjust_version_to_html(version)
-        print(f"Adding {version=} to HTML")
     elif chosen_method == "hotfix":
-        print("Checking for hotfix")
         check_for_hotfix(tags=sys.argv[3], version=version)
     else:
         print(f"Invalid arguments {sys.argv} were chosen!")
