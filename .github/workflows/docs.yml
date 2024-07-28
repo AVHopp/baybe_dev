@@ -48,13 +48,13 @@ jobs:
           if ${{ github.event_name == 'release' }}; then
             HOTFIX_VERSION=$(python utils.py hotfix "${{github.event.release.tag_name}}" "$tags")
           else
-            HOTFIX_VERSION="false"
+            HOTFIX_VERSION="False"
           fi
           echo "HOTFIX_VERSION=${HOTFIX_VERSION}" >> $GITHUB_OUTPUT
       - name: Verify setting of hotfix
         run: |
           echo "The value of HOTFIX_VERSION is ${{ steps.hotfix.outputs.HOTFIX_VERSION }}"       
-      - if: ${{ steps.hotfix.outputs.HOTFIX_VERSION == 'false'}}
+      - if: ${{ steps.hotfix.outputs.HOTFIX_VERSION == 'False'}}
         name: Copy latest folder to gh-pages branch and update branch
         run: |
             if [ -d "latest" ]; then
@@ -75,7 +75,7 @@ jobs:
             python utils.py html $FOLDER
             rm utils.py
             git add -f $FOLDER
-      - if: ${{ (github.event_name == 'release') && (steps.hotfix.outputs.HOTFIX_VERSION == 'false') }}
+      - if: ${{ (github.event_name == 'release') && (steps.hotfix.outputs.HOTFIX_VERSION == 'False') }}
         name: Copy stable folder to gh-pages branch when releasing
         run: |
             FOLDER=${{github.event.release.tag_name}}
