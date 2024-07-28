@@ -27,21 +27,6 @@ jobs:
           ref: ${{ github.ref }}
       - uses: actions/setup-python@v5
         with: {python-version: "3.10"}
-      - name: Check for Hotfix
-        id: hotfix
-        run: |
-          pip install packaging
-          git fetch --tags
-          tags=$(git tag -l)
-          if ${{ github.event_name == 'release' }}; then
-            HOTFIX_VERSION=$(python docs/scripts/get_version.py "$tags" "${{github.event.release.tag_name}}")
-          else
-            HOTFIX_VERSION="false"
-          fi
-          echo "HOTFIX_VERSION=${HOTFIX_VERSION}" >> $GITHUB_OUTPUT
-      - name: Verify setting of hotfix
-        run: |
-          echo "The value of HOTFIX_VERSION is ${{ steps.hotfix.outputs.HOTFIX_VERSION }}"
       - name: Install tox
         run: pip install tox-uv
       - name: Build Docs
@@ -53,7 +38,22 @@ jobs:
             git fetch origin gh-pages:gh-pages
             git checkout gh-pages
             git fetch origin main:main
-            git show main:docs/scripts/add_version.py > add_version.py
+            git show main:docs/scripts/utils.py > utils.py
+      - name: Check for Hotfix
+        id: hotfix
+        run: |
+          pip install packaging
+          git fetch --tags
+          tags=$(git tag -l)
+          if ${{ github.event_name == 'release' }}; then
+            HOTFIX_VERSION=$(python utils.py hotfix "${{github.event.release.tag_name}}") "$tags"
+          else
+            HOTFIX_VERSION="false"
+          fi
+          echo "HOTFIX_VERSION=${HOTFIX_VERSION}" >> $GITHUB_OUTPUT
+      - name: Verify setting of hotfix
+        run: |
+          echo "The value of HOTFIX_VERSION is ${{ steps.hotfix.outputs.HOTFIX_VERSION }}"       
       - if: ${{ steps.hotfix.outputs.HOTFIX_VERSION == 'false'}}
         name: Copy latest folder to gh-pages branch and update branch
         run: |
@@ -63,7 +63,7 @@ jobs:
             mkdir ./latest
             cp -r docs/build/* ./latest
             echo "Successfully copied into latest"
-            python add_version.py html latest
+            python utils.py html latest
             git add -f latest
       - if: ${{ github.event_name == 'release' }}
         name: Create numbered version
@@ -71,9 +71,9 @@ jobs:
             FOLDER=${{github.event.release.tag_name}}
             mkdir ./$FOLDER
             cp -r docs/build/* ./$FOLDER
-            python add_version.py selector_page $FOLDER
-            python add_version.py html $FOLDER
-            rm add_version.py
+            python utils.py selector_page $FOLDER
+            python utils.py html $FOLDER
+            rm utils.py
             git add -f $FOLDER
       - if: ${{ (github.event_name == 'release') && (steps.hotfix.outputs.HOTFIX_VERSION == 'false') }}
         name: Copy stable folder to gh-pages branch when releasing
@@ -86,9 +86,9 @@ jobs:
             fi
             mkdir ./stable
             cp -rv docs/build/* ./stable
-            python add_version.py html stable
+            python utils.py html stable
             git add -f stable
-            rm add_version.py
+            rm utils.py
       - name: Create git commit
         run: | 
             git_hash=$(git rev-parse --short "$GITHUB_SHA")
