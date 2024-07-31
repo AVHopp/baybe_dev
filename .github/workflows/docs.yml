@@ -75,6 +75,7 @@ jobs:
             python utils.py selector_page $FOLDER
             python utils.py html $FOLDER
             git add -f $FOLDER
+            git add -f versions.html
       - if: ${{ (github.event_name == 'release') && (steps.hotfix.outputs.hotfix == 'False') }}
         name: Copy stable folder to gh-pages branch when releasing
         run: |
