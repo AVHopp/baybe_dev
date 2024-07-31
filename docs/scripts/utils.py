@@ -101,7 +101,6 @@ def adjust_version_to_html(version: str) -> None:
     prefix = '<li class="toctree-l1">'
     html_class = "reference external"
     link = "https://avhopp.github.io/baybe_dev/versions"
-    line_to_replace = f'{prefix}<a class={html_class} href="{link}">Versions</a></li>'
     new_line = (
         f'{prefix}<a class={html_class} href="{link}">Version: {version}</a></li>'
     )
@@ -132,7 +131,7 @@ def adjust_version_to_html(version: str) -> None:
                         # Add announcement at correct position
                         if line.strip() == '<div class="page">':
                             modified_lines.insert(-2, announcement_html)
-                    if line.strip() == line_to_replace:
+                    if "Versions</a></li>" in line:
                         modified_lines.append(new_line)
                     else:
                         modified_lines.append(line)
