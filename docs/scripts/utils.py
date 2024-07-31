@@ -64,10 +64,10 @@ def add_version_to_selector_page(version: str) -> None:
     modified_lines = []
     # Regular expression pattern to match the version number in the format X.Y.Z
     pattern = r"\b\d+\.\d+\.\d+\b"
-    # Boolean for checking whether the last version number was larger
-    was_larger = False
-    # Index for memorizing the index of the line containing "Stable"
+    # Indices for memorizing the index of the line containing "Stable" and the last
+    # version that was larger than the one to be inserted
     stable_index = -1
+    last_version_index = -1
     with file.open(mode="r") as f:
         lines = f.readlines()
         for ind, line in enumerate(lines):
@@ -75,20 +75,16 @@ def add_version_to_selector_page(version: str) -> None:
             if version_number := re.search(pattern, line):
                 # Memorize whether we saw a larger version number, implying that this is
                 # a hotfix
-                if Version(version_number) > Version(version):
-                    was_larger = True
-                elif was_larger:
-                    # Current number is not larger but we found something larger before
-                    # This means we need to insert the new hotfix line here
-                    modified_lines.append(new_line)
+                if Version(version_number.group()) > Version(version):
+                    last_version_index = ind
             # Add the already existing line
             modified_lines.append(line)
 
             if "Stable" in line:
                 stable_index = ind
     # We never found a larger number than the current, so we just insert after stable
-    if not was_larger:
-        modified_lines.insert(stable_index + 1, new_line)
+    index = last_version_index + 1 if last_version_index != -1 else stable_index + 1
+    modified_lines.insert(index, new_line)
     with file.open(mode="w") as f:
         f.writelines(modified_lines)
 
