@@ -64,7 +64,7 @@ def add_version_to_selector_page(version: str) -> None:
     modified_lines = []
     # Regular expression pattern to match the version number in the format X.Y.Z
     pattern = r"\b\d+\.\d+\.\d+\b"
-    # Indices for memorizing the index of the line containing "Stable" and the last
+    # Indices for memorizing the index of the line containing "stable" and the last
     # version that was larger than the one to be inserted
     stable_index = -1
     last_version_index = -1
@@ -80,7 +80,7 @@ def add_version_to_selector_page(version: str) -> None:
             # Add the already existing line
             modified_lines.append(line)
 
-            if "Stable" in line:
+            if "stable" in line:
                 stable_index = ind
     # We never found a larger number than the current, so we just insert after stable
     index = last_version_index + 1 if last_version_index != -1 else stable_index + 1
