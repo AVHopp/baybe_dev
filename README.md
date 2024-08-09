@@ -26,8 +26,7 @@
 
 # BayBE — A Bayesian Back End for Design of Experiments
 
-THIS IS JUST A PSEUDO CHANGE THAT IS PART OF PSEUDO VERSION 0.10.1.
-THIS IS ONLY INCLUDED IN ORDER TO HAVE AN ACTUAL CHANGE IN A NEW VERSION.
+OH SHIT THERE WAS A CRITICAL ERROR IN 0.10.1 SO WE HOTFIX THIS NOW
 
 The **Bay**esian **B**ack **E**nd (**BayBE**) is a general-purpose toolbox for Bayesian Design
 of Experiments, focusing on additions that enable real-world experimental campaigns.
