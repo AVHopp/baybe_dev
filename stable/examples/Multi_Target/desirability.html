@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Serialization" href="../Serialization/Serialization.html" /><link rel="prev" title="Multi Target" href="Multi_Target.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.07.18 -->
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
         <title>Example for using the multi target mode for the objective - BayBE documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=259b2e4a" />
@@ -40,6 +40,8 @@
   --color-sidebar-search-border: #ffdcb9;
   --color-sidebar-search-text: white;
   --color-sidebar-search-icon: #ffdcb9;
+  --color-announcement-background: #65bbca;
+  --color-announcement-text: #2c333b;
   
   }
   @media not print {
@@ -63,6 +65,8 @@
   --color-toc-item-text: #65bbca;
   --color-toc-item-text--active: #ffdcb9;
   --color-sidebar-search-background--focus: #0f69af;
+  --color-announcement-background: #65bbca;
+  --color-announcement-text: #2c333b;
   
     }
     @media (prefers-color-scheme: dark) {
@@ -86,6 +90,8 @@
   --color-toc-item-text: #65bbca;
   --color-toc-item-text--active: #ffdcb9;
   --color-sidebar-search-background--focus: #0f69af;
+  --color-announcement-background: #65bbca;
+  --color-announcement-text: #2c333b;
   
       }
     }
@@ -257,7 +263,9 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+  <ul>
+<li class="toctree-l1"><a class=reference external href="https://avhopp.github.io/baybe_dev/versions">Version: stable</a></li></ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">Readme</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../userguide/userguide.html">User Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of User Guide</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -278,28 +286,28 @@
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../examples.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Basics/Basics.html">Basics</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Basics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Basics/campaign.html">Campaign</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Basics/recommenders.html">Recommenders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Basics/campaign.html">Campaign</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Searchspaces/Searchspaces.html">Searchspaces</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Searchspaces</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Searchspaces/discrete_space.html">Discrete Space</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Searchspaces/hybrid_space.html">Hybrid Space</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Searchspaces/continuous_space_botorch_function.html">Continuous Space Botorch Function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Searchspaces/continuous_space_custom_function.html">Continuous Space Custom Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Searchspaces/continuous_space_botorch_function.html">Continuous Space Botorch Function</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Constraints_Discrete/Constraints_Discrete.html">Constraints Discrete</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Constraints Discrete</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/mixture_constraints.html">Mixture</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/dependency_constraints.html">Dependency</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/custom_constraints.html">Custom</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/prodsum_constraints.html">Product/Sum</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/exclusion_constraints.html">Exclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/dependency_constraints.html">Dependency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/mixture_constraints.html">Mixture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/prodsum_constraints.html">Product/Sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/custom_constraints.html">Custom</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Constraints_Continuous/Constraints_Continuous.html">Constraints Continuous</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Constraints Continuous</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/linear_constraints.html">Linear</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/hybrid_space.html">Hybrid Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/linear_constraints.html">Linear</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current has-children"><a class="reference internal" href="Multi_Target.html">Multi Target</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Multi Target</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
@@ -313,20 +321,15 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Custom_Surrogates/Custom_Surrogates.html">Custom Surrogates</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Custom Surrogates</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Custom_Surrogates/custom_pretrained.html">Custom Pretrained</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Custom_Surrogates/custom_architecture_torch.html">Custom Architecture Torch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Custom_Surrogates/custom_architecture_sklearn.html">Custom Architecture Sklearn</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Custom_Surrogates/surrogate_params.html">Surrogate Params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Custom_Surrogates/custom_pretrained.html">Custom Pretrained</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Custom_Surrogates/custom_architecture_sklearn.html">Custom Architecture Sklearn</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../Backtesting/Backtesting.html">Backtesting</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Backtesting</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Backtesting/custom_analytical.html">Custom Analytical</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Backtesting/botorch_analytical.html">Botorch Analytical</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Backtesting/multi_target.html">Multi Target</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Backtesting/hybrid.html">Hybrid</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Backtesting/full_lookup.html">Full Lookup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Backtesting/impute_mode.html">Impute Mode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Backtesting/full_initial_data.html">Full Initial Data</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Transfer_Learning/Transfer_Learning.html">Transfer Learning</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Transfer Learning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Transfer_Learning/backtesting.html">Backtesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Transfer_Learning/basic_transfer_learning.html">Basic Transfer Learning</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Custom_Hooks/Custom_Hooks.html">Custom Hooks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Custom Hooks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -335,9 +338,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../Custom_Hooks/probability_of_improvement.html">Probability Of Improvement</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../Transfer_Learning/Transfer_Learning.html">Transfer Learning</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of Transfer Learning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Transfer_Learning/backtesting.html">Backtesting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Transfer_Learning/basic_transfer_learning.html">Basic Transfer Learning</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Backtesting/Backtesting.html">Backtesting</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of Backtesting</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Backtesting/botorch_analytical.html">Botorch Analytical</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Backtesting/impute_mode.html">Impute Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Backtesting/hybrid.html">Hybrid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Backtesting/full_lookup.html">Full Lookup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Backtesting/multi_target.html">Multi Target</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Backtesting/full_initial_data.html">Full Initial Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Backtesting/custom_analytical.html">Custom Analytical</a></li>
 </ul>
 </li>
 </ul>
@@ -1181,21 +1189,21 @@ It also prints what happens to internal data.</p>
 Recommended measurements with fake measured results:
 
     Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-46     22        bad         6.0        -3.0  89.287695  27.689040  53.620385
-188    33        bad         8.0        -9.0  54.714958  32.395289  56.792072
-136    22  very good        10.0        -9.0  82.235979  29.393339  53.739874
+250    33       good        10.0        -3.0  60.220198  69.163626  53.251217
+192    33        bad        10.0        -9.0  38.911249  91.622665  56.627116
+271    33  very good         6.0        -1.0  68.961647  86.405160  51.801813
 
 Internal measurement database with desirability values:
 
   Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3  \
-0    22        bad         6.0        -3.0  89.287695  27.689040  53.620385   
-1    33        bad         8.0        -9.0  54.714958  32.395289  56.792072   
-2    22  very good        10.0        -9.0  82.235979  29.393339  53.739874   
+0    33       good        10.0        -3.0  60.220198  69.163626  53.251217   
+1    33        bad        10.0        -9.0  38.911249  91.622665  56.627116   
+2    33  very good         6.0        -1.0  68.961647  86.405160  51.801813   
 
    BatchNr  FitNr  Desirability  
-0        1    NaN      0.784838  
-1        1    NaN      0.483119  
-2        1    NaN      0.759277  
+0        1    NaN      0.667779  
+1        1    NaN      0.343852  
+2        1    NaN      0.727392  
 
 
 
@@ -1204,64 +1212,76 @@ Internal measurement database with desirability values:
 
 Recommended measurements with fake measured results:
 
-      Cat_1     Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-index                                                                         
-18       22  very bad         6.0        -3.0  52.099147  47.343427  51.813798
-74       22        OK         6.0        -3.0  93.488807  41.706375  55.159932
-104      22      good         8.0        -9.0  63.316223  84.934914  51.455603
+      Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
+index                                                                  
+247      33       good         8.0        -1.0  53.168429  90.497277   
+267      33  very good         4.0        -1.0  39.532590  61.959971   
+274      33  very good         8.0        -3.0   8.670591  98.693180   
+
+        Target_3  
+index             
+247    52.121843  
+267    54.939321  
+274    53.414966  
 
 Internal measurement database with desirability values:
 
   Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3  \
-0    22        bad         6.0        -3.0  89.287695  27.689040  53.620385   
-1    33        bad         8.0        -9.0  54.714958  32.395289  56.792072   
-2    22  very good        10.0        -9.0  82.235979  29.393339  53.739874   
-3    22   very bad         6.0        -3.0  52.099147  47.343427  51.813798   
-4    22         OK         6.0        -3.0  93.488807  41.706375  55.159932   
-5    22       good         8.0        -9.0  63.316223  84.934914  51.455603   
+0    33       good        10.0        -3.0  60.220198  69.163626  53.251217   
+1    33        bad        10.0        -9.0  38.911249  91.622665  56.627116   
+2    33  very good         6.0        -1.0  68.961647  86.405160  51.801813   
+3    33       good         8.0        -1.0  53.168429  90.497277  52.121843   
+4    33  very good         4.0        -1.0  39.532590  61.959971  54.939321   
+5    33  very good         8.0        -3.0   8.670591  98.693180  53.414966   
 
    BatchNr  FitNr  Desirability  
-0        1    1.0      0.784838  
-1        1    1.0      0.483119  
-2        1    1.0      0.759277  
-3        2    NaN      0.771304  
-4        2    NaN      0.655847  
-5        2    NaN      0.731868  
+0        1    1.0      0.667779  
+1        1    1.0      0.343852  
+2        1    1.0      0.727392  
+3        2    NaN      0.673677  
+4        2    NaN      0.523480  
+5        2    NaN      0.495133  
 
 
 #### ITERATION 3 ####
 
 Recommended measurements with fake measured results:
 
-      Cat_1     Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-index                                                                         
-2        22  very bad         1.0        -3.0  32.944727  88.076184  56.847457
-19       22  very bad         6.0        -1.0  73.640865  70.293208  56.821857
-26       22  very bad        10.0        -3.0   5.462638  37.145001  53.003474
+      Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
+index                                                                  
+159      33   very bad         6.0        -1.0  50.260039  25.295021   
+194      33        bad        10.0        -3.0  91.129496  98.747895   
+279      33  very good        10.0        -1.0  54.392019  99.058908   
+
+        Target_3  
+index             
+159    51.526684  
+194    55.665277  
+279    52.925667  
 
 Internal measurement database with desirability values:
 
   Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3  \
-0    22        bad         6.0        -3.0  89.287695  27.689040  53.620385   
-1    33        bad         8.0        -9.0  54.714958  32.395289  56.792072   
-2    22  very good        10.0        -9.0  82.235979  29.393339  53.739874   
-3    22   very bad         6.0        -3.0  52.099147  47.343427  51.813798   
-4    22         OK         6.0        -3.0  93.488807  41.706375  55.159932   
-5    22       good         8.0        -9.0  63.316223  84.934914  51.455603   
-6    22   very bad         1.0        -3.0  32.944727  88.076184  56.847457   
-7    22   very bad         6.0        -1.0  73.640865  70.293208  56.821857   
-8    22   very bad        10.0        -3.0   5.462638  37.145001  53.003474   
+0    33       good        10.0        -3.0  60.220198  69.163626  53.251217   
+1    33        bad        10.0        -9.0  38.911249  91.622665  56.627116   
+2    33  very good         6.0        -1.0  68.961647  86.405160  51.801813   
+3    33       good         8.0        -1.0  53.168429  90.497277  52.121843   
+4    33  very good         4.0        -1.0  39.532590  61.959971  54.939321   
+5    33  very good         8.0        -3.0   8.670591  98.693180  53.414966   
+6    33   very bad         6.0        -1.0  50.260039  25.295021  51.526684   
+7    33        bad        10.0        -3.0  91.129496  98.747895  55.665277   
+8    33  very good        10.0        -1.0  54.392019  99.058908  52.925667   
 
    BatchNr  FitNr  Desirability  
-0        1    1.0      0.784838  
-1        1    1.0      0.483119  
-2        1    1.0      0.759277  
-3        2    2.0      0.771304  
-4        2    2.0      0.655847  
-5        2    2.0      0.731868  
-6        3    NaN      0.324641  
-7        3    NaN      0.443249  
-8        3    NaN      0.637588  
+0        1    1.0      0.667779  
+1        1    1.0      0.343852  
+2        1    1.0      0.727392  
+3        2    2.0      0.673677  
+4        2    2.0      0.523480  
+5        2    2.0      0.495133  
+6        3    NaN      0.822603  
+7        3    NaN      0.500536  
+8        3    NaN      0.616263  
 </pre></div>
 </div>
 </section>
