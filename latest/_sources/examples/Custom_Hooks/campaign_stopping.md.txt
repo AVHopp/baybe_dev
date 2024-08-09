@@ -125,7 +125,7 @@ searchspace = SearchSpace.from_product(parameters=parameters)
     ________________________________________________________________________________
     [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
     _smiles_to_mordred_features('CC(N(C)C)=O')
-    _______________________________________smiles_to_mordred_features - 0.1s, 0.0min
+    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
     ________________________________________________________________________________
     [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
     _smiles_to_mordred_features('CCCC#N')
@@ -137,7 +137,7 @@ searchspace = SearchSpace.from_product(parameters=parameters)
     ________________________________________________________________________________
     [Memory] Calling baybe.utils.chemistry._smiles_to_mordred_features...
     _smiles_to_mordred_features('CC1=CC=C(C)C=C1')
-    _______________________________________smiles_to_mordred_features - 0.1s, 0.0min
+    _______________________________________smiles_to_mordred_features - 0.0s, 0.0min
 
 
     ________________________________________________________________________________

@@ -126,15 +126,15 @@ constraints = [sum_constraint_1, sum_constraint_2, prod_constraint]
 searchspace = SearchSpace.from_product(parameters=parameters, constraints=constraints)
 ```
 
-    [13:39:02] DEPRECATION WARNING: please use MorganGenerator
-    [13:39:02] DEPRECATION WARNING: please use MorganGenerator
-    [13:39:02] DEPRECATION WARNING: please use MorganGenerator
-    [13:39:02] DEPRECATION WARNING: please use MorganGenerator
-    [13:39:02] DEPRECATION WARNING: please use MorganGenerator
-    [13:39:02] DEPRECATION WARNING: please use MorganGenerator
-    [13:39:02] DEPRECATION WARNING: please use MorganGenerator
-    [13:39:02] DEPRECATION WARNING: please use MorganGenerator
-    [13:39:02] DEPRECATION WARNING: please use MorganGenerator
+    [13:51:47] DEPRECATION WARNING: please use MorganGenerator
+    [13:51:47] DEPRECATION WARNING: please use MorganGenerator
+    [13:51:47] DEPRECATION WARNING: please use MorganGenerator
+    [13:51:47] DEPRECATION WARNING: please use MorganGenerator
+    [13:51:47] DEPRECATION WARNING: please use MorganGenerator
+    [13:51:47] DEPRECATION WARNING: please use MorganGenerator
+    [13:51:47] DEPRECATION WARNING: please use MorganGenerator
+    [13:51:47] DEPRECATION WARNING: please use MorganGenerator
+    [13:51:47] DEPRECATION WARNING: please use MorganGenerator
 
 
 
