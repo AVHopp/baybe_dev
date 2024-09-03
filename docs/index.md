@@ -2,7 +2,7 @@
 :titlesonly:
 :hidden:
 
-Versions <https://emdgroup.github.io/baybe/versions>
+Versions <https://avhopp.github.io/baybe_dev/versions>
 ```
 
 ```{toctree}
