@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and `SubspaceContinuous` classes
 - New mechanisms for surrogate input/output scaling configurable per class
 - `SurrogateProtocol` as an interface for user-defined surrogate architectures
+- Multi-version documentation
 
 ### Changed
 - The transition from experimental to computational representation no longer happens
