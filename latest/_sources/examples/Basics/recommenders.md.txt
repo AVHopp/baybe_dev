@@ -107,7 +107,7 @@ available_acq_functions = [
 ]
 ```
 
-Note that the qvailability of the acquisition functions might depend on the
+Note that the availability of the acquisition functions might depend on the
 `batch_size`:
   - If `batch_size` is set to 1, all available acquisition functions can be chosen
   - If a larger value is chosen, only those that allow batching.
@@ -266,15 +266,15 @@ print(recommendation)
     
     
     Recommended experiments: 
-             Solvent             Base                        Ligand  Temperature  \
-    167         DMAc   Cesium acetate                     BrettPhos        105.0   
-    350         DMAc  Cesium pivalate  Di-tert-butylphenylphosphine        120.0   
-    7    Butyl Ester   Cesium acetate                 (t-Bu)PhCPhos        120.0   
+             Solvent                Base                        Ligand  \
+    409     p-Xylene  Potassium pivalate                 (t-Bu)PhCPhos   
+    105  Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+    310         DMAc  Potassium pivalate                     BrettPhos   
     
-         Concentration  
-    167          0.153  
-    350          0.153  
-    7            0.100  
+         Temperature  Concentration  
+    409        105.0          0.100  
+    105        120.0          0.057  
+    310        105.0          0.100  
 
 
 
@@ -287,15 +287,15 @@ print(recommendation)
     
     
     Recommended experiments with fake measured values: 
-             Solvent             Base                        Ligand  Temperature  \
-    167         DMAc   Cesium acetate                     BrettPhos        105.0   
-    350         DMAc  Cesium pivalate  Di-tert-butylphenylphosphine        120.0   
-    7    Butyl Ester   Cesium acetate                 (t-Bu)PhCPhos        120.0   
+             Solvent                Base                        Ligand  \
+    409     p-Xylene  Potassium pivalate                 (t-Bu)PhCPhos   
+    105  Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+    310         DMAc  Potassium pivalate                     BrettPhos   
     
-         Concentration      yield  
-    167          0.153  25.529533  
-    350          0.153   4.103999  
-    7            0.100  29.531601  
+         Temperature  Concentration      yield  
+    409        105.0          0.100   4.690958  
+    105        120.0          0.057  32.370788  
+    310        105.0          0.100  14.772441  
 
 
 
