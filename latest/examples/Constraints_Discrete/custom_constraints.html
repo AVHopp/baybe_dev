@@ -1128,11 +1128,11 @@ warnings.warn(</p>
       Search Space Type: DISCRETE
       SubspaceDiscrete
          Discrete Parameters
-                        Name             Type  Num_Values         Encoding
-            0  Concentration  NumericalDis...           4             None
-            1        Solvent  SubstancePar...           8  SubstanceEnc...
-            2          Speed  CategoricalP...           5  CategoricalE...
-            3    Temperature  NumericalDis...           3             None
+                        Name           Type  Num_Values       Encoding
+            0  Concentration  NumericalD...           4           None
+            1        Solvent  SubstanceP...           8  SubstanceE...
+            2          Speed  Categorica...           5  Categorica...
+            3    Temperature  NumericalD...           3           None
          Experimental Representation
                 Solvent      Speed  Temperature  Concentration
             0        C1       fast        100.0            1.0
@@ -1149,24 +1149,24 @@ warnings.warn(</p>
             was_measured: 0/450
             dont_recommend: 0/450
          Constraints
-                          Type Affected_Paramet
-            0  DiscreteCust...  [Concentrati...
+                        Type Affected_Param
+            0  DiscreteCu...  [Concentra...
          Computational Representation
-                 Concentration  Solvent_RDKIT2DD  ...  Speed  Temperature
-            0              1.0              0.0   ...    0.0        100.0
-            1              2.0              0.0   ...    0.0        100.0
-            2              5.0              0.0   ...    0.0        100.0
-            ..             ...              ...   ...    ...          ...
-            447            1.0              0.0   ...    4.0        200.0
-            448            2.0              0.0   ...    4.0        200.0
-            449            5.0              0.0   ...    4.0        200.0
+                 Concentration  Solvent_RDKIT2  ...  Speed  Temperature
+            0              1.0            0.0   ...    0.0        100.0
+            1              2.0            0.0   ...    0.0        100.0
+            2              5.0            0.0   ...    0.0        100.0
+            ..             ...            ...   ...    ...          ...
+            447            1.0            0.0   ...    4.0        200.0
+            448            2.0            0.0   ...    4.0        200.0
+            449            5.0            0.0   ...    4.0        200.0
             
             [450 rows x 8 columns]
    Objective
       Type: SingleTargetObjective
       Targets
-                       Type   Name  ... Upper_Bound  Transformation
-         0  NumericalTarget  yield  ...         inf            None
+                     Type   Name  ... Upper_Bound  Transformation
+         0  NumericalT...  yield  ...         inf           None 
          
          [1 rows x 6 columns]
    TwoPhaseMetaRecommender

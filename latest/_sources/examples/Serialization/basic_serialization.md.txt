@@ -85,19 +85,19 @@ print(campaign, end="\n" * 3)
           Search Space Type: DISCRETE
           SubspaceDiscrete
              Discrete Parameters
-                              Name             Type  Num_Values         Encoding
-                0      Granularity  CategoricalP...           3  CategoricalE...
-                1    Pressure[bar]  NumericalDis...           3             None
-                2  Temperature[...  NumericalDis...          10             None
+                            Name           Type  Num_Values       Encoding
+                0    Granularity  Categorica...           3  Categorica...
+                1  Pressure[bar]  NumericalD...           3           None
+                2  Temperatur...  NumericalD...          10           None
              Experimental Representation
-                   Granularity  Pressure[bar]  Temperature[degr
-                0       coarse            1.0          100.000 
-                1       coarse            1.0          111.111 
-                2       coarse            1.0          122.222 
-                ..         ...            ...              ... 
-                87      medium           10.0          177.778 
-                88      medium           10.0          188.889 
-                89      medium           10.0          200.000 
+                   Granularity  Pressure[bar]  Temperature[de
+                0       coarse            1.0        100.000 
+                1       coarse            1.0        111.111 
+                2       coarse            1.0        122.222 
+                ..         ...            ...            ... 
+                87      medium           10.0        177.778 
+                88      medium           10.0        188.889 
+                89      medium           10.0        200.000 
                 
                 [90 rows x 3 columns]
              Meta Data
@@ -109,29 +109,21 @@ print(campaign, end="\n" * 3)
                 Columns: []
                 Index: []
              Computational Representation
-                    Granularity_coar  Granularity_fine  ...  Pressure[bar]
-Temperature[degr
-                0               1.0               0.0   ...            1.0
-100.000
-                1               1.0               0.0   ...            1.0
-111.111
-                2               1.0               0.0   ...            1.0
-122.222
-                ..              ...               ...   ...            ...
-...
-                87              0.0               0.0   ...           10.0
-177.778
-                88              0.0               0.0   ...           10.0
-188.889
-                89              0.0               0.0   ...           10.0
-200.000
+                    Granularity_co  Granularity_fi  ...  Pressure[bar]  Temperature[de
+                0             1.0             0.0   ...            1.0        100.000 
+                1             1.0             0.0   ...            1.0        111.111 
+                2             1.0             0.0   ...            1.0        122.222 
+                ..            ...             ...   ...            ...            ... 
+                87            0.0             0.0   ...           10.0        177.778 
+                88            0.0             0.0   ...           10.0        188.889 
+                89            0.0             0.0   ...           10.0        200.000 
                 
                 [90 rows x 5 columns]
        Objective
           Type: SingleTargetObjective
           Targets
-                           Type   Name  ... Upper_Bound  Transformation
-             0  NumericalTarget  Yield  ...         inf            None
+                         Type   Name  ... Upper_Bound  Transformation
+             0  NumericalT...  Yield  ...         inf           None 
              
              [1 rows x 6 columns]
        TwoPhaseMetaRecommender
@@ -182,19 +174,19 @@ print(campaign_recreate, end="\n" * 3)
           Search Space Type: DISCRETE
           SubspaceDiscrete
              Discrete Parameters
-                              Name             Type  Num_Values         Encoding
-                0      Granularity  CategoricalP...           3  CategoricalE...
-                1    Pressure[bar]  NumericalDis...           3             None
-                2  Temperature[...  NumericalDis...          10             None
+                            Name           Type  Num_Values       Encoding
+                0    Granularity  Categorica...           3  Categorica...
+                1  Pressure[bar]  NumericalD...           3           None
+                2  Temperatur...  NumericalD...          10           None
              Experimental Representation
-                   Granularity  Pressure[bar]  Temperature[degr
-                0       coarse            1.0          100.000 
-                1       coarse            1.0          111.111 
-                2       coarse            1.0          122.222 
-                ..         ...            ...              ... 
-                87      medium           10.0          177.778 
-                88      medium           10.0          188.889 
-                89      medium           10.0          200.000 
+                   Granularity  Pressure[bar]  Temperature[de
+                0       coarse            1.0        100.000 
+                1       coarse            1.0        111.111 
+                2       coarse            1.0        122.222 
+                ..         ...            ...            ... 
+                87      medium           10.0        177.778 
+                88      medium           10.0        188.889 
+                89      medium           10.0        200.000 
                 
                 [90 rows x 3 columns]
              Meta Data
@@ -206,29 +198,21 @@ print(campaign_recreate, end="\n" * 3)
                 Columns: []
                 Index: []
              Computational Representation
-                    Granularity_coar  Granularity_fine  ...  Pressure[bar]
-Temperature[degr
-                0               1.0               0.0   ...            1.0
-100.000
-                1               1.0               0.0   ...            1.0
-111.111
-                2               1.0               0.0   ...            1.0
-122.222
-                ..              ...               ...   ...            ...
-...
-                87              0.0               0.0   ...           10.0
-177.778
-                88              0.0               0.0   ...           10.0
-188.889
-                89              0.0               0.0   ...           10.0
-200.000
+                    Granularity_co  Granularity_fi  ...  Pressure[bar]  Temperature[de
+                0             1.0             0.0   ...            1.0        100.000 
+                1             1.0             0.0   ...            1.0        111.111 
+                2             1.0             0.0   ...            1.0        122.222 
+                ..            ...             ...   ...            ...            ... 
+                87            0.0             0.0   ...           10.0        177.778 
+                88            0.0             0.0   ...           10.0        188.889 
+                89            0.0             0.0   ...           10.0        200.000 
                 
                 [90 rows x 5 columns]
        Objective
           Type: SingleTargetObjective
           Targets
-                           Type   Name  ... Upper_Bound  Transformation
-             0  NumericalTarget  Yield  ...         inf            None
+                         Type   Name  ... Upper_Bound  Transformation
+             0  NumericalT...  Yield  ...         inf           None 
              
              [1 rows x 6 columns]
        TwoPhaseMetaRecommender

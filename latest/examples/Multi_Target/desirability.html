@@ -1095,10 +1095,10 @@ It is thus not necessary to handle normalization or scaling.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Objective
    Type: DesirabilityObjective
    Targets
-                    Type      Name  ... Transformation  Weight
-      0  NumericalTarget  Target_1  ...         LINEAR    20.0
-      1  NumericalTarget  Target_2  ...         LINEAR    20.0
-      2  NumericalTarget  Target_3  ...           BELL    60.0
+                  Type      Name  ... Transformation  Weight
+      0  NumericalT...  Target_1  ...         LINEAR    20.0
+      1  NumericalT...  Target_2  ...         LINEAR    20.0
+      2  NumericalT...  Target_3  ...           BELL    60.0
       
       [3 rows x 7 columns]
    Scalarizer: MEAN
@@ -1119,11 +1119,11 @@ It is thus not necessary to handle normalization or scaling.</p>
       Search Space Type: DISCRETE
       SubspaceDiscrete
          Discrete Parameters
-                     Name             Type  Num_Values         Encoding
-            0       Cat_1  CategoricalP...           2  CategoricalE...
-            1       Cat_2  CategoricalP...           5  CategoricalE...
-            2  Num_disc_1  NumericalDis...           7             None
-            3  Num_disc_2  NumericalDis...           4             None
+                     Name           Type  Num_Values       Encoding
+            0       Cat_1  Categorica...           2  Categorica...
+            1       Cat_2  Categorica...           5  Categorica...
+            2  Num_disc_1  NumericalD...           7           None
+            3  Num_disc_2  NumericalD...           4           None
          Experimental Representation
                 Cat_1      Cat_2  Num_disc_1  Num_disc_2
             0      22         OK         1.0        -9.0
@@ -1157,10 +1157,10 @@ It is thus not necessary to handle normalization or scaling.</p>
    Objective
       Type: DesirabilityObjective
       Targets
-                       Type      Name  ... Transformation  Weight
-         0  NumericalTarget  Target_1  ...         LINEAR    20.0
-         1  NumericalTarget  Target_2  ...         LINEAR    20.0
-         2  NumericalTarget  Target_3  ...           BELL    60.0
+                     Type      Name  ... Transformation  Weight
+         0  NumericalT...  Target_1  ...         LINEAR    20.0
+         1  NumericalT...  Target_2  ...         LINEAR    20.0
+         2  NumericalT...  Target_3  ...           BELL    60.0
          
          [3 rows x 7 columns]
       Scalarizer: MEAN
@@ -1208,21 +1208,21 @@ It also prints what happens to internal data.</p>
 Recommended measurements with fake measured results:
 
     Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
-252    33  very good         1.0        -9.0  98.721558   7.703780  51.732868
-0      22         OK         1.0        -9.0  38.500708  74.252226  51.093198
-248    33   very bad        10.0        -9.0  19.080895   4.276517  53.039183
+29     22        bad         1.0        -6.0  32.456455  48.195189  54.536012
+127    22  very good         4.0        -1.0  96.037734  81.752712  51.075863
+71     22       good         4.0        -1.0  70.377423  10.323264  51.122657
 
 Internal measurement database with desirability values:
 
   Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3  \
-0    33  very good         1.0        -9.0  98.721558   7.703780  51.732868   
-1    22         OK         1.0        -9.0  38.500708  74.252226  51.093198   
-2    33   very bad        10.0        -9.0  19.080895   4.276517  53.039183   
+0    22        bad         1.0        -6.0  32.456455  48.195189  54.536012   
+1    22  very good         4.0        -1.0  96.037734  81.752712  51.075863   
+2    22       good         4.0        -1.0  70.377423  10.323264  51.122657   
 
    BatchNr  FitNr  Desirability  
-0        1    NaN      0.947062  
-1        1    NaN      0.714326  
-2        1    NaN      0.728405  
+0        1    NaN      0.566113  
+1        1    NaN      0.814840  
+2        1    NaN      0.905173  
 
 
 
@@ -1231,35 +1231,29 @@ Internal measurement database with desirability values:
 
 Recommended measurements with fake measured results:
 
-      Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
-index                                                                  
-260      33  very good         3.0        -9.0  88.065427  20.602118   
-224      33   very bad         1.0        -9.0  92.575443   6.181734   
-253      33  very good         1.0        -6.0  40.389583  91.955793   
-
-        Target_3  
-index             
-260    52.263339  
-224    54.066342  
-253    54.384172  
+      Cat_1     Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3
+index                                                                         
+75       22      good         6.0        -1.0  84.239279  49.746312  53.993296
+63       22      good         2.0        -1.0  22.707493  50.940700  56.280162
+98       22  very bad         4.0        -3.0  42.419177  63.412156  52.753246
 
 Internal measurement database with desirability values:
 
   Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3  \
-0    33  very good         1.0        -9.0  98.721558   7.703780  51.732868   
-1    22         OK         1.0        -9.0  38.500708  74.252226  51.093198   
-2    33   very bad        10.0        -9.0  19.080895   4.276517  53.039183   
-3    33  very good         3.0        -9.0  88.065427  20.602118  52.263339   
-4    33   very bad         1.0        -9.0  92.575443   6.181734  54.066342   
-5    33  very good         1.0        -6.0  40.389583  91.955793  54.384172   
+0    22        bad         1.0        -6.0  32.456455  48.195189  54.536012   
+1    22  very good         4.0        -1.0  96.037734  81.752712  51.075863   
+2    22       good         4.0        -1.0  70.377423  10.323264  51.122657   
+3    22       good         6.0        -1.0  84.239279  49.746312  53.993296   
+4    22       good         2.0        -1.0  22.707493  50.940700  56.280162   
+5    22   very bad         4.0        -3.0  42.419177  63.412156  52.753246   
 
    BatchNr  FitNr  Desirability  
-0        1    1.0      0.947062  
-1        1    1.0      0.714326  
-2        1    1.0      0.728405  
-3        2    NaN      0.876498  
-4        2    NaN      0.803839  
-5        2    NaN      0.505375  
+0        1    1.0      0.566113  
+1        1    1.0      0.814840  
+2        1    1.0      0.905173  
+3        2    NaN      0.705143  
+4        2    NaN      0.416165  
+5        2    NaN      0.673609  
 
 
 #### ITERATION 3 ####
@@ -1268,39 +1262,39 @@ Recommended measurements with fake measured results:
 
       Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2  \
 index                                                                  
-25       22         OK        10.0        -6.0  52.628901   9.140193   
-115      22  very good         1.0        -1.0  35.859322  47.380250   
-167      33         OK        10.0        -1.0  81.622279  94.999421   
+15       22         OK         4.0        -1.0  96.237700  11.144689   
+135      22  very good         8.0        -1.0  91.581426  59.002849   
+215      33       good         6.0        -1.0  51.654473   3.263925   
 
         Target_3  
 index             
-25     55.949887  
-115    51.701108  
-167    53.607623  
+15     53.100904  
+135    56.953372  
+215    56.665635  
 
 Internal measurement database with desirability values:
 
   Cat_1      Cat_2  Num_disc_1  Num_disc_2   Target_1   Target_2   Target_3  \
-0    33  very good         1.0        -9.0  98.721558   7.703780  51.732868   
-1    22         OK         1.0        -9.0  38.500708  74.252226  51.093198   
-2    33   very bad        10.0        -9.0  19.080895   4.276517  53.039183   
-3    33  very good         3.0        -9.0  88.065427  20.602118  52.263339   
-4    33   very bad         1.0        -9.0  92.575443   6.181734  54.066342   
-5    33  very good         1.0        -6.0  40.389583  91.955793  54.384172   
-6    22         OK        10.0        -6.0  52.628901   9.140193  55.949887   
-7    22  very good         1.0        -1.0  35.859322  47.380250  51.701108   
-8    33         OK        10.0        -1.0  81.622279  94.999421  53.607623   
+0    22        bad         1.0        -6.0  32.456455  48.195189  54.536012   
+1    22  very good         4.0        -1.0  96.037734  81.752712  51.075863   
+2    22       good         4.0        -1.0  70.377423  10.323264  51.122657   
+3    22       good         6.0        -1.0  84.239279  49.746312  53.993296   
+4    22       good         2.0        -1.0  22.707493  50.940700  56.280162   
+5    22   very bad         4.0        -3.0  42.419177  63.412156  52.753246   
+6    22         OK         4.0        -1.0  96.237700  11.144689  53.100904   
+7    22  very good         8.0        -1.0  91.581426  59.002849  56.953372   
+8    33       good         6.0        -1.0  51.654473   3.263925  56.665635   
 
    BatchNr  FitNr  Desirability  
-0        1    1.0      0.947062  
-1        1    1.0      0.714326  
-2        1    1.0      0.728405  
-3        2    2.0      0.876498  
-4        2    2.0      0.803839  
-5        2    2.0      0.505375  
-6        3    NaN      0.582548  
-7        3    NaN      0.743219  
-8        3    NaN      0.635738  
+0        1    1.0      0.566113  
+1        1    1.0      0.814840  
+2        1    1.0      0.905173  
+3        2    2.0      0.705143  
+4        2    2.0      0.416165  
+5        2    2.0      0.673609  
+6        3    NaN      0.865216  
+7        3    NaN      0.493293  
+8        3    NaN      0.543516  
 </pre></div>
 </div>
 </section>

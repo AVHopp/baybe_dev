@@ -111,13 +111,13 @@ print(campaign)
           Search Space Type: DISCRETE
           SubspaceDiscrete
              Discrete Parameters
-                      Name             Type  Num_Values         Encoding
-                0    Frac1  NumericalDis...           3             None
-                1   FrameA  CategoricalP...           2  CategoricalE...
-                2   FrameB  CategoricalP...           2  CategoricalE...
-                3     Solv  SubstancePar...           2  SubstanceEnc...
-                4  Switch1  CategoricalP...           2  CategoricalE...
-                5  Switch2  CategoricalP...           2  CategoricalE...
+                      Name           Type  Num_Values       Encoding
+                0    Frac1  NumericalD...           3           None
+                1   FrameA  Categorica...           2  Categorica...
+                2   FrameB  Categorica...           2  Categorica...
+                3     Solv  SubstanceP...           2  SubstanceE...
+                4  Switch1  Categorica...           2  Categorica...
+                5  Switch2  Categorica...           2  Categorica...
              Experimental Representation
                      Solv Switch1  ... FrameA  FrameB
                 0      C1     off  ...      A       A
@@ -134,8 +134,8 @@ print(campaign)
                 was_measured: 0/35
                 dont_recommend: 0/35
              Constraints
-                              Type Affected_Paramet
-                0  DiscreteDepe...  [Switch1, Sw...
+                            Type Affected_Param
+                0  DiscreteDe...  [Switch1, ...
              Computational Representation
                     Frac1  FrameA_A  ...  Switch2_left  Switch2_right
                 0     0.0       1.0  ...           1.0            0.0
@@ -150,8 +150,8 @@ print(campaign)
        Objective
           Type: SingleTargetObjective
           Targets
-                           Type      Name  ... Upper_Bound  Transformation
-             0  NumericalTarget  Target_1  ...         inf            None
+                         Type      Name  ... Upper_Bound  Transformation
+             0  NumericalT...  Target_1  ...         inf           None 
              
              [1 rows x 6 columns]
        TwoPhaseMetaRecommender
