@@ -129,9 +129,9 @@ constraint = DiscreteCustomConstraint(
 searchspace = SearchSpace.from_product(parameters=parameters, constraints=[constraint])
 ```
 
-    /home/runner/work/baybe_dev/baybe_dev/.tox/docs-py310/lib/python3.10/site-
-packages/baybe/utils/chemistry.py:126: DeprecationWarning: Substance encoding 'RDKIT' is
-deprecated and will be disabled in a future version. Use 'RDKIT2DDESCRIPTORS' instead.
+    /home/runner/work/baybe_dev/baybe_dev/baybe/utils/chemistry.py:126:
+DeprecationWarning: Substance encoding 'RDKIT' is deprecated and will be disabled in a
+future version. Use 'RDKIT2DDESCRIPTORS' instead.
       warnings.warn(
 
 
@@ -152,15 +152,26 @@ print(campaign)
        Meta Data
           Batches done: 0
           Fits done: 0
+          Discrete Subspace Meta Data
+             Recommended: 0/450
+             Measured: 0/450
+             Excluded: 0/450
        SearchSpace
           Search Space Type: DISCRETE
           SubspaceDiscrete
              Discrete Parameters
-                            Name           Type  Num_Values       Encoding
-                0  Concentration  NumericalD...           4           None
-                1        Solvent  SubstanceP...           8  SubstanceE...
-                2          Speed  Categorica...           5  Categorica...
-                3    Temperature  NumericalD...           3           None
+                            Name                        Type  ...
+Encoding nActiveValues
+                0  Concentration  NumericalDiscreteParameter  ...
+None           NaN
+                1        Solvent          SubstanceParameter  ...
+SubstanceEncoding.RDKIT           8.0
+                2          Speed        CategoricalParameter  ...
+CategoricalEncoding.INT           5.0
+                3    Temperature  NumericalDiscreteParameter  ...
+None           NaN
+                
+                [4 rows x 5 columns]
              Experimental Representation
                     Solvent      Speed  Temperature  Concentration
                 0        C1       fast        100.0            1.0
@@ -172,29 +183,25 @@ print(campaign)
                 449   water  very slow        200.0            5.0
                 
                 [450 rows x 4 columns]
-             Meta Data
-                was_recommended: 0/450
-                was_measured: 0/450
-                dont_recommend: 0/450
              Constraints
-                            Type Affected_Param
-                0  DiscreteCu...  [Concentra...
+                              Type Affected_Paramet
+                0  DiscreteCust...  [Concentrati...
              Computational Representation
-                     Concentration  Solvent_RDKIT2  ...  Speed  Temperature
-                0              1.0            0.0   ...    0.0        100.0
-                1              2.0            0.0   ...    0.0        100.0
-                2              5.0            0.0   ...    0.0        100.0
-                ..             ...            ...   ...    ...          ...
-                447            1.0            0.0   ...    4.0        200.0
-                448            2.0            0.0   ...    4.0        200.0
-                449            5.0            0.0   ...    4.0        200.0
+                     Concentration  Solvent_RDKIT2DD  ...  Speed  Temperature
+                0              1.0              0.0   ...    0.0        100.0
+                1              2.0              0.0   ...    0.0        100.0
+                2              5.0              0.0   ...    0.0        100.0
+                ..             ...              ...   ...    ...          ...
+                447            1.0              0.0   ...    4.0        200.0
+                448            2.0              0.0   ...    4.0        200.0
+                449            5.0              0.0   ...    4.0        200.0
                 
                 [450 rows x 8 columns]
        Objective
           Type: SingleTargetObjective
           Targets
-                         Type   Name  ... Upper_Bound  Transformation
-             0  NumericalT...  yield  ...         inf           None 
+                           Type   Name  ... Upper_Bound  Transformation
+             0  NumericalTarget  yield  ...         inf            None
              
              [1 rows x 6 columns]
        TwoPhaseMetaRecommender
@@ -207,12 +214,14 @@ print(campaign)
                    GaussianProcessSurrogate
                       Supports Transfer Learning: True
                       Kernel factory: DefaultKernelFactory()
-                Acquisition function: qLogExpectedImprovement()
+                Acquisition function: None
                 Compatibility: SearchSpaceType.HYBRID
-                Sequential continuous: False
+                Sequential continuous: True
                 Hybrid sampler: None
                 Sampling percentage: 1.0
           Switch after: 1
+          Remain switched: False
+          Has switched: False
 
 
 ## Manual verification of the constraint
@@ -224,7 +233,7 @@ constraints.
 ```python
 N_ITERATIONS = 3
 for kIter in range(N_ITERATIONS):
-    print(f"\n\n#### ITERATION {kIter+1} ####")
+    print(f"\n\n#### ITERATION {kIter + 1} ####")
 
     print("## ASSERTS ##")
     print(

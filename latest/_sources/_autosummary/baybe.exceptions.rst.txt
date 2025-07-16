@@ -26,16 +26,25 @@ baybe.exceptions
       EmptySearchSpaceError
       IncompatibilityError
       IncompatibleAcquisitionFunctionError
+      IncompatibleArgumentError
+      IncompatibleExplainerError
       IncompatibleSearchSpaceError
+      IncompatibleSurrogateError
+      IncompleteMeasurementsError
+      InfeasibilityError
+      InputDataTypeWarning
       InvalidSurrogateModelError
       InvalidTargetValueError
+      MinimumCardinalityViolatedWarning
       ModelNotTrainedError
       NoMCAcquisitionFunctionError
+      NoMeasurementsError
       NoRecommendersLeftError
       NotEnoughPointsLeftError
       NothingToSimulateError
       NumericalUnderflowError
       OptionalImportError
+      SearchSpaceMatchWarning
       UnidentifiedSubclassError
       UnmatchedAttributeError
       UnusedObjectWarning

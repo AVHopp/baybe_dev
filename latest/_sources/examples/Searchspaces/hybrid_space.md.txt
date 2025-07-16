@@ -14,18 +14,18 @@ directory.
 
 ```python
 import numpy as np
+import pandas as pd
 from botorch.test_functions import Rastrigin
 ```
 
 
 ```python
 from baybe import Campaign
-from baybe.objectives import SingleTargetObjective
 from baybe.parameters import NumericalContinuousParameter, NumericalDiscreteParameter
 from baybe.recommenders import NaiveHybridSpaceRecommender, TwoPhaseMetaRecommender
 from baybe.searchspace import SearchSpace
 from baybe.targets import NumericalTarget
-from baybe.utils.botorch_wrapper import botorch_function_wrapper
+from baybe.utils.dataframe import arrays_to_dataframes
 ```
 
 ## Defining the test function and the hybrid dimensions
@@ -98,7 +98,6 @@ if set(CONT_INDICES + DISC_INDICES) != set(range(DIMENSION)):
 
 ```python
 BOUNDS = TestFunction.bounds
-WRAPPED_FUNCTION = botorch_function_wrapper(test_function=TestFunction)
 ```
 
 ## Constructing the hybrid searchspace
@@ -116,7 +115,7 @@ Construct the continuous parameters as `NumericContinuous` parameters.
 ```python
 cont_parameters = [
     NumericalContinuousParameter(
-        name=f"x_{k+1}",
+        name=f"x_{k + 1}",
         bounds=(BOUNDS[0, k], BOUNDS[1, k]),
     )
     for k in CONT_INDICES
@@ -129,7 +128,7 @@ Construct the discrete parameters as `NumericalDiscreteParameters`.
 ```python
 disc_parameters = [
     NumericalDiscreteParameter(
-        name=f"x_{k+1}",
+        name=f"x_{k + 1}",
         values=list(np.linspace(BOUNDS[0, k], BOUNDS[1, k], POINTS_PER_DIM)),
         tolerance=0.01,
     )
@@ -140,7 +139,17 @@ disc_parameters = [
 
 ```python
 searchspace = SearchSpace.from_product(parameters=disc_parameters + cont_parameters)
-objective = SingleTargetObjective(target=NumericalTarget(name="Target", mode="MIN"))
+target = NumericalTarget(name="Target", mode="MIN")
+objective = target.to_objective()
+```
+
+## Wrap the test function as a dataframe-based lookup callable
+
+
+```python
+lookup = arrays_to_dataframes(
+    searchspace.parameter_names, [target.name], use_torch=True
+)(TestFunction)
 ```
 
 ## Constructing hybrid recommenders
@@ -175,37 +184,27 @@ recommendation = campaign.recommend(batch_size=BATCH_SIZE)
 ```
 
 Evaluate the test function.
-Note that we need iterate through the rows of the recommendation.
-Furthermore, we need to interpret the row as a list.
 
 
 ```python
-target_values = []
-for index, row in recommendation.iterrows():
-    target_values.append(WRAPPED_FUNCTION(*row.to_list()))
-```
-
-We add an additional column with the calculated target values.
-
-
-```python
-recommendation["Target"] = target_values
+lookup_values = lookup(recommendation)
+measurements = pd.concat([recommendation, lookup_values], axis=1)
 ```
 
 Here, we inform the campaign about our measurement.
 
 
 ```python
-campaign.add_measurements(recommendation)
+campaign.add_measurements(measurements)
 print("\n\nRecommended experiments with measured values: ")
-print(recommendation)
+print(measurements)
 ```
 
     
     
     Recommended experiments with measured values: 
          x_1   x_2   x_3       x_4       x_5       x_6      Target
-    5  -5.12  0.00  5.12  1.330246 -1.502502  5.024010  122.060595
-    14  0.00  0.00  5.12  3.175357 -3.180585  3.160765   75.052069
-    0  -5.12 -5.12 -5.12  2.783721 -0.969034 -1.662477  121.538074
+    23  5.12  0.00  5.12  0.888312  2.589170 -0.260606   96.910175
+    3  -5.12  0.00 -5.12  0.135431 -1.034790 -2.501469   88.840663
+    0  -5.12 -5.12 -5.12  2.504828  1.038382 -1.425875  135.379319
 

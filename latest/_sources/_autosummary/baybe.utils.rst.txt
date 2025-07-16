@@ -35,9 +35,9 @@ baybe.utils
 
    boolean
 
-   botorch_wrapper
-
    chemistry
+
+   clustering_algorithms
 
    conversion
 
@@ -48,8 +48,6 @@ baybe.utils
    memory
 
    numerical
-
-   plotting
 
    random
 

@@ -31,11 +31,13 @@ baybe.objectives
 
    base
 
-   deprecation
-
    desirability
 
    enum
 
+   pareto
+
    single
+
+   validation
 

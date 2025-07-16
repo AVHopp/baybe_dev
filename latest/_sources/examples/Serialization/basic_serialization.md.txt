@@ -81,49 +81,63 @@ print(campaign, end="\n" * 3)
        Meta Data
           Batches done: 0
           Fits done: 0
+          Discrete Subspace Meta Data
+             Recommended: 0/90
+             Measured: 0/90
+             Excluded: 0/90
        SearchSpace
           Search Space Type: DISCRETE
           SubspaceDiscrete
              Discrete Parameters
-                            Name           Type  Num_Values       Encoding
-                0    Granularity  Categorica...           3  Categorica...
-                1  Pressure[bar]  NumericalD...           3           None
-                2  Temperatur...  NumericalD...          10           None
+                                    Name                        Type  ...
+Encoding nActiveValues
+                0            Granularity        CategoricalParameter  ...
+CategoricalEncoding.OHE           3.0
+                1          Pressure[bar]  NumericalDiscreteParameter  ...
+None           NaN
+                2  Temperature[degree_C]  NumericalDiscreteParameter  ...
+None           NaN
+                
+                [3 rows x 5 columns]
              Experimental Representation
-                   Granularity  Pressure[bar]  Temperature[de
-                0       coarse            1.0        100.000 
-                1       coarse            1.0        111.111 
-                2       coarse            1.0        122.222 
-                ..         ...            ...            ... 
-                87      medium           10.0        177.778 
-                88      medium           10.0        188.889 
-                89      medium           10.0        200.000 
+                   Granularity  Pressure[bar]  Temperature[degr
+                0       coarse            1.0          100.000 
+                1       coarse            1.0          111.111 
+                2       coarse            1.0          122.222 
+                ..         ...            ...              ... 
+                87      medium           10.0          177.778 
+                88      medium           10.0          188.889 
+                89      medium           10.0          200.000 
                 
                 [90 rows x 3 columns]
-             Meta Data
-                was_recommended: 0/90
-                was_measured: 0/90
-                dont_recommend: 0/90
              Constraints
                 Empty DataFrame
                 Columns: []
                 Index: []
              Computational Representation
-                    Granularity_co  Granularity_fi  ...  Pressure[bar]  Temperature[de
-                0             1.0             0.0   ...            1.0        100.000 
-                1             1.0             0.0   ...            1.0        111.111 
-                2             1.0             0.0   ...            1.0        122.222 
-                ..            ...             ...   ...            ...            ... 
-                87            0.0             0.0   ...           10.0        177.778 
-                88            0.0             0.0   ...           10.0        188.889 
-                89            0.0             0.0   ...           10.0        200.000 
+                    Granularity_coar  Granularity_fine  ...  Pressure[bar]
+Temperature[degr
+                0               1.0               0.0   ...            1.0
+100.000
+                1               1.0               0.0   ...            1.0
+111.111
+                2               1.0               0.0   ...            1.0
+122.222
+                ..              ...               ...   ...            ...
+...
+                87              0.0               0.0   ...           10.0
+177.778
+                88              0.0               0.0   ...           10.0
+188.889
+                89              0.0               0.0   ...           10.0
+200.000
                 
                 [90 rows x 5 columns]
        Objective
           Type: SingleTargetObjective
           Targets
-                         Type   Name  ... Upper_Bound  Transformation
-             0  NumericalT...  Yield  ...         inf           None 
+                           Type   Name  ... Upper_Bound  Transformation
+             0  NumericalTarget  Yield  ...         inf            None
              
              [1 rows x 6 columns]
        TwoPhaseMetaRecommender
@@ -136,12 +150,14 @@ print(campaign, end="\n" * 3)
                    GaussianProcessSurrogate
                       Supports Transfer Learning: True
                       Kernel factory: DefaultKernelFactory()
-                Acquisition function: qLogExpectedImprovement()
+                Acquisition function: None
                 Compatibility: SearchSpaceType.HYBRID
-                Sequential continuous: False
+                Sequential continuous: True
                 Hybrid sampler: None
                 Sampling percentage: 1.0
           Switch after: 1
+          Remain switched: False
+          Has switched: False
     
     
 
@@ -170,49 +186,63 @@ print(campaign_recreate, end="\n" * 3)
        Meta Data
           Batches done: 0
           Fits done: 0
+          Discrete Subspace Meta Data
+             Recommended: 0/90
+             Measured: 0/90
+             Excluded: 0/90
        SearchSpace
           Search Space Type: DISCRETE
           SubspaceDiscrete
              Discrete Parameters
-                            Name           Type  Num_Values       Encoding
-                0    Granularity  Categorica...           3  Categorica...
-                1  Pressure[bar]  NumericalD...           3           None
-                2  Temperatur...  NumericalD...          10           None
+                                    Name                        Type  ...
+Encoding nActiveValues
+                0            Granularity        CategoricalParameter  ...
+CategoricalEncoding.OHE           3.0
+                1          Pressure[bar]  NumericalDiscreteParameter  ...
+None           NaN
+                2  Temperature[degree_C]  NumericalDiscreteParameter  ...
+None           NaN
+                
+                [3 rows x 5 columns]
              Experimental Representation
-                   Granularity  Pressure[bar]  Temperature[de
-                0       coarse            1.0        100.000 
-                1       coarse            1.0        111.111 
-                2       coarse            1.0        122.222 
-                ..         ...            ...            ... 
-                87      medium           10.0        177.778 
-                88      medium           10.0        188.889 
-                89      medium           10.0        200.000 
+                   Granularity  Pressure[bar]  Temperature[degr
+                0       coarse            1.0          100.000 
+                1       coarse            1.0          111.111 
+                2       coarse            1.0          122.222 
+                ..         ...            ...              ... 
+                87      medium           10.0          177.778 
+                88      medium           10.0          188.889 
+                89      medium           10.0          200.000 
                 
                 [90 rows x 3 columns]
-             Meta Data
-                was_recommended: 0/90
-                was_measured: 0/90
-                dont_recommend: 0/90
              Constraints
                 Empty DataFrame
                 Columns: []
                 Index: []
              Computational Representation
-                    Granularity_co  Granularity_fi  ...  Pressure[bar]  Temperature[de
-                0             1.0             0.0   ...            1.0        100.000 
-                1             1.0             0.0   ...            1.0        111.111 
-                2             1.0             0.0   ...            1.0        122.222 
-                ..            ...             ...   ...            ...            ... 
-                87            0.0             0.0   ...           10.0        177.778 
-                88            0.0             0.0   ...           10.0        188.889 
-                89            0.0             0.0   ...           10.0        200.000 
+                    Granularity_coar  Granularity_fine  ...  Pressure[bar]
+Temperature[degr
+                0               1.0               0.0   ...            1.0
+100.000
+                1               1.0               0.0   ...            1.0
+111.111
+                2               1.0               0.0   ...            1.0
+122.222
+                ..              ...               ...   ...            ...
+...
+                87              0.0               0.0   ...           10.0
+177.778
+                88              0.0               0.0   ...           10.0
+188.889
+                89              0.0               0.0   ...           10.0
+200.000
                 
                 [90 rows x 5 columns]
        Objective
           Type: SingleTargetObjective
           Targets
-                         Type   Name  ... Upper_Bound  Transformation
-             0  NumericalT...  Yield  ...         inf           None 
+                           Type   Name  ... Upper_Bound  Transformation
+             0  NumericalTarget  Yield  ...         inf            None
              
              [1 rows x 6 columns]
        TwoPhaseMetaRecommender
@@ -225,12 +255,14 @@ print(campaign_recreate, end="\n" * 3)
                    GaussianProcessSurrogate
                       Supports Transfer Learning: True
                       Kernel factory: DefaultKernelFactory()
-                Acquisition function: qLogExpectedImprovement()
+                Acquisition function: None
                 Compatibility: SearchSpaceType.HYBRID
-                Sequential continuous: False
+                Sequential continuous: True
                 Hybrid sampler: None
                 Sampling percentage: 1.0
           Switch after: 1
+          Remain switched: False
+          Has switched: False
     
     
 

@@ -34,7 +34,7 @@ from baybe.recommenders import RandomRecommender
 from baybe.searchspace import SearchSpace
 from baybe.simulation import simulate_scenarios
 from baybe.targets import NumericalTarget
-from baybe.utils.plotting import create_example_plots
+from examples.utils import create_example_plots
 ```
 
 ## Parameters for a full simulation loop
@@ -69,13 +69,14 @@ folder.
 
 ```python
 try:
-    lookup = pd.read_excel("./lookup.xlsx")
-except FileNotFoundError:
-    try:
-        lookup = pd.read_excel("examples/Backtesting/lookup.xlsx")
-    except FileNotFoundError as e:
-        print(e)
+    lookup = pd.read_csv("benchmarks/data/direct_arylation/data.csv")
+except FileNotFoundError as e:
+    lookup = pd.read_csv("../../../benchmarks/data/direct_arylation/data.csv")
+    print(e)
 ```
+
+    [Errno 2] No such file or directory: 'benchmarks/data/direct_arylation/data.csv'
+
 
 As usual, we set up some experiment.
 Note that we now need to ensure that the names fit the names in the provided .xlsx file!
@@ -204,16 +205,6 @@ results = simulate_scenarios(
     n_mc_iterations=N_MC_ITERATIONS,
 )
 ```
-
-    
-
-    
-
-    
-
-    
-
-    
 
     
 

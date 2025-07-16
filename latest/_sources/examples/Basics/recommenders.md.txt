@@ -113,25 +113,11 @@ Note that the availability of the acquisition functions might depend on the
   - If a larger value is chosen, only those that allow batching.
       That is, 'q'-variants of the acquisition functions must be chosen.
 
-The default he acquisition function is q-Expected Improvement.
+The default acquisition function is q-Log Expected Improvement.
 
 
 ```python
-ACQ_FUNCTION = "qEI"
-```
-
-## Other parameters
-
-Two other boolean hyperparameters can be specified when creating a recommender object.
-The first one allows the recommendation of points that were already recommended
-previously.
-The second one allows the recommendation of points that have already been measured.
-Per default, they are set to `True`.
-
-
-```python
-ALLOW_REPEATED_RECOMMENDATIONS = True
-ALLOW_RECOMMENDING_ALREADY_MEASURED = True
+ACQ_FUNCTION = "qLogEI"
 ```
 
 ## Creating the recommender object
@@ -146,10 +132,7 @@ Therefore one does not need to specify all of them to create a recommender objec
 recommender = TwoPhaseMetaRecommender(
     initial_recommender=INITIAL_RECOMMENDER,
     recommender=BotorchRecommender(
-        surrogate_model=SURROGATE_MODEL,
-        acquisition_function=ACQ_FUNCTION,
-        allow_repeated_recommendations=ALLOW_REPEATED_RECOMMENDATIONS,
-        allow_recommending_already_measured=ALLOW_RECOMMENDING_ALREADY_MEASURED,
+        surrogate_model=SURROGATE_MODEL, acquisition_function=ACQ_FUNCTION
     ),
 )
 ```
@@ -169,18 +152,15 @@ print(recommender)
                 GaussianProcessSurrogate
                    Supports Transfer Learning: True
                    Kernel factory: DefaultKernelFactory()
-             Acquisition function: qExpectedImprovement()
+             Acquisition function: qLogExpectedImprovement()
              Compatibility: SearchSpaceType.HYBRID
-             Sequential continuous: False
+             Sequential continuous: True
              Hybrid sampler: None
              Sampling percentage: 1.0
        Switch after: 1
+       Remain switched: False
+       Has switched: False
 
-
-Note that there are the additional keywords `hybrid_sampler` and `sampling_percentag`.
-Their meaning and how to use and define it are explained in the hybrid backtesting
-example.
-We thus refer to [`hybrid`](./../Backtesting/hybrid.md) for details on these.
 
 ## Example Searchspace and objective parameters
 
@@ -266,15 +246,15 @@ print(recommendation)
     
     
     Recommended experiments: 
-               Solvent                Base                        Ligand  \
-    190  Butyornitrile  Potassium pivalate                 (t-Bu)PhCPhos   
-    146  Butyornitrile     Cesium pivalate                     BrettPhos   
-    236           DMAc      Cesium acetate  Di-tert-butylphenylphosphine   
+               Solvent               Base                        Ligand  \
+    147  Butyornitrile    Cesium pivalate                     BrettPhos   
+    121  Butyornitrile     Cesium acetate                     BrettPhos   
+    292           DMAc  Potassium acetate  Di-tert-butylphenylphosphine   
     
          Temperature  Concentration  
-    190         90.0          0.100  
-    146         90.0          0.153  
-    236         90.0          0.153  
+    147        105.0          0.057  
+    121        105.0          0.100  
+    292        105.0          0.100  
 
 
 
@@ -287,15 +267,15 @@ print(recommendation)
     
     
     Recommended experiments with fake measured values: 
-               Solvent                Base                        Ligand  \
-    190  Butyornitrile  Potassium pivalate                 (t-Bu)PhCPhos   
-    146  Butyornitrile     Cesium pivalate                     BrettPhos   
-    236           DMAc      Cesium acetate  Di-tert-butylphenylphosphine   
+               Solvent               Base                        Ligand  \
+    147  Butyornitrile    Cesium pivalate                     BrettPhos   
+    121  Butyornitrile     Cesium acetate                     BrettPhos   
+    292           DMAc  Potassium acetate  Di-tert-butylphenylphosphine   
     
          Temperature  Concentration      yield  
-    190         90.0          0.100  18.329067  
-    146         90.0          0.153  32.841220  
-    236         90.0          0.153  16.511059  
+    147        105.0          0.057  23.709224  
+    121        105.0          0.100  22.127161  
+    292        105.0          0.100  29.720831  
 
 
 

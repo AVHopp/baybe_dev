@@ -23,7 +23,6 @@ import warnings
 ```python
 import pandas as pd
 import seaborn as sns
-import torch
 ```
 
 
@@ -43,8 +42,7 @@ from baybe.searchspace import SearchSpace, SearchSpaceType
 from baybe.simulation import simulate_scenarios
 from baybe.targets import NumericalTarget
 from baybe.utils import register_hooks
-from baybe.utils.dataframe import to_tensor
-from baybe.utils.plotting import create_example_plots
+from examples.utils import create_example_plots
 ```
 
 
@@ -77,10 +75,14 @@ We load the dataframe containing the lookup data for the closed-loop simulation:
 
 ```python
 try:
-    lookup = pd.read_excel("./../Backtesting/lookup.xlsx")
-except FileNotFoundError:
-    lookup = pd.read_excel("examples/Backtesting/lookup.xlsx")
+    lookup = pd.read_csv("benchmarks/data/direct_arylation/data.csv")
+except FileNotFoundError as e:
+    lookup = pd.read_csv("../../../benchmarks/data/direct_arylation/data.csv")
+    print(e)
 ```
+
+    [Errno 2] No such file or directory: 'benchmarks/data/direct_arylation/data.csv'
+
 
 Following the setup described [here](../Backtesting/full_lookup.md), we create the
 building blocks for the optimization problem:
@@ -148,8 +150,6 @@ results_uninterrupted = simulate_scenarios(
 
     
 
-    
-
 
 ## Defining the Campaign-Stopping Hook
 
@@ -188,23 +188,19 @@ def stop_on_PI(
             f"Currently, only search spaces of type '{SearchSpaceType.DISCRETE}' are "
             f"accepted."
         )
+    candidates, _ = searchspace.discrete.get_candidates()
     acqf = ProbabilityOfImprovement()
-    botorch_acqf = acqf.to_botorch(
-        self._surrogate_model, searchspace, objective, measurements
+    pi = self.acquisition_values(
+        candidates, searchspace, objective, measurements, acquisition_function=acqf
     )
-    _, candidates_comp_rep = searchspace.discrete.get_candidates(
-        allow_repeated_recommendations=self.allow_repeated_recommendations,
-        allow_recommending_already_measured=self.allow_recommending_already_measured,
-    )
-    comp_rep_tensor = to_tensor(candidates_comp_rep).unsqueeze(1)
-    acqf_values = botorch_acqf(comp_rep_tensor)
 
-    n_pis_over = torch.sum(acqf_values > PI_THRESHOLD)
-    n_pis_over_required = math.ceil(len(candidates_comp_rep) * PI_REQUIRED_FRACTION)
+    n_pis_over = (pi > PI_THRESHOLD).sum()
+    n_pis_over_required = math.ceil(len(pi) * PI_REQUIRED_FRACTION)
     if n_pis_over < n_pis_over_required:
         raise CampaignStoppedException(
-            f"Less than {PI_REQUIRED_FRACTION*100:.0f}% of candidates are above the PI "
-            f"threshold of {PI_THRESHOLD*100:.0f}% - Stopping the campaign."
+            f"Less than {PI_REQUIRED_FRACTION * 100:.0f}% of candidates are above the PI
+"
+            f"threshold of {PI_THRESHOLD * 100:.0f}% - Stopping the campaign."
         )
 ```
 
@@ -255,8 +251,6 @@ results_interrupted = simulate_scenarios(
     random_seed=RANDOM_SEED,
 )
 ```
-
-    
 
     
 

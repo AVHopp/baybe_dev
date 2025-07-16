@@ -107,17 +107,30 @@ print(campaign)
        Meta Data
           Batches done: 0
           Fits done: 0
+          Discrete Subspace Meta Data
+             Recommended: 0/35
+             Measured: 0/35
+             Excluded: 0/35
        SearchSpace
           Search Space Type: DISCRETE
           SubspaceDiscrete
              Discrete Parameters
-                      Name           Type  Num_Values       Encoding
-                0    Frac1  NumericalD...           3           None
-                1   FrameA  Categorica...           2  Categorica...
-                2   FrameB  Categorica...           2  Categorica...
-                3     Solv  SubstanceP...           2  SubstanceE...
-                4  Switch1  Categorica...           2  Categorica...
-                5  Switch2  Categorica...           2  Categorica...
+                      Name                        Type  ...                   Encoding
+nActiveValues
+                0    Frac1  NumericalDiscreteParameter  ...                       None
+NaN
+                1   FrameA        CategoricalParameter  ...    CategoricalEncoding.OHE
+2.0
+                2   FrameB        CategoricalParameter  ...    CategoricalEncoding.OHE
+2.0
+                3     Solv          SubstanceParameter  ...  SubstanceEncoding.MORDRED
+2.0
+                4  Switch1        CategoricalParameter  ...    CategoricalEncoding.OHE
+2.0
+                5  Switch2        CategoricalParameter  ...    CategoricalEncoding.OHE
+2.0
+                
+                [6 rows x 5 columns]
              Experimental Representation
                      Solv Switch1  ... FrameA  FrameB
                 0      C1     off  ...      A       A
@@ -129,13 +142,9 @@ print(campaign)
                 34  water      on  ...      B       B
                 
                 [35 rows x 6 columns]
-             Meta Data
-                was_recommended: 0/35
-                was_measured: 0/35
-                dont_recommend: 0/35
              Constraints
-                            Type Affected_Param
-                0  DiscreteDe...  [Switch1, ...
+                              Type Affected_Paramet
+                0  DiscreteDepe...  [Switch1, Sw...
              Computational Representation
                     Frac1  FrameA_A  ...  Switch2_left  Switch2_right
                 0     0.0       1.0  ...           1.0            0.0
@@ -150,8 +159,8 @@ print(campaign)
        Objective
           Type: SingleTargetObjective
           Targets
-                         Type      Name  ... Upper_Bound  Transformation
-             0  NumericalT...  Target_1  ...         inf           None 
+                           Type      Name  ... Upper_Bound  Transformation
+             0  NumericalTarget  Target_1  ...         inf            None
              
              [1 rows x 6 columns]
        TwoPhaseMetaRecommender
@@ -164,12 +173,14 @@ print(campaign)
                    GaussianProcessSurrogate
                       Supports Transfer Learning: True
                       Kernel factory: DefaultKernelFactory()
-                Acquisition function: qLogExpectedImprovement()
+                Acquisition function: None
                 Compatibility: SearchSpaceType.HYBRID
-                Sequential continuous: False
+                Sequential continuous: True
                 Hybrid sampler: None
                 Sampling percentage: 1.0
           Switch after: 1
+          Remain switched: False
+          Has switched: False
 
 
 ## Manual verification of the constraints
@@ -181,19 +192,19 @@ constraints.
 ```python
 N_ITERATIONS = 2 if SMOKE_TEST else 5
 for kIter in range(N_ITERATIONS):
-    print(f"\n#### ITERATION {kIter+1} ####")
+    print(f"\n#### ITERATION {kIter + 1} ####")
 
     print("## ASSERTS ##")
     print(
         f"Number entries with both switches on "
-        f"(expected {RESOLUTION*len(dict_solvent)*2*2}): ",
+        f"(expected {RESOLUTION * len(dict_solvent) * 2 * 2}): ",
         (
             (campaign.searchspace.discrete.exp_rep["Switch1"] == "on")
             & (campaign.searchspace.discrete.exp_rep["Switch2"] == "right")
         ).sum(),
     )
     print(
-        f"Number entries with Switch1 off " f"(expected {2*2}):       ",
+        f"Number entries with Switch1 off (expected {2 * 2}):       ",
         (
             (campaign.searchspace.discrete.exp_rep["Switch1"] == "off")
             & (campaign.searchspace.discrete.exp_rep["Switch2"] == "right")
@@ -201,7 +212,7 @@ for kIter in range(N_ITERATIONS):
     )
     print(
         f"Number entries with Switch2 off "
-        f"(expected {RESOLUTION*len(dict_solvent)}):"
+        f"(expected {RESOLUTION * len(dict_solvent)}):"
         f"      ",
         (
             (campaign.searchspace.discrete.exp_rep["Switch1"] == "on")
