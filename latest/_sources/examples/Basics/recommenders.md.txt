@@ -246,15 +246,15 @@ print(recommendation)
     
     
     Recommended experiments: 
-               Solvent               Base                        Ligand  \
-    147  Butyornitrile    Cesium pivalate                     BrettPhos   
-    121  Butyornitrile     Cesium acetate                     BrettPhos   
-    292           DMAc  Potassium acetate  Di-tert-butylphenylphosphine   
+             Solvent                Base                        Ligand  \
+    349     p-Xylene      Cesium acetate  Di-tert-butylphenylphosphine   
+    51   Butyl Ester     Cesium pivalate  Di-tert-butylphenylphosphine   
+    416     p-Xylene  Potassium pivalate                     BrettPhos   
     
          Temperature  Concentration  
-    147        105.0          0.057  
-    121        105.0          0.100  
-    292        105.0          0.100  
+    349        120.0          0.100  
+    51         120.0          0.057  
+    416         90.0          0.153  
 
 
 
@@ -267,15 +267,15 @@ print(recommendation)
     
     
     Recommended experiments with fake measured values: 
-               Solvent               Base                        Ligand  \
-    147  Butyornitrile    Cesium pivalate                     BrettPhos   
-    121  Butyornitrile     Cesium acetate                     BrettPhos   
-    292           DMAc  Potassium acetate  Di-tert-butylphenylphosphine   
+             Solvent                Base                        Ligand  \
+    349     p-Xylene      Cesium acetate  Di-tert-butylphenylphosphine   
+    51   Butyl Ester     Cesium pivalate  Di-tert-butylphenylphosphine   
+    416     p-Xylene  Potassium pivalate                     BrettPhos   
     
          Temperature  Concentration      yield  
-    147        105.0          0.057  23.709224  
-    121        105.0          0.100  22.127161  
-    292        105.0          0.100  29.720831  
+    349        120.0          0.100   9.007237  
+    51         120.0          0.057  29.655240  
+    416         90.0          0.153   6.665700  
 
 
 
