@@ -1257,14 +1257,14 @@ as follows.</p>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments: 
          Solvent                Base                        Ligand  \
-349     p-Xylene      Cesium acetate  Di-tert-butylphenylphosphine   
-51   Butyl Ester     Cesium pivalate  Di-tert-butylphenylphosphine   
-416     p-Xylene  Potassium pivalate                     BrettPhos   
+342     p-Xylene      Cesium acetate  Di-tert-butylphenylphosphine   
+102  Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+431     p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine   
 
      Temperature  Concentration  
-349        120.0          0.100  
-51         120.0          0.057  
-416         90.0          0.153  
+342         90.0          0.057  
+102        105.0          0.057  
+431        120.0          0.153  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
@@ -1274,14 +1274,14 @@ as follows.</p>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
          Solvent                Base                        Ligand  \
-349     p-Xylene      Cesium acetate  Di-tert-butylphenylphosphine   
-51   Butyl Ester     Cesium pivalate  Di-tert-butylphenylphosphine   
-416     p-Xylene  Potassium pivalate                     BrettPhos   
+342     p-Xylene      Cesium acetate  Di-tert-butylphenylphosphine   
+102  Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+431     p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine   
 
      Temperature  Concentration      yield  
-349        120.0          0.100   9.007237  
-51         120.0          0.057  29.655240  
-416         90.0          0.153   6.665700  
+342         90.0          0.057  27.356709  
+102        105.0          0.057  11.220590  
+431        120.0          0.153  17.645058  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>

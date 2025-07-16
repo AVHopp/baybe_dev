@@ -1140,13 +1140,13 @@ objective.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended measurements with batch_size = 2: 
-         Solvent                Base         Ligand  Temperature  \
-421     p-Xylene  Potassium pivalate      BrettPhos        120.0   
-34   Butyl Ester     Cesium pivalate  (t-Bu)PhCPhos        120.0   
+           Solvent               Base         Ligand  Temperature  \
+142  Butyornitrile    Cesium pivalate  (t-Bu)PhCPhos        120.0   
+63     Butyl Ester  Potassium acetate      BrettPhos         90.0   
 
      Concentration  
-421            0.1  
-34             0.1  
+142          0.100  
+63           0.057  
 </pre></div>
 </div>
 <p>Adding target values is done by creating a new column in the <code class="docutils literal notranslate"><span class="pre">recommendation</span></code>
@@ -1159,13 +1159,13 @@ We then update the campaign by adding the measurements.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-         Solvent                Base         Ligand  Temperature  \
-421     p-Xylene  Potassium pivalate      BrettPhos        120.0   
-34   Butyl Ester     Cesium pivalate  (t-Bu)PhCPhos        120.0   
+           Solvent               Base         Ligand  Temperature  \
+142  Butyornitrile    Cesium pivalate  (t-Bu)PhCPhos        120.0   
+63     Butyl Ester  Potassium acetate      BrettPhos         90.0   
 
      Concentration     yield  
-421            0.1  2.167790  
-34             0.1  0.459344  
+142          0.100  1.305586  
+63           0.057  4.444677  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
