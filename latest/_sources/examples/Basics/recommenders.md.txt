@@ -246,15 +246,15 @@ print(recommendation)
     
     
     Recommended experiments: 
-             Solvent                Base                        Ligand  \
-    342     p-Xylene      Cesium acetate  Di-tert-butylphenylphosphine   
-    102  Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
-    431     p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine   
+               Solvent                Base                        Ligand  \
+    357       p-Xylene     Cesium pivalate                 (t-Bu)PhCPhos   
+    69     Butyl Ester   Potassium acetate                     BrettPhos   
+    208  Butyornitrile  Potassium pivalate  Di-tert-butylphenylphosphine   
     
          Temperature  Concentration  
-    342         90.0          0.057  
-    102        105.0          0.057  
-    431        120.0          0.153  
+    357        120.0          0.057  
+    69         120.0          0.057  
+    208         90.0          0.100  
 
 
 
@@ -267,15 +267,15 @@ print(recommendation)
     
     
     Recommended experiments with fake measured values: 
-             Solvent                Base                        Ligand  \
-    342     p-Xylene      Cesium acetate  Di-tert-butylphenylphosphine   
-    102  Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
-    431     p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine   
+               Solvent                Base                        Ligand  \
+    357       p-Xylene     Cesium pivalate                 (t-Bu)PhCPhos   
+    69     Butyl Ester   Potassium acetate                     BrettPhos   
+    208  Butyornitrile  Potassium pivalate  Di-tert-butylphenylphosphine   
     
          Temperature  Concentration      yield  
-    342         90.0          0.057  27.356709  
-    102        105.0          0.057  11.220590  
-    431        120.0          0.153  17.645058  
+    357        120.0          0.057  27.316859  
+    69         120.0          0.057  30.516760  
+    208         90.0          0.100  32.576018  
 
 
 
