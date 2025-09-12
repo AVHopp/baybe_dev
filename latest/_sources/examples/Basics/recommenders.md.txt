@@ -217,7 +217,7 @@ searchspace = SearchSpace.from_product(parameters=parameters)
 
 
 ```python
-objective = SingleTargetObjective(target=NumericalTarget(name="yield", mode="MAX"))
+objective = SingleTargetObjective(target=NumericalTarget(name="yield"))
 ```
 
 ## Creating the campaign
@@ -246,15 +246,15 @@ print(recommendation)
     
     
     Recommended experiments: 
-               Solvent                Base                        Ligand  \
-    357       p-Xylene     Cesium pivalate                 (t-Bu)PhCPhos   
-    69     Butyl Ester   Potassium acetate                     BrettPhos   
-    208  Butyornitrile  Potassium pivalate  Di-tert-butylphenylphosphine   
+               Solvent               Base         Ligand  Temperature  \
+    140  Butyornitrile    Cesium pivalate  (t-Bu)PhCPhos        105.0   
+    250           DMAc    Cesium pivalate  (t-Bu)PhCPhos        120.0   
+    166  Butyornitrile  Potassium acetate  (t-Bu)PhCPhos        105.0   
     
-         Temperature  Concentration  
-    357        120.0          0.057  
-    69         120.0          0.057  
-    208         90.0          0.100  
+         Concentration  
+    140          0.153  
+    250          0.100  
+    166          0.100  
 
 
 
@@ -267,15 +267,15 @@ print(recommendation)
     
     
     Recommended experiments with fake measured values: 
-               Solvent                Base                        Ligand  \
-    357       p-Xylene     Cesium pivalate                 (t-Bu)PhCPhos   
-    69     Butyl Ester   Potassium acetate                     BrettPhos   
-    208  Butyornitrile  Potassium pivalate  Di-tert-butylphenylphosphine   
+               Solvent               Base         Ligand  Temperature  \
+    140  Butyornitrile    Cesium pivalate  (t-Bu)PhCPhos        105.0   
+    250           DMAc    Cesium pivalate  (t-Bu)PhCPhos        120.0   
+    166  Butyornitrile  Potassium acetate  (t-Bu)PhCPhos        105.0   
     
-         Temperature  Concentration      yield  
-    357        120.0          0.057  27.316859  
-    69         120.0          0.057  30.516760  
-    208         90.0          0.100  32.576018  
+         Concentration      yield  
+    140          0.153 -22.619197  
+    250          0.100  23.965978  
+    166          0.100 -21.001372  
 
 
 

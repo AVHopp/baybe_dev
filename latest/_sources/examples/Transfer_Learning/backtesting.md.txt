@@ -57,7 +57,7 @@ is created as follows:
 
 
 ```python
-target = NumericalTarget(name="Target", mode="MIN")
+target = NumericalTarget(name="Target", minimize=True)
 objective = target.to_objective()
 ```
 
@@ -224,8 +224,6 @@ for func_name, function in test_functions.items():
 
     
 
-
-    
 
     
 
