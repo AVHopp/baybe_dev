@@ -1186,9 +1186,13 @@ objective.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended measurements with batch_size = 2: 
-      Solvent                Base         Ligand  Temperature  Concentration
-251      DMAc     Cesium pivalate  (t-Bu)PhCPhos        120.0          0.153
-408  p-Xylene  Potassium pivalate  (t-Bu)PhCPhos        105.0          0.057
+      Solvent               Base                        Ligand  Temperature  \
+402  p-Xylene  Potassium acetate  Di-tert-butylphenylphosphine        120.0   
+386  p-Xylene  Potassium acetate                 (t-Bu)PhCPhos        120.0   
+
+     Concentration  
+402          0.057  
+386          0.153  
 </pre></div>
 </div>
 <p>Adding target values is done by creating a new column in the <code class="docutils literal notranslate"><span class="pre">recommendation</span></code>
@@ -1201,13 +1205,13 @@ We then update the campaign by adding the measurements.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-      Solvent                Base         Ligand  Temperature  Concentration  \
-251      DMAc     Cesium pivalate  (t-Bu)PhCPhos        120.0          0.153   
-408  p-Xylene  Potassium pivalate  (t-Bu)PhCPhos        105.0          0.057   
+      Solvent               Base                        Ligand  Temperature  \
+402  p-Xylene  Potassium acetate  Di-tert-butylphenylphosphine        120.0   
+386  p-Xylene  Potassium acetate                 (t-Bu)PhCPhos        120.0   
 
-         yield  
-251  84.236147  
-408  34.699355  
+     Concentration      yield  
+402          0.057  14.637975  
+386          0.153  11.602559  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>

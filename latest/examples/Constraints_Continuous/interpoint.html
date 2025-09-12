@@ -1122,9 +1122,6 @@ experiments where exactly 60 mL of solvent must be used across the entire batch.
 <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
-</pre></div>
-</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">baybe</span><span class="w"> </span><span class="kn">import</span> <span class="n">Campaign</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">baybe.constraints</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContinuousLinearConstraint</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">baybe.parameters</span><span class="w"> </span><span class="kn">import</span> <span class="n">NumericalContinuousParameter</span>
@@ -1301,41 +1298,35 @@ and use assertions to ensure the optimization respects our resource limitations.
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results_log</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ITERATIONS</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ITERATIONS</span><span class="p">):</span>
     <span class="n">recommendations</span> <span class="o">=</span> <span class="n">campaign</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
 
     <span class="n">reaction_results</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">(</span><span class="n">recommendations</span><span class="p">)</span>
     <span class="n">measurements</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">recommendations</span><span class="p">,</span> <span class="n">reaction_results</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
     <span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">measurements</span><span class="p">)</span>
-
-    <span class="n">total_solvent</span> <span class="o">=</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Solvent_Volume&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">total_catalyst</span> <span class="o">=</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Catalyst_Loading&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-
-    <span class="n">solvent_ok</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">total_solvent</span> <span class="o">-</span> <span class="mf">60.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">TOLERANCE</span>
-    <span class="n">catalyst_ok</span> <span class="o">=</span> <span class="n">total_catalyst</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mf">30.0</span> <span class="o">+</span> <span class="n">TOLERANCE</span><span class="p">)</span>
+    <span class="n">total_sol</span> <span class="o">=</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Solvent_Volume&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">total_cat</span> <span class="o">=</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Catalyst_Loading&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">solvent_ok</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">total_sol</span> <span class="o">-</span> <span class="mf">60.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">TOLERANCE</span>
+    <span class="n">catalyst_ok</span> <span class="o">=</span> <span class="n">total_cat</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mf">30.0</span> <span class="o">+</span> <span class="n">TOLERANCE</span><span class="p">)</span>
 
     <span class="k">assert</span> <span class="n">solvent_ok</span><span class="p">,</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Solvent constraint violated: </span><span class="si">{</span><span class="n">total_solvent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mL (expected 60.0 mL)&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;Solvent constraint violated: </span><span class="si">{</span><span class="n">total_sol</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mL (expected 60.0 mL)&quot;</span>
     <span class="p">)</span>
     <span class="k">assert</span> <span class="n">catalyst_ok</span><span class="p">,</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Catalyst constraint violated: </span><span class="si">{</span><span class="n">total_catalyst</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mol% (max 30.0 mol%)&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;Catalyst constraint violated: </span><span class="si">{</span><span class="n">total_cat</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mol% (max 30.0 mol%)&quot;</span>
     <span class="p">)</span>
 
     <span class="n">results_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="p">{</span>
-            <span class="s2">&quot;iteration&quot;</span><span class="p">:</span> <span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;total_solvent_mL&quot;</span><span class="p">:</span> <span class="n">total_solvent</span><span class="p">,</span>
-            <span class="s2">&quot;total_catalyst_mol%&quot;</span><span class="p">:</span> <span class="n">total_catalyst</span><span class="p">,</span>
+            <span class="s2">&quot;iteration&quot;</span><span class="p">:</span> <span class="n">it</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;total_solvent_mL&quot;</span><span class="p">:</span> <span class="n">total_sol</span><span class="p">,</span>
+            <span class="s2">&quot;total_catalyst_mol%&quot;</span><span class="p">:</span> <span class="n">total_cat</span><span class="p">,</span>
             <span class="s2">&quot;individual_solvent_mL&quot;</span><span class="p">:</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Solvent_Volume&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
             <span class="s2">&quot;individual_catalyst_mol%&quot;</span><span class="p">:</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Catalyst_Loading&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
         <span class="p">}</span>
     <span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Batch </span><span class="si">{</span><span class="n">iteration</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: Solvent=</span><span class="si">{</span><span class="n">total_solvent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">mL,</span>
-<span class="n">Catalyst</span><span class="o">=</span><span class="p">{</span><span class="n">total_catalyst</span><span class="p">:</span><span class="mf">.1</span><span class="n">f</span><span class="p">}</span><span class="n">mol</span><span class="o">%</span><span class="s2">&quot;</span>
-    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Batch </span><span class="si">{</span><span class="n">it</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: Solvent=</span><span class="si">{</span><span class="n">total_sol</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">mL, Catalyst=</span><span class="si">{</span><span class="n">total_cat</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">mol%&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Batch 1: Solvent=60.0mL, Catalyst=14.2mol%
@@ -1360,14 +1351,15 @@ bold total lines demonstrate that the batch-level constraints are satisfied.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results_log</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">exp_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">exp_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">):</span>
     <span class="n">individual_values</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">batch</span><span class="p">[</span><span class="n">exp_idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;individual_solvent_mL&quot;</span><span class="p">]</span>
     <span class="p">]</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
         <span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;iteration&quot;</span><span class="p">],</span>
         <span class="n">individual_values</span><span class="p">,</span>
         <span class="s2">&quot;o-&quot;</span><span class="p">,</span>
@@ -1376,7 +1368,7 @@ bold total lines demonstrate that the batch-level constraints are satisfied.</p>
     <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;iteration&quot;</span><span class="p">],</span>
     <span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;total_solvent_mL&quot;</span><span class="p">],</span>
     <span class="s2">&quot;s-&quot;</span><span class="p">,</span>
@@ -1384,19 +1376,20 @@ bold total lines demonstrate that the batch-level constraints are satisfied.</p>
     <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Total&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Required&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Solvent: Individual + Total&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Required&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Solvent: Individual + Total&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5e92f2dfc0&gt;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb20c1650c0&gt;
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">exp_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">exp_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">):</span>
     <span class="n">individual_values</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">batch</span><span class="p">[</span><span class="n">exp_idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;individual_catalyst_mol%&quot;</span><span class="p">]</span>
     <span class="p">]</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
         <span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;iteration&quot;</span><span class="p">],</span>
         <span class="n">individual_values</span><span class="p">,</span>
         <span class="s2">&quot;o-&quot;</span><span class="p">,</span>
@@ -1405,7 +1398,7 @@ bold total lines demonstrate that the batch-level constraints are satisfied.</p>
     <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;iteration&quot;</span><span class="p">],</span>
     <span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;total_catalyst_mol%&quot;</span><span class="p">],</span>
     <span class="s2">&quot;s-&quot;</span><span class="p">,</span>
@@ -1413,19 +1406,20 @@ bold total lines demonstrate that the batch-level constraints are satisfied.</p>
     <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Total&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Limit&quot;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Catalyst: Individual + Total&quot;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Limit&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Catalyst: Individual + Total&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5e91c317b0&gt;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb20cc28eb0&gt;
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">SMOKE_TEST</span><span class="p">:</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;interpoint_constraints.svg&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;interpoint.svg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<img alt="../../_images/interpoint.svg" class="align-center" src="../../_images/interpoint.svg" />
 </section>
 </section>
 
