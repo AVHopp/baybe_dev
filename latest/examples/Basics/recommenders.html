@@ -316,7 +316,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Constraints_Continuous/Constraints_Continuous.html">Constraints Continuous</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Constraints Continuous</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/interpoint.html">Interpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/hybrid_space.html">Hybrid Space</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/linear_constraints.html">Linear</a></li>
 </ul>
@@ -1302,15 +1301,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments: 
-           Solvent               Base                        Ligand  \
-381       p-Xylene  Potassium acetate                 (t-Bu)PhCPhos   
-168  Butyornitrile  Potassium acetate                 (t-Bu)PhCPhos   
-181  Butyornitrile  Potassium acetate  Di-tert-butylphenylphosphine   
+           Solvent                Base                        Ligand  \
+214  Butyornitrile  Potassium pivalate  Di-tert-butylphenylphosphine   
+103    Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+355       p-Xylene     Cesium pivalate                 (t-Bu)PhCPhos   
 
      Temperature  Concentration  
-381        105.0          0.057  
-168        120.0          0.057  
-181         90.0          0.100  
+214        120.0            0.1  
+103        105.0            0.1  
+355        105.0            0.1  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
@@ -1319,15 +1318,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-           Solvent               Base                        Ligand  \
-381       p-Xylene  Potassium acetate                 (t-Bu)PhCPhos   
-168  Butyornitrile  Potassium acetate                 (t-Bu)PhCPhos   
-181  Butyornitrile  Potassium acetate  Di-tert-butylphenylphosphine   
+           Solvent                Base                        Ligand  \
+214  Butyornitrile  Potassium pivalate  Di-tert-butylphenylphosphine   
+103    Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+355       p-Xylene     Cesium pivalate                 (t-Bu)PhCPhos   
 
      Temperature  Concentration      yield  
-381        105.0          0.057 -95.713615  
-168        120.0          0.057  -2.063433  
-181         90.0          0.100 -26.932872  
+214        120.0            0.1 -89.745915  
+103        105.0            0.1 -98.902056  
+355        105.0            0.1   9.274745  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>

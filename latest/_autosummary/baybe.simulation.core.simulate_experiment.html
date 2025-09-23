@@ -316,7 +316,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../examples/Constraints_Continuous/Constraints_Continuous.html">Constraints Continuous</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Constraints Continuous</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Continuous/interpoint.html">Interpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Continuous/hybrid_space.html">Hybrid Space</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Continuous/linear_constraints.html">Linear</a></li>
 </ul>
@@ -1160,6 +1159,11 @@ respective iteration</p></li>
 <li><p>for each target a column <code class="docutils literal notranslate"><span class="pre">{targetname}_Measurements</span></code>:
 The individual measurements obtained for the respective target and iteration</p></li>
 </ul>
+<p>Important: The calculation of “best” targets is done independently per target.
+For multi-target scenarios with batch_size &gt; 1 this means that the “best” values
+do not necessarily belong to the same point. In practice, however, one wants to
+find a point that is “generally” the best and should thus look at the best
+target values that can be found while belonging to the very same point.</p>
 </div>
 </dd></dl>
 

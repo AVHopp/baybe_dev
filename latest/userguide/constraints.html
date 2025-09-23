@@ -316,7 +316,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../examples/Constraints_Continuous/Constraints_Continuous.html">Constraints Continuous</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Constraints Continuous</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Continuous/interpoint.html">Interpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Continuous/hybrid_space.html">Hybrid Space</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Continuous/linear_constraints.html">Linear</a></li>
 </ul>
@@ -1172,44 +1171,6 @@ The following constraint would achieve this:</p>
 <p>A more detailed example can be found
 <a class="reference internal" href="../examples/Constraints_Continuous/linear_constraints.html"><span class="doc std std-doc">here</span></a>.</p>
 </section>
-<section id="continuous-interpoint-constraints">
-<h3>Continuous Interpoint Constraints<a class="headerlink" href="#continuous-interpoint-constraints" title="Link to this heading">¶</a></h3>
-<p>The constraints discussed in the previous paragraph belong to the class of so-called
-“intrapoint constraints”. That is, they impose conditions on each individual point of a batch.
-In contrast to this, interpoint constraints do so <strong>across</strong> the points of the batch.
-That is, an interpoint constraint of the form <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span> <span class="pre">&lt;=</span> <span class="pre">1</span></code> technically encodes
-$<span class="math notranslate nohighlight">\(
-\sum_{i\text{ in batch}}x_i + \sum_{i\text{ in batch}}y_i &lt;= 1
-\)</span>$
-A possible relevant constraint might be that only 100ml of a given solvent are available for
-a full batch.</p>
-<p>They can be defined by using the <code class="docutils literal notranslate"><span class="pre">interpoint</span></code> argument of the <a class="reference internal" href="../_autosummary/baybe.constraints.continuous.ContinuousLinearConstraint.html#baybe.constraints.continuous.ContinuousLinearConstraint" title="baybe.constraints.continuous.ContinuousLinearConstraint"><span class="xref myst py py-class"><code class="docutils literal notranslate"><span class="pre">ContinuousLinearConstraint</span></code></span></a>
-class.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">baybe.constraints</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContinuousLinearConstraint</span>
-
-<span class="n">ContinuousLinearConstraint</span><span class="p">(</span>
-    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SolventAmount[ml]&quot;</span><span class="p">],</span>
-    <span class="n">operator</span><span class="o">=</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
-    <span class="n">coefficients</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">],</span>
-    <span class="n">rhs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-    <span class="n">interpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<div class="warning admonition">
-<p class="admonition-title">Limited scope</p>
-<p>There are some limitations regarding the use of interpoint constraints that you need
-to be aware of:</p>
-<ul class="simple">
-<li><p>BayBE does not support to use both interpoint and cardinality constraints
-within the same search space.</p></li>
-<li><p>When using interpoint constraints, the candidate generation has be done sequentially,
-and an error is raised if attempting to use them for joint optimization.</p></li>
-<li><p>Interpoint constraints are only supported in purely continuous spaces and are not
-available in hybrid spaces.</p></li>
-</ul>
-</div>
-</section>
 <section id="continuouscardinalityconstraint">
 <h3>ContinuousCardinalityConstraint<a class="headerlink" href="#continuouscardinalityconstraint" title="Link to this heading">¶</a></h3>
 <p>The <a class="reference internal" href="../_autosummary/baybe.constraints.continuous.ContinuousCardinalityConstraint.html#baybe.constraints.continuous.ContinuousCardinalityConstraint" title="baybe.constraints.continuous.ContinuousCardinalityConstraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContinuousCardinalityConstraint</span></code></a> gives you a
@@ -1738,7 +1699,6 @@ the corresponding object or higher-level objects containing it.</p>
 <li><a class="reference internal" href="#">Constraints</a><ul>
 <li><a class="reference internal" href="#continuous-constraints">Continuous Constraints</a><ul>
 <li><a class="reference internal" href="#continuouslinearconstraint">ContinuousLinearConstraint</a></li>
-<li><a class="reference internal" href="#continuous-interpoint-constraints">Continuous Interpoint Constraints</a></li>
 <li><a class="reference internal" href="#continuouscardinalityconstraint">ContinuousCardinalityConstraint</a></li>
 </ul>
 </li>

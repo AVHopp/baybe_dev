@@ -316,7 +316,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Constraints_Continuous/Constraints_Continuous.html">Constraints Continuous</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Constraints Continuous</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/interpoint.html">Interpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/hybrid_space.html">Hybrid Space</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/linear_constraints.html">Linear</a></li>
 </ul>
@@ -1186,13 +1185,13 @@ objective.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended measurements with batch_size = 2: 
-      Solvent               Base                        Ligand  Temperature  \
-402  p-Xylene  Potassium acetate  Di-tert-butylphenylphosphine        120.0   
-386  p-Xylene  Potassium acetate                 (t-Bu)PhCPhos        120.0   
+      Solvent             Base                        Ligand  Temperature  \
+262      DMAc  Cesium pivalate  Di-tert-butylphenylphosphine         90.0   
+343  p-Xylene   Cesium acetate  Di-tert-butylphenylphosphine         90.0   
 
      Concentration  
-402          0.057  
-386          0.153  
+262            0.1  
+343            0.1  
 </pre></div>
 </div>
 <p>Adding target values is done by creating a new column in the <code class="docutils literal notranslate"><span class="pre">recommendation</span></code>
@@ -1205,13 +1204,13 @@ We then update the campaign by adding the measurements.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-      Solvent               Base                        Ligand  Temperature  \
-402  p-Xylene  Potassium acetate  Di-tert-butylphenylphosphine        120.0   
-386  p-Xylene  Potassium acetate                 (t-Bu)PhCPhos        120.0   
+      Solvent             Base                        Ligand  Temperature  \
+262      DMAc  Cesium pivalate  Di-tert-butylphenylphosphine         90.0   
+343  p-Xylene   Cesium acetate  Di-tert-butylphenylphosphine         90.0   
 
      Concentration      yield  
-402          0.057  14.637975  
-386          0.153  11.602559  
+262            0.1  -0.846921  
+343            0.1 -18.750075  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>

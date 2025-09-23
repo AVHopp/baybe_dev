@@ -246,15 +246,15 @@ print(recommendation)
     
     
     Recommended experiments: 
-               Solvent               Base                        Ligand  \
-    381       p-Xylene  Potassium acetate                 (t-Bu)PhCPhos   
-    168  Butyornitrile  Potassium acetate                 (t-Bu)PhCPhos   
-    181  Butyornitrile  Potassium acetate  Di-tert-butylphenylphosphine   
+               Solvent                Base                        Ligand  \
+    214  Butyornitrile  Potassium pivalate  Di-tert-butylphenylphosphine   
+    103    Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+    355       p-Xylene     Cesium pivalate                 (t-Bu)PhCPhos   
     
          Temperature  Concentration  
-    381        105.0          0.057  
-    168        120.0          0.057  
-    181         90.0          0.100  
+    214        120.0            0.1  
+    103        105.0            0.1  
+    355        105.0            0.1  
 
 
 
@@ -267,15 +267,15 @@ print(recommendation)
     
     
     Recommended experiments with fake measured values: 
-               Solvent               Base                        Ligand  \
-    381       p-Xylene  Potassium acetate                 (t-Bu)PhCPhos   
-    168  Butyornitrile  Potassium acetate                 (t-Bu)PhCPhos   
-    181  Butyornitrile  Potassium acetate  Di-tert-butylphenylphosphine   
+               Solvent                Base                        Ligand  \
+    214  Butyornitrile  Potassium pivalate  Di-tert-butylphenylphosphine   
+    103    Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+    355       p-Xylene     Cesium pivalate                 (t-Bu)PhCPhos   
     
          Temperature  Concentration      yield  
-    381        105.0          0.057 -95.713615  
-    168        120.0          0.057  -2.063433  
-    181         90.0          0.100 -26.932872  
+    214        120.0            0.1 -89.745915  
+    103        105.0            0.1 -98.902056  
+    355        105.0            0.1   9.274745  
 
 
 

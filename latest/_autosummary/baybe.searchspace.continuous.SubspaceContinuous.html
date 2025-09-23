@@ -316,7 +316,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../examples/Constraints_Continuous/Constraints_Continuous.html">Constraints Continuous</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Constraints Continuous</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Continuous/interpoint.html">Interpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Continuous/hybrid_space.html">Hybrid Space</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Continuous/linear_constraints.html">Linear</a></li>
 </ul>
@@ -1188,12 +1187,6 @@ parameter views.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.full_factorial" title="baybe.searchspace.continuous.SubspaceContinuous.full_factorial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">full_factorial</span></code></a></p></td>
 <td><p>Get the full factorial of the continuous space.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.has_interpoint_constraints" title="baybe.searchspace.continuous.SubspaceContinuous.has_interpoint_constraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_interpoint_constraints</span></code></a></p></td>
-<td><p>Return whether the space has any interpoint constraints.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.is_constrained" title="baybe.searchspace.continuous.SubspaceContinuous.is_constrained"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_constrained</span></code></a></p></td>
-<td><p>Return whether the subspace is constrained in any way.</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.is_empty" title="baybe.searchspace.continuous.SubspaceContinuous.is_empty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_empty</span></code></a></p></td>
 <td><p>Return whether this subspace is empty.</p></td>
 </tr>
@@ -1508,18 +1501,6 @@ corresponding to the parameter names.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="baybe.searchspace.continuous.SubspaceContinuous.has_interpoint_constraints">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_interpoint_constraints</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#baybe.searchspace.continuous.SubspaceContinuous.has_interpoint_constraints" title="Link to this definition">¶</a></dt>
-<dd><p>Return whether the space has any interpoint constraints.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="baybe.searchspace.continuous.SubspaceContinuous.is_constrained">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_constrained</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#baybe.searchspace.continuous.SubspaceContinuous.is_constrained" title="Link to this definition">¶</a></dt>
-<dd><p>Return whether the subspace is constrained in any way.</p>
-</dd></dl>
-
-<dl class="py property">
 <dt class="sig sig-object py" id="baybe.searchspace.continuous.SubspaceContinuous.is_empty">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_empty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#baybe.searchspace.continuous.SubspaceContinuous.is_empty" title="Link to this definition">¶</a></dt>
 <dd><p>Return whether this subspace is empty.</p>
@@ -1639,8 +1620,6 @@ corresponding to the parameter names.</p>
 <li><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.constraints_lin_ineq"><code class="docutils literal notranslate"><span class="pre">SubspaceContinuous.constraints_lin_ineq</span></code></a></li>
 <li><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.constraints_nonlin"><code class="docutils literal notranslate"><span class="pre">SubspaceContinuous.constraints_nonlin</span></code></a></li>
 <li><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.full_factorial"><code class="docutils literal notranslate"><span class="pre">SubspaceContinuous.full_factorial</span></code></a></li>
-<li><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.has_interpoint_constraints"><code class="docutils literal notranslate"><span class="pre">SubspaceContinuous.has_interpoint_constraints</span></code></a></li>
-<li><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.is_constrained"><code class="docutils literal notranslate"><span class="pre">SubspaceContinuous.is_constrained</span></code></a></li>
 <li><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.is_empty"><code class="docutils literal notranslate"><span class="pre">SubspaceContinuous.is_empty</span></code></a></li>
 <li><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.n_inactive_parameter_combinations"><code class="docutils literal notranslate"><span class="pre">SubspaceContinuous.n_inactive_parameter_combinations</span></code></a></li>
 <li><a class="reference internal" href="#baybe.searchspace.continuous.SubspaceContinuous.parameter_names"><code class="docutils literal notranslate"><span class="pre">SubspaceContinuous.parameter_names</span></code></a></li>
