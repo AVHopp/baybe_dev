@@ -283,7 +283,7 @@ results_df = pd.DataFrame(results_log)
 
 
 ```python
-fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+fig, axs = plt.subplots(1, 2, figsize=(10, 4));
 ```
 
 
@@ -319,15 +319,8 @@ plt.plot(
 )
 plt.axhline(y=60, color="red", linestyle="--", label="Required")
 plt.title("Solvent: Individual + Total")
-plt.legend()
+plt.legend();
 ```
-
-
-
-
-    <matplotlib.legend.Legend at 0x7f45bcbb8d60>
-
-
 
 
 ```python
@@ -357,22 +350,19 @@ plt.plot(
 )
 plt.axhline(y=30, color="red", linestyle="--", label="Limit")
 plt.title("Catalyst: Individual + Total")
-plt.legend()
+plt.legend();
 ```
-
-
-
-
-    <matplotlib.legend.Legend at 0x7f45bcbb7250>
-
-
 
 
 ```python
 plt.tight_layout()
-if not SMOKE_TEST:
-    plt.savefig("interpoint.svg")
+plt.show()
 ```
+
+
+    
+    
+
 ```{image} interpoint.svg
 :align: center
 ```
