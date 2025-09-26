@@ -287,15 +287,8 @@ plt.axhline(y=60, color="red", linestyle="--", label="Budget")
 plt.title("Solvent (Constrained)")
 plt.xlabel("Batch")
 plt.ylabel("Solvent Volume (mL)")
-plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+plt.legend(loc='center left', bbox_to_anchor=(1, 0.5));
 ```
-
-
-
-
-    <matplotlib.legend.Legend at 0x7fd5fd46c3a0>
-
-
 
 
 ```python
@@ -327,15 +320,8 @@ plt.axhline(y=30, color="red", linestyle="--", label="Required")
 plt.title("Catalyst (Constrained)")
 plt.xlabel("Batch")
 plt.ylabel("Catalyst Loading (mol%)")
-plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+plt.legend(loc='center left', bbox_to_anchor=(1, 0.5));
 ```
-
-
-
-
-    <matplotlib.legend.Legend at 0x7fd5fd494e80>
-
-
 
 
 ```python
