@@ -246,15 +246,15 @@ print(recommendation)
     
     
     Recommended experiments: 
-               Solvent                Base                        Ligand  \
-    365       p-Xylene     Cesium pivalate                     BrettPhos   
-    115  Butyornitrile      Cesium acetate                 (t-Bu)PhCPhos   
-    315           DMAc  Potassium pivalate  Di-tert-butylphenylphosphine   
+               Solvent               Base                        Ligand  \
+    59     Butyl Ester  Potassium acetate                 (t-Bu)PhCPhos   
+    124  Butyornitrile     Cesium acetate                     BrettPhos   
+    241           DMAc     Cesium acetate  Di-tert-butylphenylphosphine   
     
          Temperature  Concentration  
-    365        105.0          0.153  
-    115        120.0          0.100  
-    315         90.0          0.057  
+    59         105.0          0.153  
+    124        120.0          0.100  
+    241        120.0          0.100  
 
 
 
@@ -267,15 +267,15 @@ print(recommendation)
     
     
     Recommended experiments with fake measured values: 
-               Solvent                Base                        Ligand  \
-    365       p-Xylene     Cesium pivalate                     BrettPhos   
-    115  Butyornitrile      Cesium acetate                 (t-Bu)PhCPhos   
-    315           DMAc  Potassium pivalate  Di-tert-butylphenylphosphine   
+               Solvent               Base                        Ligand  \
+    59     Butyl Ester  Potassium acetate                 (t-Bu)PhCPhos   
+    124  Butyornitrile     Cesium acetate                     BrettPhos   
+    241           DMAc     Cesium acetate  Di-tert-butylphenylphosphine   
     
          Temperature  Concentration      yield  
-    365        105.0          0.153  42.150142  
-    115        120.0          0.100  43.419921  
-    315         90.0          0.057  80.433362  
+    59         105.0          0.153   3.754530  
+    124        120.0          0.100  80.876386  
+    241        120.0          0.100  58.131477  
 
 
 
