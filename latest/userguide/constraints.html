@@ -1149,8 +1149,8 @@ asserts that the following kind of equations are true (up to numerical rounding 
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \sum_{i} x_i \cdot c_i = \text{rhs} \\
-\sum_{i} x_i \cdot c_i &gt;= \text{rhs} \\
-\sum_{i} x_i \cdot c_i &lt;= \text{rhs}
+\sum_{i} x_i \cdot c_i \geq \text{rhs} \\
+\sum_{i} x_i \cdot c_i \leq \text{rhs}
 \end{split}\]</div>
 </div>
 <p>where <span class="math notranslate nohighlight">\(x_i\)</span> is the value of the <span class="math notranslate nohighlight">\(i\)</span>’th parameter affected by the constraint,
@@ -1190,10 +1190,13 @@ The following constraint would achieve this:</p>
 <h4>Interpoint constraints<a class="headerlink" href="#interpoint-constraints" title="Link to this heading">¶</a></h4>
 <p>In contrast to the intrapoint constrains discussed in the previous paragraph,
 interpoint constraints models constraints <strong>across</strong> the points of the batch.
-That is, an interpoint constraint of the form <span class="math notranslate nohighlight">\(x + y &lt;= 1\)</span> encodes
-$<span class="math notranslate nohighlight">\(
-\sum_{i\text{ in batch}}x_i + \sum_{i\text{ in batch}}y_i &lt;= 1
-\)</span>$</p>
+That is, an interpoint constraint of the form <span class="math notranslate nohighlight">\(x + y \leq 1\)</span> encodes</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[
+\sum_{b\text{ in batch}}x_b + \sum_{b\text{ in batch}}y_b \leq 1
+\]</div>
+</div>
 <p>They can be defined by using the <code class="docutils literal notranslate"><span class="pre">interpoint</span></code> argument of the
 <a class="reference internal" href="../_autosummary/baybe.constraints.continuous.ContinuousLinearConstraint.html#baybe.constraints.continuous.ContinuousLinearConstraint" title="baybe.constraints.continuous.ContinuousLinearConstraint"><span class="xref myst py py-class"><code class="docutils literal notranslate"><span class="pre">ContinuousLinearConstraint</span></code></span></a>
 class.

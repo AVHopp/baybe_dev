@@ -1112,7 +1112,6 @@
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">baybe.parameters</span><span class="w"> </span><span class="kn">import</span> <span class="n">NumericalContinuousParameter</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">baybe.utils.interval</span><span class="w"> </span><span class="kn">import</span> <span class="n">Interval</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">baybe.utils.numerical</span><span class="w"> </span><span class="kn">import</span> <span class="n">DTypeFloatNumpy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">baybe.utils.validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">finite_float</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
@@ -1230,51 +1229,47 @@
 <span class="sd">                for interpoint constraints as indices need to be adjusted.</span>
 <span class="sd">                Ignored by all other constraints.</span>
 
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: When the constraint is an interpoint constraint but</span>
+<span class="sd">                no batch size is given or when providing a batch size while the</span>
+<span class="sd">                constraint is an intrapoint constraint.</span>
+
 <span class="sd">        Returns:</span>
 <span class="sd">            The tuple required by botorch.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">batch_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">is_interpoint</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;A batch size must be set if and only if the constraint is &quot;</span>
+                <span class="s2">&quot;an interpoint constraint.&quot;</span>
+            <span class="p">)</span>
+
         <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 
         <span class="kn">from</span><span class="w"> </span><span class="nn">baybe.utils.torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">DTypeFloatTorch</span>
 
-        <span class="k">assert</span> <span class="ow">not</span> <span class="p">(</span><span class="n">batch_size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_interpoint</span><span class="p">),</span> <span class="p">(</span>
-            <span class="s2">&quot;No ``batch_size`` set but using interpoint constraints.&quot;</span>
-        <span class="p">)</span>
+        <span class="n">coefficients</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DTypeFloatTorch</span><span class="p">)</span>
 
-        <span class="k">assert</span> <span class="ow">not</span> <span class="p">(</span><span class="n">batch_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_interpoint</span><span class="p">),</span> <span class="p">(</span>
-            <span class="s2">&quot;A ``batch_size`` was set but the constraint is not interpoint.&quot;</span>
-        <span class="p">)</span>
+        <span class="c1"># Locate where the parameters referenced by the constraint will later be found</span>
+        <span class="c1"># in the input tensor provided to BoTorch</span>
+        <span class="c1"># NOTE: We assume here that all referenced parameters actually exist in the</span>
+        <span class="c1">#       provided ``parameters`` list, which is pre-validated when creating the</span>
+        <span class="c1">#       search space. If this assumption is violated for whatever reason, an</span>
+        <span class="c1">#       exception would still be thrown by the lookup attempt below.</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">]</span>
+        <span class="n">idxs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">idx_offset</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">])</span>
 
-        <span class="n">param_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">]</span>
-        <span class="c1"># Interpoint and intrapoint require different index formats. For more</span>
-        <span class="c1"># information, we refer to the botorch documentation:</span>
-        <span class="c1"># https://github.com/pytorch/botorch/blob/1518b304f47f5cdbaf9c175e808c90b3a0a6b86d/botorch/optim/optimize.py#L609 # noqa: E501</span>
-        <span class="n">param_indices</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span>
-        <span class="n">coefficients</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_interpoint</span><span class="p">:</span>
-            <span class="n">param_indices</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="n">param_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">idx_offset</span>
-                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span>
-                <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">param_names</span>
-            <span class="p">]</span>
-            <span class="n">coefficients</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DTypeFloatTorch</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_interpoint</span><span class="p">:</span>
+            <span class="c1"># For interpoint constraints, the coefficients and indices need to be</span>
+            <span class="c1"># adjusted to account for the batch size:</span>
+            <span class="c1"># https://github.com/pytorch/botorch/blob/1518b304f47f5cdbaf9c175e808c90b3a0a6b86d/botorch/optim/optimize.py#L609 # noqa: E501</span>
             <span class="k">assert</span> <span class="n">batch_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="n">param_index_dict</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="n">name</span><span class="p">:</span> <span class="n">param_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span>
-            <span class="p">}</span>
-            <span class="n">param_indices</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">param_index_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="n">idx_offset</span><span class="p">)</span>
-                <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span>
-                <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
-            <span class="p">]</span>
-            <span class="n">coefficients</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DTypeFloatTorch</span>
-            <span class="p">)</span><span class="o">.</span><span class="n">repeat_interleave</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+            <span class="n">coefficients</span> <span class="o">=</span> <span class="n">coefficients</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+            <span class="n">idxs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cartesian_prod</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">batch_size</span><span class="p">),</span> <span class="n">idxs</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="p">(</span>
-            <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">param_indices</span><span class="p">),</span>
+            <span class="n">idxs</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_multiplier</span> <span class="o">*</span> <span class="n">coefficients</span><span class="p">,</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_multiplier</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DTypeFloatNumpy</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_multiplier</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DTypeFloatTorch</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span>
         <span class="p">)</span></div>
 </div>
 

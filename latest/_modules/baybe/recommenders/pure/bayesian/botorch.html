@@ -1441,15 +1441,17 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">_FixedNumericalContinuousParameter</span><span class="p">)</span>
         <span class="p">}</span>
 
+        <span class="c1"># TODO: Add option for automatic choice once the &quot;settings&quot; PR is merged,</span>
+        <span class="c1">#   which ships the necessary machinery</span>
         <span class="k">if</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sequential_continuous</span>
             <span class="ow">and</span> <span class="n">subspace_continuous</span><span class="o">.</span><span class="n">has_interpoint_constraints</span>
         <span class="p">):</span>
             <span class="k">raise</span> <span class="n">IncompatibilityError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;The &#39;</span><span class="si">{</span><span class="n">fields</span><span class="p">(</span><span class="n">BotorchRecommender</span><span class="p">)</span><span class="o">.</span><span class="n">sequential_continuous</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; flag &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;is set to ``True``, but interpoint constraints are present in the &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;continuous subspace. This is not supported. &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;Please set it to ``False``.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Setting the &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">fields</span><span class="p">(</span><span class="n">BotorchRecommender</span><span class="p">)</span><span class="o">.</span><span class="n">sequential_continuous</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;flag to ``True`` while interpoint constraints are present in the &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;continuous subspace is not supported. &quot;</span>
             <span class="p">)</span>
 
         <span class="c1"># NOTE: The explicit `or None` conversion is added as an additional safety net</span>
@@ -1518,8 +1520,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objective</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 
-        <span class="c1"># TODO Defining interpoint constraints for hybrid spaces is probably not</span>
-        <span class="c1"># that hard, but should be investigated in a follow up PR.</span>
+        <span class="c1"># Interpoint constraints cannot be used with optimize_acqf_mixed, see</span>
+        <span class="c1"># https://github.com/meta-pytorch/botorch/issues/2996</span>
         <span class="k">if</span> <span class="n">searchspace</span><span class="o">.</span><span class="n">continuous</span><span class="o">.</span><span class="n">has_interpoint_constraints</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">IncompatibilityError</span><span class="p">(</span>
                 <span class="s2">&quot;Interpoint constraints are not available in hybrid spaces.&quot;</span>
