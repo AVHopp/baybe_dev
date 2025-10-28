@@ -1130,20 +1130,20 @@ the constraints are currently silently ignored.</p>
 <section id="continuouslinearconstraint">
 <span id="clc"></span><h3>ContinuousLinearConstraint<a class="headerlink" href="#continuouslinearconstraint" title="Link to this heading">¶</a></h3>
 <p>The <a class="reference internal" href="../_autosummary/baybe.constraints.continuous.ContinuousLinearConstraint.html#baybe.constraints.continuous.ContinuousLinearConstraint" title="baybe.constraints.continuous.ContinuousLinearConstraint"><span class="xref myst py py-class"><code class="docutils literal notranslate"><span class="pre">ContinuousLinearConstraint</span></code></span></a>
-is used to model linear relationship between between continuous parameters.
+is used to model linear relationships between continuous parameters.
 BayBE supports two different kinds of continuous linear constraints:</p>
 <ol class="arabic simple">
 <li><p><strong>Intrapoint constraints:</strong> These constraints model the relationship between the parameters
 within (<em>intra-</em>) individual experiments (<em>-points</em>) and are what people typically think of when
-simply speaking about “constraints”. For that reason, a <code class="docutils literal notranslate"><span class="pre">ContinuousLinearConstraint</span></code> is
+speaking about “constraints”. For that reason, a
+<a class="reference internal" href="../_autosummary/baybe.constraints.continuous.ContinuousLinearConstraint.html#baybe.constraints.continuous.ContinuousLinearConstraint" title="baybe.constraints.continuous.ContinuousLinearConstraint"><span class="xref myst py py-class"><code class="docutils literal notranslate"><span class="pre">ContinuousLinearConstraint</span></code></span></a> is
 interpreted as an intrapoint constraint if not explicitly declared otherwise.</p></li>
 <li><p><strong>Interpoint constraints:</strong> These constraints model the relationship of different experiments
-across the whole batch (<em>inter-</em>) of exeriments (<em>-points</em>).</p></li>
+across (= <em>inter</em>) the whole batch of experiments ( = <em>points</em>).</p></li>
 </ol>
 <section id="intrapoint-constraints">
-<h4>Intrapoint Constraints<a class="headerlink" href="#intrapoint-constraints" title="Link to this heading">¶</a></h4>
-<p>When not explicitly declaring it an interpoint constraint, the
-<a class="reference internal" href="../_autosummary/baybe.constraints.continuous.ContinuousLinearConstraint.html#baybe.constraints.continuous.ContinuousLinearConstraint" title="baybe.constraints.continuous.ContinuousLinearConstraint"><span class="xref myst py py-class"><code class="docutils literal notranslate"><span class="pre">ContinuousLinearConstraint</span></code></span></a>
+<span id="intracons"></span><h4>Intrapoint Constraints<a class="headerlink" href="#intrapoint-constraints" title="Link to this heading">¶</a></h4>
+<p>The <a class="reference internal" href="../_autosummary/baybe.constraints.continuous.ContinuousLinearConstraint.html#baybe.constraints.continuous.ContinuousLinearConstraint" title="baybe.constraints.continuous.ContinuousLinearConstraint"><span class="xref myst py py-class"><code class="docutils literal notranslate"><span class="pre">ContinuousLinearConstraint</span></code></span></a>
 asserts that the following kind of equations are true (up to numerical rounding errors):</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -1188,24 +1188,25 @@ The following constraint would achieve this:</p>
 </section>
 <section id="interpoint-constraints">
 <h4>Interpoint constraints<a class="headerlink" href="#interpoint-constraints" title="Link to this heading">¶</a></h4>
-<p>In contrast to the intrapoint constrains discussed in the previous paragraph,
-interpoint constraints models constraints <strong>across</strong> the points of the batch.
-That is, an interpoint constraint of the form <span class="math notranslate nohighlight">\(x + y \leq 1\)</span> encodes</p>
+<p>In contrast to the <a class="reference internal" href="#intrapoint-constraints">intrapoint constraints</a> discussed <a class="reference internal" href="#intracons"><span class="std std-ref">here</span></a>
+interpoint constraints model constraints <strong>across</strong> the points of the batch.
+That is, an interpoint constraint of the form <span class="math notranslate nohighlight">\(x + y \leq 1\)</span> enforces that the sum of all
+<span class="math notranslate nohighlight">\(x\)</span> values plus the sum of all <span class="math notranslate nohighlight">\(y\)</span> values across all experiments in the batch must not exceed 1:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
-\sum_{b\text{ in batch}}x_b + \sum_{b\text{ in batch}}y_b \leq 1
+\sum_{i=1}^{n} x_i + \sum_{i=1}^{n} y_i \leq 1
 \]</div>
 </div>
-<p>They can be defined by using the <code class="docutils literal notranslate"><span class="pre">interpoint</span></code> argument of the
-<a class="reference internal" href="../_autosummary/baybe.constraints.continuous.ContinuousLinearConstraint.html#baybe.constraints.continuous.ContinuousLinearConstraint" title="baybe.constraints.continuous.ContinuousLinearConstraint"><span class="xref myst py py-class"><code class="docutils literal notranslate"><span class="pre">ContinuousLinearConstraint</span></code></span></a>
-class.
+<p>where <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span> are the values of parameters <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> in the <span class="math notranslate nohighlight">\(i\)</span>-th experiment,
+and <span class="math notranslate nohighlight">\(n\)</span> is the batch size.</p>
+<p>They can be defined by using the <code class="docutils literal notranslate"><span class="pre">interpoint</span></code> argument of the <a class="reference internal" href="../_autosummary/baybe.constraints.continuous.ContinuousLinearConstraint.html#baybe.constraints.continuous.ContinuousLinearConstraint" title="baybe.constraints.continuous.ContinuousLinearConstraint"><span class="xref myst py py-class"><code class="docutils literal notranslate"><span class="pre">ContinuousLinearConstraint</span></code></span></a> class.
 A possible relevant constraint might be that only 100ml of a given solvent are available for
-a full batch.</p>
+a full batch:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">baybe.constraints</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContinuousLinearConstraint</span>
 
 <span class="n">ContinuousLinearConstraint</span><span class="p">(</span>
-    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SolventAmount[ml]&quot;</span><span class="p">],</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SolventAmount&quot;</span><span class="p">],</span>
     <span class="n">operator</span><span class="o">=</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
     <span class="n">coefficients</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">],</span>
     <span class="n">rhs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
@@ -1220,7 +1221,7 @@ to be aware of:</p>
 <ul class="simple">
 <li><p>BayBE does not support to use both interpoint and cardinality constraints
 within the same search space.</p></li>
-<li><p>When using interpoint constraints, the candidate generation has be done sequentially,
+<li><p>When using interpoint constraints, the candidate generation has to be done sequentially,
 and an error is raised if attempting to use them for joint optimization.</p></li>
 <li><p>Interpoint constraints are only supported in purely continuous spaces and are not
 available in hybrid spaces.</p></li>
@@ -1232,7 +1233,7 @@ available in hybrid spaces.</p></li>
 <h3>ContinuousCardinalityConstraint<a class="headerlink" href="#continuouscardinalityconstraint" title="Link to this heading">¶</a></h3>
 <p>The <a class="reference internal" href="../_autosummary/baybe.constraints.continuous.ContinuousCardinalityConstraint.html#baybe.constraints.continuous.ContinuousCardinalityConstraint" title="baybe.constraints.continuous.ContinuousCardinalityConstraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContinuousCardinalityConstraint</span></code></a> gives you a
 tool to control the number of active factors (i.e. parameters that take a non-zero
-value) in your designs. This comes handy, for example, when designing mixtures with a
+value) in your designs. This comes in handy, for example, when designing mixtures with a
 limited number of components.</p>
 <p>To create a constraint of this kind, simply specify the set of parameters on which the
 constraint is to be imposed, together with the corresponding upper and lower cardinality
@@ -1312,7 +1313,7 @@ might include invalid combinations, which can be removed again by applying const
 then applies filters to it to remove candidates not complying with discrete constraints.
 This requires that the entire unfiltered searchspace fits into memory, which is
 inefficient, given that the filtering might reduce the amount of relevant candidates by
-orders of magnitude. For many dicrete contraints, BayBE offers a more efficient
+orders of magnitude. For many discrete constraints, BayBE offers a more efficient
 implementation via <a class="reference external" href="https://pola.rs/">polars</a> that needs much less memory. This is automatically activated
 if <a class="reference external" href="https://pola.rs/">polars</a> is present in the Python environment, for instance if BayBE was installed
 with the optional dependency group via <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">baybe[polars]</span></code>. In many cases, this

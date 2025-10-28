@@ -1,11 +1,20 @@
 # Chemical Reaction Optimization with Catalyst Constraints
 
-In this example, we demonstrate the use of **interpoint constraints** in a chemical
-optimization scenario. We optimize reaction conditions for a batch of chemical
-experiments where exactly 30 mol% of catalyst must be used across the entire batch,
-while not using more than 60 mL of solvent across the batch.
-For more details on interpoint constraints, see the {ref}`user guide on constraints
+This example demonstrates the use of **interpoint constraints** in a chemical
+optimization
+scenario. An interpoint constraint is a special type of constraint that applies across
+multiple
+experimental points (e.g., a batch of experiments) rather than to individual points.
+For more details on interpoint constraints, we refer to the {ref}`user guide on
+constraints
 <userguide/constraints:Interpoint Constraints>`.
+
+## The Scenario
+
+This example considers a chemical optimization scenario. The goal is to optimize
+reaction conditions for a batch of chemical experiments where exactly 30 mol% of
+catalyst must be used across the entire batch while not using more than 60 mL of solvent
+across the batch.
 
 This scenario illustrates common challenges in laboratory settings.
 First, it demonstrates how to enforce a **catalyst requirement**:
@@ -57,7 +66,7 @@ set_random_seed(1337)
 
 We optimize a synthetic chemical reaction with the following experimental parameters:
 - **Solvent Volume** (10-30 mL per experiment): The amount of solvent used
-- **Reactant A Concentration** (0.1-2.0 g/L): Primary reactant concentration
+- **Reactant Concentration** (0.1-2.0 g/L): Primary reactant concentration
 - **Catalyst Loading** (1-10 mol%): Catalyst amount as percentage of limiting reagent
 - **Temperature** (60-120 °C): Reaction temperature
 
@@ -71,7 +80,7 @@ parameters = [
         name="Solvent_Volume", bounds=(10.0, 30.0), metadata={"unit": "mL"}
     ),
     NumericalContinuousParameter(
-        name="Reactant_A_Conc", bounds=(0.1, 2.0), metadata={"unit": "g/L"}
+        name="Reactant_Conc", bounds=(0.1, 2.0), metadata={"unit": "g/L"}
     ),
     NumericalContinuousParameter(
         name="Catalyst_Loading", bounds=(1.0, 20.0), metadata={"unit": "mol%"}
@@ -86,21 +95,22 @@ parameters = [
 
 In this example, the following constraints are applied:
 
-1. Reagent efficiency: For each experiment, solvent volume must be at least five times
+1. **Reagent efficiency**: For each experiment, solvent volume must be at least five
+times
    the reactant concentration (to ensure proper dilution).
-2. Catalyst constraint: Total catalyst loading across all experiments must equal exactly
-30 mol%
-3. Solvent budget: Total solvent across batch should be ≤ 60 mL
+2. **Catalyst constraint**: Total catalyst loading across all experiments must equal
+exactly 30 mol%
+3. **Solvent budget**: Total solvent across batch should be ≤ 60 mL
 
 The first constraint is an intrapoint constraint since it applies to individual
-experiments,
-while the latter two are interpoint constraints as they apply to the entire batch.
+experiments.
+The latter two are interpoint constraints as they apply to the entire batch.
 
 
 ```python
 intrapoint_constraints = [
     ContinuousLinearConstraint(
-        parameters=["Solvent_Volume", "Reactant_A_Conc"],
+        parameters=["Solvent_Volume", "Reactant_Conc"],
         operator=">=",
         coefficients=[1, -5],
         rhs=0.0,
@@ -129,7 +139,10 @@ interpoint_constraints = [
 ]
 ```
 
-## Campaign Setup
+## Campaign and Initial Data Setup
+
+We set up the experimental campaign and also include some initial random data
+with fake measurements to kick-start the optimization.
 
 
 ```python
@@ -137,30 +150,14 @@ searchspace = SearchSpace.from_product(
     parameters=parameters,
     constraints=intrapoint_constraints + interpoint_constraints,
 )
-```
-
-
-```python
 objective = NumericalTarget(name="Reaction_Yield").to_objective()
-```
-
-
-```python
 recommender = BotorchRecommender(sequential_continuous=False)
-```
-
-
-```python
 campaign = Campaign(
     searchspace=searchspace,
     objective=objective,
     recommender=recommender,
 )
 ```
-
-## Initial Training Data
-
-To simulate existing data, we randomly sample a few initial experiments.
 
 
 ```python
@@ -173,7 +170,7 @@ campaign.add_measurements(initial_data)
 
 We run several optimization iterations and validate that the interpoint
 constraints are satisfied for each batch to ensure the optimization respects
-our resource limitations.
+our resource limitations. We also store the results for later visualization.
 
 
 ```python
@@ -211,14 +208,12 @@ for it in range(N_ITERATIONS):
 ## Visualization
 
 The plots show both individual experiment values and their totals to
-illustrate how interpoint constraints work. The individual lines show how the
-optimizer distributes resources across experiments within each batch, while the
-bold total lines demonstrate that the batch-level constraints are satisfied.
+illustrate how interpoint constraints work. The individual lines labeled `Exp n` show
+how the optimizer distributes resources across experiments within each batch, while
+the `Total` lines demonstrate that the batch-level constraints are satisfied.
 
-
-```python
-results_df = pd.DataFrame(results_log)
-```
+Those plots demonstrate that the optimizer respects the interpoint constraints on the
+batch level while distributing resources across individual experiments.
 
 
 ```python
@@ -237,20 +232,18 @@ plot_configs = [
         "ax": axs[0],
         "individual_col": "individual_solvent_mL",
         "total_col": "total_solvent_mL",
-        "color": "blue",
-        "constraint_value": 60,
-        "constraint_label": "Budget",
-        "title": "Solvent (Constrained)",
+        "y": 60,
+        "label": "Budget",
+        "title": "Solvent",
         "ylabel": "Solvent Volume (mL)",
     },
     {
         "ax": axs[1],
         "individual_col": "individual_catalyst_mol%",
         "total_col": "total_catalyst_mol%",
-        "color": "orange",
-        "constraint_value": 30,
-        "constraint_label": "Required",
-        "title": "Catalyst (Constrained)",
+        "y": 30,
+        "label": "Required",
+        "title": "Catalyst",
         "ylabel": "Catalyst Loading (mol%)",
     },
 ]
@@ -258,10 +251,10 @@ plot_configs = [
 
 
 ```python
+results_df = pd.DataFrame(results_log)
 for config in plot_configs:
     plt.sca(config["ax"])
 
-    # Plot individual experiment lines
     for exp_idx, values_per_exp in enumerate(
         zip(*results_df[config["individual_col"]]), start=1
     ):
@@ -269,30 +262,18 @@ for config in plot_configs:
             results_df["iteration"],
             values_per_exp,
             "o-",
-            alpha=0.6,
             label=f"Exp {exp_idx}",
         )
 
-    # Plot total line
     plt.plot(
         results_df["iteration"],
         results_df[config["total_col"]],
         "s-",
-        color=config["color"],
-        linewidth=2,
         label="Total",
-    )
-
-    # Plot constraint line
-    plt.axhline(
-        y=config["constraint_value"],
-        color="red",
-        linestyle="--",
-        label=config["constraint_label"],
         zorder=0,
-        linewidth=2.5,
     )
 
+    plt.axhline(y=config["y"], label=config["label"], color="black")
     plt.ylim(bottom=0)
     plt.title(config["title"])
     plt.xlabel("Batch")

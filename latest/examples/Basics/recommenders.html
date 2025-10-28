@@ -1302,15 +1302,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments: 
-           Solvent                Base                        Ligand  \
-190  Butyornitrile  Potassium pivalate                 (t-Bu)PhCPhos   
-50     Butyl Ester     Cesium pivalate  Di-tert-butylphenylphosphine   
-103    Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+           Solvent                Base         Ligand  Temperature  \
+197  Butyornitrile  Potassium pivalate  (t-Bu)PhCPhos        120.0   
+82     Butyl Ester  Potassium pivalate  (t-Bu)PhCPhos         90.0   
+152  Butyornitrile     Cesium pivalate      BrettPhos        120.0   
 
-     Temperature  Concentration  
-190         90.0          0.100  
-50         105.0          0.153  
-103        105.0          0.100  
+     Concentration  
+197          0.153  
+82           0.100  
+152          0.153  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
@@ -1319,15 +1319,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-           Solvent                Base                        Ligand  \
-190  Butyornitrile  Potassium pivalate                 (t-Bu)PhCPhos   
-50     Butyl Ester     Cesium pivalate  Di-tert-butylphenylphosphine   
-103    Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+           Solvent                Base         Ligand  Temperature  \
+197  Butyornitrile  Potassium pivalate  (t-Bu)PhCPhos        120.0   
+82     Butyl Ester  Potassium pivalate  (t-Bu)PhCPhos         90.0   
+152  Butyornitrile     Cesium pivalate      BrettPhos        120.0   
 
-     Temperature  Concentration      yield  
-190         90.0          0.100  47.741775  
-50         105.0          0.153  40.314411  
-103        105.0          0.100 -76.299965  
+     Concentration      yield  
+197          0.153 -28.689822  
+82           0.100 -14.711157  
+152          0.153  85.600752  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
