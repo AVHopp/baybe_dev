@@ -5,5 +5,4 @@ These examples demonstrate BayBE's transfer learning capabilities.
 :maxdepth: 1
 
 Basic Transfer Learning<basic_transfer_learning>
-Backtesting<backtesting>
 ```

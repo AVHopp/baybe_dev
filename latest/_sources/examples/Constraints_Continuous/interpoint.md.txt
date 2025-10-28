@@ -114,7 +114,6 @@ intrapoint_constraints = [
         operator=">=",
         coefficients=[1, -5],
         rhs=0.0,
-        interpoint=False,
     ),
 ]
 ```
@@ -212,8 +211,13 @@ illustrate how interpoint constraints work. The individual lines labeled `Exp n`
 how the optimizer distributes resources across experiments within each batch, while
 the `Total` lines demonstrate that the batch-level constraints are satisfied.
 
-Those plots demonstrate that the optimizer respects the interpoint constraints on the
-batch level while distributing resources across individual experiments.
+The first plot demonstrates that even though the amount of solvent that is being used
+in individual experiments and in different batches varies, the total solvent used
+across any individual batch never exceeds the given budget of 60 mL.
+
+The second plot shows that the total catalyst loading across each batch is always
+exactly 30 mol%, while the individual experiments within each batch can have
+different catalyst loadings.
 
 
 ```python
