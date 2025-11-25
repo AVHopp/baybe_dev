@@ -316,7 +316,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Constraints_Continuous/Constraints_Continuous.html">Constraints Continuous</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Constraints Continuous</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/interpoint.html">Interpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/linear_constraints.html">Linear</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/hybrid_space.html">Hybrid Space</a></li>
 </ul>
@@ -1028,6 +1027,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../_autosummary/baybe.utils.torch.html">baybe.utils.torch</a><input class="toctree-checkbox" id="toctree-checkbox-134" name="toctree-checkbox-134" role="switch" type="checkbox"/><label for="toctree-checkbox-134"><div class="visually-hidden">Toggle navigation of baybe.utils.torch</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.torch.VARNAME_TORCH_USE_SINGLE_PRECISION.html">baybe.utils.torch.VARNAME_TORCH_USE_SINGLE_PRECISION</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.torch.DTypeFloatTorch.html">baybe.utils.torch.DTypeFloatTorch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.torch.torch_to_numpy_dtype_mapping.html">baybe.utils.torch.torch_to_numpy_dtype_mapping</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../_autosummary/baybe.utils.validation.html">baybe.utils.validation</a><input class="toctree-checkbox" id="toctree-checkbox-135" name="toctree-checkbox-135" role="switch" type="checkbox"/><label for="toctree-checkbox-135"><div class="visually-hidden">Toggle navigation of baybe.utils.validation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -1203,16 +1203,16 @@ random points from the search space:</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>       Base1      Base2  PhaseAgent1  PhaseAgent2   Solvent1   Solvent2
-0   6.565137   8.951080     1.953402     0.835129  51.528646  30.166605
-1  14.763106   7.420158     2.738316     1.849039  47.171691  26.057690
-2  13.557943  13.395386     2.289478     2.266048  51.772941  16.718204
-3  11.480347  13.733942     2.370643     1.256733  17.959076  53.199259
-4   3.652361  13.044875     1.649193     1.040750   6.115025  74.497796
-5  17.829952  12.047372     2.292466     2.033035  24.018093  41.779082
-6  19.405018  11.147088     0.261735     1.590841  49.323434  18.271883
-7  12.575176   1.389994     0.135294     4.381002  41.287112  40.231422
-8  11.046475   5.516924     2.044447     1.184473  10.541308  69.666372
-9  17.598042   6.688685     0.209113     3.753637  11.580876  60.169648
+0  14.531966  10.088288     0.725647     0.441393  47.796187  26.416520
+1  19.895545   6.636257     0.760169     1.220835  12.873247  58.613948
+2   9.708464   6.261363     1.208700     3.460227  23.265320  56.095927
+3   1.902531  19.870680     0.014671     4.345162  38.662119  35.204838
+4   6.472700   8.263255     1.411125     3.046025  60.701998  20.104898
+5   6.604578  10.636515     0.008332     1.523780  19.899012  61.327784
+6  14.892538   8.214894     1.222028     1.376654  44.704348  29.589538
+7   7.637372   5.510415     2.714924     1.512586  60.974940  21.649764
+8   9.231356   3.849939     0.214415     3.790218  70.064640  12.849433
+9  11.076745  17.164965     0.931268     2.825420  51.848406  16.153195
 </pre></div>
 </div>
 <p>Computing the respective row sums reveals the expected result:</p>
@@ -1227,16 +1227,16 @@ random points from the search space:</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   Total  Total_Bases  Total_Phase_Agents
-0  100.0    15.516217            2.788531
-1  100.0    22.183264            4.587355
-2  100.0    26.953329            4.555526
-3  100.0    25.214289            3.627377
-4  100.0    16.697236            2.689944
-5  100.0    29.877323            4.325502
-6  100.0    30.552106            1.852577
-7  100.0    13.965170            4.516296
-8  100.0    16.563400            3.228921
-9  100.0    24.286727            3.962750
+0  100.0    24.620253            1.167040
+1  100.0    26.531802            1.981004
+2  100.0    15.969827            4.668926
+3  100.0    21.773211            4.359833
+4  100.0    14.735955            4.457150
+5  100.0    17.241092            1.532112
+6  100.0    23.107431            2.598683
+7  100.0    13.147786            4.227509
+8  100.0    13.081295            4.004633
+9  100.0    28.241710            3.756688
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>

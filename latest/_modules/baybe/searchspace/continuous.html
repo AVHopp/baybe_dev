@@ -315,7 +315,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../examples/Constraints_Continuous/Constraints_Continuous.html">Constraints Continuous</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Constraints Continuous</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../examples/Constraints_Continuous/interpoint.html">Interpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../examples/Constraints_Continuous/linear_constraints.html">Linear</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../examples/Constraints_Continuous/hybrid_space.html">Hybrid Space</a></li>
 </ul>
@@ -1027,6 +1026,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../_autosummary/baybe.utils.torch.html">baybe.utils.torch</a><input class="toctree-checkbox" id="toctree-checkbox-134" name="toctree-checkbox-134" role="switch" type="checkbox"/><label for="toctree-checkbox-134"><div class="visually-hidden">Toggle navigation of baybe.utils.torch</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../_autosummary/baybe.utils.torch.VARNAME_TORCH_USE_SINGLE_PRECISION.html">baybe.utils.torch.VARNAME_TORCH_USE_SINGLE_PRECISION</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../_autosummary/baybe.utils.torch.DTypeFloatTorch.html">baybe.utils.torch.DTypeFloatTorch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../_autosummary/baybe.utils.torch.torch_to_numpy_dtype_mapping.html">baybe.utils.torch.torch_to_numpy_dtype_mapping</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../_autosummary/baybe.utils.validation.html">baybe.utils.validation</a><input class="toctree-checkbox" id="toctree-checkbox-135" name="toctree-checkbox-135" role="switch" type="checkbox"/><label for="toctree-checkbox-135"><div class="visually-hidden">Toggle navigation of baybe.utils.validation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -1104,7 +1104,6 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">attrs</span><span class="w"> </span><span class="kn">import</span> <span class="n">define</span><span class="p">,</span> <span class="n">evolve</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">fields</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tensor</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">override</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">baybe.constraints</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
@@ -1407,12 +1406,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boolean indicating if the subspace is empty.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether this subspace is empty.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">parameter_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The names of the parameters spanning the subspace.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return tuple of parameter names.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -1461,24 +1460,6 @@
                 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_ineq</span>
                 <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">parameter_names</span><span class="p">)</span>
             <span class="p">],</span>
-        <span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">is_constrained</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boolean indicating if the subspace is constrained in any way.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">any</span><span class="p">(</span>
-            <span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_eq</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_ineq</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">constraints_nonlin</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">has_interpoint_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Boolean indicating if the subspace has any interpoint constraints.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">any</span><span class="p">(</span>
-            <span class="n">c</span><span class="o">.</span><span class="n">is_interpoint</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_eq</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_ineq</span>
         <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_enforce_cardinality_constraints</span><span class="p">(</span>
@@ -1593,7 +1574,11 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">RangeIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">))</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_constrained</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_eq</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_ineq</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">constraints_cardinality</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample_from_bounds</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">comp_rep_bounds</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">constraints_cardinality</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1617,153 +1602,17 @@
         <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
         <span class="kn">from</span><span class="w"> </span><span class="nn">botorch.utils.sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_polytope_samples</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_interpoint_constraints</span><span class="p">:</span>
-            <span class="n">points</span> <span class="o">=</span> <span class="n">get_polytope_samples</span><span class="p">(</span>
-                <span class="n">n</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-                <span class="n">bounds</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">bounds</span><span class="p">),</span>
-                <span class="n">equality_constraints</span><span class="o">=</span><span class="p">[</span>
-                    <span class="n">c</span><span class="o">.</span><span class="n">to_botorch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_eq</span>
-                <span class="p">],</span>
-                <span class="n">inequality_constraints</span><span class="o">=</span><span class="p">[</span>
-                    <span class="n">c</span><span class="o">.</span><span class="n">to_botorch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_ineq</span>
-                <span class="p">],</span>
-            <span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample_from_polytope_with_interpoint_constraints</span><span class="p">(</span>
-                <span class="n">batch_size</span><span class="p">,</span> <span class="n">bounds</span>
-            <span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_names</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_sample_from_polytope_with_interpoint_constraints</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">bounds</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw samples from a polytope with interpoint constraints.</span>
-
-<span class="sd">        If the space has interpoint constraints, we need to sample from a larger</span>
-<span class="sd">        searchspace that models the batch size via additional dimension. This is</span>
-<span class="sd">        necessary since `get_polytope_samples` cannot handle interpoint</span>
-<span class="sd">        constraints, see https://github.com/pytorch/botorch/issues/2468</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            batch_size: The number of samples to draw.</span>
-<span class="sd">            bounds: The bounds of the parameters as a 2D array where the first row</span>
-<span class="sd">                contains the lower bounds and the second row the upper bounds.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            An array of shape (batch_size, n_params) containing the samples.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">botorch.utils.sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_polytope_samples</span>
-
-        <span class="n">n_params</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comp_rep_columns</span><span class="p">)</span>
-
-        <span class="n">eq_constraints</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">ineq_constraints</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="n">all_constraints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_eq</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_ineq</span>
-        <span class="k">for</span> <span class="n">constraint</span> <span class="ow">in</span> <span class="n">all_constraints</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">is_interpoint</span><span class="p">:</span>
-                <span class="n">botorch_tuple</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_interpoint_constraint_tuple</span><span class="p">(</span>
-                    <span class="n">constraint</span><span class="p">,</span> <span class="n">n_params</span><span class="p">,</span> <span class="n">batch_size</span>
-                <span class="p">)</span>
-                <span class="n">target_list</span> <span class="o">=</span> <span class="n">eq_constraints</span> <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">is_eq</span> <span class="k">else</span> <span class="n">ineq_constraints</span>
-                <span class="n">target_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">botorch_tuple</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># Intrapoint constraints must be replicated for each point</span>
-                <span class="c1"># Each replication is a separate constraint</span>
-                <span class="n">botorch_tuples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_intrapoint_constraint_tuples</span><span class="p">(</span>
-                    <span class="n">constraint</span><span class="p">,</span> <span class="n">n_params</span><span class="p">,</span> <span class="n">batch_size</span>
-                <span class="p">)</span>
-                <span class="c1"># Add all replications to the appropriate list</span>
-                <span class="n">target_list</span> <span class="o">=</span> <span class="n">eq_constraints</span> <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">is_eq</span> <span class="k">else</span> <span class="n">ineq_constraints</span>
-                <span class="n">target_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">botorch_tuples</span><span class="p">)</span>
-
-        <span class="n">bounds_joint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span>
-            <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">bounds</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span>
-        <span class="p">)</span>
-
         <span class="n">points</span> <span class="o">=</span> <span class="n">get_polytope_samples</span><span class="p">(</span>
-            <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">bounds</span><span class="o">=</span><span class="n">bounds_joint</span><span class="p">,</span>
-            <span class="n">equality_constraints</span><span class="o">=</span><span class="n">eq_constraints</span><span class="p">,</span>
-            <span class="n">inequality_constraints</span><span class="o">=</span><span class="n">ineq_constraints</span><span class="p">,</span>
+            <span class="n">n</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">bounds</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">bounds</span><span class="p">),</span>
+            <span class="n">equality_constraints</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">to_botorch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_eq</span>
+            <span class="p">],</span>
+            <span class="n">inequality_constraints</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">to_botorch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_lin_ineq</span>
+            <span class="p">],</span>
         <span class="p">)</span>
-
-        <span class="c1"># Reshape to separate batch dimension from parameter dimension</span>
-        <span class="n">points_per_batch</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">batch_size</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="n">remainder</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Dimensions mismatch.&quot;</span>
-        <span class="k">return</span> <span class="n">points</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">points_per_batch</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_build_interpoint_constraint_tuple</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">constraint</span><span class="p">:</span> <span class="n">ContinuousLinearConstraint</span><span class="p">,</span>
-        <span class="n">n_params</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build a BoTorch constraint tuple for an interpoint constraint.</span>
-
-<span class="sd">        This method constructs the constraint tuple for the joint space where all</span>
-<span class="sd">        batch elements are concatenated. It uses the constraint&#39;s own `to_botorch`</span>
-<span class="sd">        method to get the base indices and coefficients, then adjusts them to work</span>
-<span class="sd">        in the flattened joint space.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            constraint: The interpoint constraint to convert.</span>
-<span class="sd">            n_params: Total number of parameters per batch element.</span>
-<span class="sd">            batch_size: The batch size.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            A tuple (indices, coefficients, rhs) for BoTorch.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Get the constraint representation from the constraint itself</span>
-        <span class="c1"># For interpoint constraints, this returns indices as a 2D tensor where</span>
-        <span class="c1"># each row is [batch_idx, param_idx], and coefficients already repeated</span>
-        <span class="c1"># for the batch size</span>
-        <span class="n">base_indices</span><span class="p">,</span> <span class="n">coefficients</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">constraint</span><span class="o">.</span><span class="n">to_botorch</span><span class="p">(</span>
-            <span class="n">parameters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span>
-        <span class="p">)</span>
-
-        <span class="c1"># Convert the 2D indices [batch_idx, param_idx] to flat indices in the</span>
-        <span class="c1"># joint space. The joint space has shape (1, batch_size * n_params),</span>
-        <span class="c1"># where parameters for batch b are at positions [b * n_params, (b+1) * n_params)</span>
-        <span class="n">flat_indices</span> <span class="o">=</span> <span class="n">base_indices</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_params</span> <span class="o">+</span> <span class="n">base_indices</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="p">(</span><span class="n">flat_indices</span><span class="p">,</span> <span class="n">coefficients</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_build_intrapoint_constraint_tuples</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">constraint</span><span class="p">:</span> <span class="n">ContinuousLinearConstraint</span><span class="p">,</span>
-        <span class="n">n_params</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build BoTorch constraint tuples for an intrapoint constraint.</span>
-
-<span class="sd">        Intrapoint constraints must be satisfied by each individual point in the batch.</span>
-<span class="sd">        This method replicates the constraint for each batch element with appropriate</span>
-<span class="sd">        index offsets, creating a separate constraint tuple for each batch element.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            constraint: The intrapoint constraint to convert.</span>
-<span class="sd">            n_params: Total number of parameters per batch element.</span>
-<span class="sd">            batch_size: The batch size.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            A list of tuples (indices, coefficients, rhs), one for each batch element.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Get the base constraint representation for a single point</span>
-        <span class="n">base_indices</span><span class="p">,</span> <span class="n">base_coefficients</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">constraint</span><span class="o">.</span><span class="n">to_botorch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
-
-        <span class="c1"># Create a separate constraint for each batch element</span>
-        <span class="c1"># In the joint space, batch b&#39;s parameters are at positions</span>
-        <span class="c1"># [b*n_params, (b+1)*n_params)</span>
-        <span class="n">constraint_tuples</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
-            <span class="c1"># Offset indices for this batch element</span>
-            <span class="n">offset_indices</span> <span class="o">=</span> <span class="n">base_indices</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">n_params</span>
-            <span class="n">constraint_tuples</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">offset_indices</span><span class="p">,</span> <span class="n">base_coefficients</span><span class="p">,</span> <span class="n">rhs</span><span class="p">))</span>
-
-        <span class="k">return</span> <span class="n">constraint_tuples</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_names</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_sample_from_polytope_with_cardinality_constraints</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span>

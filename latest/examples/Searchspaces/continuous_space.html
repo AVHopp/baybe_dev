@@ -316,7 +316,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Constraints_Continuous/Constraints_Continuous.html">Constraints Continuous</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Constraints Continuous</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/interpoint.html">Interpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/linear_constraints.html">Linear</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/hybrid_space.html">Hybrid Space</a></li>
 </ul>
@@ -1028,6 +1027,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../_autosummary/baybe.utils.torch.html">baybe.utils.torch</a><input class="toctree-checkbox" id="toctree-checkbox-134" name="toctree-checkbox-134" role="switch" type="checkbox"/><label for="toctree-checkbox-134"><div class="visually-hidden">Toggle navigation of baybe.utils.torch</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.torch.VARNAME_TORCH_USE_SINGLE_PRECISION.html">baybe.utils.torch.VARNAME_TORCH_USE_SINGLE_PRECISION</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.torch.DTypeFloatTorch.html">baybe.utils.torch.DTypeFloatTorch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.torch.torch_to_numpy_dtype_mapping.html">baybe.utils.torch.torch_to_numpy_dtype_mapping</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../_autosummary/baybe.utils.validation.html">baybe.utils.validation</a><input class="toctree-checkbox" id="toctree-checkbox-135" name="toctree-checkbox-135" role="switch" type="checkbox"/><label for="toctree-checkbox-135"><div class="visually-hidden">Toggle navigation of baybe.utils.validation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -1132,16 +1132,16 @@ Let us draw some samples from it and verify that they are within the bounds:</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        x_1       x_2       x_3       x_4
-0  0.703238 -0.349754 -0.526090  0.325814
-1  0.236664 -0.246903 -0.192928 -0.975071
-2 -0.464299 -0.629235 -0.744001 -0.341226
-3  0.434057  0.387725 -0.806310  0.326725
-4 -0.754430  0.196271 -0.712592  0.657701
-5 -0.846743 -0.104421  0.030390  0.251145
-6 -0.813344 -0.139116 -0.712492 -0.085589
-7  0.394200  0.417312 -0.610835 -0.557694
-8  0.227109  0.007723  0.996553 -0.084412
-9 -0.897203  0.033687 -0.437361  0.236570
+0  0.887459  0.093888  0.914879  0.800465
+1  0.453930  0.238844  0.919227 -0.013884
+2 -0.808795 -0.017816 -0.699882  0.090930
+3  0.961648  0.490722  0.855141 -0.361549
+4 -0.183878  0.671269  0.216011 -0.737771
+5 -0.806473 -0.179725 -0.983268  0.434479
+6 -0.398906  0.286510 -0.675776  0.552215
+7  0.023644 -0.484392 -0.023079  0.606121
+8 -0.137123  0.556271  0.661437 -0.838861
+9  0.796636  0.370512  0.842849  0.249557
 </pre></div>
 </div>
 <p>There are several ways we can turn the above objects into a search space.
