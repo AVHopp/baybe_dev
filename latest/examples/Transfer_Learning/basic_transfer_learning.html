@@ -1266,8 +1266,6 @@ temperatures</p></li>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">target_temp</span> <span class="ow">in</span> <span class="n">TARGET_TEMPERATURES</span><span class="p">:</span>
     <span class="n">training_temps</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">TEMPERATURES</span> <span class="k">if</span> <span class="n">t</span> <span class="o">!=</span> <span class="n">target_temp</span><span class="p">]</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Optimizing for </span><span class="si">{</span><span class="n">target_temp</span><span class="si">}</span><span class="s2">°C using data from </span><span class="si">{</span><span class="n">training_temps</span><span class="si">}</span><span class="s2">°C...&quot;</span><span class="p">)</span>
-
     <span class="n">searchspace</span> <span class="o">=</span> <span class="n">create_search_space</span><span class="p">(</span><span class="n">target_temp</span><span class="p">)</span>
 
     <span class="n">training_temperatures</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">training_temps</span><span class="p">]</span>
@@ -1275,7 +1273,7 @@ temperatures</p></li>
         <span class="n">lookup_task</span><span class="p">[</span><span class="s2">&quot;Temp_C&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">training_temperatures</span><span class="p">)</span>
     <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">results_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">fraction</span> <span class="ow">in</span> <span class="n">SAMPLE_FRACTIONS</span><span class="p">:</span>
         <span class="n">campaign</span> <span class="o">=</span> <span class="n">Campaign</span><span class="p">(</span><span class="n">searchspace</span><span class="o">=</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">)</span>
@@ -1294,7 +1292,7 @@ temperatures</p></li>
             <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span>
             <span class="n">n_doe_iterations</span><span class="o">=</span><span class="n">N_DOE_ITERATIONS</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="n">results_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
     <span class="c1"># Baseline comparison: optimization without transfer learning</span>
     <span class="n">result_baseline</span> <span class="o">=</span> <span class="n">simulate_scenarios</span><span class="p">(</span>
@@ -1304,78 +1302,9 @@ temperatures</p></li>
         <span class="n">n_doe_iterations</span><span class="o">=</span><span class="n">N_DOE_ITERATIONS</span><span class="p">,</span>
         <span class="n">n_mc_iterations</span><span class="o">=</span><span class="n">N_MC_ITERATIONS</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">result_baseline</span><span class="p">,</span> <span class="o">*</span><span class="n">results</span><span class="p">])</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">result_baseline</span><span class="p">,</span> <span class="o">*</span><span class="n">results_list</span><span class="p">])</span>
 
     <span class="n">all_results</span><span class="p">[</span><span class="n">target_temp</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Optimizing for 90°C using data from [105, 120]°C...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Optimizing for 105°C using data from [90, 120]°C...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Optimizing for 120°C using data from [90, 105]°C...
 </pre></div>
 </div>
 </section>
@@ -1444,17 +1373,14 @@ amounts of training data.</p>
 </div>
 <p>The results reveal several key insights:</p>
 <ol class="arabic simple">
-<li><p><strong>Consistent Benefits</strong>: Transfer learning provides substantial improvements
-across all temperature conditions, demonstrating the robustness of the approach.</p></li>
-<li><p><strong>Variable Effectiveness</strong>: The magnitude of improvement varies by condition,
-reflecting differences in how well knowledge transfers between specific
-temperature pairs.</p></li>
-<li><p><strong>Data Efficiency</strong>: Even small amounts of training data (1-2%) can yield
-significant acceleration, making this approach practical even with limited
-historical data.</p></li>
-<li><p><strong>Diminishing Returns</strong>: Beyond a certain point, additional training data
-provides marginal benefits, suggesting an optimal balance between data
-utilization and computational efficiency.</p></li>
+<li><p>Transfer learning provides substantial improvements across all temperature
+conditions, demonstrating the robustness of the approach.</p></li>
+<li><p>The magnitude of improvement varies by condition, reflecting differences in how
+well knowledge transfers between specific temperature pairs.</p></li>
+<li><p>Even small amounts of training data can yield significant acceleration, making thi
+technique practical even with limited historical data.</p></li>
+<li><p>Beyond a certain point, additional training data
+provides marginal benefits.</p></li>
 </ol>
 <img alt="../../_images/basic_transfer_learning.svg" class="align-center" src="../../_images/basic_transfer_learning.svg" />
 </section>
