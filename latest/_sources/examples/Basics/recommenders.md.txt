@@ -149,9 +149,10 @@ print(recommender)
        Recommender
           BotorchRecommender
              Surrogate
-                GaussianProcessSurrogate
-                   Supports Transfer Learning: True
-                   Kernel factory: DefaultKernelFactory()
+                CompositeSurrogate(surrogates=_ReplicationMapping(template=GaussianProce
+ssSurrogate(_searchspace=None, _objective=None, _measurements_hash=None,
+_input_scaler=None, _output_scaler=None, kernel_factory=DefaultKernelFactory(),
+_model=None), _data={}), _modeled_quantity_names=None)
              Acquisition function: qLogExpectedImprovement()
              Compatibility: SearchSpaceType.HYBRID
              Sequential continuous: True
@@ -246,15 +247,15 @@ print(recommendation)
     
     
     Recommended experiments: 
-             Solvent                Base                        Ligand  \
-    59   Butyl Ester   Potassium acetate                 (t-Bu)PhCPhos   
-    316         DMAc  Potassium pivalate  Di-tert-butylphenylphosphine   
-    290         DMAc   Potassium acetate  Di-tert-butylphenylphosphine   
+               Solvent                Base         Ligand  Temperature  \
+    410       p-Xylene  Potassium pivalate  (t-Bu)PhCPhos        105.0   
+    118  Butyornitrile      Cesium acetate      BrettPhos         90.0   
+    60     Butyl Ester   Potassium acetate  (t-Bu)PhCPhos        120.0   
     
-         Temperature  Concentration  
-    59         105.0          0.153  
-    316         90.0          0.100  
-    290         90.0          0.153  
+         Concentration  
+    410          0.153  
+    118          0.100  
+    60           0.057  
 
 
 
@@ -267,15 +268,15 @@ print(recommendation)
     
     
     Recommended experiments with fake measured values: 
-             Solvent                Base                        Ligand  \
-    59   Butyl Ester   Potassium acetate                 (t-Bu)PhCPhos   
-    316         DMAc  Potassium pivalate  Di-tert-butylphenylphosphine   
-    290         DMAc   Potassium acetate  Di-tert-butylphenylphosphine   
+               Solvent                Base         Ligand  Temperature  \
+    410       p-Xylene  Potassium pivalate  (t-Bu)PhCPhos        105.0   
+    118  Butyornitrile      Cesium acetate      BrettPhos         90.0   
+    60     Butyl Ester   Potassium acetate  (t-Bu)PhCPhos        120.0   
     
-         Temperature  Concentration      yield  
-    59         105.0          0.153  89.171913  
-    316         90.0          0.100  30.347675  
-    290         90.0          0.153  51.101865  
+         Concentration      yield  
+    410          0.153 -20.633203  
+    118          0.100 -57.519749  
+    60           0.057 -47.903930  
 
 
 
