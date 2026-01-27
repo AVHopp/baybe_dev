@@ -1093,18 +1093,19 @@
           <section class="tex2jax_ignore mathjax_ignore" id="chemical-reaction-optimization-with-catalyst-constraints">
 <h1>Chemical Reaction Optimization with Catalyst Constraints<a class="headerlink" href="#chemical-reaction-optimization-with-catalyst-constraints" title="Link to this heading">¶</a></h1>
 <p>This example demonstrates the use of <strong>interpoint constraints</strong>, which can be used to
-apply restrictions on batches of experiments rather than on individual experiments.
+apply restrictions on plates (batches) of experiments rather than on individual
+experiments.
 For more details on interpoint constraints, we refer to the <a class="reference internal" href="../../userguide/constraints.html#interpoint-constraints"><span class="std std-ref">constraints user guide</span></a>.</p>
 <section id="the-scenario">
 <h2>The Scenario<a class="headerlink" href="#the-scenario" title="Link to this heading">¶</a></h2>
-<p>For the example, we consider a typical chemical optimization scenario. The goal is to
-optimize reaction conditions for a batch of chemical experiments where exactly 30 mol%
-of a certain catalyst must be used for the entire batch while not using more than
-60 mL of solvent in total.</p>
+<p>For the example, we consider a microscale HTE optimization scenario carried out on a
+small plate with four experiments (e.g., a subset of a 96-well plate). The goal is to
+optimize reaction conditions for this plate where exactly 8 µmol of a certain catalyst
+must be used for the entire plate while not using more than 1.2 mL of solvent in total.</p>
 <p>This scenario illustrates two common challenges in laboratory settings:</p>
 <ol class="arabic simple">
-<li><p>First, it demonstrates how to enforce a <strong>catalyst requirement</strong>: Exactly 30 mol%
-of the catalyst must be used across the entire batch since the catalyst is supplied in
+<li><p>First, it demonstrates how to enforce a <strong>catalyst requirement</strong>: Exactly 8 µmol
+of the catalyst must be used across the entire plate since the catalyst is supplied in
 a sealed sensitive package that cannot be reused once opened.</p></li>
 <li><p>Second, it shows how to include a <strong>solvent budget</strong> constraint for
 controlling the total solvent consumption across experiments for cost efficiency.</p></li>
@@ -1131,7 +1132,7 @@ controlling the total solvent consumption across experiments for cost efficiency
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SMOKE_TEST</span> <span class="o">=</span> <span class="s2">&quot;SMOKE_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
-<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">N_ITERATIONS</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">SMOKE_TEST</span> <span class="k">else</span> <span class="mi">15</span>
 <span class="n">TOLERANCE</span> <span class="o">=</span> <span class="mf">0.01</span>
 </pre></div>
@@ -1142,27 +1143,28 @@ controlling the total solvent consumption across experiments for cost efficiency
 </section>
 <section id="problem-definition">
 <h2>Problem Definition<a class="headerlink" href="#problem-definition" title="Link to this heading">¶</a></h2>
-<p>We consider a synthetic chemical reaction with the following experimental parameters:</p>
+<p>We consider a synthetic chemical reaction with the following microscale HTE
+parameters:</p>
 <ul class="simple">
-<li><p><strong>Solvent Volume</strong> (10-30 mL per experiment): The amount of solvent used</p></li>
-<li><p><strong>Reactant Concentration</strong> (0.1-2.0 g/L): Primary reactant concentration</p></li>
-<li><p><strong>Catalyst Loading</strong> (1-10 mol%): Catalyst amount as percentage of limiting reagent</p></li>
-<li><p><strong>Temperature</strong> (60-120 °C): Reaction temperature</p></li>
+<li><p><strong>Solvent Volume</strong> (0.05-0.30 mL per experiment): The amount of solvent used</p></li>
+<li><p><strong>Reactant Concentration</strong> (0.05-0.20 mol/L): Primary reactant concentration</p></li>
+<li><p><strong>Catalyst Amount</strong> (0.5-5 µmol): Absolute catalyst amount per experiment</p></li>
+<li><p><strong>Temperature</strong> (60-110 °C): Reaction temperature</p></li>
 </ul>
 <p>Note that the parameter ranges are chosen arbitrarily and do not correspond to any
 specific real-world reaction.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NumericalContinuousParameter</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Solvent_Volume&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">),</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;mL&quot;</span><span class="p">}</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Solvent_Volume&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">),</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;mL&quot;</span><span class="p">}</span>
     <span class="p">),</span>
     <span class="n">NumericalContinuousParameter</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Reactant_Conc&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">),</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;g/L&quot;</span><span class="p">}</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Reactant_Conc&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">),</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;mol/L&quot;</span><span class="p">}</span>
     <span class="p">),</span>
     <span class="n">NumericalContinuousParameter</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Catalyst_Loading&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">),</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;mol%&quot;</span><span class="p">}</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Catalyst_Amount&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">),</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;µmol&quot;</span><span class="p">}</span>
     <span class="p">),</span>
     <span class="n">NumericalContinuousParameter</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">60.0</span><span class="p">,</span> <span class="mf">120.0</span><span class="p">),</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;°C&quot;</span><span class="p">}</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">60.0</span><span class="p">,</span> <span class="mf">110.0</span><span class="p">),</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;°C&quot;</span><span class="p">}</span>
     <span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
@@ -1172,21 +1174,21 @@ specific real-world reaction.</p>
 <h2>Constraint Definition<a class="headerlink" href="#constraint-definition" title="Link to this heading">¶</a></h2>
 <p>For the example, the following constraints are applied:</p>
 <ol class="arabic simple">
-<li><p><strong>Reagent efficiency</strong>: For each experiment, the solvent volume must be at least
-five times the reactant concentration (to ensure proper dilution).</p></li>
-<li><p><strong>Catalyst constraint</strong>: The total catalyst loading across all experiments in a
-batch must equal exactly 30 mol%.</p></li>
-<li><p><strong>Solvent budget</strong>: The total solvent used for each batch should be at most
-60 mL.</p></li>
+<li><p><strong>Reagent efficiency</strong>: For each experiment, the solvent volume must satisfy
+<span class="math notranslate nohighlight">\(V_{\mathrm{solvent}} \ge k \cdot C_{\mathrm{reactant}}\)</span> with
+<span class="math notranslate nohighlight">\(k = 1.5\,\mathrm{mL\cdot L/mol}\)</span> (to ensure proper dilution).</p></li>
+<li><p><strong>Catalyst constraint</strong>: The total catalyst amount across all experiments in a
+plate must equal exactly 8 µmol.</p></li>
+<li><p><strong>Solvent budget</strong>: The total solvent used for each plate should be at most 1.2 mL.</p></li>
 </ol>
 <p>The first constraint is an <em>intrapoint</em> constraint since it applies to individual
-experiments. The latter two are <em>interpoint</em> constraints as they apply to a batch as a
+experiments. The latter two are <em>interpoint</em> constraints as they apply to a plate as a
 whole.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intrapoint_constraints</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">ContinuousLinearConstraint</span><span class="p">(</span>
         <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Solvent_Volume&quot;</span><span class="p">,</span> <span class="s2">&quot;Reactant_Conc&quot;</span><span class="p">],</span>
         <span class="n">operator</span><span class="o">=</span><span class="s2">&quot;&gt;=&quot;</span><span class="p">,</span>
-        <span class="n">coefficients</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],</span>
+        <span class="n">coefficients</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">],</span>
         <span class="n">rhs</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
     <span class="p">),</span>
 <span class="p">]</span>
@@ -1194,17 +1196,17 @@ whole.</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">interpoint_constraints</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">ContinuousLinearConstraint</span><span class="p">(</span>
-        <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Catalyst_Loading&quot;</span><span class="p">],</span>
+        <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Catalyst_Amount&quot;</span><span class="p">],</span>
         <span class="n">operator</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span>
         <span class="n">coefficients</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-        <span class="n">rhs</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span>
+        <span class="n">rhs</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span>
         <span class="n">interpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">),</span>
     <span class="n">ContinuousLinearConstraint</span><span class="p">(</span>
         <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Solvent_Volume&quot;</span><span class="p">],</span>
         <span class="n">operator</span><span class="o">=</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
         <span class="n">coefficients</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-        <span class="n">rhs</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span>
+        <span class="n">rhs</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span>
         <span class="n">interpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">),</span>
 <span class="p">]</span>
@@ -1234,7 +1236,7 @@ corresponding experimental campaign:</p>
 <section id="optimization-loop-with-constraint-validation">
 <h2>Optimization Loop with Constraint Validation<a class="headerlink" href="#optimization-loop-with-constraint-validation" title="Link to this heading">¶</a></h2>
 <p>Next, we run several optimization iterations and validate that the interpoint
-constraints are satisfied for each batch to ensure the optimization respects
+constraints are satisfied for each plate to ensure the optimization respects
 our resource limitations:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results_log</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
@@ -1245,22 +1247,22 @@ our resource limitations:</p>
     <span class="n">add_fake_measurements</span><span class="p">(</span><span class="n">recommendations</span><span class="p">,</span> <span class="n">campaign</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
     <span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendations</span><span class="p">)</span>
     <span class="n">total_sol</span> <span class="o">=</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Solvent_Volume&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">total_cat</span> <span class="o">=</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Catalyst_Loading&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">solvent_ok</span> <span class="o">=</span> <span class="n">total_sol</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mf">60.0</span> <span class="o">+</span> <span class="n">TOLERANCE</span><span class="p">)</span>
-    <span class="n">catalyst_ok</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">total_cat</span> <span class="o">-</span> <span class="mf">30.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">TOLERANCE</span>
+    <span class="n">total_cat</span> <span class="o">=</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Catalyst_Amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">solvent_ok</span> <span class="o">=</span> <span class="n">total_sol</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mf">1.2</span> <span class="o">+</span> <span class="n">TOLERANCE</span><span class="p">)</span>
+    <span class="n">catalyst_ok</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">total_cat</span> <span class="o">-</span> <span class="mf">8.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">TOLERANCE</span>
 
-    <span class="k">assert</span> <span class="n">solvent_ok</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Solvent constraint violated: </span><span class="si">{</span><span class="n">total_sol</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mL (max 60.0 mL)&quot;</span>
+    <span class="k">assert</span> <span class="n">solvent_ok</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Solvent constraint violated: </span><span class="si">{</span><span class="n">total_sol</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mL (max 1.2 mL)&quot;</span>
     <span class="k">assert</span> <span class="n">catalyst_ok</span><span class="p">,</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Catalyst constraint violated: </span><span class="si">{</span><span class="n">total_cat</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mol% (expected 30.0 mol%)&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;Catalyst constraint violated: </span><span class="si">{</span><span class="n">total_cat</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> µmol (expected 8.0 µmol)&quot;</span>
     <span class="p">)</span>
 
     <span class="n">results_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="p">{</span>
             <span class="s2">&quot;iteration&quot;</span><span class="p">:</span> <span class="n">it</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
             <span class="s2">&quot;total_solvent_mL&quot;</span><span class="p">:</span> <span class="n">total_sol</span><span class="p">,</span>
-            <span class="s2">&quot;total_catalyst_mol%&quot;</span><span class="p">:</span> <span class="n">total_cat</span><span class="p">,</span>
+            <span class="s2">&quot;total_catalyst_µmol&quot;</span><span class="p">:</span> <span class="n">total_cat</span><span class="p">,</span>
             <span class="s2">&quot;individual_solvent_mL&quot;</span><span class="p">:</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Solvent_Volume&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
-            <span class="s2">&quot;individual_catalyst_mol%&quot;</span><span class="p">:</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Catalyst_Loading&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+            <span class="s2">&quot;individual_catalyst_µmol&quot;</span><span class="p">:</span> <span class="n">recommendations</span><span class="p">[</span><span class="s2">&quot;Catalyst_Amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
         <span class="p">}</span>
     <span class="p">)</span>
 </pre></div>
@@ -1269,14 +1271,14 @@ our resource limitations:</p>
 <section id="visualization">
 <h2>Visualization<a class="headerlink" href="#visualization" title="Link to this heading">¶</a></h2>
 <p>The plots below show the parameter values of individual experiments (labeled <code class="docutils literal notranslate"><span class="pre">Exp</span> <span class="pre">&lt;n&gt;</span></code>)
-and as well as their totals over the respective batch (labeled <code class="docutils literal notranslate"><span class="pre">Total</span></code>), to
+and as well as their totals over the respective plate (labeled <code class="docutils literal notranslate"><span class="pre">Total</span></code>), to
 illustrate the effects of the two interpoint constraints:</p>
 <ul class="simple">
-<li><p>The total solvent used for any individual batch never exceeds the given budget of
-60 mL, even though the exact amount varies across batches and distributes differently
+<li><p>The total solvent used for any individual plate never exceeds the given budget of
+1.2 mL, even though the exact amount varies across plates and distributes differently
 among individual experiments.</p></li>
-<li><p>By constrast, the total catalyst loading per batch is always
-exactly 30 mol%, even though individual experiments have varying amounts.</p></li>
+<li><p>By constrast, the total catalyst amount per plate is always
+exactly 8 µmol, even though individual experiments have varying amounts.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
 </pre></div>
@@ -1286,19 +1288,19 @@ exactly 30 mol%, even though individual experiments have varying amounts.</p></l
         <span class="s2">&quot;ax&quot;</span><span class="p">:</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
         <span class="s2">&quot;individual_col&quot;</span><span class="p">:</span> <span class="s2">&quot;individual_solvent_mL&quot;</span><span class="p">,</span>
         <span class="s2">&quot;total_col&quot;</span><span class="p">:</span> <span class="s2">&quot;total_solvent_mL&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span>
         <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Budget&quot;</span><span class="p">,</span>
         <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Solvent&quot;</span><span class="p">,</span>
         <span class="s2">&quot;ylabel&quot;</span><span class="p">:</span> <span class="s2">&quot;Solvent Volume (mL)&quot;</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="s2">&quot;ax&quot;</span><span class="p">:</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-        <span class="s2">&quot;individual_col&quot;</span><span class="p">:</span> <span class="s2">&quot;individual_catalyst_mol%&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;total_col&quot;</span><span class="p">:</span> <span class="s2">&quot;total_catalyst_mol%&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="s2">&quot;individual_col&quot;</span><span class="p">:</span> <span class="s2">&quot;individual_catalyst_µmol&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_col&quot;</span><span class="p">:</span> <span class="s2">&quot;total_catalyst_µmol&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
         <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Required&quot;</span><span class="p">,</span>
         <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Catalyst&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ylabel&quot;</span><span class="p">:</span> <span class="s2">&quot;Catalyst Loading (mol%)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ylabel&quot;</span><span class="p">:</span> <span class="s2">&quot;Catalyst Amount (µmol)&quot;</span><span class="p">,</span>
     <span class="p">},</span>
 <span class="p">]</span>
 </pre></div>
@@ -1328,7 +1330,7 @@ exactly 30 mol%, even though individual experiments have varying amounts.</p></l
     <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Batch&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Plate&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;ylabel&quot;</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -1423,5 +1425,7 @@ exactly 30 mol%, even though individual experiments have varying amounts.</p></l
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>
