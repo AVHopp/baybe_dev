@@ -310,7 +310,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Constraints_Continuous/Constraints_Continuous.html">Constraints Continuous</a><input aria-label="Toggle navigation of Constraints Continuous" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/interpoint.html">Interpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/linear_constraints.html">Linear</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/hybrid_space.html">Hybrid Space</a></li>
 </ul>
@@ -914,7 +913,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.compose_two.html">baybe.utils.basic.compose_two</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.convert_to_float.html">baybe.utils.basic.convert_to_float</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.find_subclass.html">baybe.utils.basic.find_subclass</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.flatten.html">baybe.utils.basic.flatten</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.get_baseclasses.html">baybe.utils.basic.get_baseclasses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.get_subclasses.html">baybe.utils.basic.get_subclasses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.group_duplicate_values.html">baybe.utils.basic.group_duplicate_values</a></li>
@@ -1196,16 +1194,16 @@ random points from the search space:</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>       Base1      Base2  PhaseAgent1  PhaseAgent2   Solvent1   Solvent2
-0   0.393247  13.388182     2.605938     2.182039  42.335810  39.094785
-1  12.535378  15.359041     3.669816     0.299232  23.393877  44.742656
-2   6.993193  15.011576     2.894786     0.542355  19.559154  54.998935
-3   9.093897  17.449164     1.079093     3.447556  17.796739  51.133552
-4  17.122457  10.955810     3.338648     1.571517  15.532611  51.478958
-5  13.956394  16.408911     0.662509     3.323306  54.059124  11.589756
-6  18.390959  14.139635     2.691937     0.513662  22.096961  42.166845
-7   8.037378  13.366064     3.798249     0.472382   1.093567  73.232361
-8   8.754909  16.896545     3.636004     0.899784  34.159949  35.652809
-9  19.069521   8.642894     3.801496     0.965775  46.423108  21.097206
+0   6.125039  14.400178     0.698387     2.002936   1.744153  75.029307
+1   6.328014  11.261106     3.754086     0.616526  23.535915  54.504351
+2   2.904431  17.039022     0.772727     1.560984  19.600922  58.121915
+3   9.897538  12.253419     4.116472     0.177128   1.991519  71.563924
+4   0.528573  17.478708     1.831715     1.935334  55.513818  22.711851
+5  18.412418   5.814082     1.224544     2.698999   3.437791  68.412166
+6   4.523562   9.677656     3.886511     0.510360  47.605917  33.795995
+7  10.078733   1.226467     2.161840     0.807568  62.852761  22.872630
+8  18.049808   0.498707     0.457400     4.275993  65.221915  11.496178
+9   6.885694   8.398276     0.033262     1.145661  73.882672   9.654436
 </pre></div>
 </div>
 <p>Computing the respective row sums reveals the expected result:</p>
@@ -1220,16 +1218,16 @@ random points from the search space:</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   Total  Total_Bases  Total_Phase_Agents
-0  100.0    13.781429            4.787976
-1  100.0    27.894419            3.969048
-2  100.0    22.004769            3.437141
-3  100.0    26.543061            4.526649
-4  100.0    28.078266            4.910165
-5  100.0    30.365305            3.985815
-6  100.0    32.530595            3.205599
-7  100.0    21.403442            4.270631
-8  100.0    25.651453            4.535788
-9  100.0    27.712415            4.767271
+0  100.0    20.525217            2.701323
+1  100.0    17.589121            4.370612
+2  100.0    19.943453            2.333711
+3  100.0    22.150957            4.293599
+4  100.0    18.007282            3.767049
+5  100.0    24.226499            3.923543
+6  100.0    14.201217            4.396871
+7  100.0    11.305200            2.969409
+8  100.0    18.548515            4.733392
+9  100.0    15.283970            1.178922
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>

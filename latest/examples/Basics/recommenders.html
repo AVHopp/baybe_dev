@@ -310,7 +310,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Constraints_Continuous/Constraints_Continuous.html">Constraints Continuous</a><input aria-label="Toggle navigation of Constraints Continuous" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/interpoint.html">Interpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/linear_constraints.html">Linear</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Continuous/hybrid_space.html">Hybrid Space</a></li>
 </ul>
@@ -914,7 +913,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.compose_two.html">baybe.utils.basic.compose_two</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.convert_to_float.html">baybe.utils.basic.convert_to_float</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.find_subclass.html">baybe.utils.basic.find_subclass</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.flatten.html">baybe.utils.basic.flatten</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.get_baseclasses.html">baybe.utils.basic.get_baseclasses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.get_subclasses.html">baybe.utils.basic.get_subclasses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.utils.basic.group_duplicate_values.html">baybe.utils.basic.group_duplicate_values</a></li>
@@ -1298,15 +1296,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments: 
-           Solvent                Base                        Ligand  \
-344       p-Xylene      Cesium acetate  Di-tert-butylphenylphosphine   
-119  Butyornitrile      Cesium acetate                     BrettPhos   
-304           DMAc  Potassium pivalate                 (t-Bu)PhCPhos   
+           Solvent               Base                        Ligand  \
+403       p-Xylene  Potassium acetate  Di-tert-butylphenylphosphine   
+133  Butyornitrile     Cesium acetate  Di-tert-butylphenylphosphine   
+366       p-Xylene    Cesium pivalate                     BrettPhos   
 
      Temperature  Concentration  
-344         90.0          0.153  
-119         90.0          0.153  
-304        120.0          0.100  
+403        120.0          0.100  
+133        120.0          0.100  
+366        120.0          0.057  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
@@ -1315,15 +1313,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-           Solvent                Base                        Ligand  \
-344       p-Xylene      Cesium acetate  Di-tert-butylphenylphosphine   
-119  Butyornitrile      Cesium acetate                     BrettPhos   
-304           DMAc  Potassium pivalate                 (t-Bu)PhCPhos   
+           Solvent               Base                        Ligand  \
+403       p-Xylene  Potassium acetate  Di-tert-butylphenylphosphine   
+133  Butyornitrile     Cesium acetate  Di-tert-butylphenylphosphine   
+366       p-Xylene    Cesium pivalate                     BrettPhos   
 
      Temperature  Concentration      yield  
-344         90.0          0.153  63.925799  
-119         90.0          0.153  27.330792  
-304        120.0          0.100 -69.099302  
+403        120.0          0.100  53.046838  
+133        120.0          0.100  16.182666  
+366        120.0          0.057  29.876718  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
