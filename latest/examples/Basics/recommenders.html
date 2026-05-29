@@ -1384,10 +1384,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments: 
-           Solvent               Base     Ligand  Temperature  Concentration
-395       p-Xylene  Potassium acetate  BrettPhos        120.0          0.153
-171  Butyornitrile  Potassium acetate  BrettPhos         90.0          0.057
-254           DMAc    Cesium pivalate  BrettPhos         90.0          0.153
+         Solvent             Base                        Ligand  Temperature  \
+17   Butyl Ester   Cesium acetate                     BrettPhos        120.0   
+243         DMAc  Cesium pivalate                 (t-Bu)PhCPhos         90.0   
+20   Butyl Ester   Cesium acetate  Di-tert-butylphenylphosphine         90.0   
+
+     Concentration  
+17           0.153  
+243          0.057  
+20           0.153  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
@@ -1396,15 +1401,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-           Solvent               Base     Ligand  Temperature  Concentration  \
-395       p-Xylene  Potassium acetate  BrettPhos        120.0          0.153   
-171  Butyornitrile  Potassium acetate  BrettPhos         90.0          0.057   
-254           DMAc    Cesium pivalate  BrettPhos         90.0          0.153   
+         Solvent             Base                        Ligand  Temperature  \
+17   Butyl Ester   Cesium acetate                     BrettPhos        120.0   
+243         DMAc  Cesium pivalate                 (t-Bu)PhCPhos         90.0   
+20   Butyl Ester   Cesium acetate  Di-tert-butylphenylphosphine         90.0   
 
-         yield  
-395 -75.243820  
-171 -22.850652  
-254  69.617141  
+     Concentration      yield  
+17           0.153 -74.092175  
+243          0.057 -91.816939  
+20           0.153  80.025634  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
