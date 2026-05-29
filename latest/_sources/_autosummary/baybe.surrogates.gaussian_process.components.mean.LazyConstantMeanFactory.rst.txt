@@ -17,6 +17,9 @@ LazyConstantMeanFactory
    
       ~LazyConstantMeanFactory.__init__
    
+      ~LazyConstantMeanFactory.__call__
+   
+   
    
 
    

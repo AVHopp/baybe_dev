@@ -16,7 +16,9 @@ RandomRecommender
    .. autosummary::
    
       ~RandomRecommender.__init__
+   
       ~RandomRecommender.recommend
+   
    
    
 

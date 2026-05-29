@@ -17,6 +17,9 @@ EDBOLikelihoodFactory
    
       ~EDBOLikelihoodFactory.__init__
    
+      ~EDBOLikelihoodFactory.__call__
+   
+   
    
 
    

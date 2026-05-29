@@ -16,10 +16,15 @@ Metadata
    .. autosummary::
    
       ~Metadata.__init__
+   
       ~Metadata.from_dict
+   
       ~Metadata.from_json
+   
       ~Metadata.to_dict
+   
       ~Metadata.to_json
+   
    
    
 

@@ -16,12 +16,19 @@ UpperConfidenceBound
    .. autosummary::
    
       ~UpperConfidenceBound.__init__
+   
       ~UpperConfidenceBound.evaluate
+   
       ~UpperConfidenceBound.from_dict
+   
       ~UpperConfidenceBound.from_json
+   
       ~UpperConfidenceBound.to_botorch
+   
       ~UpperConfidenceBound.to_dict
+   
       ~UpperConfidenceBound.to_json
+   
    
    
 

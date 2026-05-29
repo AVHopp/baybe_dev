@@ -17,6 +17,9 @@ LazyGaussianLikelihoodFactory
    
       ~LazyGaussianLikelihoodFactory.__init__
    
+      ~LazyGaussianLikelihoodFactory.__call__
+   
+   
    
 
    

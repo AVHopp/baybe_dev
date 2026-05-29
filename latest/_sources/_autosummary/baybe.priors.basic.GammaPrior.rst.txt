@@ -16,11 +16,17 @@ GammaPrior
    .. autosummary::
    
       ~GammaPrior.__init__
+   
       ~GammaPrior.from_dict
+   
       ~GammaPrior.from_json
+   
       ~GammaPrior.to_dict
+   
       ~GammaPrior.to_gpytorch
+   
       ~GammaPrior.to_json
+   
    
    
 

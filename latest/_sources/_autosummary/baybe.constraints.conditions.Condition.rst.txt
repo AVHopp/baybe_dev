@@ -16,12 +16,19 @@ Condition
    .. autosummary::
    
       ~Condition.__init__
+   
       ~Condition.evaluate
+   
       ~Condition.from_dict
+   
       ~Condition.from_json
+   
       ~Condition.to_dict
+   
       ~Condition.to_json
+   
       ~Condition.to_polars
+   
    
    
 

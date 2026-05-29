@@ -17,6 +17,9 @@ ParameterSelector
    
       ~ParameterSelector.__init__
    
+      ~ParameterSelector.__call__
+   
+   
    
 
    

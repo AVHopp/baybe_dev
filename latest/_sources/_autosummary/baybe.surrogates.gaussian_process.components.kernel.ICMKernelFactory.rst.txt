@@ -17,6 +17,9 @@ ICMKernelFactory
    
       ~ICMKernelFactory.__init__
    
+      ~ICMKernelFactory.__call__
+   
+   
    
 
    

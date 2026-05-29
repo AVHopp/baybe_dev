@@ -16,7 +16,9 @@ FPSRecommender
    .. autosummary::
    
       ~FPSRecommender.__init__
+   
       ~FPSRecommender.recommend
+   
    
    
 

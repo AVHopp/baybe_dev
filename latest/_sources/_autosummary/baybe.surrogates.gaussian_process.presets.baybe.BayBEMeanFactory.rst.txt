@@ -17,6 +17,9 @@ BayBEMeanFactory
    
       ~BayBEMeanFactory.__init__
    
+      ~BayBEMeanFactory.__call__
+   
+   
    
 
    

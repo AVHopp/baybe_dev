@@ -16,7 +16,9 @@ NaiveHybridSpaceRecommender
    .. autosummary::
    
       ~NaiveHybridSpaceRecommender.__init__
+   
       ~NaiveHybridSpaceRecommender.recommend
+   
    
    
 

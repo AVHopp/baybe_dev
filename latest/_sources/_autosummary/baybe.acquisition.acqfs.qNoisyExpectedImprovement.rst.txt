@@ -16,12 +16,19 @@ qNoisyExpectedImprovement
    .. autosummary::
    
       ~qNoisyExpectedImprovement.__init__
+   
       ~qNoisyExpectedImprovement.evaluate
+   
       ~qNoisyExpectedImprovement.from_dict
+   
       ~qNoisyExpectedImprovement.from_json
+   
       ~qNoisyExpectedImprovement.to_botorch
+   
       ~qNoisyExpectedImprovement.to_dict
+   
       ~qNoisyExpectedImprovement.to_json
+   
    
    
 

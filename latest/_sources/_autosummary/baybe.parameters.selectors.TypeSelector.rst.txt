@@ -17,6 +17,9 @@ TypeSelector
    
       ~TypeSelector.__init__
    
+      ~TypeSelector.__call__
+   
+   
    
 
    

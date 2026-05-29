@@ -16,9 +16,15 @@ Settings
    .. autosummary::
    
       ~Settings.__init__
+   
+      ~Settings.__call__
+   
       ~Settings.activate
+   
       ~Settings.overwrite
+   
       ~Settings.restore_previous
+   
    
    
 

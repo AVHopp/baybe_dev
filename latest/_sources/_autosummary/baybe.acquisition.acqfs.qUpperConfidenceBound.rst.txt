@@ -16,12 +16,19 @@ qUpperConfidenceBound
    .. autosummary::
    
       ~qUpperConfidenceBound.__init__
+   
       ~qUpperConfidenceBound.evaluate
+   
       ~qUpperConfidenceBound.from_dict
+   
       ~qUpperConfidenceBound.from_json
+   
       ~qUpperConfidenceBound.to_botorch
+   
       ~qUpperConfidenceBound.to_dict
+   
       ~qUpperConfidenceBound.to_json
+   
    
    
 

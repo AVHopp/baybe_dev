@@ -17,6 +17,9 @@ BotorchMeanFactory
    
       ~BotorchMeanFactory.__init__
    
+      ~BotorchMeanFactory.__call__
+   
+   
    
 
    

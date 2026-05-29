@@ -17,6 +17,9 @@ NameSelector
    
       ~NameSelector.__init__
    
+      ~NameSelector.__call__
+   
+   
    
 
    

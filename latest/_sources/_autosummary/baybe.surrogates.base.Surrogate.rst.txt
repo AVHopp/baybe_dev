@@ -16,15 +16,25 @@ Surrogate
    .. autosummary::
    
       ~Surrogate.__init__
+   
       ~Surrogate.fit
+   
       ~Surrogate.from_dict
+   
       ~Surrogate.from_json
+   
       ~Surrogate.posterior
+   
       ~Surrogate.posterior_stats
+   
       ~Surrogate.replicate
+   
       ~Surrogate.to_botorch
+   
       ~Surrogate.to_dict
+   
       ~Surrogate.to_json
+   
    
    
 

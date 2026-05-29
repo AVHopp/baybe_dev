@@ -16,7 +16,9 @@ SupportsWrite
    .. autosummary::
    
       ~SupportsWrite.__init__
+   
       ~SupportsWrite.write
+   
    
    
 

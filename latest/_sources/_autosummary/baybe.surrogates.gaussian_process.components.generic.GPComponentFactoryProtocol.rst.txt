@@ -17,6 +17,9 @@ GPComponentFactoryProtocol
    
       ~GPComponentFactoryProtocol.__init__
    
+      ~GPComponentFactoryProtocol.__call__
+   
+   
    
 
    

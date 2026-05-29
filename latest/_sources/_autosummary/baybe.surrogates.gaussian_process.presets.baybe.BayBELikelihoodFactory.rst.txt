@@ -17,6 +17,9 @@ BayBELikelihoodFactory
    
       ~BayBELikelihoodFactory.__init__
    
+      ~BayBELikelihoodFactory.__call__
+   
+   
    
 
    

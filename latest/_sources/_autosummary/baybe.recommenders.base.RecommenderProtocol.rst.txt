@@ -16,7 +16,9 @@ RecommenderProtocol
    .. autosummary::
    
       ~RecommenderProtocol.__init__
+   
       ~RecommenderProtocol.recommend
+   
    
    
 

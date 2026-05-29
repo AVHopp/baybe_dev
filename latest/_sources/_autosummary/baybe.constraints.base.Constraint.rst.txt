@@ -16,11 +16,17 @@ Constraint
    .. autosummary::
    
       ~Constraint.__init__
+   
       ~Constraint.from_dict
+   
       ~Constraint.from_json
+   
       ~Constraint.summary
+   
       ~Constraint.to_dict
+   
       ~Constraint.to_json
+   
    
    
 

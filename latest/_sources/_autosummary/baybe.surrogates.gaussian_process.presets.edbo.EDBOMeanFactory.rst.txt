@@ -17,6 +17,9 @@ EDBOMeanFactory
    
       ~EDBOMeanFactory.__init__
    
+      ~EDBOMeanFactory.__call__
+   
+   
    
 
    

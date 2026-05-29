@@ -16,12 +16,19 @@ qKnowledgeGradient
    .. autosummary::
    
       ~qKnowledgeGradient.__init__
+   
       ~qKnowledgeGradient.evaluate
+   
       ~qKnowledgeGradient.from_dict
+   
       ~qKnowledgeGradient.from_json
+   
       ~qKnowledgeGradient.to_botorch
+   
       ~qKnowledgeGradient.to_dict
+   
       ~qKnowledgeGradient.to_json
+   
    
    
 

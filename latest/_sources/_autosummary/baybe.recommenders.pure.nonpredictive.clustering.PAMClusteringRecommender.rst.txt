@@ -16,7 +16,9 @@ PAMClusteringRecommender
    .. autosummary::
    
       ~PAMClusteringRecommender.__init__
+   
       ~PAMClusteringRecommender.recommend
+   
    
    
 

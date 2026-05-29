@@ -17,6 +17,9 @@ ParameterSelectorProtocol
    
       ~ParameterSelectorProtocol.__init__
    
+      ~ParameterSelectorProtocol.__call__
+   
+   
    
 
    

@@ -16,10 +16,15 @@ MeasurableMetadata
    .. autosummary::
    
       ~MeasurableMetadata.__init__
+   
       ~MeasurableMetadata.from_dict
+   
       ~MeasurableMetadata.from_json
+   
       ~MeasurableMetadata.to_dict
+   
       ~MeasurableMetadata.to_json
+   
    
    
 

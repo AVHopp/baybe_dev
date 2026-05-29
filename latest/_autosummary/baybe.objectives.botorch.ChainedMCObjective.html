@@ -1187,151 +1187,154 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.__init__" title="baybe.objectives.botorch.ChainedMCObjective.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*objectives)</p></td>
 <td><p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.add_module" title="baybe.objectives.botorch.ChainedMCObjective.add_module"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_module</span></code></a>(name, module)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.__call__" title="baybe.objectives.botorch.ChainedMCObjective.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a>(samples[, X])</p></td>
+<td><p>Call self as a function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.add_module" title="baybe.objectives.botorch.ChainedMCObjective.add_module"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_module</span></code></a>(name, module)</p></td>
 <td><p>Add a child module to the current module.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.apply" title="baybe.objectives.botorch.ChainedMCObjective.apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply</span></code></a>(fn)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.apply" title="baybe.objectives.botorch.ChainedMCObjective.apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply</span></code></a>(fn)</p></td>
 <td><p>Apply <code class="docutils literal notranslate"><span class="pre">fn</span></code> recursively to every submodule (as returned by <code class="docutils literal notranslate"><span class="pre">.children()</span></code>) as well as self.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.bfloat16" title="baybe.objectives.botorch.ChainedMCObjective.bfloat16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bfloat16</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.bfloat16" title="baybe.objectives.botorch.ChainedMCObjective.bfloat16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bfloat16</span></code></a>()</p></td>
 <td><p>Casts all floating point parameters and buffers to <code class="docutils literal notranslate"><span class="pre">bfloat16</span></code> datatype.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.buffers" title="baybe.objectives.botorch.ChainedMCObjective.buffers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">buffers</span></code></a>([recurse])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.buffers" title="baybe.objectives.botorch.ChainedMCObjective.buffers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">buffers</span></code></a>([recurse])</p></td>
 <td><p>Return an iterator over module buffers.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.children" title="baybe.objectives.botorch.ChainedMCObjective.children"><code class="xref py py-obj docutils literal notranslate"><span class="pre">children</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.children" title="baybe.objectives.botorch.ChainedMCObjective.children"><code class="xref py py-obj docutils literal notranslate"><span class="pre">children</span></code></a>()</p></td>
 <td><p>Return an iterator over immediate children modules.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.compile" title="baybe.objectives.botorch.ChainedMCObjective.compile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compile</span></code></a>(*args, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.compile" title="baybe.objectives.botorch.ChainedMCObjective.compile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compile</span></code></a>(*args, **kwargs)</p></td>
 <td><p>Compile this Module's forward using <a class="reference external" href="https://docs.pytorch.org/docs/main/generated/torch.compile.html#torch.compile" title="(in PyTorch vmain (2.13.0a0+git516f64b ))"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.compile()</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.cpu" title="baybe.objectives.botorch.ChainedMCObjective.cpu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cpu</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.cpu" title="baybe.objectives.botorch.ChainedMCObjective.cpu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cpu</span></code></a>()</p></td>
 <td><p>Move all model parameters and buffers to the CPU.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.cuda" title="baybe.objectives.botorch.ChainedMCObjective.cuda"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cuda</span></code></a>([device])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.cuda" title="baybe.objectives.botorch.ChainedMCObjective.cuda"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cuda</span></code></a>([device])</p></td>
 <td><p>Move all model parameters and buffers to the GPU.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.double" title="baybe.objectives.botorch.ChainedMCObjective.double"><code class="xref py py-obj docutils literal notranslate"><span class="pre">double</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.double" title="baybe.objectives.botorch.ChainedMCObjective.double"><code class="xref py py-obj docutils literal notranslate"><span class="pre">double</span></code></a>()</p></td>
 <td><p>Casts all floating point parameters and buffers to <code class="docutils literal notranslate"><span class="pre">double</span></code> datatype.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.eval" title="baybe.objectives.botorch.ChainedMCObjective.eval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eval</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.eval" title="baybe.objectives.botorch.ChainedMCObjective.eval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eval</span></code></a>()</p></td>
 <td><p>Set the module in evaluation mode.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.extra_repr" title="baybe.objectives.botorch.ChainedMCObjective.extra_repr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extra_repr</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.extra_repr" title="baybe.objectives.botorch.ChainedMCObjective.extra_repr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extra_repr</span></code></a>()</p></td>
 <td><p>Return the extra representation of the module.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.float" title="baybe.objectives.botorch.ChainedMCObjective.float"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.float" title="baybe.objectives.botorch.ChainedMCObjective.float"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>()</p></td>
 <td><p>Casts all floating point parameters and buffers to <code class="docutils literal notranslate"><span class="pre">float</span></code> datatype.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.forward" title="baybe.objectives.botorch.ChainedMCObjective.forward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forward</span></code></a>(samples[, X])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.forward" title="baybe.objectives.botorch.ChainedMCObjective.forward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forward</span></code></a>(samples[, X])</p></td>
 <td><p>Evaluate the objective on the samples.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.get_buffer" title="baybe.objectives.botorch.ChainedMCObjective.get_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_buffer</span></code></a>(target)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.get_buffer" title="baybe.objectives.botorch.ChainedMCObjective.get_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_buffer</span></code></a>(target)</p></td>
 <td><p>Return the buffer given by <code class="docutils literal notranslate"><span class="pre">target</span></code> if it exists, otherwise throw an error.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.get_extra_state" title="baybe.objectives.botorch.ChainedMCObjective.get_extra_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_extra_state</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.get_extra_state" title="baybe.objectives.botorch.ChainedMCObjective.get_extra_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_extra_state</span></code></a>()</p></td>
 <td><p>Return any extra state to include in the module's state_dict.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.get_parameter" title="baybe.objectives.botorch.ChainedMCObjective.get_parameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_parameter</span></code></a>(target)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.get_parameter" title="baybe.objectives.botorch.ChainedMCObjective.get_parameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_parameter</span></code></a>(target)</p></td>
 <td><p>Return the parameter given by <code class="docutils literal notranslate"><span class="pre">target</span></code> if it exists, otherwise throw an error.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.get_submodule" title="baybe.objectives.botorch.ChainedMCObjective.get_submodule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_submodule</span></code></a>(target)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.get_submodule" title="baybe.objectives.botorch.ChainedMCObjective.get_submodule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_submodule</span></code></a>(target)</p></td>
 <td><p>Return the submodule given by <code class="docutils literal notranslate"><span class="pre">target</span></code> if it exists, otherwise throw an error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.half" title="baybe.objectives.botorch.ChainedMCObjective.half"><code class="xref py py-obj docutils literal notranslate"><span class="pre">half</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.half" title="baybe.objectives.botorch.ChainedMCObjective.half"><code class="xref py py-obj docutils literal notranslate"><span class="pre">half</span></code></a>()</p></td>
 <td><p>Casts all floating point parameters and buffers to <code class="docutils literal notranslate"><span class="pre">half</span></code> datatype.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.ipu" title="baybe.objectives.botorch.ChainedMCObjective.ipu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ipu</span></code></a>([device])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.ipu" title="baybe.objectives.botorch.ChainedMCObjective.ipu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ipu</span></code></a>([device])</p></td>
 <td><p>Move all model parameters and buffers to the IPU.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.modules" title="baybe.objectives.botorch.ChainedMCObjective.modules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modules</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.modules" title="baybe.objectives.botorch.ChainedMCObjective.modules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modules</span></code></a>()</p></td>
 <td><p>Return an iterator over all modules in the network.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.mtia" title="baybe.objectives.botorch.ChainedMCObjective.mtia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mtia</span></code></a>([device])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.mtia" title="baybe.objectives.botorch.ChainedMCObjective.mtia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mtia</span></code></a>([device])</p></td>
 <td><p>Move all model parameters and buffers to the MTIA.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.named_buffers" title="baybe.objectives.botorch.ChainedMCObjective.named_buffers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_buffers</span></code></a>([prefix, recurse, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.named_buffers" title="baybe.objectives.botorch.ChainedMCObjective.named_buffers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_buffers</span></code></a>([prefix, recurse, ...])</p></td>
 <td><p>Return an iterator over module buffers, yielding both the name of the buffer as well as the buffer itself.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.named_children" title="baybe.objectives.botorch.ChainedMCObjective.named_children"><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_children</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.named_children" title="baybe.objectives.botorch.ChainedMCObjective.named_children"><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_children</span></code></a>()</p></td>
 <td><p>Return an iterator over immediate children modules, yielding both the name of the module as well as the module itself.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.named_modules" title="baybe.objectives.botorch.ChainedMCObjective.named_modules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_modules</span></code></a>([memo, prefix, remove_duplicate])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.named_modules" title="baybe.objectives.botorch.ChainedMCObjective.named_modules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_modules</span></code></a>([memo, prefix, remove_duplicate])</p></td>
 <td><p>Return an iterator over all modules in the network, yielding both the name of the module as well as the module itself.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.named_parameters" title="baybe.objectives.botorch.ChainedMCObjective.named_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_parameters</span></code></a>([prefix, recurse, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.named_parameters" title="baybe.objectives.botorch.ChainedMCObjective.named_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_parameters</span></code></a>([prefix, recurse, ...])</p></td>
 <td><p>Return an iterator over module parameters, yielding both the name of the parameter as well as the parameter itself.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.parameters" title="baybe.objectives.botorch.ChainedMCObjective.parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameters</span></code></a>([recurse])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.parameters" title="baybe.objectives.botorch.ChainedMCObjective.parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameters</span></code></a>([recurse])</p></td>
 <td><p>Return an iterator over module parameters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_backward_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_backward_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_backward_hook</span></code></a>(hook)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_backward_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_backward_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_backward_hook</span></code></a>(hook)</p></td>
 <td><p>Register a backward hook on the module.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_buffer" title="baybe.objectives.botorch.ChainedMCObjective.register_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_buffer</span></code></a>(name, tensor[, persistent])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_buffer" title="baybe.objectives.botorch.ChainedMCObjective.register_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_buffer</span></code></a>(name, tensor[, persistent])</p></td>
 <td><p>Add a buffer to the module.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_forward_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_forward_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_forward_hook</span></code></a>(hook, *[, prepend, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_forward_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_forward_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_forward_hook</span></code></a>(hook, *[, prepend, ...])</p></td>
 <td><p>Register a forward hook on the module.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_forward_pre_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_forward_pre_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_forward_pre_hook</span></code></a>(hook, *[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_forward_pre_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_forward_pre_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_forward_pre_hook</span></code></a>(hook, *[, ...])</p></td>
 <td><p>Register a forward pre-hook on the module.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_full_backward_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_full_backward_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_full_backward_hook</span></code></a>(hook[, prepend])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_full_backward_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_full_backward_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_full_backward_hook</span></code></a>(hook[, prepend])</p></td>
 <td><p>Register a backward hook on the module.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_full_backward_pre_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_full_backward_pre_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_full_backward_pre_hook</span></code></a>(hook[, prepend])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_full_backward_pre_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_full_backward_pre_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_full_backward_pre_hook</span></code></a>(hook[, prepend])</p></td>
 <td><p>Register a backward pre-hook on the module.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_load_state_dict_post_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_load_state_dict_post_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_load_state_dict_post_hook</span></code></a>(hook)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_load_state_dict_post_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_load_state_dict_post_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_load_state_dict_post_hook</span></code></a>(hook)</p></td>
 <td><p>Register a post-hook to be run after module's <code class="xref py py-meth docutils literal notranslate"><span class="pre">load_state_dict()</span></code> is called.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_load_state_dict_pre_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_load_state_dict_pre_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_load_state_dict_pre_hook</span></code></a>(hook)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_load_state_dict_pre_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_load_state_dict_pre_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_load_state_dict_pre_hook</span></code></a>(hook)</p></td>
 <td><p>Register a pre-hook to be run before module's <code class="xref py py-meth docutils literal notranslate"><span class="pre">load_state_dict()</span></code> is called.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_module" title="baybe.objectives.botorch.ChainedMCObjective.register_module"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_module</span></code></a>(name, module)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_module" title="baybe.objectives.botorch.ChainedMCObjective.register_module"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_module</span></code></a>(name, module)</p></td>
 <td><p>Alias for <a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.add_module" title="baybe.objectives.botorch.ChainedMCObjective.add_module"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_module()</span></code></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_parameter" title="baybe.objectives.botorch.ChainedMCObjective.register_parameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_parameter</span></code></a>(name, param)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_parameter" title="baybe.objectives.botorch.ChainedMCObjective.register_parameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_parameter</span></code></a>(name, param)</p></td>
 <td><p>Add a parameter to the module.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_state_dict_post_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_state_dict_post_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_state_dict_post_hook</span></code></a>(hook)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_state_dict_post_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_state_dict_post_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_state_dict_post_hook</span></code></a>(hook)</p></td>
 <td><p>Register a post-hook for the <a class="reference external" href="https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.nn.Module.state_dict" title="(in PyTorch vmain (2.13.0a0+git516f64b ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">state_dict()</span></code></a> method.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_state_dict_pre_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_state_dict_pre_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_state_dict_pre_hook</span></code></a>(hook)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.register_state_dict_pre_hook" title="baybe.objectives.botorch.ChainedMCObjective.register_state_dict_pre_hook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_state_dict_pre_hook</span></code></a>(hook)</p></td>
 <td><p>Register a pre-hook for the <a class="reference external" href="https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.nn.Module.state_dict" title="(in PyTorch vmain (2.13.0a0+git516f64b ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">state_dict()</span></code></a> method.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.requires_grad_" title="baybe.objectives.botorch.ChainedMCObjective.requires_grad_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requires_grad_</span></code></a>([requires_grad])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.requires_grad_" title="baybe.objectives.botorch.ChainedMCObjective.requires_grad_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requires_grad_</span></code></a>([requires_grad])</p></td>
 <td><p>Change if autograd should record operations on parameters in this module.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.set_extra_state" title="baybe.objectives.botorch.ChainedMCObjective.set_extra_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_extra_state</span></code></a>(state)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.set_extra_state" title="baybe.objectives.botorch.ChainedMCObjective.set_extra_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_extra_state</span></code></a>(state)</p></td>
 <td><p>Set extra state contained in the loaded <cite>state_dict</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.set_submodule" title="baybe.objectives.botorch.ChainedMCObjective.set_submodule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_submodule</span></code></a>(target, module[, strict])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.set_submodule" title="baybe.objectives.botorch.ChainedMCObjective.set_submodule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_submodule</span></code></a>(target, module[, strict])</p></td>
 <td><p>Set the submodule given by <code class="docutils literal notranslate"><span class="pre">target</span></code> if it exists, otherwise throw an error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.share_memory" title="baybe.objectives.botorch.ChainedMCObjective.share_memory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">share_memory</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.share_memory" title="baybe.objectives.botorch.ChainedMCObjective.share_memory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">share_memory</span></code></a>()</p></td>
 <td><p>See <a class="reference external" href="https://docs.pytorch.org/docs/main/generated/torch.Tensor.share_memory_.html#torch.Tensor.share_memory_" title="(in PyTorch vmain (2.13.0a0+git516f64b ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.Tensor.share_memory_()</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.state_dict" title="baybe.objectives.botorch.ChainedMCObjective.state_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state_dict</span></code></a>(*args[, destination, prefix, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.state_dict" title="baybe.objectives.botorch.ChainedMCObjective.state_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state_dict</span></code></a>(*args[, destination, prefix, ...])</p></td>
 <td><p>Return a dictionary containing references to the whole state of the module.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.to" title="baybe.objectives.botorch.ChainedMCObjective.to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code></a>(*args, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.to" title="baybe.objectives.botorch.ChainedMCObjective.to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code></a>(*args, **kwargs)</p></td>
 <td><p>Move and/or cast the parameters and buffers.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.to_empty" title="baybe.objectives.botorch.ChainedMCObjective.to_empty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_empty</span></code></a>(*, device[, recurse])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.to_empty" title="baybe.objectives.botorch.ChainedMCObjective.to_empty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_empty</span></code></a>(*, device[, recurse])</p></td>
 <td><p>Move the parameters and buffers to the specified device without copying storage.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.train" title="baybe.objectives.botorch.ChainedMCObjective.train"><code class="xref py py-obj docutils literal notranslate"><span class="pre">train</span></code></a>([mode])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.train" title="baybe.objectives.botorch.ChainedMCObjective.train"><code class="xref py py-obj docutils literal notranslate"><span class="pre">train</span></code></a>([mode])</p></td>
 <td><p>Set the module in training mode.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.type" title="baybe.objectives.botorch.ChainedMCObjective.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>(dst_type)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.type" title="baybe.objectives.botorch.ChainedMCObjective.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>(dst_type)</p></td>
 <td><p>Casts all parameters and buffers to <code class="xref py py-attr docutils literal notranslate"><span class="pre">dst_type</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.xpu" title="baybe.objectives.botorch.ChainedMCObjective.xpu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xpu</span></code></a>([device])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.xpu" title="baybe.objectives.botorch.ChainedMCObjective.xpu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xpu</span></code></a>([device])</p></td>
 <td><p>Move all model parameters and buffers to the XPU.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.zero_grad" title="baybe.objectives.botorch.ChainedMCObjective.zero_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_grad</span></code></a>([set_to_none])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baybe.objectives.botorch.ChainedMCObjective.zero_grad" title="baybe.objectives.botorch.ChainedMCObjective.zero_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_grad</span></code></a>([set_to_none])</p></td>
 <td><p>Reset gradients of all model parameters.</p></td>
 </tr>
 </tbody>

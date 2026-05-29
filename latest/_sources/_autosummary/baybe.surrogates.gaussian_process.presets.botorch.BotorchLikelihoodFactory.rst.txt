@@ -17,6 +17,9 @@ BotorchLikelihoodFactory
    
       ~BotorchLikelihoodFactory.__init__
    
+      ~BotorchLikelihoodFactory.__call__
+   
+   
    
 
    

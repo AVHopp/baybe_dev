@@ -16,7 +16,9 @@ PureRecommender
    .. autosummary::
    
       ~PureRecommender.__init__
+   
       ~PureRecommender.recommend
+   
    
    
 

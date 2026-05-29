@@ -16,11 +16,17 @@ HalfNormalPrior
    .. autosummary::
    
       ~HalfNormalPrior.__init__
+   
       ~HalfNormalPrior.from_dict
+   
       ~HalfNormalPrior.from_json
+   
       ~HalfNormalPrior.to_dict
+   
       ~HalfNormalPrior.to_gpytorch
+   
       ~HalfNormalPrior.to_json
+   
    
    
 

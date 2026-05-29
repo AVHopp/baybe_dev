@@ -16,11 +16,17 @@ HalfCauchyPrior
    .. autosummary::
    
       ~HalfCauchyPrior.__init__
+   
       ~HalfCauchyPrior.from_dict
+   
       ~HalfCauchyPrior.from_json
+   
       ~HalfCauchyPrior.to_dict
+   
       ~HalfCauchyPrior.to_gpytorch
+   
       ~HalfCauchyPrior.to_json
+   
    
    
 

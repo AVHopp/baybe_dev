@@ -17,6 +17,9 @@ BayBEFitCriterionFactory
    
       ~BayBEFitCriterionFactory.__init__
    
+      ~BayBEFitCriterionFactory.__call__
+   
+   
    
 
    

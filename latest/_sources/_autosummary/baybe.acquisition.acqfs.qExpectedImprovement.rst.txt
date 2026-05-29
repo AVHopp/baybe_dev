@@ -16,12 +16,19 @@ qExpectedImprovement
    .. autosummary::
    
       ~qExpectedImprovement.__init__
+   
       ~qExpectedImprovement.evaluate
+   
       ~qExpectedImprovement.from_dict
+   
       ~qExpectedImprovement.from_json
+   
       ~qExpectedImprovement.to_botorch
+   
       ~qExpectedImprovement.to_dict
+   
       ~qExpectedImprovement.to_json
+   
    
    
 

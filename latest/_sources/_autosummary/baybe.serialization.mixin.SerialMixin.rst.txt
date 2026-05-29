@@ -16,10 +16,15 @@ SerialMixin
    .. autosummary::
    
       ~SerialMixin.__init__
+   
       ~SerialMixin.from_dict
+   
       ~SerialMixin.from_json
+   
       ~SerialMixin.to_dict
+   
       ~SerialMixin.to_json
+   
    
    
 

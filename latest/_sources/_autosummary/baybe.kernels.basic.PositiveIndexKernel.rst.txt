@@ -16,12 +16,19 @@ PositiveIndexKernel
    .. autosummary::
    
       ~PositiveIndexKernel.__init__
+   
       ~PositiveIndexKernel.from_dict
+   
       ~PositiveIndexKernel.from_json
+   
       ~PositiveIndexKernel.to_dict
+   
       ~PositiveIndexKernel.to_factory
+   
       ~PositiveIndexKernel.to_gpytorch
+   
       ~PositiveIndexKernel.to_json
+   
    
    
 

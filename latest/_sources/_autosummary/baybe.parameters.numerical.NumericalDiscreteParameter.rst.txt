@@ -16,15 +16,25 @@ NumericalDiscreteParameter
    .. autosummary::
    
       ~NumericalDiscreteParameter.__init__
+   
       ~NumericalDiscreteParameter.from_dict
+   
       ~NumericalDiscreteParameter.from_json
+   
       ~NumericalDiscreteParameter.is_in_range
+   
       ~NumericalDiscreteParameter.summary
+   
       ~NumericalDiscreteParameter.to_dict
+   
       ~NumericalDiscreteParameter.to_json
+   
       ~NumericalDiscreteParameter.to_searchspace
+   
       ~NumericalDiscreteParameter.to_subspace
+   
       ~NumericalDiscreteParameter.transform
+   
    
    
 

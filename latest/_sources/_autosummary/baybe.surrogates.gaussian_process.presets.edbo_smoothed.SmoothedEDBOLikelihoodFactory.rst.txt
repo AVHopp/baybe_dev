@@ -17,6 +17,9 @@ SmoothedEDBOLikelihoodFactory
    
       ~SmoothedEDBOLikelihoodFactory.__init__
    
+      ~SmoothedEDBOLikelihoodFactory.__call__
+   
+   
    
 
    

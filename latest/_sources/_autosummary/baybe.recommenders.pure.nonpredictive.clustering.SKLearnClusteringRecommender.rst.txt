@@ -16,7 +16,9 @@ SKLearnClusteringRecommender
    .. autosummary::
    
       ~SKLearnClusteringRecommender.__init__
+   
       ~SKLearnClusteringRecommender.recommend
+   
    
    
 

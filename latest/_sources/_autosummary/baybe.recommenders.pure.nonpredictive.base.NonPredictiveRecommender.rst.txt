@@ -16,7 +16,9 @@ NonPredictiveRecommender
    .. autosummary::
    
       ~NonPredictiveRecommender.__init__
+   
       ~NonPredictiveRecommender.recommend
+   
    
    
 

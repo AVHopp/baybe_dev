@@ -16,14 +16,23 @@ DiscreteDependenciesConstraint
    .. autosummary::
    
       ~DiscreteDependenciesConstraint.__init__
+   
       ~DiscreteDependenciesConstraint.from_dict
+   
       ~DiscreteDependenciesConstraint.from_json
+   
       ~DiscreteDependenciesConstraint.get_invalid
+   
       ~DiscreteDependenciesConstraint.get_invalid_polars
+   
       ~DiscreteDependenciesConstraint.get_valid
+   
       ~DiscreteDependenciesConstraint.summary
+   
       ~DiscreteDependenciesConstraint.to_dict
+   
       ~DiscreteDependenciesConstraint.to_json
+   
    
    
 

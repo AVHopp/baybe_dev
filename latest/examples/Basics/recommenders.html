@@ -1384,15 +1384,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments: 
-    Solvent               Base                        Ligand  Temperature  \
-260    DMAc    Cesium pivalate                     BrettPhos        120.0   
-292    DMAc  Potassium acetate  Di-tert-butylphenylphosphine        105.0   
-224    DMAc     Cesium acetate                 (t-Bu)PhCPhos        120.0   
+           Solvent               Base         Ligand  Temperature  \
+109  Butyornitrile     Cesium acetate  (t-Bu)PhCPhos         90.0   
+287           DMAc  Potassium acetate      BrettPhos        120.0   
+334       p-Xylene     Cesium acetate      BrettPhos         90.0   
 
      Concentration  
-260          0.153  
-292          0.100  
-224          0.153  
+109          0.100  
+287          0.153  
+334          0.100  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
@@ -1401,15 +1401,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-    Solvent               Base                        Ligand  Temperature  \
-260    DMAc    Cesium pivalate                     BrettPhos        120.0   
-292    DMAc  Potassium acetate  Di-tert-butylphenylphosphine        105.0   
-224    DMAc     Cesium acetate                 (t-Bu)PhCPhos        120.0   
+           Solvent               Base         Ligand  Temperature  \
+109  Butyornitrile     Cesium acetate  (t-Bu)PhCPhos         90.0   
+287           DMAc  Potassium acetate      BrettPhos        120.0   
+334       p-Xylene     Cesium acetate      BrettPhos         90.0   
 
      Concentration      yield  
-260          0.153  52.044923  
-292          0.100  24.187866  
-224          0.153  84.631641  
+109          0.100  99.915397  
+287          0.153 -37.827548  
+334          0.100 -62.165443  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
