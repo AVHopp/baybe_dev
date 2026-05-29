@@ -5,6 +5,7 @@ DiscreteConstraint
 
 .. autoclass:: DiscreteConstraint
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -35,6 +36,7 @@ DiscreteConstraint
       ~DiscreteConstraint.eval_during_augmentation
       ~DiscreteConstraint.eval_during_creation
       ~DiscreteConstraint.eval_during_modeling
+      ~DiscreteConstraint.has_polars_implementation
       ~DiscreteConstraint.is_continuous
       ~DiscreteConstraint.is_discrete
       ~DiscreteConstraint.numerical_only

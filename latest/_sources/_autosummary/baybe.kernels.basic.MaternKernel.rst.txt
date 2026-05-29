@@ -5,6 +5,7 @@ MaternKernel
 
 .. autoclass:: MaternKernel
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -33,5 +34,6 @@ MaternKernel
       ~MaternKernel.nu
       ~MaternKernel.lengthscale_prior
       ~MaternKernel.lengthscale_initial_value
+      ~MaternKernel.parameter_names
    
    

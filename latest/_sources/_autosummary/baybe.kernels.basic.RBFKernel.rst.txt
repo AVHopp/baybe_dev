@@ -5,6 +5,7 @@ RBFKernel
 
 .. autoclass:: RBFKernel
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -32,5 +33,6 @@ RBFKernel
    
       ~RBFKernel.lengthscale_prior
       ~RBFKernel.lengthscale_initial_value
+      ~RBFKernel.parameter_names
    
    

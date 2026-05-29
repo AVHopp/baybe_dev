@@ -5,6 +5,7 @@ DiscreteLinkedParametersConstraint
 
 .. autoclass:: DiscreteLinkedParametersConstraint
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -35,6 +36,7 @@ DiscreteLinkedParametersConstraint
       ~DiscreteLinkedParametersConstraint.eval_during_augmentation
       ~DiscreteLinkedParametersConstraint.eval_during_creation
       ~DiscreteLinkedParametersConstraint.eval_during_modeling
+      ~DiscreteLinkedParametersConstraint.has_polars_implementation
       ~DiscreteLinkedParametersConstraint.is_continuous
       ~DiscreteLinkedParametersConstraint.is_discrete
       ~DiscreteLinkedParametersConstraint.numerical_only

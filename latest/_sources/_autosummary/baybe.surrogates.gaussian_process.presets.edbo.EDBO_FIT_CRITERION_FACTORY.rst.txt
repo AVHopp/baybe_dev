@@ -1,0 +1,7 @@
+baybe.surrogates.gaussian\_process.presets.edbo.EDBO\_FIT\_CRITERION\_FACTORY
+=============================================================================
+
+.. currentmodule:: baybe.surrogates.gaussian_process.presets.edbo
+
+
+.. autodata:: EDBO_FIT_CRITERION_FACTORY

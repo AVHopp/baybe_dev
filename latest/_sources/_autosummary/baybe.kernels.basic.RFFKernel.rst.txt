@@ -5,6 +5,7 @@ RFFKernel
 
 .. autoclass:: RFFKernel
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -33,5 +34,6 @@ RFFKernel
       ~RFFKernel.num_samples
       ~RFFKernel.lengthscale_prior
       ~RFFKernel.lengthscale_initial_value
+      ~RFFKernel.parameter_names
    
    

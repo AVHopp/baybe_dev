@@ -1,0 +1,24 @@
+BotorchLikelihoodFactory
+========================
+
+.. currentmodule:: baybe.surrogates.gaussian_process.presets.botorch
+
+.. autoclass:: BotorchLikelihoodFactory
+   :members:                              
+   :special-members: __call__
+   :show-inheritance:                 
+   :inherited-members:
+
+   
+   
+   .. rubric:: Public methods
+
+   .. autosummary::
+   
+      ~BotorchLikelihoodFactory.__init__
+   
+   
+
+   
+   
+   

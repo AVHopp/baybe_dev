@@ -5,6 +5,7 @@ DiscreteParameter
 
 .. autoclass:: DiscreteParameter
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 

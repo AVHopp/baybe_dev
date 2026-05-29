@@ -5,6 +5,7 @@ DiscreteCardinalityConstraint
 
 .. autoclass:: DiscreteCardinalityConstraint
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -35,6 +36,7 @@ DiscreteCardinalityConstraint
       ~DiscreteCardinalityConstraint.eval_during_augmentation
       ~DiscreteCardinalityConstraint.eval_during_creation
       ~DiscreteCardinalityConstraint.eval_during_modeling
+      ~DiscreteCardinalityConstraint.has_polars_implementation
       ~DiscreteCardinalityConstraint.is_continuous
       ~DiscreteCardinalityConstraint.is_discrete
       ~DiscreteCardinalityConstraint.max_cardinality

@@ -1,0 +1,39 @@
+baybe.surrogates.gaussian\_process.presets.chen
+===============================================
+
+.. automodule:: baybe.surrogates.gaussian_process.presets.chen
+  
+   
+   
+   .. rubric:: Module Attributes
+
+   .. autosummary::
+      :toctree: 
+      :template: custom-attribute-template.rst                               
+   
+      CHEN_FIT_CRITERION_FACTORY
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:                                       
+      :template: custom-class-template.rst              
+   
+      ChenKernelFactory
+   
+   
+
+   
+   
+   
+
+
+

@@ -5,6 +5,7 @@ PolynomialKernel
 
 .. autoclass:: PolynomialKernel
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -33,5 +34,6 @@ PolynomialKernel
       ~PolynomialKernel.power
       ~PolynomialKernel.offset_prior
       ~PolynomialKernel.offset_initial_value
+      ~PolynomialKernel.parameter_names
    
    

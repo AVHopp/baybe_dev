@@ -5,6 +5,7 @@ AcquisitionFunction
 
 .. autoclass:: AcquisitionFunction
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 

@@ -5,6 +5,7 @@ ParetoObjective
 
 .. autoclass:: ParetoObjective
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 

@@ -5,6 +5,7 @@ qPosteriorStandardDeviation
 
 .. autoclass:: qPosteriorStandardDeviation
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 

@@ -5,6 +5,7 @@ Condition
 
 .. autoclass:: Condition
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 

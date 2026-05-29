@@ -5,6 +5,7 @@ SmoothedBoxPrior
 
 .. autoclass:: SmoothedBoxPrior
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 

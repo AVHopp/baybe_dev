@@ -5,6 +5,7 @@ DiscreteSumConstraint
 
 .. autoclass:: DiscreteSumConstraint
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -36,6 +37,7 @@ DiscreteSumConstraint
       ~DiscreteSumConstraint.eval_during_augmentation
       ~DiscreteSumConstraint.eval_during_creation
       ~DiscreteSumConstraint.eval_during_modeling
+      ~DiscreteSumConstraint.has_polars_implementation
       ~DiscreteSumConstraint.is_continuous
       ~DiscreteSumConstraint.is_discrete
       ~DiscreteSumConstraint.numerical_only

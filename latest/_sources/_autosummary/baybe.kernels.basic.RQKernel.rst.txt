@@ -5,6 +5,7 @@ RQKernel
 
 .. autoclass:: RQKernel
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -32,5 +33,6 @@ RQKernel
    
       ~RQKernel.lengthscale_prior
       ~RQKernel.lengthscale_initial_value
+      ~RQKernel.parameter_names
    
    

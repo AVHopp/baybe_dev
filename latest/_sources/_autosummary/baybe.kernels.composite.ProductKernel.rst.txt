@@ -5,6 +5,7 @@ ProductKernel
 
 .. autoclass:: ProductKernel
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 

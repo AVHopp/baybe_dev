@@ -5,6 +5,7 @@ BasicKernel
 
 .. autoclass:: BasicKernel
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -25,5 +26,11 @@ BasicKernel
    
 
    
+   
+   .. rubric:: Public attributes and properties
+
+   .. autosummary::
+   
+      ~BasicKernel.parameter_names
    
    

@@ -5,6 +5,7 @@ qKnowledgeGradient
 
 .. autoclass:: qKnowledgeGradient
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 

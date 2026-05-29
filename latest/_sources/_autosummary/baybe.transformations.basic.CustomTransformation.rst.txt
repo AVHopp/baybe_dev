@@ -5,6 +5,7 @@ CustomTransformation
 
 .. autoclass:: CustomTransformation
    :members:                              
+   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
