@@ -5,7 +5,6 @@ ParameterSelector
 
 .. autoclass:: ParameterSelector
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,6 @@ ParameterSelector
    .. autosummary::
    
       ~ParameterSelector.__init__
-   
-      ~ParameterSelector.__call__
-   
    
    
 

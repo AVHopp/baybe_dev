@@ -5,7 +5,6 @@ FPSRecommender
 
 .. autoclass:: FPSRecommender
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,7 @@ FPSRecommender
    .. autosummary::
    
       ~FPSRecommender.__init__
-   
       ~FPSRecommender.recommend
-   
    
    
 
@@ -34,5 +31,6 @@ FPSRecommender
       ~FPSRecommender.allow_recommending_pending_experiments
       ~FPSRecommender.allow_repeated_recommendations
       ~FPSRecommender.compatibility
+      ~FPSRecommender.supports_discrete_subset_generating_constraints
    
    

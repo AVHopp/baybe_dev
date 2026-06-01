@@ -5,7 +5,6 @@ qLogNParEGO
 
 .. autoclass:: qLogNParEGO
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,19 +15,12 @@ qLogNParEGO
    .. autosummary::
    
       ~qLogNParEGO.__init__
-   
       ~qLogNParEGO.evaluate
-   
       ~qLogNParEGO.from_dict
-   
       ~qLogNParEGO.from_json
-   
       ~qLogNParEGO.to_botorch
-   
       ~qLogNParEGO.to_dict
-   
       ~qLogNParEGO.to_json
-   
    
    
 

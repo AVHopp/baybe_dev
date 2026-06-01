@@ -5,7 +5,6 @@ UpperConfidenceBound
 
 .. autoclass:: UpperConfidenceBound
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,19 +15,12 @@ UpperConfidenceBound
    .. autosummary::
    
       ~UpperConfidenceBound.__init__
-   
       ~UpperConfidenceBound.evaluate
-   
       ~UpperConfidenceBound.from_dict
-   
       ~UpperConfidenceBound.from_json
-   
       ~UpperConfidenceBound.to_botorch
-   
       ~UpperConfidenceBound.to_dict
-   
       ~UpperConfidenceBound.to_json
-   
    
    
 

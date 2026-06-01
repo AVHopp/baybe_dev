@@ -5,7 +5,6 @@ Metadata
 
 .. autoclass:: Metadata
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,15 +15,10 @@ Metadata
    .. autosummary::
    
       ~Metadata.__init__
-   
       ~Metadata.from_dict
-   
       ~Metadata.from_json
-   
       ~Metadata.to_dict
-   
       ~Metadata.to_json
-   
    
    
 

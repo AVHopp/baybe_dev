@@ -5,7 +5,6 @@ Target
 
 .. autoclass:: Target
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,21 +15,13 @@ Target
    .. autosummary::
    
       ~Target.__init__
-   
       ~Target.from_dict
-   
       ~Target.from_json
-   
       ~Target.summary
-   
       ~Target.to_dict
-   
       ~Target.to_json
-   
       ~Target.to_objective
-   
       ~Target.transform
-   
    
    
 

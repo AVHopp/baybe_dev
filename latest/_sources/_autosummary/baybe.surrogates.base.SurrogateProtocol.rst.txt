@@ -5,7 +5,6 @@ SurrogateProtocol
 
 .. autoclass:: SurrogateProtocol
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,11 +15,8 @@ SurrogateProtocol
    .. autosummary::
    
       ~SurrogateProtocol.__init__
-   
       ~SurrogateProtocol.fit
-   
       ~SurrogateProtocol.to_botorch
-   
    
    
 

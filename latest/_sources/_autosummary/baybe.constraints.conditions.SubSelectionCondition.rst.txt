@@ -5,7 +5,6 @@ SubSelectionCondition
 
 .. autoclass:: SubSelectionCondition
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,19 +15,12 @@ SubSelectionCondition
    .. autosummary::
    
       ~SubSelectionCondition.__init__
-   
       ~SubSelectionCondition.evaluate
-   
       ~SubSelectionCondition.from_dict
-   
       ~SubSelectionCondition.from_json
-   
       ~SubSelectionCondition.to_dict
-   
       ~SubSelectionCondition.to_json
-   
       ~SubSelectionCondition.to_polars
-   
    
    
 

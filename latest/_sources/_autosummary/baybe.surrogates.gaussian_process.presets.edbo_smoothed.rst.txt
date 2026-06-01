@@ -12,7 +12,6 @@ baybe.surrogates.gaussian\_process.presets.edbo\_smoothed
       :template: custom-attribute-template.rst                               
    
       SmoothedEDBOKernelFactory
-      SMOOTHED_EDBO_FIT_CRITERION_FACTORY
    
    
 

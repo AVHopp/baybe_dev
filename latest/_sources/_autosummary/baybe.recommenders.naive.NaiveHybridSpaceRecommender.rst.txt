@@ -5,7 +5,6 @@ NaiveHybridSpaceRecommender
 
 .. autoclass:: NaiveHybridSpaceRecommender
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,7 @@ NaiveHybridSpaceRecommender
    .. autosummary::
    
       ~NaiveHybridSpaceRecommender.__init__
-   
       ~NaiveHybridSpaceRecommender.recommend
-   
    
    
 
@@ -34,5 +31,6 @@ NaiveHybridSpaceRecommender
       ~NaiveHybridSpaceRecommender.allow_recommending_pending_experiments
       ~NaiveHybridSpaceRecommender.allow_repeated_recommendations
       ~NaiveHybridSpaceRecommender.compatibility
+      ~NaiveHybridSpaceRecommender.supports_discrete_subset_generating_constraints
    
    

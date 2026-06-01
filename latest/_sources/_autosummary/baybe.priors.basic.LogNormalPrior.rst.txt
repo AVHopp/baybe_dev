@@ -5,7 +5,6 @@ LogNormalPrior
 
 .. autoclass:: LogNormalPrior
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,17 +15,11 @@ LogNormalPrior
    .. autosummary::
    
       ~LogNormalPrior.__init__
-   
       ~LogNormalPrior.from_dict
-   
       ~LogNormalPrior.from_json
-   
       ~LogNormalPrior.to_dict
-   
       ~LogNormalPrior.to_gpytorch
-   
       ~LogNormalPrior.to_json
-   
    
    
 

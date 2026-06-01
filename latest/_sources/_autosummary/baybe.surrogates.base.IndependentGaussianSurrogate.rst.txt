@@ -5,7 +5,6 @@ IndependentGaussianSurrogate
 
 .. autoclass:: IndependentGaussianSurrogate
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,25 +15,15 @@ IndependentGaussianSurrogate
    .. autosummary::
    
       ~IndependentGaussianSurrogate.__init__
-   
       ~IndependentGaussianSurrogate.fit
-   
       ~IndependentGaussianSurrogate.from_dict
-   
       ~IndependentGaussianSurrogate.from_json
-   
       ~IndependentGaussianSurrogate.posterior
-   
       ~IndependentGaussianSurrogate.posterior_stats
-   
       ~IndependentGaussianSurrogate.replicate
-   
       ~IndependentGaussianSurrogate.to_botorch
-   
       ~IndependentGaussianSurrogate.to_dict
-   
       ~IndependentGaussianSurrogate.to_json
-   
    
    
 

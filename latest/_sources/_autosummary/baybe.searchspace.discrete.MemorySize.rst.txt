@@ -5,7 +5,6 @@ MemorySize
 
 .. autoclass:: MemorySize
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,7 +15,6 @@ MemorySize
    .. autosummary::
    
       ~MemorySize.__init__
-   
    
    
 

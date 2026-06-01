@@ -5,7 +5,6 @@ CustomDiscreteParameter
 
 .. autoclass:: CustomDiscreteParameter
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,25 +15,15 @@ CustomDiscreteParameter
    .. autosummary::
    
       ~CustomDiscreteParameter.__init__
-   
       ~CustomDiscreteParameter.from_dict
-   
       ~CustomDiscreteParameter.from_json
-   
       ~CustomDiscreteParameter.is_in_range
-   
       ~CustomDiscreteParameter.summary
-   
       ~CustomDiscreteParameter.to_dict
-   
       ~CustomDiscreteParameter.to_json
-   
       ~CustomDiscreteParameter.to_searchspace
-   
       ~CustomDiscreteParameter.to_subspace
-   
       ~CustomDiscreteParameter.transform
-   
    
    
 

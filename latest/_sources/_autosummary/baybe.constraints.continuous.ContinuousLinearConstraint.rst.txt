@@ -5,7 +5,6 @@ ContinuousLinearConstraint
 
 .. autoclass:: ContinuousLinearConstraint
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,19 +15,12 @@ ContinuousLinearConstraint
    .. autosummary::
    
       ~ContinuousLinearConstraint.__init__
-   
       ~ContinuousLinearConstraint.from_dict
-   
       ~ContinuousLinearConstraint.from_json
-   
       ~ContinuousLinearConstraint.summary
-   
       ~ContinuousLinearConstraint.to_botorch
-   
       ~ContinuousLinearConstraint.to_dict
-   
       ~ContinuousLinearConstraint.to_json
-   
    
    
 

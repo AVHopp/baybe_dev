@@ -5,7 +5,6 @@ BayesianRecommender
 
 .. autoclass:: BayesianRecommender
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,17 +15,11 @@ BayesianRecommender
    .. autosummary::
    
       ~BayesianRecommender.__init__
-   
       ~BayesianRecommender.acquisition_values
-   
       ~BayesianRecommender.get_acquisition_function
-   
       ~BayesianRecommender.get_surrogate
-   
       ~BayesianRecommender.joint_acquisition_value
-   
       ~BayesianRecommender.recommend
-   
    
    
 
@@ -40,6 +33,7 @@ BayesianRecommender
       ~BayesianRecommender.allow_recommending_already_measured
       ~BayesianRecommender.allow_recommending_pending_experiments
       ~BayesianRecommender.allow_repeated_recommendations
+      ~BayesianRecommender.supports_discrete_subset_generating_constraints
       ~BayesianRecommender.surrogate_model
       ~BayesianRecommender.compatibility
    

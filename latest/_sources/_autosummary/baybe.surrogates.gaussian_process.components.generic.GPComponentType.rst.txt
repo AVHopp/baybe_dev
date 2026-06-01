@@ -5,7 +5,6 @@ GPComponentType
 
 .. autoclass:: GPComponentType
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,7 +15,6 @@ GPComponentType
    .. autosummary::
    
       ~GPComponentType.get_types
-   
    
    
 

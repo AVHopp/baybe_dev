@@ -5,7 +5,6 @@ LazyGaussianLikelihoodFactory
 
 .. autoclass:: LazyGaussianLikelihoodFactory
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,6 @@ LazyGaussianLikelihoodFactory
    .. autosummary::
    
       ~LazyGaussianLikelihoodFactory.__init__
-   
-      ~LazyGaussianLikelihoodFactory.__call__
-   
    
    
 

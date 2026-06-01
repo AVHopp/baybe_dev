@@ -5,7 +5,6 @@ PiecewisePolynomialKernel
 
 .. autoclass:: PiecewisePolynomialKernel
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,19 +15,12 @@ PiecewisePolynomialKernel
    .. autosummary::
    
       ~PiecewisePolynomialKernel.__init__
-   
       ~PiecewisePolynomialKernel.from_dict
-   
       ~PiecewisePolynomialKernel.from_json
-   
       ~PiecewisePolynomialKernel.to_dict
-   
       ~PiecewisePolynomialKernel.to_factory
-   
       ~PiecewisePolynomialKernel.to_gpytorch
-   
       ~PiecewisePolynomialKernel.to_json
-   
    
    
 

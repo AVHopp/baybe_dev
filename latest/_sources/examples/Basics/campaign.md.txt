@@ -2,7 +2,7 @@
 
 This example shows how to create a campaign and how to use it.
 It is intended to be used as a first point of interaction with campaign after having
-read the corresponding [user guide](./../../userguide/campaigns).
+read the corresponding [user guide](./../../components/campaigns).
 
 ## Necessary imports for this example
 
@@ -120,12 +120,12 @@ print(recommendation)
     
     Recommended measurements with batch_size = 2: 
              Solvent               Base                        Ligand  \
-    80   Butyl Ester  Potassium acetate  Di-tert-butylphenylphosphine   
-    380     p-Xylene  Potassium acetate                 (t-Bu)PhCPhos   
+    400     p-Xylene  Potassium acetate  Di-tert-butylphenylphosphine   
+    50   Butyl Ester    Cesium pivalate  Di-tert-butylphenylphosphine   
     
          Temperature  Concentration  
-    80         120.0          0.153  
-    380         90.0          0.153  
+    400        105.0          0.100  
+    50         105.0          0.153  
 
 
 Adding target values is done by creating a new column in the `recommendation`
@@ -144,12 +144,12 @@ print(recommendation)
     
     Recommended experiments with fake measured values: 
              Solvent               Base                        Ligand  \
-    80   Butyl Ester  Potassium acetate  Di-tert-butylphenylphosphine   
-    380     p-Xylene  Potassium acetate                 (t-Bu)PhCPhos   
+    400     p-Xylene  Potassium acetate  Di-tert-butylphenylphosphine   
+    50   Butyl Ester    Cesium pivalate  Di-tert-butylphenylphosphine   
     
          Temperature  Concentration      yield  
-    80         120.0          0.153  44.030275  
-    380         90.0          0.153 -63.243216  
+    400        105.0          0.100 -36.350011  
+    50         105.0          0.153 -13.790042  
 
 
 

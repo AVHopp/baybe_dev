@@ -5,7 +5,6 @@ TypeSelector
 
 .. autoclass:: TypeSelector
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,6 @@ TypeSelector
    .. autosummary::
    
       ~TypeSelector.__init__
-   
-      ~TypeSelector.__call__
-   
    
    
 

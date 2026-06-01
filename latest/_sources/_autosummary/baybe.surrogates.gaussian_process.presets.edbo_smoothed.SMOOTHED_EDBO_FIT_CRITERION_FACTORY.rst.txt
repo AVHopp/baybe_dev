@@ -1,7 +1,0 @@
-baybe.surrogates.gaussian\_process.presets.edbo\_smoothed.SMOOTHED\_EDBO\_FIT\_CRITERION\_FACTORY
-=================================================================================================
-
-.. currentmodule:: baybe.surrogates.gaussian_process.presets.edbo_smoothed
-
-
-.. autodata:: SMOOTHED_EDBO_FIT_CRITERION_FACTORY

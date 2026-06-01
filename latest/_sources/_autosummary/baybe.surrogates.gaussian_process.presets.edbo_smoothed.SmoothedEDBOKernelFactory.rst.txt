@@ -5,7 +5,6 @@
 
 .. autoclass:: SmoothedEDBOKernelFactory
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,19 +15,11 @@
    .. autosummary::
    
       ~SmoothedEDBOKernelFactory.__init__
-   
-      ~SmoothedEDBOKernelFactory.__call__
-   
       ~SmoothedEDBOKernelFactory.from_dict
-   
       ~SmoothedEDBOKernelFactory.from_json
-   
       ~SmoothedEDBOKernelFactory.get_parameter_names
-   
       ~SmoothedEDBOKernelFactory.to_dict
-   
       ~SmoothedEDBOKernelFactory.to_json
-   
    
    
 

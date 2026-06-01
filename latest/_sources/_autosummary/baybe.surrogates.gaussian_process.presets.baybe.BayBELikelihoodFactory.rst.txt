@@ -5,7 +5,6 @@ BayBELikelihoodFactory
 
 .. autoclass:: BayBELikelihoodFactory
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,6 @@ BayBELikelihoodFactory
    .. autosummary::
    
       ~BayBELikelihoodFactory.__init__
-   
-      ~BayBELikelihoodFactory.__call__
-   
    
    
 

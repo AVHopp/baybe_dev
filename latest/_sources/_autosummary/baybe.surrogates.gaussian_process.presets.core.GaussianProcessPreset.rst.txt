@@ -5,7 +5,6 @@ GaussianProcessPreset
 
 .. autoclass:: GaussianProcessPreset
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -24,5 +23,6 @@ GaussianProcessPreset
       ~GaussianProcessPreset.CHEN
       ~GaussianProcessPreset.EDBO
       ~GaussianProcessPreset.EDBO_SMOOTHED
+      ~GaussianProcessPreset.HVARFNER
    
    

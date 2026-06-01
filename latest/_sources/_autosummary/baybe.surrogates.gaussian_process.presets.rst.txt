@@ -41,3 +41,5 @@ baybe.surrogates.gaussian\_process.presets
 
    edbo_smoothed
 
+   hvarfner
+

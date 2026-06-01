@@ -5,7 +5,6 @@ FitCriterion
 
 .. autoclass:: FitCriterion
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,7 +15,6 @@ FitCriterion
    .. autosummary::
    
       ~FitCriterion.to_gpytorch
-   
    
    
 

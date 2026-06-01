@@ -5,7 +5,6 @@ NonPredictiveRecommender
 
 .. autoclass:: NonPredictiveRecommender
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,7 @@ NonPredictiveRecommender
    .. autosummary::
    
       ~NonPredictiveRecommender.__init__
-   
       ~NonPredictiveRecommender.recommend
-   
    
    
 
@@ -31,6 +28,7 @@ NonPredictiveRecommender
       ~NonPredictiveRecommender.allow_recommending_already_measured
       ~NonPredictiveRecommender.allow_recommending_pending_experiments
       ~NonPredictiveRecommender.allow_repeated_recommendations
+      ~NonPredictiveRecommender.supports_discrete_subset_generating_constraints
       ~NonPredictiveRecommender.compatibility
    
    

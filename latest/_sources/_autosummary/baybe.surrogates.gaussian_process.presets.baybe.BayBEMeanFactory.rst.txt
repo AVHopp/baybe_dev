@@ -5,7 +5,6 @@ BayBEMeanFactory
 
 .. autoclass:: BayBEMeanFactory
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,6 @@ BayBEMeanFactory
    .. autosummary::
    
       ~BayBEMeanFactory.__init__
-   
-      ~BayBEMeanFactory.__call__
-   
    
    
 

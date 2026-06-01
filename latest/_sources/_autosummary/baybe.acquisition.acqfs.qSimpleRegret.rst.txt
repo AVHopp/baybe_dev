@@ -5,7 +5,6 @@ qSimpleRegret
 
 .. autoclass:: qSimpleRegret
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,19 +15,12 @@ qSimpleRegret
    .. autosummary::
    
       ~qSimpleRegret.__init__
-   
       ~qSimpleRegret.evaluate
-   
       ~qSimpleRegret.from_dict
-   
       ~qSimpleRegret.from_json
-   
       ~qSimpleRegret.to_botorch
-   
       ~qSimpleRegret.to_dict
-   
       ~qSimpleRegret.to_json
-   
    
    
 

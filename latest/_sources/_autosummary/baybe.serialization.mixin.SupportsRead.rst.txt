@@ -5,7 +5,6 @@ SupportsRead
 
 .. autoclass:: SupportsRead
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,7 @@ SupportsRead
    .. autosummary::
    
       ~SupportsRead.__init__
-   
       ~SupportsRead.read
-   
    
    
 

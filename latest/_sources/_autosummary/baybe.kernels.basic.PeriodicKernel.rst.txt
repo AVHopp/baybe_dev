@@ -5,7 +5,6 @@ PeriodicKernel
 
 .. autoclass:: PeriodicKernel
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,19 +15,12 @@ PeriodicKernel
    .. autosummary::
    
       ~PeriodicKernel.__init__
-   
       ~PeriodicKernel.from_dict
-   
       ~PeriodicKernel.from_json
-   
       ~PeriodicKernel.to_dict
-   
       ~PeriodicKernel.to_factory
-   
       ~PeriodicKernel.to_gpytorch
-   
       ~PeriodicKernel.to_json
-   
    
    
 

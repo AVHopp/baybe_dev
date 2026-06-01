@@ -5,7 +5,6 @@ ExpectedImprovement
 
 .. autoclass:: ExpectedImprovement
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,19 +15,12 @@ ExpectedImprovement
    .. autosummary::
    
       ~ExpectedImprovement.__init__
-   
       ~ExpectedImprovement.evaluate
-   
       ~ExpectedImprovement.from_dict
-   
       ~ExpectedImprovement.from_json
-   
       ~ExpectedImprovement.to_botorch
-   
       ~ExpectedImprovement.to_dict
-   
       ~ExpectedImprovement.to_json
-   
    
    
 

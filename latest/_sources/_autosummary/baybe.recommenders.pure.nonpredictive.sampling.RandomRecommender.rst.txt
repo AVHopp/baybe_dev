@@ -5,7 +5,6 @@ RandomRecommender
 
 .. autoclass:: RandomRecommender
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,7 @@ RandomRecommender
    .. autosummary::
    
       ~RandomRecommender.__init__
-   
       ~RandomRecommender.recommend
-   
    
    
 
@@ -32,5 +29,6 @@ RandomRecommender
       ~RandomRecommender.allow_recommending_pending_experiments
       ~RandomRecommender.allow_repeated_recommendations
       ~RandomRecommender.compatibility
+      ~RandomRecommender.supports_discrete_subset_generating_constraints
    
    

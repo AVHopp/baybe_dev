@@ -5,7 +5,6 @@ EDBOMeanFactory
 
 .. autoclass:: EDBOMeanFactory
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,6 @@ EDBOMeanFactory
    .. autosummary::
    
       ~EDBOMeanFactory.__init__
-   
-      ~EDBOMeanFactory.__call__
-   
    
    
 

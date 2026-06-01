@@ -5,7 +5,6 @@ BayBEFitCriterionFactory
 
 .. autoclass:: BayBEFitCriterionFactory
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,6 @@ BayBEFitCriterionFactory
    .. autosummary::
    
       ~BayBEFitCriterionFactory.__init__
-   
-      ~BayBEFitCriterionFactory.__call__
-   
    
    
 

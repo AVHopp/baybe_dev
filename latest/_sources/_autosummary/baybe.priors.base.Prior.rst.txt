@@ -5,7 +5,6 @@ Prior
 
 .. autoclass:: Prior
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,17 +15,11 @@ Prior
    .. autosummary::
    
       ~Prior.__init__
-   
       ~Prior.from_dict
-   
       ~Prior.from_json
-   
       ~Prior.to_dict
-   
       ~Prior.to_gpytorch
-   
       ~Prior.to_json
-   
    
    
 

@@ -5,7 +5,6 @@ ScaleKernel
 
 .. autoclass:: ScaleKernel
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,19 +15,12 @@ ScaleKernel
    .. autosummary::
    
       ~ScaleKernel.__init__
-   
       ~ScaleKernel.from_dict
-   
       ~ScaleKernel.from_json
-   
       ~ScaleKernel.to_dict
-   
       ~ScaleKernel.to_factory
-   
       ~ScaleKernel.to_gpytorch
-   
       ~ScaleKernel.to_json
-   
    
    
 

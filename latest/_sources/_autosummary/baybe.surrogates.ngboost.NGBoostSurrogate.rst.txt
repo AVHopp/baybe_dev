@@ -5,7 +5,6 @@ NGBoostSurrogate
 
 .. autoclass:: NGBoostSurrogate
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,25 +15,15 @@ NGBoostSurrogate
    .. autosummary::
    
       ~NGBoostSurrogate.__init__
-   
       ~NGBoostSurrogate.fit
-   
       ~NGBoostSurrogate.from_dict
-   
       ~NGBoostSurrogate.from_json
-   
       ~NGBoostSurrogate.posterior
-   
       ~NGBoostSurrogate.posterior_stats
-   
       ~NGBoostSurrogate.replicate
-   
       ~NGBoostSurrogate.to_botorch
-   
       ~NGBoostSurrogate.to_dict
-   
       ~NGBoostSurrogate.to_json
-   
    
    
 

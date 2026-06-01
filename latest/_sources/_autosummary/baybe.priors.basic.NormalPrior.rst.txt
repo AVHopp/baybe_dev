@@ -5,7 +5,6 @@ NormalPrior
 
 .. autoclass:: NormalPrior
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,17 +15,11 @@ NormalPrior
    .. autosummary::
    
       ~NormalPrior.__init__
-   
       ~NormalPrior.from_dict
-   
       ~NormalPrior.from_json
-   
       ~NormalPrior.to_dict
-   
       ~NormalPrior.to_gpytorch
-   
       ~NormalPrior.to_json
-   
    
    
 

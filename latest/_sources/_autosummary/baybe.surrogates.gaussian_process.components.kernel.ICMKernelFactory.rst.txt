@@ -5,7 +5,6 @@ ICMKernelFactory
 
 .. autoclass:: ICMKernelFactory
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,6 @@ ICMKernelFactory
    .. autosummary::
    
       ~ICMKernelFactory.__init__
-   
-      ~ICMKernelFactory.__call__
-   
    
    
 

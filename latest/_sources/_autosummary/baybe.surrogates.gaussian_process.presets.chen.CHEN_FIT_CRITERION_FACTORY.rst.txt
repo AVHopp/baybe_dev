@@ -1,7 +1,0 @@
-baybe.surrogates.gaussian\_process.presets.chen.CHEN\_FIT\_CRITERION\_FACTORY
-=============================================================================
-
-.. currentmodule:: baybe.surrogates.gaussian_process.presets.chen
-
-
-.. autodata:: CHEN_FIT_CRITERION_FACTORY

@@ -5,7 +5,6 @@ SmoothedEDBOMeanFactory
 
 .. autoclass:: SmoothedEDBOMeanFactory
    :members:                              
-   :special-members: __call__
    :show-inheritance:                 
    :inherited-members:
 
@@ -16,9 +15,6 @@ SmoothedEDBOMeanFactory
    .. autosummary::
    
       ~SmoothedEDBOMeanFactory.__init__
-   
-      ~SmoothedEDBOMeanFactory.__call__
-   
    
    
 
