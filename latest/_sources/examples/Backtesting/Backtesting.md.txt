@@ -1,7 +1,7 @@
 # Backtesting
 
 These examples demonstrate BayBE's
-{doc}`Backtesting </concepts/simulation>` capabilities.
+{doc}`Backtesting </userguide/simulation>` capabilities.
 ```{toctree}
 :maxdepth: 1
 

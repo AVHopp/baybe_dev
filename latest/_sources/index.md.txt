@@ -12,8 +12,7 @@ Versions <https://emdgroup.github.io/baybe/versions>
 :hidden:
 
 Readme <self>
-Concepts <concepts/index>
-Components <components/index>
+User Guide <userguide/userguide>
 Examples <examples/examples>
 FAQ <faq>
 ```
