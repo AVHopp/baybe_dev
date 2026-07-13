@@ -1193,10 +1193,12 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">importlib</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">ClassVar</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">attrs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Converter</span><span class="p">,</span> <span class="n">define</span><span class="p">,</span> <span class="n">field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">attrs.converters</span><span class="w"> </span><span class="kn">import</span> <span class="n">optional</span> <span class="k">as</span> <span class="n">optional_c</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">attrs.converters</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipe</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">attrs.validators</span><span class="w"> </span><span class="kn">import</span> <span class="n">instance_of</span><span class="p">,</span> <span class="n">is_callable</span><span class="p">,</span> <span class="n">optional</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span><span class="p">,</span> <span class="n">override</span>
@@ -1334,36 +1336,56 @@
     <span class="n">_model</span><span class="p">:</span> <span class="n">SingleTaskGP</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The fitted BoTorch model.&quot;&quot;&quot;</span>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SingleTaskGP</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The fitted BoTorch model.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39; has not been fitted yet.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
-
     <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">searchspace</span><span class="p">:</span> <span class="n">SearchSpace</span><span class="p">,</span>
+        <span class="n">objective</span><span class="p">:</span> <span class="n">Objective</span><span class="p">,</span>
+        <span class="n">measurements</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the GP from BayBE objects, satisfying :class:`SurrogateProtocol`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            searchspace: The search space the model is trained on.</span>
+<span class="sd">            objective: The objective for which the model is trained.</span>
+<span class="sd">            measurements: The training data in experimental representation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">baybe.utils.dataframe</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_tensor</span>
+
+        <span class="n">context</span> <span class="o">=</span> <span class="n">_ModelContext</span><span class="p">(</span><span class="n">searchspace</span><span class="p">,</span> <span class="n">objective</span><span class="p">,</span> <span class="n">measurements</span><span class="p">)</span>
+        <span class="n">pre_transformed</span> <span class="o">=</span> <span class="n">objective</span><span class="o">.</span><span class="n">_pre_transform</span><span class="p">(</span><span class="n">measurements</span><span class="p">,</span> <span class="n">allow_extra</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">to_tensor</span><span class="p">(</span>
+            <span class="n">searchspace</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">measurements</span><span class="p">,</span> <span class="n">allow_extra</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">pre_transformed</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fit_from_tensors</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_fit_from_tensors</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">train_x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
         <span class="n">train_y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
-        <span class="o">*</span><span class="p">,</span>
-        <span class="n">parameter_bounds</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
-        <span class="n">numerical_indices</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">context</span><span class="p">:</span> <span class="n">_ModelContext</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build and fit the SingleTaskGP from the resolved components.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build and fit the SingleTaskGP from pre-processed tensors.</span>
+
+<span class="sd">        This method exists as a performance optimisation for the case where the caller</span>
+<span class="sd">        (i.e. :class:`GaussianProcessSurrogate`) has already computed ``train_x`` and</span>
+<span class="sd">        ``train_y`` through the standard :class:`~baybe.surrogates.base.Surrogate`</span>
+<span class="sd">        pipeline and can pass them directly, avoiding a redundant second pass through</span>
+<span class="sd">        :meth:`~baybe.searchspace.core.SearchSpace.transform` and</span>
+<span class="sd">        :func:`~baybe.utils.dataframe.to_tensor` that would otherwise occur if</span>
+<span class="sd">        :meth:`fit` were called with the original BayBE objects instead.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            train_x: Training inputs in computational representation.</span>
 <span class="sd">            train_y: Training targets (pre-transformed).</span>
-<span class="sd">            parameter_bounds: Parameter bounds used for input normalization.</span>
-<span class="sd">            numerical_indices: Column indices of regular (non-task) input dimensions.</span>
+<span class="sd">            context: The model context providing bounds and index information.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">import</span><span class="w"> </span><span class="nn">botorch</span>
         <span class="kn">from</span><span class="w"> </span><span class="nn">botorch.models.transforms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Normalize</span><span class="p">,</span> <span class="n">Standardize</span>
 
         <span class="n">input_transform</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span>
             <span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-            <span class="n">bounds</span><span class="o">=</span><span class="n">parameter_bounds</span><span class="p">,</span>
-            <span class="n">indices</span><span class="o">=</span><span class="n">numerical_indices</span><span class="p">,</span>
+            <span class="n">bounds</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">parameter_bounds</span><span class="p">,</span>
+            <span class="n">indices</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">numerical_indices</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">outcome_transform</span> <span class="o">=</span> <span class="n">Standardize</span><span class="p">(</span><span class="n">train_y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
@@ -1378,6 +1400,12 @@
         <span class="p">)</span>
         <span class="n">mll</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span><span class="o">.</span><span class="n">to_gpytorch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">likelihood</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">)</span>
         <span class="n">botorch</span><span class="o">.</span><span class="n">fit</span><span class="o">.</span><span class="n">fit_gpytorch_mll</span><span class="p">(</span><span class="n">mll</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_botorch</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GPyTorchModel</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the fitted BoTorch model, satisfying :class:`SurrogateProtocol`.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39; has not been fitted yet.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
 
 
 <div class="viewcode-block" id="GaussianProcessSurrogate">
@@ -1411,10 +1439,8 @@
         <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;kernel_or_factory&quot;</span><span class="p">,</span>
         <span class="n">converter</span><span class="o">=</span><span class="n">pipe</span><span class="p">(</span>  <span class="c1"># type: ignore[misc]</span>
             <span class="n">Converter</span><span class="p">(</span><span class="n">_mark_custom_kernel</span><span class="p">,</span> <span class="n">takes_self</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>  <span class="c1"># type: ignore[call-overload]</span>
-            <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="p">(</span>
-                <span class="kc">None</span>
-                <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span>
-                <span class="k">else</span> <span class="n">to_component_factory</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">component_type</span><span class="o">=</span><span class="n">GPComponentType</span><span class="o">.</span><span class="n">KERNEL</span><span class="p">)</span>
+            <span class="n">optional_c</span><span class="p">(</span>
+                <span class="n">partial</span><span class="p">(</span><span class="n">to_component_factory</span><span class="p">,</span> <span class="n">component_type</span><span class="o">=</span><span class="n">GPComponentType</span><span class="o">.</span><span class="n">KERNEL</span><span class="p">)</span>
             <span class="p">),</span>
         <span class="p">),</span>
         <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1430,10 +1456,8 @@
     <span class="n">_mean_factory</span><span class="p">:</span> <span class="n">MeanFactoryProtocol</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
         <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;mean_or_factory&quot;</span><span class="p">,</span>
         <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">converter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="p">(</span>
-            <span class="kc">None</span>
-            <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span>
-            <span class="k">else</span> <span class="n">to_component_factory</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">component_type</span><span class="o">=</span><span class="n">GPComponentType</span><span class="o">.</span><span class="n">MEAN</span><span class="p">)</span>
+        <span class="n">converter</span><span class="o">=</span><span class="n">optional_c</span><span class="p">(</span>
+            <span class="n">partial</span><span class="p">(</span><span class="n">to_component_factory</span><span class="p">,</span> <span class="n">component_type</span><span class="o">=</span><span class="n">GPComponentType</span><span class="o">.</span><span class="n">MEAN</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
         <span class="p">),</span>
         <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">validator</span><span class="o">=</span><span class="n">optional</span><span class="p">(</span><span class="n">is_callable</span><span class="p">()),</span>
@@ -1446,10 +1470,8 @@
     <span class="n">_likelihood_factory</span><span class="p">:</span> <span class="n">LikelihoodFactoryProtocol</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
         <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;likelihood_or_factory&quot;</span><span class="p">,</span>
         <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">converter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="p">(</span>
-            <span class="kc">None</span>
-            <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span>
-            <span class="k">else</span> <span class="n">to_component_factory</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">component_type</span><span class="o">=</span><span class="n">GPComponentType</span><span class="o">.</span><span class="n">LIKELIHOOD</span><span class="p">)</span>
+        <span class="n">converter</span><span class="o">=</span><span class="n">optional_c</span><span class="p">(</span>
+            <span class="n">partial</span><span class="p">(</span><span class="n">to_component_factory</span><span class="p">,</span> <span class="n">component_type</span><span class="o">=</span><span class="n">GPComponentType</span><span class="o">.</span><span class="n">LIKELIHOOD</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
         <span class="p">),</span>
         <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">validator</span><span class="o">=</span><span class="n">optional</span><span class="p">(</span><span class="n">is_callable</span><span class="p">()),</span>
@@ -1463,10 +1485,8 @@
     <span class="n">_fit_criterion_factory</span><span class="p">:</span> <span class="n">FitCriterionFactoryProtocol</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
         <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;fit_criterion_or_factory&quot;</span><span class="p">,</span>
         <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">converter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="p">(</span>
-            <span class="kc">None</span>
-            <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span>
-            <span class="k">else</span> <span class="n">to_component_factory</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">component_type</span><span class="o">=</span><span class="n">GPComponentType</span><span class="o">.</span><span class="n">CRITERION</span><span class="p">)</span>
+        <span class="n">converter</span><span class="o">=</span><span class="n">optional_c</span><span class="p">(</span>
+            <span class="n">partial</span><span class="p">(</span><span class="n">to_component_factory</span><span class="p">,</span> <span class="n">component_type</span><span class="o">=</span><span class="n">GPComponentType</span><span class="o">.</span><span class="n">CRITERION</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
         <span class="p">),</span>
         <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">validator</span><span class="o">=</span><span class="n">optional</span><span class="p">(</span><span class="n">is_callable</span><span class="p">()),</span>
@@ -1546,7 +1566,7 @@
             <span class="k">raise</span> <span class="n">ModelNotTrainedError</span><span class="p">(</span>
                 <span class="s2">&quot;The surrogate must be trained before a BoTorch model can be created.&quot;</span>
             <span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inner</span><span class="o">.</span><span class="n">model</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inner</span><span class="o">.</span><span class="n">to_botorch</span><span class="p">()</span></div>
 
 
     <span class="nd">@override</span>
@@ -1566,7 +1586,7 @@
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_posterior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">candidates_comp_scaled</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Posterior</span><span class="p">:</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inner</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">posterior</span><span class="p">(</span><span class="n">candidates_comp_scaled</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inner</span><span class="o">.</span><span class="n">to_botorch</span><span class="p">()</span><span class="o">.</span><span class="n">posterior</span><span class="p">(</span><span class="n">candidates_comp_scaled</span><span class="p">)</span>
 
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">train_x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">train_y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -1616,12 +1636,7 @@
         <span class="n">inner</span> <span class="o">=</span> <span class="n">_GaussianProcessSurrogate</span><span class="p">(</span>
             <span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">likelihood</span><span class="o">=</span><span class="n">likelihood</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span>
         <span class="p">)</span>
-        <span class="n">inner</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-            <span class="n">train_x</span><span class="p">,</span>
-            <span class="n">train_y</span><span class="p">,</span>
-            <span class="n">parameter_bounds</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">parameter_bounds</span><span class="p">,</span>
-            <span class="n">numerical_indices</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">numerical_indices</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="n">inner</span><span class="o">.</span><span class="n">_fit_from_tensors</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_inner</span> <span class="o">=</span> <span class="n">inner</span>
 
     <span class="nd">@override</span>
