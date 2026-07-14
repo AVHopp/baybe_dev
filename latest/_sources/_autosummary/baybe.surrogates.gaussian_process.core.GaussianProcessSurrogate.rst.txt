@@ -46,11 +46,11 @@ GaussianProcessSurrogate
 
    .. autosummary::
    
+      ~GaussianProcessSurrogate.kernel_factory
+      ~GaussianProcessSurrogate.mean_factory
+      ~GaussianProcessSurrogate.likelihood_factory
       ~GaussianProcessSurrogate.fit_criterion_factory
       ~GaussianProcessSurrogate.is_available
-      ~GaussianProcessSurrogate.kernel_factory
-      ~GaussianProcessSurrogate.likelihood_factory
-      ~GaussianProcessSurrogate.mean_factory
       ~GaussianProcessSurrogate.supports_multi_output
       ~GaussianProcessSurrogate.supports_transfer_learning
    
