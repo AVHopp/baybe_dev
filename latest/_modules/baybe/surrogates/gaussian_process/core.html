@@ -1379,7 +1379,7 @@
 
 <span class="sd">    Accepts:</span>
 <span class="sd">        * :class:`baybe.kernels.base.Kernel`</span>
-<span class="sd">        * :class:`.components.kernel.KernelFactoryProtocol`</span>
+<span class="sd">        * :obj:`.components.kernel.KernelFactoryProtocol`</span>
 <span class="sd">        * :class:`gpytorch.kernels.Kernel`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1394,7 +1394,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The factory used to create the mean function for the Gaussian process.</span>
 
 <span class="sd">    Accepts:</span>
-<span class="sd">        * :class:`.components.mean.MeanFactoryProtocol`</span>
+<span class="sd">        * :obj:`.components.mean.MeanFactoryProtocol`</span>
 <span class="sd">        * :class:`gpytorch.means.Mean`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1409,7 +1409,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The factory used to create the likelihood for the Gaussian process.</span>
 
 <span class="sd">    Accepts:</span>
-<span class="sd">        * :class:`.components.likelihood.LikelihoodFactoryProtocol`</span>
+<span class="sd">        * :obj:`.components.likelihood.LikelihoodFactoryProtocol`</span>
 <span class="sd">        * :class:`gpytorch.likelihoods.Likelihood`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1425,7 +1425,7 @@
 
 <span class="sd">    Accepts:</span>
 <span class="sd">        * :class:`.components.fit_criterion.FitCriterion`</span>
-<span class="sd">        * :class:`.components.fit_criterion.FitCriterionFactoryProtocol`</span>
+<span class="sd">        * :obj:`.components.fit_criterion.FitCriterionFactoryProtocol`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_symmetries</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Symmetry</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1510,7 +1510,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_components</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">_ModelContext</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">GPyTorchKernel</span><span class="p">,</span> <span class="n">GPyTorchMean</span><span class="p">,</span> <span class="n">GPyTorchLikelihood</span><span class="p">,</span> <span class="n">FitCriterion</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resolve factory fields to concrete GPyTorch components.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resolve factory fields to concrete components.</span>
 
 <span class="sd">        Resolves ``None`` fields to BayBE defaults and calls the factories with</span>
 <span class="sd">        the given context. This handles the standard resolution path.</span>
@@ -1549,15 +1549,6 @@
 
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">train_x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">train_y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit a SingleTaskGP with resolved components.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            train_x: Training inputs in computational representation.</span>
-<span class="sd">            train_y: Training targets (pre-transformed).</span>
-
-<span class="sd">        Raises:</span>
-<span class="sd">            DeprecationError: If a custom kernel is used in a multi-task context.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_searchspace</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>  <span class="c1"># ensured by base class</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objective</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>  <span class="c1"># ensured by base class</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurements</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>  <span class="c1"># ensured by base class</span>
