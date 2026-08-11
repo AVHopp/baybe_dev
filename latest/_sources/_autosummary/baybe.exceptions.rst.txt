@@ -34,8 +34,6 @@ baybe.exceptions
       InfeasibilityError
       InputDataTypeWarning
       InvalidTargetValueError
-      LLMResponseError
-      LLMResponseWarning
       MinimumCardinalityViolatedWarning
       ModelNotTrainedError
       NoMCAcquisitionFunctionError
