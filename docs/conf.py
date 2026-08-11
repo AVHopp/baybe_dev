@@ -182,7 +182,7 @@ nitpick_ignore_regex = [
     ##### Type aliases in TYPE_CHECKING blocks #####
     # These exist only at type-checking time and cannot be resolved by Sphinx.
     (r"py:class", r"^(GPComponent|TensorCallable|ConvertibleToFloat)$"),
-    (r"py:class", r"^(GPyTorchLikelihood|GPyTorchModel)$"),
+    (r"py:class", r"^(GPyTorchKernel|GPyTorchLikelihood|GPyTorchMean|GPyTorchModel)$"),
     (r"py:class", r"^(pd\.DataFrame|pl\.Expr)$"),
     (r"py:class", r"^(TypeAliasForwardRef|P)$"),
     (r"py:class", r"^\"(pandas|polars)\"\}?$"),
