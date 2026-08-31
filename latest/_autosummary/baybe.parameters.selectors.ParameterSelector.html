@@ -7,7 +7,7 @@
         <link rel="prefetch" href="../_static/logo1.svg" as="image">
         <link rel="prefetch" href="../_static/logo1.svg" as="image">
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+    <link rel="shortcut icon" href="../_static/favicon.ico"><!-- Generated with Sphinx 8.1.3 and Furo 2025.12.19 -->
         <title>ParameterSelector - BayBE documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
@@ -307,7 +307,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../examples/Constraints_Discrete/Constraints_Discrete.html">Constraints Discrete</a><input aria-label="Toggle navigation of Constraints Discrete" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Discrete/exclusion_constraints.html">Exclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Discrete/selection_constraints.html">Selection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Discrete/dependency_constraints.html">Dependency</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Discrete/custom_constraints.html">Custom</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../examples/Constraints_Discrete/prodsum_constraints.html">Product/Sum</a></li>
@@ -425,6 +425,7 @@
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.base.ContinuousConstraint.html">ContinuousConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.base.ContinuousNonlinearConstraint.html">ContinuousNonlinearConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.base.DiscreteConstraint.html">DiscreteConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="baybe.constraints.base.DiscreteFilteringConstraint.html">DiscreteFilteringConstraint</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="baybe.constraints.conditions.html">baybe.constraints.conditions</a><input aria-label="Toggle navigation of baybe.constraints.conditions" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -439,15 +440,16 @@
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="baybe.constraints.discrete.html">baybe.constraints.discrete</a><input aria-label="Toggle navigation of baybe.constraints.discrete" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscreteExcludeConstraint.html">baybe.constraints.discrete.DiscreteExcludeConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscreteBatchConstraint.html">DiscreteBatchConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscreteCardinalityConstraint.html">DiscreteCardinalityConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscreteCustomConstraint.html">DiscreteCustomConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscreteDependenciesConstraint.html">DiscreteDependenciesConstraint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscreteExcludeConstraint.html">DiscreteExcludeConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscreteLinkedParametersConstraint.html">DiscreteLinkedParametersConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscreteNoLabelDuplicatesConstraint.html">DiscreteNoLabelDuplicatesConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscretePermutationInvarianceConstraint.html">DiscretePermutationInvarianceConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscreteProductConstraint.html">DiscreteProductConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscreteSelectionConstraint.html">DiscreteSelectionConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="baybe.constraints.discrete.DiscreteSumConstraint.html">DiscreteSumConstraint</a></li>
 </ul>
 </li>
@@ -1222,7 +1224,7 @@
 <h1>ParameterSelector<a class="headerlink" href="#parameterselector" title="Link to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="baybe.parameters.selectors.ParameterSelector">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">baybe.parameters.selectors.</span></span><span class="sig-name descname"><span class="pre">ParameterSelector</span></span><a class="reference internal" href="../_modules/baybe/parameters/selectors.html#ParameterSelector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#baybe.parameters.selectors.ParameterSelector" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">baybe.parameters.selectors.</span></span><span class="sig-name descname"><span class="pre">ParameterSelector</span></span><a class="reference internal" href="../_modules/baybe/parameters/selectors.html#ParameterSelector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#baybe.parameters.selectors.ParameterSelector" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="baybe.parameters.selectors.ParameterSelectorProtocol.html#baybe.parameters.selectors.ParameterSelectorProtocol" title="baybe.parameters.selectors.ParameterSelectorProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSelectorProtocol</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
 <p>Base class for parameter selectors.</p>
 <p class="rubric">Public methods</p>
@@ -1250,7 +1252,7 @@
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="baybe.parameters.selectors.ParameterSelector.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="baybe.parameters.base.Parameter.html#baybe.parameters.base.Parameter" title="baybe.parameters.base.Parameter"><span class="pre">Parameter</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/baybe/parameters/selectors.html#ParameterSelector.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#baybe.parameters.selectors.ParameterSelector.__call__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="baybe.parameters.base.Parameter.html#baybe.parameters.base.Parameter" title="baybe.parameters.base.Parameter"><span class="pre">Parameter</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/baybe/parameters/selectors.html#ParameterSelector.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#baybe.parameters.selectors.ParameterSelector.__call__" title="Link to this definition">¶</a></dt>
 <dd><p>Determine if a parameter should be included in the selection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1261,7 +1263,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="baybe.parameters.selectors.ParameterSelector.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baybe.parameters.selectors.ParameterSelector.__init__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baybe.parameters.selectors.ParameterSelector.__init__" title="Link to this definition">¶</a></dt>
 <dd><p>Method generated by attrs for class ParameterSelector.</p>
 <p>For details on the parameters, see <strong>Public attributes and properties</strong>.</p>
 <dl class="field-list simple">

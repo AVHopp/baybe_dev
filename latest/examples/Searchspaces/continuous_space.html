@@ -7,7 +7,7 @@
         <link rel="prefetch" href="../../_static/logo1.svg" as="image">
         <link rel="prefetch" href="../../_static/logo1.svg" as="image">
 
-    <link rel="shortcut icon" href="../../_static/favicon.ico"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+    <link rel="shortcut icon" href="../../_static/favicon.ico"><!-- Generated with Sphinx 8.1.3 and Furo 2025.12.19 -->
         <title>Creating Continuous Search Spaces - BayBE documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
@@ -307,7 +307,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Constraints_Discrete/Constraints_Discrete.html">Constraints Discrete</a><input aria-label="Toggle navigation of Constraints Discrete" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/exclusion_constraints.html">Exclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/selection_constraints.html">Selection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/dependency_constraints.html">Dependency</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/custom_constraints.html">Custom</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Constraints_Discrete/prodsum_constraints.html">Product/Sum</a></li>
@@ -425,6 +425,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.base.ContinuousConstraint.html">ContinuousConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.base.ContinuousNonlinearConstraint.html">ContinuousNonlinearConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.base.DiscreteConstraint.html">DiscreteConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.base.DiscreteFilteringConstraint.html">DiscreteFilteringConstraint</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../_autosummary/baybe.constraints.conditions.html">baybe.constraints.conditions</a><input aria-label="Toggle navigation of baybe.constraints.conditions" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -439,15 +440,16 @@
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.html">baybe.constraints.discrete</a><input aria-label="Toggle navigation of baybe.constraints.discrete" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteExcludeConstraint.html">baybe.constraints.discrete.DiscreteExcludeConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteBatchConstraint.html">DiscreteBatchConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteCardinalityConstraint.html">DiscreteCardinalityConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteCustomConstraint.html">DiscreteCustomConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteDependenciesConstraint.html">DiscreteDependenciesConstraint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteExcludeConstraint.html">DiscreteExcludeConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteLinkedParametersConstraint.html">DiscreteLinkedParametersConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteNoLabelDuplicatesConstraint.html">DiscreteNoLabelDuplicatesConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscretePermutationInvarianceConstraint.html">DiscretePermutationInvarianceConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteProductConstraint.html">DiscreteProductConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteSelectionConstraint.html">DiscreteSelectionConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteSumConstraint.html">DiscreteSumConstraint</a></li>
 </ul>
 </li>
@@ -1253,16 +1255,16 @@ Let us draw some samples from it and verify that they are within the bounds:</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        x_1       x_2       x_3       x_4
-0 -0.865020  0.961766  0.557427 -0.845159
-1 -0.739913 -0.536802 -0.264225  0.275712
-2  0.874535  0.261217  0.771901 -0.844845
-3 -0.728575 -0.482036  0.446101  0.740914
-4 -0.810594  0.306767 -0.262835 -0.375565
-5 -0.195967 -0.802683  0.277823 -0.727399
-6 -0.541663  0.498922  0.613719  0.564310
-7 -0.704368 -0.249224  0.861978 -0.304109
-8 -0.407583 -0.544199  0.980386  0.291888
-9  0.024468  0.491706  0.051488 -0.465405
+0 -0.642339 -0.897717 -0.027662 -0.643318
+1 -0.143582  0.212147  0.235422  0.356944
+2 -0.164132  0.359067  0.823336 -0.874589
+3 -0.981745  0.309031 -0.403217  0.310973
+4 -0.101230  0.158611  0.559791 -0.745198
+5  0.236721  0.435257  0.003840  0.185808
+6 -0.320572  0.834052 -0.678599 -0.410153
+7  0.205546 -0.387818  0.201765  0.638363
+8  0.362030 -0.736511 -0.669679 -0.817496
+9  0.199046 -0.609767  0.228806  0.219928
 </pre></div>
 </div>
 <p>There are several ways we can turn the above objects into a search space.
