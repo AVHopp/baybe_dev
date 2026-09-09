@@ -472,6 +472,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleAcquisitionFunctionError.html">baybe.exceptions.IncompatibleAcquisitionFunctionError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleArgumentError.html">baybe.exceptions.IncompatibleArgumentError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleExplainerError.html">baybe.exceptions.IncompatibleExplainerError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleOverrideError.html">baybe.exceptions.IncompatibleOverrideError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleSearchSpaceError.html">baybe.exceptions.IncompatibleSearchSpaceError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleSurrogateError.html">baybe.exceptions.IncompatibleSurrogateError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompleteMeasurementsError.html">baybe.exceptions.IncompleteMeasurementsError</a></li>
@@ -591,6 +592,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.CustomEncoding.html">CustomEncoding</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.ParameterEncoding.html">ParameterEncoding</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.SubstanceEncoding.html">SubstanceEncoding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.TransferLearningMode.html">TransferLearningMode</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../_autosummary/baybe.parameters.numerical.html">baybe.parameters.numerical</a><input aria-label="Toggle navigation of baybe.parameters.numerical" class="toctree-checkbox" id="toctree-checkbox-52" name="toctree-checkbox-52" role="switch" type="checkbox"/><label for="toctree-checkbox-52"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -1255,16 +1257,16 @@ Let us draw some samples from it and verify that they are within the bounds:</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        x_1       x_2       x_3       x_4
-0  0.152683 -0.570069  0.097909  0.505359
-1 -0.946250  0.014003 -0.829935  0.058504
-2 -0.772605  0.459946  0.125414 -0.764088
-3 -0.978733  0.226693  0.209279 -0.563120
-4 -0.167489  0.837350  0.295698  0.592495
-5  0.638749  0.642447 -0.309947  0.745212
-6  0.814935 -0.111605  0.269876 -0.635723
-7  0.962030  0.650669  0.299416  0.163912
-8  0.651418  0.085317  0.852129  0.197435
-9  0.791676 -0.116067 -0.904949  0.344664
+0 -0.266619 -0.514779 -0.181752  0.690450
+1  0.566981 -0.418645  0.341912 -0.005790
+2  0.868006  0.794011 -0.151377  0.516040
+3 -0.895041  0.321511 -0.627473  0.271624
+4  0.816134 -0.698694  0.297537 -0.035535
+5  0.127477  0.557309 -0.534842 -0.189845
+6 -0.701938  0.793780  0.825286 -0.866190
+7  0.668220 -0.778713 -0.663799 -0.715465
+8  0.089670  0.302495 -0.349934 -0.024137
+9 -0.073656  0.508279 -0.593358  0.197292
 </pre></div>
 </div>
 <p>There are several ways we can turn the above objects into a search space.

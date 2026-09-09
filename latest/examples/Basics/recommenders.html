@@ -472,6 +472,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleAcquisitionFunctionError.html">baybe.exceptions.IncompatibleAcquisitionFunctionError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleArgumentError.html">baybe.exceptions.IncompatibleArgumentError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleExplainerError.html">baybe.exceptions.IncompatibleExplainerError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleOverrideError.html">baybe.exceptions.IncompatibleOverrideError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleSearchSpaceError.html">baybe.exceptions.IncompatibleSearchSpaceError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleSurrogateError.html">baybe.exceptions.IncompatibleSurrogateError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompleteMeasurementsError.html">baybe.exceptions.IncompleteMeasurementsError</a></li>
@@ -591,6 +592,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.CustomEncoding.html">CustomEncoding</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.ParameterEncoding.html">ParameterEncoding</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.SubstanceEncoding.html">SubstanceEncoding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.TransferLearningMode.html">TransferLearningMode</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../_autosummary/baybe.parameters.numerical.html">baybe.parameters.numerical</a><input aria-label="Toggle navigation of baybe.parameters.numerical" class="toctree-checkbox" id="toctree-checkbox-52" name="toctree-checkbox-52" role="switch" type="checkbox"/><label for="toctree-checkbox-52"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -1429,15 +1431,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments: 
-         Solvent                Base                        Ligand  \
-77   Butyl Ester   Potassium acetate  Di-tert-butylphenylphosphine   
-246         DMAc     Cesium pivalate                 (t-Bu)PhCPhos   
-321         DMAc  Potassium pivalate  Di-tert-butylphenylphosphine   
+         Solvent               Base                        Ligand  \
+37   Butyl Ester    Cesium pivalate                     BrettPhos   
+73   Butyl Ester  Potassium acetate  Di-tert-butylphenylphosphine   
+386     p-Xylene  Potassium acetate                 (t-Bu)PhCPhos   
 
      Temperature  Concentration  
-77         105.0          0.153  
-246        105.0          0.057  
-321        120.0          0.057  
+37          90.0          0.100  
+73          90.0          0.100  
+386        120.0          0.153  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
@@ -1446,15 +1448,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-         Solvent                Base                        Ligand  \
-77   Butyl Ester   Potassium acetate  Di-tert-butylphenylphosphine   
-246         DMAc     Cesium pivalate                 (t-Bu)PhCPhos   
-321         DMAc  Potassium pivalate  Di-tert-butylphenylphosphine   
+         Solvent               Base                        Ligand  \
+37   Butyl Ester    Cesium pivalate                     BrettPhos   
+73   Butyl Ester  Potassium acetate  Di-tert-butylphenylphosphine   
+386     p-Xylene  Potassium acetate                 (t-Bu)PhCPhos   
 
      Temperature  Concentration      yield  
-77         105.0          0.153  73.770963  
-246        105.0          0.057  71.492276  
-321        120.0          0.057 -56.633753  
+37          90.0          0.100 -16.997472  
+73          90.0          0.100   2.019170  
+386        120.0          0.153   0.637982  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
