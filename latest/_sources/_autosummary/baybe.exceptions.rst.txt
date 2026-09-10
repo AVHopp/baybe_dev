@@ -28,7 +28,6 @@ baybe.exceptions
       IncompatibleAcquisitionFunctionError
       IncompatibleArgumentError
       IncompatibleExplainerError
-      IncompatibleOverrideError
       IncompatibleSearchSpaceError
       IncompatibleSurrogateError
       IncompleteMeasurementsError

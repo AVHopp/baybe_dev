@@ -471,7 +471,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/baybe.exceptions.IncompatibleAcquisitionFunctionError.html">baybe.exceptions.IncompatibleAcquisitionFunctionError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/baybe.exceptions.IncompatibleArgumentError.html">baybe.exceptions.IncompatibleArgumentError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/baybe.exceptions.IncompatibleExplainerError.html">baybe.exceptions.IncompatibleExplainerError</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/baybe.exceptions.IncompatibleOverrideError.html">baybe.exceptions.IncompatibleOverrideError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/baybe.exceptions.IncompatibleSearchSpaceError.html">baybe.exceptions.IncompatibleSearchSpaceError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/baybe.exceptions.IncompatibleSurrogateError.html">baybe.exceptions.IncompatibleSurrogateError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/baybe.exceptions.IncompleteMeasurementsError.html">baybe.exceptions.IncompleteMeasurementsError</a></li>
@@ -591,7 +590,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../_autosummary/baybe.parameters.enum.CustomEncoding.html">CustomEncoding</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../_autosummary/baybe.parameters.enum.ParameterEncoding.html">ParameterEncoding</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../_autosummary/baybe.parameters.enum.SubstanceEncoding.html">SubstanceEncoding</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../_autosummary/baybe.parameters.enum.TransferLearningMode.html">TransferLearningMode</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../_autosummary/baybe.parameters.numerical.html">baybe.parameters.numerical</a><input aria-label="Toggle navigation of baybe.parameters.numerical" class="toctree-checkbox" id="toctree-checkbox-52" name="toctree-checkbox-52" role="switch" type="checkbox"/><label for="toctree-checkbox-52"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -1232,6 +1230,7 @@
     <span class="n">Chem</span><span class="p">,</span>
     <span class="n">ConformerGenerator</span><span class="p">,</span>
     <span class="n">MolFromSmilesTransformer</span><span class="p">,</span>
+    <span class="n">fingerprints</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">baybe.parameters.enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">SubstanceEncoding</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">baybe.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">active_settings</span>
@@ -1385,8 +1384,6 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        The fingerprint class.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">baybe._optional.chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">fingerprints</span>
-
     <span class="c1"># Exception case</span>
     <span class="k">if</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="n">SubstanceEncoding</span><span class="o">.</span><span class="n">RDKITFINGERPRINT</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">fingerprints</span><span class="o">.</span><span class="n">RDKitFingerprint</span>

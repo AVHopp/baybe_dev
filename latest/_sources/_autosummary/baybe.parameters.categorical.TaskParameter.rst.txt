@@ -56,7 +56,6 @@ TaskParameter
       ~TaskParameter.unit
       ~TaskParameter.values
       ~TaskParameter.encoding
-      ~TaskParameter.override_transfer_learning_mode
       ~TaskParameter.name
       ~TaskParameter.metadata
    

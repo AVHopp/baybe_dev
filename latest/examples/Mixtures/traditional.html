@@ -472,7 +472,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleAcquisitionFunctionError.html">baybe.exceptions.IncompatibleAcquisitionFunctionError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleArgumentError.html">baybe.exceptions.IncompatibleArgumentError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleExplainerError.html">baybe.exceptions.IncompatibleExplainerError</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleOverrideError.html">baybe.exceptions.IncompatibleOverrideError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleSearchSpaceError.html">baybe.exceptions.IncompatibleSearchSpaceError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompatibleSurrogateError.html">baybe.exceptions.IncompatibleSurrogateError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/baybe.exceptions.IncompleteMeasurementsError.html">baybe.exceptions.IncompleteMeasurementsError</a></li>
@@ -592,7 +591,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.CustomEncoding.html">CustomEncoding</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.ParameterEncoding.html">ParameterEncoding</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.SubstanceEncoding.html">SubstanceEncoding</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.parameters.enum.TransferLearningMode.html">TransferLearningMode</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../_autosummary/baybe.parameters.numerical.html">baybe.parameters.numerical</a><input aria-label="Toggle navigation of baybe.parameters.numerical" class="toctree-checkbox" id="toctree-checkbox-52" name="toctree-checkbox-52" role="switch" type="checkbox"/><label for="toctree-checkbox-52"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -1328,16 +1326,16 @@ random points from the search space:</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>       Base1      Base2  PhaseAgent1  PhaseAgent2   Solvent1   Solvent2
-0  16.874143  11.297821     2.803056     1.016334  28.375979  39.632666
-1   7.869432  14.715948     0.739855     1.206268  41.681671  33.786826
-2  12.928967  13.957177     0.075638     3.056043   2.586461  67.395715
-3  11.954126  11.490910     0.795788     2.222484  26.042849  47.493843
-4  19.619964   3.747649     0.788773     2.846352  51.921587  21.075675
-5   2.730346  16.638497     2.713442     0.694071  36.786562  40.437081
-6   7.988682   5.839354     0.974713     0.648917  22.951995  61.596338
-7   6.510459  12.671819     0.704237     2.118551  53.162399  24.832536
-8  14.888561   4.740607     0.197701     3.284819  65.426643  11.461669
-9  17.703952   5.682833     0.061971     1.438920  68.555305   6.557019
+0   9.648824  15.081244     1.224010     3.739408  17.658588  52.647926
+1  12.745177  11.426942     1.391888     0.071165  47.995694  26.369134
+2   3.592066   8.079104     2.204860     1.828558  52.200676  32.094736
+3  11.769806   5.813192     0.524505     3.011590  47.147337  31.733571
+4  16.863757   0.747778     1.326896     2.213247  65.292678  13.555644
+5  14.730336   3.151170     1.415293     0.033423  13.347272  67.322505
+6   2.408945  13.103367     0.824560     0.780248  19.912310  62.970571
+7  10.043940  10.683397     1.844977     0.288936  15.436850  61.701900
+8  16.202909  11.052619     2.105242     0.758281  28.539690  41.341260
+9  17.789847   3.632612     0.403012     3.258769   3.648672  71.267088
 </pre></div>
 </div>
 <p>Computing the respective row sums reveals the expected result:</p>
@@ -1352,16 +1350,16 @@ random points from the search space:</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   Total  Total_Bases  Total_Phase_Agents
-0  100.0    28.171965            3.819390
-1  100.0    22.585380            1.946123
-2  100.0    26.886143            3.131681
-3  100.0    23.445036            3.018272
-4  100.0    23.367613            3.635125
-5  100.0    19.368843            3.407514
-6  100.0    13.828036            1.623630
-7  100.0    19.182277            2.822787
-8  100.0    19.629168            3.482520
-9  100.0    23.386785            1.500891
+0  100.0    24.730069            4.963418
+1  100.0    24.172120            1.463053
+2  100.0    11.671171            4.033417
+3  100.0    17.582998            3.536094
+4  100.0    17.611535            3.540143
+5  100.0    17.881506            1.448716
+6  100.0    15.512312            1.604808
+7  100.0    20.727337            2.133913
+8  100.0    27.255527            2.863523
+9  100.0    21.422459            3.661781
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
