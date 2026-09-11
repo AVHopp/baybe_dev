@@ -205,10 +205,6 @@ for p in (0.02, 0.05, 0.1, 0.2):
 
     
 
-    
-
-
-    
 
     
 
@@ -241,6 +237,8 @@ result_baseline = simulate_scenarios(
 )
 results = pd.concat([result_baseline, *results])
 ```
+
+    
 
     
 
