@@ -441,14 +441,15 @@
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.html">baybe.constraints.discrete</a><input aria-label="Toggle navigation of baybe.constraints.discrete" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteExcludeConstraint.html">baybe.constraints.discrete.DiscreteExcludeConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteLinkedParametersConstraint.html">baybe.constraints.discrete.DiscreteLinkedParametersConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteNoLabelDuplicatesConstraint.html">baybe.constraints.discrete.DiscreteNoLabelDuplicatesConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteBatchConstraint.html">DiscreteBatchConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteCardinalityConstraint.html">DiscreteCardinalityConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteCustomConstraint.html">DiscreteCustomConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteDependenciesConstraint.html">DiscreteDependenciesConstraint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteLinkedParametersConstraint.html">DiscreteLinkedParametersConstraint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteNoLabelDuplicatesConstraint.html">DiscreteNoLabelDuplicatesConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscretePermutationInvarianceConstraint.html">DiscretePermutationInvarianceConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteProductConstraint.html">DiscreteProductConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteRepetitionLimitConstraint.html">DiscreteRepetitionLimitConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteSelectionConstraint.html">DiscreteSelectionConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/baybe.constraints.discrete.DiscreteSumConstraint.html">DiscreteSumConstraint</a></li>
 </ul>
@@ -1328,16 +1329,16 @@ random points from the search space:</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>       Base1      Base2  PhaseAgent1  PhaseAgent2   Solvent1   Solvent2
-0   3.652782  11.666932     0.918340     2.327987  71.108242  10.325717
-1   7.637495   9.005757     3.590893     0.658837  20.820635  58.286383
-2   0.614644  18.804637     1.834109     1.786515  45.195916  31.764178
-3  19.734294   6.826365     0.299917     1.719018  52.936334  18.484072
-4  18.221341  13.911302     2.345415     1.067622  35.371020  29.083299
-5   9.745468   4.783185     0.657202     3.996710  11.439134  69.378301
-6  11.468031   4.918081     1.734938     2.937458  18.377533  60.563959
-7   2.196296  14.051298     0.026973     1.024298  40.989014  41.712121
-8   2.734929   7.325874     2.762109     0.266048   9.414636  77.496404
-9  15.818453  17.749457     0.423921     1.692155  43.294949  21.021065
+0  13.792752   5.670601     1.092271     0.483882  27.309447  51.651047
+1  17.543419  18.868351     0.427498     3.552445  21.707627  37.900660
+2  16.257067  17.225462     1.979876     0.564152  22.882175  41.091269
+3   2.615937  17.198715     2.984193     1.234057  28.984270  46.982829
+4  14.780768  18.256980     1.463651     1.505016  50.706326  13.287259
+5   6.646412   7.703776     0.354016     1.443609  50.892143  32.960044
+6  19.876759  16.245069     3.627154     0.313749  51.520361   8.416909
+7  15.785545   9.314210     1.544380     1.003417  60.417723  11.934725
+8   8.709324   6.167636     1.651281     3.343797   5.011154  75.116809
+9  18.395892   7.712579     0.452231     4.229420  65.477685   3.732193
 </pre></div>
 </div>
 <p>Computing the respective row sums reveals the expected result:</p>
@@ -1352,16 +1353,16 @@ random points from the search space:</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   Total  Total_Bases  Total_Phase_Agents
-0  100.0    15.319714            3.246327
-1  100.0    16.643253            4.249729
-2  100.0    19.419282            3.620624
-3  100.0    26.560659            2.018935
-4  100.0    32.132643            3.413037
-5  100.0    14.528653            4.653911
-6  100.0    16.386112            4.672396
-7  100.0    16.247594            1.051271
-8  100.0    10.060803            3.028157
-9  100.0    33.567910            2.116076
+0  100.0    19.463353            1.576153
+1  100.0    36.411770            3.979943
+2  100.0    33.482529            2.544028
+3  100.0    19.814653            4.218249
+4  100.0    33.037748            2.968667
+5  100.0    14.350188            1.797625
+6  100.0    36.121827            3.940903
+7  100.0    25.099755            2.547797
+8  100.0    14.876960            4.995078
+9  100.0    26.108471            4.681651
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
