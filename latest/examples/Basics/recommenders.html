@@ -1431,15 +1431,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments: 
-        Solvent             Base                        Ligand  Temperature  \
-12  Butyl Ester   Cesium acetate                     BrettPhos        105.0   
-36  Butyl Ester  Cesium pivalate                     BrettPhos         90.0   
-45  Butyl Ester  Cesium pivalate  Di-tert-butylphenylphosphine         90.0   
+         Solvent             Base                        Ligand  Temperature  \
+16   Butyl Ester   Cesium acetate                     BrettPhos        120.0   
+263         DMAc  Cesium pivalate  Di-tert-butylphenylphosphine         90.0   
+30   Butyl Ester  Cesium pivalate                 (t-Bu)PhCPhos        105.0   
 
-    Concentration  
-12          0.057  
-36          0.057  
-45          0.057  
+     Concentration  
+16           0.100  
+263          0.153  
+30           0.057  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_fake_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">,</span> <span class="n">campaign</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
@@ -1448,15 +1448,15 @@ as follows.</p>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recommended experiments with fake measured values: 
-        Solvent             Base                        Ligand  Temperature  \
-12  Butyl Ester   Cesium acetate                     BrettPhos        105.0   
-36  Butyl Ester  Cesium pivalate                     BrettPhos         90.0   
-45  Butyl Ester  Cesium pivalate  Di-tert-butylphenylphosphine         90.0   
+         Solvent             Base                        Ligand  Temperature  \
+16   Butyl Ester   Cesium acetate                     BrettPhos        120.0   
+263         DMAc  Cesium pivalate  Di-tert-butylphenylphosphine         90.0   
+30   Butyl Ester  Cesium pivalate                 (t-Bu)PhCPhos        105.0   
 
-    Concentration      yield  
-12          0.057 -28.317855  
-36          0.057  22.442253  
-45          0.057 -98.151782  
+     Concentration      yield  
+16           0.100 -38.109502  
+263          0.153  11.843330  
+30           0.057 -53.496683  
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">campaign</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">recommendation</span><span class="p">)</span>
