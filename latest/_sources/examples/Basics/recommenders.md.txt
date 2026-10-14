@@ -248,15 +248,15 @@ print(recommendation)
     
     
     Recommended experiments: 
-               Solvent                Base                        Ligand  \
-    107    Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
-    214  Butyornitrile  Potassium pivalate  Di-tert-butylphenylphosphine   
-    428       p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine   
+             Solvent                Base                        Ligand  \
+    367     p-Xylene     Cesium pivalate                     BrettPhos   
+    237         DMAc      Cesium acetate  Di-tert-butylphenylphosphine   
+    103  Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
     
          Temperature  Concentration  
-    107        120.0          0.153  
-    214        120.0          0.100  
-    428        105.0          0.153  
+    367        120.0          0.100  
+    237        105.0          0.057  
+    103        105.0          0.100  
 
 
 
@@ -269,15 +269,15 @@ print(recommendation)
     
     
     Recommended experiments with fake measured values: 
-               Solvent                Base                        Ligand  \
-    107    Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
-    214  Butyornitrile  Potassium pivalate  Di-tert-butylphenylphosphine   
-    428       p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine   
+             Solvent                Base                        Ligand  \
+    367     p-Xylene     Cesium pivalate                     BrettPhos   
+    237         DMAc      Cesium acetate  Di-tert-butylphenylphosphine   
+    103  Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
     
          Temperature  Concentration      yield  
-    107        120.0          0.153   3.964370  
-    214        120.0          0.100  45.560435  
-    428        105.0          0.153  55.826160  
+    367        120.0          0.100 -99.547777  
+    237        105.0          0.057  28.031273  
+    103        105.0          0.100 -90.753694  
 
 
 
