@@ -1,0 +1,55 @@
+LLMTwoPhaseRecommender
+======================
+
+.. currentmodule:: baybe.recommenders.meta.llm
+
+.. autoclass:: LLMTwoPhaseRecommender
+   :members:                              
+   :special-members: __call__
+   :show-inheritance:                 
+   :inherited-members:
+
+   
+   
+   .. rubric:: Public methods
+
+   .. autosummary::
+   
+      ~LLMTwoPhaseRecommender.__init__
+   
+      ~LLMTwoPhaseRecommender.from_dict
+   
+      ~LLMTwoPhaseRecommender.from_json
+   
+      ~LLMTwoPhaseRecommender.from_model
+   
+      ~LLMTwoPhaseRecommender.get_current_recommender
+   
+      ~LLMTwoPhaseRecommender.get_next_recommender
+   
+      ~LLMTwoPhaseRecommender.get_non_meta_recommender
+   
+      ~LLMTwoPhaseRecommender.recommend
+   
+      ~LLMTwoPhaseRecommender.select_recommender
+   
+      ~LLMTwoPhaseRecommender.to_dict
+   
+      ~LLMTwoPhaseRecommender.to_json
+   
+   
+   
+
+   
+   
+   .. rubric:: Public attributes and properties
+
+   .. autosummary::
+   
+      ~LLMTwoPhaseRecommender.initial_recommender
+      ~LLMTwoPhaseRecommender.is_stateful
+      ~LLMTwoPhaseRecommender.recommender
+      ~LLMTwoPhaseRecommender.remain_switched
+      ~LLMTwoPhaseRecommender.switch_after
+   
+   

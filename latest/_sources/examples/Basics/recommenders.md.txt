@@ -248,15 +248,15 @@ print(recommendation)
     
     
     Recommended experiments: 
-             Solvent                Base                        Ligand  \
-    367     p-Xylene     Cesium pivalate                     BrettPhos   
-    237         DMAc      Cesium acetate  Di-tert-butylphenylphosphine   
-    103  Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+          Solvent                Base                        Ligand  Temperature  \
+    232      DMAc      Cesium acetate                     BrettPhos        120.0   
+    423  p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine         90.0   
+    250      DMAc     Cesium pivalate                 (t-Bu)PhCPhos        120.0   
     
-         Temperature  Concentration  
-    367        120.0          0.100  
-    237        105.0          0.057  
-    103        105.0          0.100  
+         Concentration  
+    232          0.100  
+    423          0.057  
+    250          0.100  
 
 
 
@@ -269,15 +269,15 @@ print(recommendation)
     
     
     Recommended experiments with fake measured values: 
-             Solvent                Base                        Ligand  \
-    367     p-Xylene     Cesium pivalate                     BrettPhos   
-    237         DMAc      Cesium acetate  Di-tert-butylphenylphosphine   
-    103  Butyl Ester  Potassium pivalate  Di-tert-butylphenylphosphine   
+          Solvent                Base                        Ligand  Temperature  \
+    232      DMAc      Cesium acetate                     BrettPhos        120.0   
+    423  p-Xylene  Potassium pivalate  Di-tert-butylphenylphosphine         90.0   
+    250      DMAc     Cesium pivalate                 (t-Bu)PhCPhos        120.0   
     
-         Temperature  Concentration      yield  
-    367        120.0          0.100 -99.547777  
-    237        105.0          0.057  28.031273  
-    103        105.0          0.100 -90.753694  
+         Concentration      yield  
+    232          0.100  87.707133  
+    423          0.057  50.397896  
+    250          0.100  80.362256  
 
 
 

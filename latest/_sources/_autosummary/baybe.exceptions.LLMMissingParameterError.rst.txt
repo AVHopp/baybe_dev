@@ -1,0 +1,6 @@
+baybe.exceptions.LLMMissingParameterError
+=========================================
+
+.. currentmodule:: baybe.exceptions
+
+.. autoexception:: LLMMissingParameterError

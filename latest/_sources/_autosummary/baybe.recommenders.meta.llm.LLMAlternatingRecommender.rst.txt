@@ -1,0 +1,53 @@
+LLMAlternatingRecommender
+=========================
+
+.. currentmodule:: baybe.recommenders.meta.llm
+
+.. autoclass:: LLMAlternatingRecommender
+   :members:                              
+   :special-members: __call__
+   :show-inheritance:                 
+   :inherited-members:
+
+   
+   
+   .. rubric:: Public methods
+
+   .. autosummary::
+   
+      ~LLMAlternatingRecommender.__init__
+   
+      ~LLMAlternatingRecommender.from_dict
+   
+      ~LLMAlternatingRecommender.from_json
+   
+      ~LLMAlternatingRecommender.from_model
+   
+      ~LLMAlternatingRecommender.get_current_recommender
+   
+      ~LLMAlternatingRecommender.get_next_recommender
+   
+      ~LLMAlternatingRecommender.get_non_meta_recommender
+   
+      ~LLMAlternatingRecommender.recommend
+   
+      ~LLMAlternatingRecommender.select_recommender
+   
+      ~LLMAlternatingRecommender.to_dict
+   
+      ~LLMAlternatingRecommender.to_json
+   
+   
+   
+
+   
+   
+   .. rubric:: Public attributes and properties
+
+   .. autosummary::
+   
+      ~LLMAlternatingRecommender.is_stateful
+      ~LLMAlternatingRecommender.mode
+      ~LLMAlternatingRecommender.recommenders
+   
+   

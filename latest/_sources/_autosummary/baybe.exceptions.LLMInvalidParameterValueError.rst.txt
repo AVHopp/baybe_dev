@@ -1,0 +1,6 @@
+baybe.exceptions.LLMInvalidParameterValueError
+==============================================
+
+.. currentmodule:: baybe.exceptions
+
+.. autoexception:: LLMInvalidParameterValueError
