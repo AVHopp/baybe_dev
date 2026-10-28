@@ -31,7 +31,5 @@ baybe.recommenders.meta
 
    base
 
-   llm
-
    sequential
 

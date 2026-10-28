@@ -1,6 +1,0 @@
-baybe.exceptions.LLMConstraintViolationError
-============================================
-
-.. currentmodule:: baybe.exceptions
-
-.. autoexception:: LLMConstraintViolationError

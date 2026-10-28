@@ -1,6 +1,0 @@
-baybe.exceptions.LLMNonNumericParameterError
-============================================
-
-.. currentmodule:: baybe.exceptions
-
-.. autoexception:: LLMNonNumericParameterError
