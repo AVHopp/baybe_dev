@@ -1234,8 +1234,8 @@
 <dd><p>Bases: <a class="reference internal" href="baybe.transformations.base.Transformation.html#baybe.transformations.base.Transformation" title="baybe.transformations.base.Transformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transformation</span></code></a></p>
 <p>Raise input values to a specified exponent.</p>
 <p>Computes <span class="math notranslate nohighlight">\(f(x) = x^{\mathrm{exponent}}\)</span>. Non-integer exponents require
-non-negative inputs, otherwise raising <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code>. Negative exponents
-give reciprocal powers, with infinity at zero; exponent zero gives output 1.</p>
+non-negative inputs, otherwise raising <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code>. Zero input with a
+negative exponent produces infinity.</p>
 <p class="rubric">Public methods</p>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">

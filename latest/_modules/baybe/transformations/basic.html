@@ -1258,7 +1258,7 @@
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a user-defined torch callable to the input tensor.</span>
 
 <span class="sd">    Computes :math:`f(x) = \mathrm{function}(x)` on the entire tensor. Valid inputs</span>
-<span class="sd">    and outputs depend on the callable; output-bound queries raise</span>
+<span class="sd">    and outputs depend on the callable; codomain and image calculations raise</span>
 <span class="sd">    ``NotImplementedError``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1536,7 +1536,7 @@
 
 <span class="sd">    .. math::</span>
 <span class="sd">        f(x) = \exp\left[-\frac{1}{2}</span>
-<span class="sd">        \left(\frac{x - \mathrm{center}}{\sigma}\right)^2\right]</span>
+<span class="sd">        \left(\frac{x - \mathrm{center}}{\mathrm{sigma}}\right)^2\right]</span>
 
 <span class="sd">    Highest at the center (output 1), decreasing symmetrically toward zero away</span>
 <span class="sd">    from it. Larger ``sigma`` gives a wider bell.</span>
@@ -1774,8 +1774,8 @@
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Raise input values to a specified exponent.</span>
 
 <span class="sd">    Computes :math:`f(x) = x^{\mathrm{exponent}}`. Non-integer exponents require</span>
-<span class="sd">    non-negative inputs, otherwise raising ``RuntimeError``. Negative exponents</span>
-<span class="sd">    give reciprocal powers, with infinity at zero; exponent zero gives output 1.</span>
+<span class="sd">    non-negative inputs, otherwise raising ``RuntimeError``. Zero input with a</span>
+<span class="sd">    negative exponent produces infinity.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">exponent</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">finite_float</span><span class="p">)</span>
