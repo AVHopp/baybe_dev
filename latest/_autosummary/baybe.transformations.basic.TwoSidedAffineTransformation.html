@@ -1236,11 +1236,12 @@
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\begin{split}f(x) = \begin{cases}
-    \mathrm{slope\_left}\,(x - \mathrm{midpoint}) &amp; x &lt; \mathrm{midpoint} \\
-    \mathrm{slope\_right}\,(x - \mathrm{midpoint}) &amp; x \geq \mathrm{midpoint}
+    s_l \cdot (x - m) &amp; x &lt; m \\
+    s_r \cdot (x - m) &amp; x \geq m
 \end{cases}\end{split}\]</div>
 </div>
-<p>Both segments meet at <span class="math notranslate nohighlight">\(f(\mathrm{midpoint}) = 0\)</span>.</p>
+<p>Here <span class="math notranslate nohighlight">\(s_l\)</span>, <span class="math notranslate nohighlight">\(s_r\)</span>, and <span class="math notranslate nohighlight">\(m\)</span> are the left slope, right slope,
+and midpoint. Both segments meet at <span class="math notranslate nohighlight">\(f(m) = 0\)</span>.</p>
 <p class="rubric">Public methods</p>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">

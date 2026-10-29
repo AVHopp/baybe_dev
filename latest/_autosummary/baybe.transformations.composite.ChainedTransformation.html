@@ -1232,10 +1232,9 @@
 <dt class="sig sig-object py" id="baybe.transformations.composite.ChainedTransformation">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">baybe.transformations.composite.</span></span><span class="sig-name descname"><span class="pre">ChainedTransformation</span></span><a class="reference internal" href="../_modules/baybe/transformations/composite.html#ChainedTransformation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#baybe.transformations.composite.ChainedTransformation" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="baybe.transformations.base.Transformation.html#baybe.transformations.base.Transformation" title="baybe.transformations.base.Transformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transformation</span></code></a></p>
-<p>Apply a sequence of transformations in the listed order.</p>
-<p>For <code class="docutils literal notranslate"><span class="pre">transformations</span> <span class="pre">=</span> <span class="pre">(t1,</span> <span class="pre">t2,</span> <span class="pre">...,</span> <span class="pre">tn)</span></code>, computes
-<span class="math notranslate nohighlight">\(f(x) = t_n(\cdots t_2(t_1(x)) \cdots)\)</span>. Each receives the previous
-one’s output, so order matters. <code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">|</span> <span class="pre">t2</span></code> is equivalent syntax for two steps.</p>
+<p>Apply a sequence of transformations, passing each output as the next input.</p>
+<p>Computes <span class="math notranslate nohighlight">\(f(x) = t_n(\cdots t_2(t_1(x)) \cdots)\)</span>, with <span class="math notranslate nohighlight">\(t_1\)</span> applied
+first. Sequences are applied in order. Equivalent to <code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">|</span> <span class="pre">t2</span> <span class="pre">|</span> <span class="pre">...</span> <span class="pre">|</span> <span class="pre">tn</span></code>.</p>
 <p class="rubric">Public methods</p>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">

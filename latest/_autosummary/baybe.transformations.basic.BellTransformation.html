@@ -1232,14 +1232,13 @@
 <dt class="sig sig-object py" id="baybe.transformations.basic.BellTransformation">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">baybe.transformations.basic.</span></span><span class="sig-name descname"><span class="pre">BellTransformation</span></span><a class="reference internal" href="../_modules/baybe/transformations/basic.html#BellTransformation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#baybe.transformations.basic.BellTransformation" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="baybe.transformations.base.Transformation.html#baybe.transformations.base.Transformation" title="baybe.transformations.base.Transformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transformation</span></code></a></p>
-<p>Map input values to a Gaussian bell-shaped score around a center.</p>
+<p>Map input values to a Gaussian bell-shaped score around a center point.</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
-\[f(x) = \exp\left[-\frac{1}{2}
-\left(\frac{x - \mathrm{center}}{\mathrm{sigma}}\right)^2\right]\]</div>
+\[f(x) = \exp\!\left[-\frac{1}{2}\left(\frac{x - c}{\sigma}\right)^2\right]\]</div>
 </div>
-<p>Highest at the center (output 1), decreasing symmetrically toward zero away
-from it. Larger <code class="docutils literal notranslate"><span class="pre">sigma</span></code> gives a wider bell.</p>
+<p>Output is 1 at the center point <span class="math notranslate nohighlight">\(c\)</span> and decreases symmetrically toward
+zero. A larger width parameter <span class="math notranslate nohighlight">\(\sigma\)</span> gives a broader bell.</p>
 <p class="rubric">Public methods</p>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
