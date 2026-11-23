@@ -35,6 +35,11 @@ baybe.exceptions
       InfeasibilityError
       InputDataTypeWarning
       InvalidTargetValueError
+      LLMAuthenticationError
+      LLMCallError
+      LLMError
+      LLMRecoveryFailedError
+      LLMResponseWarning
       MinimumCardinalityViolatedWarning
       ModelNotTrainedError
       NoMCAcquisitionFunctionError

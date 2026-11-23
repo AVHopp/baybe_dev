@@ -141,7 +141,7 @@ print(recommendation)
 
     Recommendation from campaign:
         Granularity  Pressure[bar]  Temperature[degree_C]    Solvent
-    286      medium            5.0             111.111111  Solvent C
+    204        fine           10.0             111.111111  Solvent A
 
 
 
@@ -178,9 +178,8 @@ print(recommendation)
 ```
 
     Recommendation from campaign:
-          Granularity  Pressure[bar]  Temperature[degree_C]    Solvent
-    index                                                             
-    0          coarse            1.0                  100.0  Solvent A
+      Granularity  Pressure[bar]  Temperature[degree_C]    Solvent
+    0      coarse            1.0                  100.0  Solvent A
 
 
 ## Using configuration instead
